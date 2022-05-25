@@ -2,8 +2,8 @@
 História do período que o jogo se passa.
 
 ## Dar nomes:
- - SER2: filha do ser estranho q atravessou
- - JUNÇÃO: lugar onde o ser estranho atravessou
+  - SER2: filha do ser estranho q atravessou
+  - JUNÇÃO: lugar onde o ser estranho atravessou
 
 ### O começo (antes do descobrimento do Brasil)
   - um ser consegue atravessar para a nossa realidade de algum jeito
