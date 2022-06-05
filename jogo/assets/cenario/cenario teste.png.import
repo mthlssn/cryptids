@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unknown.png-50ca4cd4f5c6f27f6fe9e979ce9cd620.stex"
+path="res://.import/cenario teste.png-5b8db7e58e9dddff7ad6cdfac0f36f79.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/unknown.png"
-dest_files=[ "res://.import/unknown.png-50ca4cd4f5c6f27f6fe9e979ce9cd620.stex" ]
+source_file="res://assets/cenario/cenario teste.png"
+dest_files=[ "res://.import/cenario teste.png-5b8db7e58e9dddff7ad6cdfac0f36f79.stex" ]
 
 [params]
 
