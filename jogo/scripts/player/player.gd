@@ -7,6 +7,16 @@ func _ready():
 	update_direcao_sprite(Vector2(0,1))
 		
 func _process(_delta):
+	# condição para girar o personagem
+	if Input.is_action_pressed("shift"):
+		var direcao = get_direcao()
+		if direcao:
+			update_direcao_sprite(direcao)
+	else:
+		movimentacao()
+	
+# função que solicita movimento e e move o personagem
+func movimentacao():
 	var direcao = get_direcao()
 	
 	if not direcao:
@@ -17,7 +27,7 @@ func _process(_delta):
 	var posicao_alvo = Grid.solicitar_movimento(self, direcao)
 	if posicao_alvo:
 		mover(direcao, posicao_alvo)
-
+	
 # função que retorna a direção
 func get_direcao():
 	
@@ -48,10 +58,13 @@ func update_direcao_sprite(direcao):
 		Vector2(0,-1):
 			$Sprite.frame = 4
 
+# função que move o player
 func mover(direcao, direcao_alvo):
+	# bloqueia a entrada de dados 
 	set_process(false)
-	var string_direcao: String
 	
+	# guarda o nome da animação
+	var string_direcao: String
 	match direcao:
 		Vector2(1,0):
 			string_direcao = "right"
@@ -62,16 +75,20 @@ func mover(direcao, direcao_alvo):
 		Vector2(0,-1):
 			string_direcao = "up"
 	
+	# roda a animação
 	$AnimationPlayer.play("walk_" + string_direcao)
 	
+	# configura o Tween
 	$Tween.interpolate_property(
 		self, "position", self.position, direcao_alvo, 
-		$AnimationPlayer.current_animation_length, 
-		Tween.TRANS_LINEAR
+		($AnimationPlayer.current_animation_length/2), Tween.TRANS_LINEAR
 	)
 	
+	# começa o movimento
 	$Tween.start()
 	
+	# suspende a execução do código até que a animação acabe
 	yield($AnimationPlayer, "animation_finished")
 	
+	# desbloqueia a entrada de dados
 	set_process(true)

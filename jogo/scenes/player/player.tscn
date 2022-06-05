@@ -79,9 +79,10 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
 hframes = 12
-frame = 10
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
 anims/RESET = SubResource( 1 )
 anims/walk_down = SubResource( 3 )
 anims/walk_left = SubResource( 4 )
