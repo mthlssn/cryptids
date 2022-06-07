@@ -5,6 +5,7 @@ onready var Grid = get_parent()
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	update_direcao_sprite(Vector2(0,1))
+	print(get_parent())
 		
 func _process(_delta):
 	# condição para girar o personagem

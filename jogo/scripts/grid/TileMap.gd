@@ -20,6 +20,8 @@ func solicitar_movimento(player, direcao):
 	var celula_alvo = celula_comeco + direcao
 	var tipo_celula_alvo = get_cellv(celula_alvo)
 	
+	print(tipo_celula_alvo)
+	
 	match tipo_celula_alvo:
 		EMPTY:
 			return atualizar_posicao_player(player, celula_comeco, celula_alvo)
