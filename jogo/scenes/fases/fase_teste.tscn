@@ -32,7 +32,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -6
 script = ExtResource( 2 )
 
 [node name="player" parent="Ysort/Grid" instance=ExtResource( 1 )]
-position = Vector2( 48, 48 )
+position = Vector2( 80, 208 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Ysort/Grid/player"]
 remote_path = NodePath("../../../../Camera2D")
@@ -48,15 +48,16 @@ position = Vector2( 128, 32 )
 position = Vector2( 64, 64 )
 type = 2
 
-[node name="arvore" parent="Ysort/Grid" instance=ExtResource( 8 )]
+[node name="obstacle1" parent="Ysort/Grid" instance=ExtResource( 8 )]
 position = Vector2( 336, 144 )
 rotation = 1.5708
 
-[node name="arvore2" parent="Ysort/Grid" instance=ExtResource( 8 )]
+[node name="obstacle2" parent="Ysort/Grid" instance=ExtResource( 8 )]
 position = Vector2( 272, 224 )
+type = 2
 
 [node name="Camera2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 48, 48 )
+position = Vector2( 80, 208 )
 smoothing_enabled = true
 smoothing_speed = 15.0
 
@@ -66,5 +67,5 @@ position = Vector2( 0, 0 )
 [node name="bottom_right" parent="Camera2D/Limites" index="1"]
 position = Vector2( 512, 480 )
 
-[editable path="Ysort/Grid/arvore"]
+[editable path="Ysort/Grid/obstacle1"]
 [editable path="Camera2D"]

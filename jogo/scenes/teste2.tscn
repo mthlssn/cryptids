@@ -3,11 +3,10 @@
 [ext_resource path="res://assets/cenario/arvore_morta.png" type="Texture" id=1]
 [ext_resource path="res://scripts/coisas.gd" type="Script" id=2]
 
-[node name="arvore" type="Node2D"]
+[node name="obstacle" type="Node2D"]
 script = ExtResource( 2 )
 type = 1
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="arvore_sprite" type="Sprite" parent="."]
 position = Vector2( 0, -16 )
-scale = Vector2( 1, 1.01562 )
 texture = ExtResource( 1 )

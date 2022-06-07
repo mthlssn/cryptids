@@ -3,9 +3,33 @@ extends TileMap
 enum { EMPTY = -1, PLAYER, OBSTACLE, OBJECT}
 
 func _ready():
+	var cont = 1
+	var name_string = " "
+	
+	 
 	for child in get_children():
+		#var node_string = "obstacle"
+		#node_string = node_string + String(cont)
+		#print(node_string)
+		#print(child)
+		#print(child.get_children())
+		
+		#if child.name == node_string:
+			#for teste in child.get_children():
+				#var sprite = node_string + "/" + teste.name
+				#var sprite2 = $sprite
+				#print(teste.name)
+				#print(sprite2)
+				#print(sprite2.texture.get_width())
+				#print(" ")
+				#cont += 1
+		
 		set_cellv(world_to_map(child.position), child.type)
-		if child.name == "arvore":
+		#print($obstacle1/arvore_sprite.texture.get_width())
+		if child.name == "obstacle1":
+			#print(child.get_children())
+			var teste = child.get_children()
+			#print($obstacle1/arvore_sprite.texture.get_width())
 			var vec = child.position
 			vec.x += 32
 			set_cellv(world_to_map(vec), child.type)
@@ -14,6 +38,8 @@ func get_celula_player(posicao_em_tile):
 	for node in get_children():
 		if world_to_map(node.position) == posicao_em_tile:
 			return node
+			
+
 
 func solicitar_movimento(player, direcao):
 	var celula_comeco = world_to_map(player.position)
