@@ -5,6 +5,10 @@ enum { EMPTY = -1, PLAYER, OBSTACLE, OBJECT}
 func _ready():
 	for child in get_children():
 		set_cellv(world_to_map(child.position), child.type)
+		if child.name == "arvore":
+			var vec = child.position
+			vec.x += 32
+			set_cellv(world_to_map(vec), child.type)
 
 func get_celula_player(posicao_em_tile):
 	for node in get_children():

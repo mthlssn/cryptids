@@ -81,7 +81,7 @@ func mover(direcao, direcao_alvo):
 	# configura o Tween
 	$Tween.interpolate_property(
 		self, "position", self.position, direcao_alvo, 
-		($AnimationPlayer.current_animation_length/2), Tween.TRANS_LINEAR
+		($AnimationPlayer.current_animation_length), Tween.TRANS_LINEAR
 	)
 	
 	# começa o movimento
