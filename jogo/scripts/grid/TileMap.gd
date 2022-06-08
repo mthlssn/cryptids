@@ -6,23 +6,46 @@ func _ready():
 	var cont = 1
 	var name_string = " "
 	
+	
+	
 	 
 	for child in get_children():
-		#var node_string = "obstacle"
-		#node_string = node_string + String(cont)
+		var node_string = "obstacle"
+		node_string = node_string + String(cont)
 		#print(node_string)
 		#print(child)
 		#print(child.get_children())
 		
-		#if child.name == node_string:
-			#for teste in child.get_children():
-				#var sprite = node_string + "/" + teste.name
-				#var sprite2 = $sprite
-				#print(teste.name)
-				#print(sprite2)
-				#print(sprite2.texture.get_width())
-				#print(" ")
-				#cont += 1
+		if child.name == node_string:
+			for teste in child.get_children():
+				var pedro = + node_string + "/" + teste.name
+				#var mano = teste.get_node("obstacle2/arvore_sprite")
+				
+				#mano = mano + "sla"
+				var mano : Node2D = preload("res://scenes/teste2.tscn").instance()
+				var mano2 : int = mano.get_node(pedro).texure.get_width()
+				
+				print(" ")
+				print("A")
+				print("A")
+				print("A")
+				print(mano)
+				print(mano2)
+				print("A")
+				print("A")
+				print("A")
+				print(" ")
+				
+				#print($.teste.name.texture.get_width())
+				#var sprite = $
+				#sprite = sprite + pedro
+				#print(pedro)
+				var sprite2 = "sla"
+				print(teste.name)
+				#print(sprite)
+				#print((sprite).texture.get_width())
+				print(" ")
+				cont += 1
 		
 		set_cellv(world_to_map(child.position), child.type)
 		#print($obstacle1/arvore_sprite.texture.get_width())
