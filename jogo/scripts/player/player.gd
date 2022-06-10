@@ -14,7 +14,7 @@ func _process(_delta):
 			update_direcao_sprite(direcao)
 	else:
 		movimentacao()
-	
+
 # função que solicita movimento e e move o personagem
 func movimentacao():
 	var direcao = get_direcao()
