@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/player/sprite.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/sprites.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -79,10 +79,9 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
 hframes = 12
-frame = 11
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 2.0
 anims/RESET = SubResource( 1 )
 anims/walk_down = SubResource( 3 )
 anims/walk_left = SubResource( 4 )

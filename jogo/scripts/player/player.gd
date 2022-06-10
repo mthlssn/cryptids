@@ -14,7 +14,7 @@ func _process(_delta):
 			update_direcao_sprite(direcao)
 	else:
 		movimentacao()
-	
+
 # função que solicita movimento e e move o personagem
 func movimentacao():
 	var direcao = get_direcao()
@@ -81,7 +81,7 @@ func mover(direcao, direcao_alvo):
 	# configura o Tween
 	$Tween.interpolate_property(
 		self, "position", self.position, direcao_alvo, 
-		($AnimationPlayer.current_animation_length/2), Tween.TRANS_LINEAR
+		($AnimationPlayer.current_animation_length), Tween.TRANS_LINEAR
 	)
 	
 	# começa o movimento
