@@ -1,36 +1,44 @@
 extends "res://scripts/coisas.gd"
 
-onready var Grid = get_parent()
+onready var Mapa = get_parent()
+
+var ultima_direcao = Vector2(0,1)
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	update_direcao_sprite(Vector2(0,1))
 		
 func _process(_delta):
-	# condição para girar o personagem
-	if Input.is_action_pressed("shift"):
-		var direcao = get_direcao()
-		if direcao:
+	var direcao = get_direcao()
+
+	if direcao:
+		ultima_direcao = direcao
+		
+		# condição para girar o personagem ou fazer ele andar
+		if Input.is_action_pressed("shift"):
 			update_direcao_sprite(direcao)
-	else:
-		movimentacao()
+		else:
+			movimentacao(direcao)
+	
+	interagir()
+
+func interagir():
+	if Input.is_action_just_pressed("key_e"):
+		var alvo = Mapa.world_to_map(self.position) + ultima_direcao
+		var node = Mapa.get_celula_player(alvo)
+		if node:
+			node.interacao()
 
 # função que solicita movimento e e move o personagem
-func movimentacao():
-	var direcao = get_direcao()
-	
-	if not direcao:
-		return
-		
+func movimentacao(direcao):
 	update_direcao_sprite(direcao)
 	
-	var posicao_alvo = Grid.solicitar_movimento(self, direcao)
+	var posicao_alvo = Mapa.solicitar_movimento(self, direcao)
 	if posicao_alvo:
 		mover(direcao, posicao_alvo)
-	
+			
 # função que retorna a direção
 func get_direcao():
-	
 	# salvando a direção de acordo com oq o usuário digitou
 	var direcao: Vector2 = Vector2(
 		int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left")),

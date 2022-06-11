@@ -43,8 +43,31 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -84, 60 )
 texture = ExtResource( 4 )
 centered = false
+offset = Vector2( 84, -60 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 6.0
+margin_top = 9.0
+margin_right = 27.0
+margin_bottom = 23.0
+text = "0.0"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 38.0
+margin_top = 9.0
+margin_right = 59.0
+margin_bottom = 23.0
+text = "1.0"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 102.0
+margin_top = 105.0
+margin_right = 123.0
+margin_bottom = 119.0
+text = "3.3"
 
 [node name="Mapa" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -83,7 +106,15 @@ type = 0
 _sprite_width_tile = 2
 
 [node name="obstacle2" parent="Mapa/Ysort" instance=ExtResource( 8 )]
-position = Vector2( 272, 224 )
+position = Vector2( 272, 225 )
+type = 0
+
+[node name="obstacle3" parent="Mapa/Ysort" instance=ExtResource( 8 )]
+position = Vector2( 240, 260 )
+type = 0
+
+[node name="obstacle4" parent="Mapa/Ysort" instance=ExtResource( 8 )]
+position = Vector2( 306, 229 )
 type = 0
 
 [node name="Camera2D" parent="." instance=ExtResource( 5 )]
@@ -92,7 +123,7 @@ smoothing_enabled = true
 smoothing_speed = 15.0
 
 [node name="top_left" parent="Camera2D/Limites" index="0"]
-position = Vector2( 0, 0 )
+position = Vector2( -15, -15 )
 
 [node name="bottom_right" parent="Camera2D/Limites" index="1"]
 position = Vector2( 512, 480 )
