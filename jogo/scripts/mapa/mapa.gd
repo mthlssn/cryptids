@@ -2,6 +2,9 @@ extends TileMap
 
 enum { EMPTY = -1, OBSTACLE, PLAYER, OBJECT}
 
+onready var _top_left = $Limites/top_left
+onready var _bottom_right = $Limites/bottom_right
+
 func _ready():
 	for child in get_children():
 		if child.name == "Ysort":
@@ -29,18 +32,30 @@ func get_celula_player(alvo):
 func solicitar_movimento(player, direcao):
 	var celula_comeco = world_to_map(player.position)
 	var proxima_celula = celula_comeco + direcao
-	var tipo_celula_alvo = get_cellv(proxima_celula)
 	
-	match tipo_celula_alvo:
-		EMPTY:
-			return atualizar_posicao_player(player, celula_comeco, proxima_celula)
+	var sair = verificar_sair_tela(proxima_celula)
+	
+	if sair == "false":
+		var tipo_celula_alvo = get_cellv(proxima_celula)
+		match tipo_celula_alvo:
+			EMPTY:
+				return atualizar_posicao_player(player, celula_comeco, proxima_celula)
+	else:
+		print(sair)
 			
-func celula_alvo(player, direcao):
-	var celula_comeco = world_to_map(player.position)
-	var celula_alvo = celula_comeco + direcao
+func verificar_sair_tela(proxima_celula):
+	var node = get_parent().get_children()
+	var tamanho = node[6].get_tamanho_camera_y()
+	var prox_pos = proxima_celula * 32
 	
-	return celula_alvo
-
+	if prox_pos.y < tamanho:
+		print("Mano deu certo")
+		node[6].mudar_posicao_camera()
+		return "saiu por cima"
+	else:
+		print("Ta dentro ainda")
+		return "false"
+	
 func atualizar_posicao_player(player, celula_comeco, celula_alvo):
 	set_cellv(celula_alvo, player.type)
 	set_cellv(celula_comeco, EMPTY)
