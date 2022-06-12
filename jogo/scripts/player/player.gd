@@ -3,6 +3,7 @@ extends "res://scripts/coisas.gd"
 onready var Mapa = get_parent()
 
 var ultima_direcao = Vector2(0,1)
+var _ultima_posicao = self.position + Vector2(-32,0)
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
@@ -18,7 +19,8 @@ func _process(_delta):
 		if Input.is_action_pressed("shift"):
 			update_direcao_sprite(direcao)
 		else:
-			movimentacao(direcao)
+			if movimentacao(direcao):
+				_ultima_posicao = self.position
 	
 	interagir()
 
@@ -36,8 +38,13 @@ func movimentacao(direcao):
 	var posicao_alvo = Mapa.solicitar_movimento(self, direcao)
 	if posicao_alvo:
 		mover(direcao, posicao_alvo)
+		return true
 			
 # função que retorna a direção
+
+func get_ultima_posicao():
+	return _ultima_posicao
+
 func get_direcao():
 	# salvando a direção de acordo com oq o usuário digitou
 	var direcao: Vector2 = Vector2(
