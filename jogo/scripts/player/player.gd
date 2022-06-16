@@ -2,6 +2,8 @@ extends "res://scripts/coisas.gd"
 
 onready var Mapa = get_parent()
 
+export var dividido = 1
+
 var ultima_direcao = Vector2(0,1)
 
 # difinindo a a direção da sprite do inicio do jogo
@@ -89,7 +91,7 @@ func mover(direcao, direcao_alvo):
 	# configura o Tween
 	$Tween.interpolate_property(
 		self, "position", self.position, direcao_alvo, 
-		($AnimationPlayer.current_animation_length), Tween.TRANS_LINEAR
+		($AnimationPlayer.current_animation_length/dividido), Tween.TRANS_LINEAR
 	)
 	
 	# começa o movimento

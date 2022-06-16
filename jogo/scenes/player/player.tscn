@@ -74,14 +74,17 @@ tracks/0/keys = {
 
 [node name="player" type="Node2D"]
 script = ExtResource( 2 )
+type = 1
+dividido = 3
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
 hframes = 12
-frame = 2
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 3.0
 anims/RESET = SubResource( 1 )
 anims/walk_down = SubResource( 3 )
 anims/walk_left = SubResource( 4 )
