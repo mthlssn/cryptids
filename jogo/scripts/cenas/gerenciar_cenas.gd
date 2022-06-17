@@ -1,22 +1,28 @@
 extends Node2D
 
+export var _cena = 0
+
 export (String, FILE, "*.tscn") var _cena_esquerda = "nada"
 export (String, FILE, "*.tscn") var _cena_direita = "nada"
 export (String, FILE, "*.tscn") var _cena_superior = "nada"
 export (String, FILE, "*.tscn") var _cena_inferior = "nada"
 
+func get_cena():
+	return _cena
+
 func mudar_cena_p_esquerda():
-	get_tree().change_scene(_cena_esquerda)
-	print("demo_cena: esquerda")
+	# o if é só para tirar os alertas
+	if get_tree().change_scene(_cena_esquerda) == 0:
+		pass
 	
 func mudar_cena_p_direita():
-	get_tree().change_scene(_cena_direita)
-	print("demo_cena: direita")
+	if get_tree().change_scene(_cena_direita) == 0:
+		pass
 	
 func mudar_cena_p_superior():
-	get_tree().change_scene(_cena_superior)
-	print("demo_cena: superior")
+	if get_tree().change_scene(_cena_superior) == 0:
+		pass
 	
 func mudar_cena_p_inferior():
-	get_tree().change_scene(_cena_inferior)
-	print("demo_cena: inferior")
+	if get_tree().change_scene(_cena_inferior) == 0:
+		pass

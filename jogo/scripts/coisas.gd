@@ -9,4 +9,4 @@ func get_sprite_width_tile():
 	return _sprite_width_tile
 
 func interacao():
-	print("isso é uma árvore")
+	print(self, " isso é uma árvore")

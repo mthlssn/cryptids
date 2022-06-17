@@ -2,19 +2,26 @@ extends TileMap
 
 enum { EMPTY = -1, OBSTACLE, PLAYER, OBJECT}
 
-func deixa_aqui():
-	for child in get_children():
-		if child.name == "Ysort":
-			for child2 in child.get_children():
-				var width = child2.get_sprite_width_tile()
-				var posicao = child2.position
+func _ready():
+	Jogo.set_cena_atual(get_parent().get_cena())
+	
+	for node in get_children():
+		var width = node.get_sprite_width_tile()
+		var posicao = node.position
 
-				for i in width:
-					set_cellv(world_to_map(posicao), child2.type)
-					posicao.x += 32
+		if node.name != "player":
+			for i in width:
+				set_cellv(world_to_map(posicao), node.type)
+				posicao.x += 32
+		else:
+			var player = get_node("player")
+			var posicao_player = Jogo.get_posicao_player()
+			
+			player.position.x = map_to_world(posicao_player).x + 16
+			player.position.y = map_to_world(posicao_player).y + 16
+			set_cellv(posicao_player, player.type)
 
 func get_celula_player(alvo):
-	print(alvo)
 	for node in get_children():
 		if node.name == "Ysort":
 			for node2 in node.get_children():
@@ -29,30 +36,30 @@ func get_celula_player(alvo):
 func solicitar_movimento(player, direcao):
 	var celula_comeco = world_to_map(player.position)
 	var proxima_celula = celula_comeco + direcao
+
+	Jogo.set_posicao_player(celula_comeco)
 	
-	var sair = verificar_sair_tela(player)
-	
-	if sair == "false":
+	if not verificar_sair_tela(proxima_celula):
 		var tipo_celula_alvo = get_cellv(proxima_celula)
 		match tipo_celula_alvo:
 			EMPTY:
 				return atualizar_posicao_player(player, celula_comeco, proxima_celula)
 			
-func verificar_sair_tela(player):
+func verificar_sair_tela(proxima_celula):
 	var node_pai = get_parent()
 	var node_camera = node_pai.get_node("camera")
 	var limite = node_camera.get_limite_cam()
 			
-	if player.position.x < limite[0]:
+	if proxima_celula.x < (limite[0] / 32):
 		node_pai.mudar_cena_p_esquerda()
-	elif player.position.x > limite[1]:
+	elif proxima_celula.x > ((limite[1] - 32) / 32):
 		node_pai.mudar_cena_p_direita()
-	elif player.position.y < limite[2]:
+	elif proxima_celula.y < (limite[2] / 32):
 		node_pai.mudar_cena_p_superior()
-	elif player.position.y > limite[3]:
+	elif proxima_celula.y > ((limite[3] - 32) / 32):
 		node_pai.mudar_cena_p_inferior()
 	else:
-		return "false"
+		return false
 	
 func atualizar_posicao_player(player, celula_comeco, celula_alvo):
 	set_cellv(celula_alvo, player.type)
