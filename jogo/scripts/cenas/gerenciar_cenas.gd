@@ -7,19 +7,21 @@ export (String, FILE, "*.tscn") var _cena_direita = "nada"
 export (String, FILE, "*.tscn") var _cena_superior = "nada"
 export (String, FILE, "*.tscn") var _cena_inferior = "nada"
 
-func _ready():
-	Jogo.set_node(self)
+var _caminho_cena
 
 func get_cena():
 	return _cena
 
 func mudar_cena(lado):
 	match lado:
+		0:
+			_caminho_cena = _cena_esquerda
 		1:
-			Transition.fade_into(_cena_esquerda)
+			_caminho_cena = _cena_direita
 		2:
-			Transition.fade_into(_cena_direita)
+			_caminho_cena = _cena_superior
 		3:
-			Transition.fade_into(_cena_superior)
-		4:
-			Transition.fade_into(_cena_inferior)
+			_caminho_cena = _cena_inferior
+	
+	Transition.fade_into(_caminho_cena)
+

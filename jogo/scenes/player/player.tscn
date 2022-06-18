@@ -71,7 +71,7 @@ tracks/0/keys = {
 
 [node name="player" type="Node2D"]
 script = ExtResource( 2 )
-type = 1
+type = 2
 dividido = 1.25
 
 [node name="Sprite" type="Sprite" parent="."]

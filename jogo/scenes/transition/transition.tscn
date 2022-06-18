@@ -4,18 +4,6 @@
 
 [sub_resource type="Animation" id=1]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "fade"
@@ -38,11 +26,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "chamar_trocar_cena"
+"method": "trocar_cena"
+}, {
+"args": [  ],
+"method": "set_animando_false"
 } ]
 }
 
@@ -57,7 +48,7 @@ __meta__ = {
 margin_right = 480.0
 margin_bottom = 288.0
 mouse_filter = 2
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 0.25 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )

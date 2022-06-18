@@ -3,6 +3,7 @@
 [ext_resource path="res://scripts/camera/camera.gd" type="Script" id=1]
 
 [node name="camera" type="Camera2D"]
+visible = false
 current = true
 smoothing_enabled = true
 smoothing_speed = 10.0

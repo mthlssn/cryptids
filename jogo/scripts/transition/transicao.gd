@@ -1,12 +1,21 @@
 extends CanvasLayer
 
-onready var animation = $AnimationPlayer
-var scene_to_go = ""
+onready var _animation = $AnimationPlayer
+var _scene_to_go = ""
+
+var _animando = false
+
+func get_animando():
+	return _animando
+	
+func set_animando_false():
+	_animando = false
 
 func fade_into(scene):
-	scene_to_go = scene
-	animation.play("fade")
+	_scene_to_go = scene
+	_animando = true
+	_animation.play("fade")
 
-func chamar_trocar_cena():
-	Jogo.trocar_cena(scene_to_go)
-	#get_tree().change_scene(scene_to_go)
+func trocar_cena():
+	get_tree().call_deferred("change_scene", _scene_to_go)
+

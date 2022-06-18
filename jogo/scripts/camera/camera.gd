@@ -8,6 +8,3 @@ func _ready():
 	limit_left = _top_left.position.x
 	limit_bottom = _bottom_right.position.y
 	limit_right = _bottom_right.position.x
-
-func get_limite_cam():
-	return [limit_left, limit_right, limit_top, limit_bottom]

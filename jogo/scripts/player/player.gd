@@ -6,13 +6,15 @@ export var dividido = 1.0
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
-	update_direcao_sprite(Jogo.get_direcao_player())
+	update_direcao_sprite(Global.get_direcao_player())
 		
 func _process(_delta):
-	var direcao = get_direcao()
+	var direcao
+	if not Transition.get_animando():
+		direcao = get_direcao()
 
 	if direcao:
-		Jogo.set_direcao_player(direcao)
+		Global.set_direcao_player(direcao)
 		
 		# condição para girar o personagem ou fazer ele andar
 		if Input.is_action_pressed("shift"):
@@ -24,7 +26,7 @@ func _process(_delta):
 
 func interagir():
 	if Input.is_action_just_pressed("key_e"):
-		var alvo = tilemap.world_to_map(self.position) + Jogo.get_direcao_player()
+		var alvo = tilemap.world_to_map(self.position) + Global.get_direcao_player()
 		var node = tilemap.get_celula_player(alvo)
 		if node:
 			node.interacao()
