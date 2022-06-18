@@ -51,13 +51,13 @@ func verificar_sair_tela(proxima_celula):
 	var limite = node_camera.get_limite_cam()
 			
 	if proxima_celula.x < (limite[0] / 32):
-		node_pai.mudar_cena_p_esquerda()
-	elif proxima_celula.x > ((limite[1] - 32) / 32):
-		node_pai.mudar_cena_p_direita()
+		node_pai.mudar_cena(1)
+	elif proxima_celula.x > ((limite[1]) / 32):
+		node_pai.mudar_cena(2)
 	elif proxima_celula.y < (limite[2] / 32):
-		node_pai.mudar_cena_p_superior()
-	elif proxima_celula.y > ((limite[3] - 32) / 32):
-		node_pai.mudar_cena_p_inferior()
+		node_pai.mudar_cena(3)
+	elif proxima_celula.y > ((limite[3]) / 32):
+		node_pai.mudar_cena(4)
 	else:
 		return false
 	

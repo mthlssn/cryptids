@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var _posicao_player_cena1 = Vector2(6,6)
 var _posicao_player_cena2 = Vector2(7,23)
@@ -11,6 +11,11 @@ var _direcao_player = Vector2(1,0)
 
 var _cena_atual = 1
 var _cena_anterior = 1
+
+var node 
+
+func set_node(node1):
+	node = node1
 	
 func set_cena_atual(cena):
 	_cena_anterior = _cena_atual
@@ -25,38 +30,38 @@ func set_direcao_player(direcao):
 func get_posicao_player():
 	match _cena_atual:
 		1:
-			_posicao_player_cena1 = Vector2(_posicao_player_cena2.x, _posicao_player_cena1.y - 1)
+			_posicao_player_cena1 = Vector2(_posicao_player_cena2.x, _posicao_player_cena1.y)
 			return _posicao_player_cena1
 		2:
 			match _cena_anterior:
 				1:
-					_posicao_player_cena2 = Vector2(_posicao_player_cena1.x, _posicao_player_cena2.y + 1)
+					_posicao_player_cena2 = Vector2(_posicao_player_cena1.x, _posicao_player_cena2.y)
 				3:
-					_posicao_player_cena2 = Vector2(_posicao_player_cena2.x + 1, _posicao_player_cena3.y)
+					_posicao_player_cena2 = Vector2(_posicao_player_cena2.x, _posicao_player_cena3.y)
 			return _posicao_player_cena2
 		3:
 			match _cena_anterior:
 				2:
-					_posicao_player_cena3 = Vector2(_posicao_player_cena3.x - 1, _posicao_player_cena2.y)
+					_posicao_player_cena3 = Vector2(_posicao_player_cena3.x, _posicao_player_cena2.y)
 				4:
-					_posicao_player_cena3 = Vector2(_posicao_player_cena4.x, _posicao_player_cena3.y - 1)
+					_posicao_player_cena3 = Vector2(_posicao_player_cena4.x, _posicao_player_cena3.y)
 			return _posicao_player_cena3
 		4:
 			match _cena_anterior:
 				3:
-					_posicao_player_cena4 = Vector2(_posicao_player_cena3.x , _posicao_player_cena4.y + 1)
+					_posicao_player_cena4 = Vector2(_posicao_player_cena3.x , _posicao_player_cena4.y)
 				5:
-					_posicao_player_cena4 = Vector2(_posicao_player_cena4.x - 1, _posicao_player_cena5.y+1)
+					_posicao_player_cena4 = Vector2(_posicao_player_cena4.x, _posicao_player_cena5.y+1)
 			return _posicao_player_cena4
 		5:
 			match _cena_anterior:
 				4:
-					_posicao_player_cena5 = Vector2(_posicao_player_cena5.x + 1, _posicao_player_cena4.y-1)
+					_posicao_player_cena5 = Vector2(_posicao_player_cena5.x, _posicao_player_cena4.y-1)
 				6:
-					_posicao_player_cena5 = Vector2(_posicao_player_cena6.x, _posicao_player_cena5.y - 1)
+					_posicao_player_cena5 = Vector2(_posicao_player_cena6.x, _posicao_player_cena5.y)
 			return _posicao_player_cena5
 		6:
-			_posicao_player_cena6 = Vector2(_posicao_player_cena5.x, _posicao_player_cena6.y + 1)
+			_posicao_player_cena6 = Vector2(_posicao_player_cena5.x, _posicao_player_cena6.y)
 			return _posicao_player_cena6
 			
 	print(self, " n ta entrando aqui")
@@ -76,3 +81,11 @@ func set_posicao_player(posicao):
 		6:
 			_posicao_player_cena6 = posicao
 
+func trocar_cena(caminho_cena):
+	remove_child(node)
+	node.call_deferred("free")
+
+	var next_cena_resource = load(caminho_cena)
+	var teste = next_cena_resource.instance()
+	add_child(teste)
+	
