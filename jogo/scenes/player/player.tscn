@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/player/sprites.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=2]
-
-[sub_resource type="Animation" id=1]
-length = 0.001
 
 [sub_resource type="Animation" id=3]
 length = 0.48
@@ -74,6 +71,8 @@ tracks/0/keys = {
 
 [node name="player" type="Node2D"]
 script = ExtResource( 2 )
+type = 2
+dividido = 1.25
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -82,7 +81,7 @@ hframes = 12
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 1 )
+playback_speed = 1.25
 anims/walk_down = SubResource( 3 )
 anims/walk_left = SubResource( 4 )
 anims/walk_right = SubResource( 5 )

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/cenario/cenario5.png" type="Texture" id=1]
+[ext_resource path="res://assets/cenario/cenario2.png" type="Texture" id=2]
+[ext_resource path="res://assets/cenario/cenario4.png" type="Texture" id=3]
+[ext_resource path="res://assets/cenario/cenario3.png" type="Texture" id=4]
+[ext_resource path="res://assets/cenario/cenario6.png" type="Texture" id=5]
+[ext_resource path="res://assets/cenario/cenario1.png" type="Texture" id=6]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="c1" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="c2" type="Sprite" parent="."]
+position = Vector2( 0, -768 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="c3" type="Sprite" parent="."]
+position = Vector2( 480, -768 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="c4" type="Sprite" parent="."]
+position = Vector2( 480, -1408 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="c5" type="Sprite" parent="."]
+position = Vector2( 0, -1376 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="c6" type="Sprite" parent="."]
+position = Vector2( 0, -2016 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="TileMap" type="TileMap" parent="."]
+cell_size = Vector2( 32, 32 )
+format = 1

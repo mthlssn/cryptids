@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/cenas/gerenciar_cenas.gd" type="Script" id=1]
+[ext_resource path="res://scenes/camera/camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/cenario/cenario4.png" type="Texture" id=4]
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=6]
+
+[node name="demo_cena_4" type="Node2D"]
+script = ExtResource( 1 )
+_cena = 4
+_cena_esquerda = "res://scenes/demo/demo_cena_5.tscn"
+_cena_inferior = "res://scenes/demo/demo_cena_3.tscn"
+
+[node name="cenario" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="tilemap" parent="." instance=ExtResource( 3 )]
+tile_data = PoolIntArray( 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196620, 0, 0, 262156, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327692, 0, 0, 458751, 0, 0, 393216, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393228, 0, 0, 458752, 0, 0, 458753, 0, 0, 458756, 0, 0, 458757, 0, 0, 458760, 0, 0, 458764, 0, 0, 524288, 0, 0, 524293, 0, 0, 524296, 0, 0, 524300, 0, 0, 589824, 0, 0, 589825, 0, 0, 589829, 0, 0, 589832, 0, 0, 589835, 0, 0, 589836, 0, 0, 655360, 0, 0, 655361, 0, 0, 655365, 0, 0, 655368, 0, 0, 655371, 0, 0, 655372, 0, 0, 720896, 0, 0, 720897, 0, 0, 720901, 0, 0, 720904, 0, 0, 720907, 0, 0, 720908, 0, 0, 786432, 0, 0, 786433, 0, 0, 786437, 0, 0, 786440, 0, 0, 786444, 0, 0, 851968, 0, 0, 851969, 0, 0, 851973, 0, 0, 851976, 0, 0, 851980, 0, 0, 917504, 0, 0, 917509, 0, 0, 917512, 0, 0, 917516, 0, 0, 917517, 0, 0, 983040, 0, 0, 983041, 0, 0, 983045, 0, 0, 983048, 0, 0, 983052, 0, 0, 983053, 0, 0, 1048576, 0, 0, 1048581, 0, 0, 1048584, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1114112, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1179648, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1245184, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245192, 0, 0, 1310720, 0, 0, 1310724, 0, 0 )
+
+[node name="player" parent="tilemap" instance=ExtResource( 5 )]
+position = Vector2( 80, 597 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="tilemap/player"]
+remote_path = NodePath("../../../camera")
+
+[node name="portal1" parent="tilemap" instance=ExtResource( 6 )]
+position = Vector2( 48, 656 )
+_sprite_width_tile = 3
+
+[node name="cor" parent="tilemap/portal1" index="0"]
+margin_right = 80.0
+color = Color( 0, 0, 0, 0.537255 )
+
+[node name="portal2" parent="tilemap" instance=ExtResource( 6 )]
+position = Vector2( -16, 112 )
+_sprite_height_tile = 3
+
+[node name="cor" parent="tilemap/portal2" index="0"]
+margin_bottom = 80.0
+color = Color( 0, 0, 0, 0.537255 )
+
+[node name="camera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 80, 597 )
+
+[node name="bottom_right" parent="camera/limites" index="1"]
+position = Vector2( 480, 640 )
+
+[editable path="tilemap/portal1"]
+[editable path="tilemap/portal2"]
+[editable path="camera"]
