@@ -13,8 +13,8 @@ func set_animando_false():
 
 func fade_into(scene):
 	_scene_to_go = scene
-	_animando = true
 	_animation.play("fade")
+	_animando = true
 
 func trocar_cena():
 	get_tree().call_deferred("change_scene", _scene_to_go)
