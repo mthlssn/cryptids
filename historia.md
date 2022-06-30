@@ -1,9 +1,6 @@
 # História do jogo
 História do período que o jogo se passa.
 
-## Dar nomes:
-  - SER2: filha do ser estranho q atravessou
-  - JUNÇÃO: lugar onde o ser estranho atravessou
 
 ### O começo (antes do descobrimento do Brasil)
   - um ser consegue atravessar para a nossa realidade de algum jeito
@@ -17,7 +14,7 @@ História do período que o jogo se passa.
 ### Filha passa a ser idolatrada tb (maioridade)
   - Devido as seu comportamento e atitides passa a ser chamada de Arani (tempestade em tupi)
   - Arani usa sua influência para tentar descobrir alguma coisa sobre o desaparecimento do seu pai
-  - Arani dois acha o local onde seu pai atravessou a realidade
+  - Arani dois acha o local onde seu pai atravessou a realidade, o Horizonte de Aram (onde Aram apareceu)
   - Arani começou a estudar esse local misterioso
   - se desenvolve uma ciência através disso
   - pessoas são usadas em experimentos para tentar descobrir novas informações
@@ -32,7 +29,7 @@ História do período que o jogo se passa.
   - ordena os exploradores a matar os índios(antigos seguidores), para que não sobrassem testemunhas
   - Arani volta com os bandeirantes para se apresentar aos seus superiores
   - Arani consegue mais seguidores influentes e se infiltra na alta sociedade
-  - ao voltar para o local da JUNÇÃO, o Arani retorna com seus experimentos
+  - ao voltar para o Horizonte de Aram, Arani retorna seus experimentos
   - Arani tem um filho, para testar como seriam seus descendentes
   - descarta seu filho após perceber q ele é um ser humano normal, é adotado por outra família q o encontrou e é chamado de jericó por sua nova família
 
