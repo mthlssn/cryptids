@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pedra-arbusto.png-0f777520b19758e08058d844657771dc.stex"
+path="res://.import/tronco_vivo.png-a6217ffd5066a529bc48c9cb0b79fd05.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenario/c1/pedra-arbusto.png"
-dest_files=[ "res://.import/pedra-arbusto.png-0f777520b19758e08058d844657771dc.stex" ]
+source_file="res://assets/cenario/c1/tronco_vivo.png"
+dest_files=[ "res://.import/tronco_vivo.png-a6217ffd5066a529bc48c9cb0b79fd05.stex" ]
 
 [params]
 

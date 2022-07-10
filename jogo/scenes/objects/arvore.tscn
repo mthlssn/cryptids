@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/cenario/c1/arvore-seca.png" type="Texture" id=1]
-[ext_resource path="res://scripts/objects/tronco.gd" type="Script" id=2]
+[ext_resource path="res://assets/cenario/c1/arvore_morta.png" type="Texture" id=1]
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=2]
 
 [node name="arvore" type="Node2D"]
 script = ExtResource( 2 )
 type = 3
 _sprite_width_tile = 3
+texto = " Isso é uma árvore seca"
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 32, -32 )
+position = Vector2( 32, -40 )
 texture = ExtResource( 1 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tronco1.png-89f7b31f994e395bde404e1748c421a8.stex"
+path="res://.import/grid.png-b79203bd0deca23a2d5c3a237da91339.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenario/c1/tronco1.png"
-dest_files=[ "res://.import/tronco1.png-89f7b31f994e395bde404e1748c421a8.stex" ]
+source_file="res://assets/cenario/c1/grid.png"
+dest_files=[ "res://.import/grid.png-b79203bd0deca23a2d5c3a237da91339.stex" ]
 
 [params]
 

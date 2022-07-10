@@ -27,15 +27,13 @@ func _ready():
 
 func get_celula_player(alvo):
 	for node in get_children():
-		if node.name == "Ysort":
-			for node2 in node.get_children():
-				var width = node2.get_sprite_width_tile()
-				var widthv = Vector2(0,0)
+		var width = node.get_sprite_width_tile()
+		var widthv = Vector2(0,0)
 				
-				for i in width:
-					if (world_to_map(node2.position) + widthv) == alvo:
-						return node2
-					widthv += Vector2(1,0)
+		for i in width:
+			if (world_to_map(node.position) + widthv) == alvo:
+				return node
+			widthv += Vector2(1,0)
 
 func solicitar_movimento(player, direcao):
 	var celula_comeco = world_to_map(player.position)

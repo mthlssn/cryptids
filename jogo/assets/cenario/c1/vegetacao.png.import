@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arbusto3.png-4ee6b0bd5116a4e9ed12b2fb4f8c2f6f.stex"
+path="res://.import/vegetacao.png-b886c085b6f036ef0f5c36d613a5fa58.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenario/c1/arbusto3.png"
-dest_files=[ "res://.import/arbusto3.png-4ee6b0bd5116a4e9ed12b2fb4f8c2f6f.stex" ]
+source_file="res://assets/cenario/c1/vegetacao.png"
+dest_files=[ "res://.import/vegetacao.png-b886c085b6f036ef0f5c36d613a5fa58.stex" ]
 
 [params]
 
