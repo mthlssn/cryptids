@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arvore-seca.png-c977175c04f78f711c1b4b65bc9aba68.stex"
+path="res://.import/pedra2_arbusto.png-ac5520c6c439804adb7f5a486ba2952b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenario/c1/arvore-seca.png"
-dest_files=[ "res://.import/arvore-seca.png-c977175c04f78f711c1b4b65bc9aba68.stex" ]
+source_file="res://assets/cenario/c1/pedra2_arbusto.png"
+dest_files=[ "res://.import/pedra2_arbusto.png-ac5520c6c439804adb7f5a486ba2952b.stex" ]
 
 [params]
 

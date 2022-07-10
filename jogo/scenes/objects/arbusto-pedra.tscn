@@ -1,14 +1,15 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/cenario/c1/pedra-arbusto.png" type="Texture" id=1]
-[ext_resource path="res://scripts/objects/tronco.gd" type="Script" id=2]
+[ext_resource path="res://assets/cenario/c1/pedra2_arbusto.png" type="Texture" id=1]
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=2]
 
 [node name="arbusto-pedra" type="Node2D"]
 script = ExtResource( 2 )
 type = 0
 _sprite_width_tile = 2
+texto = "Isso são pedras e arbustos"
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( -16, -32 )
+position = Vector2( -24, -32 )
 texture = ExtResource( 1 )
 centered = false

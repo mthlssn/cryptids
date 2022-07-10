@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/folhagem.png-5d783c2872cd5200b6f913969bed5132.stex"
+path="res://.import/pedra1_mato.png-90de777f8030c76a6f5f87498db0b8f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenario/c1/folhagem.png"
-dest_files=[ "res://.import/folhagem.png-5d783c2872cd5200b6f913969bed5132.stex" ]
+source_file="res://assets/cenario/c1/pedra1_mato.png"
+dest_files=[ "res://.import/pedra1_mato.png-90de777f8030c76a6f5f87498db0b8f9.stex" ]
 
 [params]
 

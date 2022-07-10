@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/a.png-2a984aed2dde13feafdeaaafdbcafada.stex"
+path="res://.import/mato_seco.png-840a1cdde6150a5b08097a9effe62396.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenario/c1/a.png"
-dest_files=[ "res://.import/a.png-2a984aed2dde13feafdeaaafdbcafada.stex" ]
+source_file="res://assets/cenario/c1/mato_seco.png"
+dest_files=[ "res://.import/mato_seco.png-840a1cdde6150a5b08097a9effe62396.stex" ]
 
 [params]
 
