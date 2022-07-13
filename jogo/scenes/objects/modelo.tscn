@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=2]
+
+[node name="modelo" type="Node2D"]
+script = ExtResource( 2 )
+type = 3
+texto = ""
+
+[node name="sprite" type="Sprite" parent="."]
