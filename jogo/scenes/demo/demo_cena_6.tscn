@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/camera/camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/objects/arvore.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/objects/girassol1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/objects/girassol2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/objects/girassol3.tscn" type="PackedScene" id=12]
 
 [node name="demo_cena_6" type="Node2D"]
 script = ExtResource( 3 )
@@ -39,6 +40,7 @@ margin_right = 144.0
 
 [node name="arvore" parent="tilemap" instance=ExtResource( 9 )]
 position = Vector2( 304, 560 )
+texto = "Isso não eh um pinheiro"
 
 [node name="girassol1" parent="tilemap" instance=ExtResource( 10 )]
 position = Vector2( 112, 112 )
@@ -53,13 +55,13 @@ position = Vector2( 336, 208 )
 position = Vector2( 176, 368 )
 
 [node name="girassol5" parent="tilemap" instance=ExtResource( 10 )]
-position = Vector2( 304, 304 )
+position = Vector2( 304, 336 )
 
 [node name="girassol6" parent="tilemap" instance=ExtResource( 10 )]
 position = Vector2( 112, 240 )
 
 [node name="girassol7" parent="tilemap" instance=ExtResource( 11 )]
-position = Vector2( 176, 176 )
+position = Vector2( 176, 144 )
 
 [node name="girassol8" parent="tilemap" instance=ExtResource( 11 )]
 position = Vector2( 144, 80 )
@@ -67,17 +69,44 @@ position = Vector2( 144, 80 )
 [node name="girassol9" parent="tilemap" instance=ExtResource( 11 )]
 position = Vector2( 336, 400 )
 
-[node name="girassol10" parent="tilemap" instance=ExtResource( 11 )]
-position = Vector2( 304, 176 )
-
-[node name="girassol11" parent="tilemap" instance=ExtResource( 11 )]
-position = Vector2( 368, 240 )
-
 [node name="girassol12" parent="tilemap" instance=ExtResource( 11 )]
+position = Vector2( 144, 240 )
+
+[node name="girassol11" parent="tilemap" instance=ExtResource( 12 )]
+position = Vector2( 368, 272 )
+
+[node name="girassol14" parent="tilemap" instance=ExtResource( 11 )]
+position = Vector2( 304, 208 )
+
+[node name="girassol15" parent="tilemap" instance=ExtResource( 10 )]
+position = Vector2( 336, 176 )
+
+[node name="girassol16" parent="tilemap" instance=ExtResource( 12 )]
+position = Vector2( 368, 144 )
+
+[node name="girassol13" parent="tilemap" instance=ExtResource( 12 )]
 position = Vector2( 144, 304 )
 
-[node name="girassol13" parent="tilemap" instance=ExtResource( 10 )]
+[node name="girassol17" parent="tilemap" instance=ExtResource( 12 )]
 position = Vector2( 176, 208 )
+
+[node name="girassol18" parent="tilemap" instance=ExtResource( 10 )]
+position = Vector2( 144, 176 )
+
+[node name="girassol19" parent="tilemap" instance=ExtResource( 11 )]
+position = Vector2( 112, 144 )
+
+[node name="girassol20" parent="tilemap" instance=ExtResource( 12 )]
+position = Vector2( 304, 80 )
+
+[node name="girassol21" parent="tilemap" instance=ExtResource( 11 )]
+position = Vector2( 368, 80 )
+
+[node name="girassol10" parent="tilemap" instance=ExtResource( 10 )]
+position = Vector2( 304, 176 )
+
+[node name="girassol22" parent="tilemap" instance=ExtResource( 12 )]
+position = Vector2( 304, 144 )
 
 [node name="camera" parent="." instance=ExtResource( 1 )]
 position = Vector2( 208, 597 )
