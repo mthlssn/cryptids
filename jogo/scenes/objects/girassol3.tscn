@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/cenarios/cen6/girassolMenorMaior.png" type="Texture" id=1]
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=2]
+
+[node name="girassol3" type="Node2D"]
+script = ExtResource( 2 )
+type = 3
+texto = ""
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 16, -16 )
+texture = ExtResource( 1 )

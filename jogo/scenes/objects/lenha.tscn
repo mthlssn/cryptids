@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/cenarios/cen3/lenha.png" type="Texture" id=1]
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=2]
+
+[node name="lenha" type="Node2D"]
+script = ExtResource( 2 )
+type = 3
+_sprite_width_tile = 2
+_sprite_height_tile = 2
+texto = ""
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( -24, -48 )
+texture = ExtResource( 1 )
+centered = false

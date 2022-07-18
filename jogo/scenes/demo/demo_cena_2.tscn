@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/cenario/cenario2.png" type="Texture" id=1]
+[ext_resource path="res://assets/cenarios/cen2/cena2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/camera/camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/cenas/gerenciar_cenas.gd" type="Script" id=5]
 [ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/cenarios/cen2/folhagem.png" type="Texture" id=7]
+[ext_resource path="res://scenes/objects/arbusto1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/objects/arbusto3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/objects/arbusto2.tscn" type="PackedScene" id=10]
 
 [node name="demo_cena_2" type="Node2D"]
 script = ExtResource( 5 )
@@ -18,7 +22,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="tilemap" parent="." instance=ExtResource( 3 )]
-tile_data = PoolIntArray( 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 196610, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 327683, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 393219, 0, 0, 393227, 0, 0, 393228, 0, 0, 458755, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524298, 0, 0, 589827, 0, 0, 589834, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655370, 0, 0, 720900, 0, 0, 720904, 0, 0, 720906, 0, 0, 786436, 0, 0, 786442, 0, 0, 786443, 0, 0, 851972, 0, 0, 851974, 0, 0, 851979, 0, 0, 917508, 0, 0, 917513, 0, 0, 917514, 0, 0, 917515, 0, 0, 983044, 0, 0, 983051, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048587, 0, 0, 1114116, 0, 0, 1114123, 0, 0, 1179652, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179659, 0, 0, 1245188, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1310724, 0, 0, 1310730, 0, 0, 1376260, 0, 0, 1376266, 0, 0, 1441796, 0, 0, 1441797, 0, 0, 1441802, 0, 0, 1507333, 0, 0, 1507337, 0, 0, 1507338, 0, 0, 1572869, 0, 0, 1572873, 0, 0 )
+tile_data = PoolIntArray( 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 131073, 0, 0, 131075, 0, 0, 131076, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 196609, 0, 0, 262145, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 393219, 0, 0, 393227, 0, 0, 393228, 0, 0, 458755, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 524291, 0, 0, 524298, 0, 0, 589827, 0, 0, 589834, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655370, 0, 0, 720900, 0, 0, 720904, 0, 0, 720906, 0, 0, 720907, 0, 0, 786436, 0, 0, 786443, 0, 0, 851972, 0, 0, 851974, 0, 0, 851979, 0, 0, 917508, 0, 0, 917513, 0, 0, 917515, 0, 0, 983044, 0, 0, 983051, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048587, 0, 0, 1114116, 0, 0, 1114123, 0, 0, 1179652, 0, 0, 1179659, 0, 0, 1245188, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1310724, 0, 0, 1310730, 0, 0, 1376260, 0, 0, 1376266, 0, 0, 1441796, 0, 0, 1441797, 0, 0, 1441802, 0, 0, 1507333, 0, 0, 1507337, 0, 0, 1507338, 0, 0 )
 
 [node name="player" parent="tilemap" instance=ExtResource( 4 )]
 position = Vector2( 240, 203 )
@@ -40,11 +44,24 @@ _sprite_height_tile = 2
 [node name="cor" parent="tilemap/portal2" index="0"]
 margin_bottom = 48.0
 
+[node name="arbusto1" parent="tilemap" instance=ExtResource( 8 )]
+position = Vector2( 208, 112 )
+
+[node name="arbusto2" parent="tilemap" instance=ExtResource( 10 )]
+position = Vector2( 272, 592 )
+
+[node name="arbusto3" parent="tilemap" instance=ExtResource( 9 )]
+position = Vector2( 144, 272 )
+
 [node name="camera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 240, 203 )
 
 [node name="bottom_right" parent="camera/limites" index="1"]
 position = Vector2( 480, 768 )
+
+[node name="folhas" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
 
 [editable path="tilemap/portal1"]
 [editable path="tilemap/portal2"]
