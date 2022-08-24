@@ -29,3 +29,10 @@ func interacao():
 	for i in node_pai.get_children():
 		if i.name == "label":
 			i.mostrar_texto(texto, posicao)
+			
+	#GlobalCanvasLayer.funciona2()
+	#Dialog.funciona()
+	
+	var next_level_resource2 = load("res://scenes/dialog/dialog.tscn")
+	var next_level2 = next_level_resource2.instance()
+	node_pai.add_child(next_level2)
