@@ -6,7 +6,7 @@ onready var timer := $dialog/timer
 var msg_queue : Array = []
 var tecla = "nada"
 
-var max_length_text = 3
+var max_length_text = 0
 var posicao_text = 0
 
 var node_pause
@@ -16,14 +16,14 @@ func _ready():
 		hide()
 		
 	text.bbcode_text = ""
-		
-func add_mensagem(trem, node_pai):
+
+func add_mensagem(mensagem, node_pai):
 	node_pause = node_pai
 	tecla = "ui_accept"
-	msg_queue = trem
+	msg_queue = mensagem
 	
-	var max_length_text = 3
-	var posicao_text = 0
+	max_length_text = msg_queue.size()
+	posicao_text = -1
 	
 	if not visible:
 		show()
@@ -33,28 +33,26 @@ func add_mensagem(trem, node_pai):
 func _input(event):
 	if event.is_action_pressed(tecla):
 		show_message()
-		
+
 func show_message() -> void:
 	if not timer.is_stopped():
-		print("opa")
-		text.visible_characters = text.bbcode_text.length
-		posicao_text += 1
-		
+		text.visible_characters = text.bbcode_text.length()		
 		return
-	
-	if msg_queue.size() == 0:
+
+	if max_length_text <= (posicao_text+1):
 		tecla = "nada"
 		hide()
+		
 		if node_pause.get_tree().paused == true:
 			node_pause.get_tree().paused = false
+			
 		return
 	
 	if node_pause.get_tree().paused == false:
 		node_pause.get_tree().paused = true
 
-	var _msg : String = msg_queue.pop_front()
-	
-	print(msg_queue.pop_front())
+	posicao_text += 1
+	var _msg : String = msg_queue[posicao_text]
 	
 	text.visible_characters = 0
 	text.bbcode_text = _msg

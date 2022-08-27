@@ -17,8 +17,8 @@ func get_sprite_height_tile():
 	return _sprite_height_tile
 
 func interacao():	
-	print(texto)
 	var node_pai = get_parent().get_parent()
-
-	DialogBox.add_mensagem(interaction.msg_queue, node_pai)
 	
+	print(interaction.msg_queue)
+	
+	DialogBox.add_mensagem(interaction.msg_queue, node_pai)
