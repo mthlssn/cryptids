@@ -29,6 +29,7 @@ config/icon="res://icon.png"
 Transition="*res://scenes/transition/transition.tscn"
 Global="*res://scripts/jogo/global.gd"
 DialogBox="*res://scenes/dialog_box/dialog_box.tscn"
+Pause="*res://scenes/pause/pause.tscn"
 
 [display]
 

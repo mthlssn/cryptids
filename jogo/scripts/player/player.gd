@@ -1,4 +1,4 @@
-extends "res://scripts/coisas.gd"
+extends "res://scripts/tilemap/coisas.gd"
 
 onready var tilemap = get_parent()
 

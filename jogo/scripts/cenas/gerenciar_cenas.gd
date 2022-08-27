@@ -9,6 +9,9 @@ export (String, FILE, "*.tscn") var _cena_inferior = "nada"
 
 var _caminho_cena
 
+func _ready():
+	Global.set_node_demo_cena(self)
+
 func get_cena():
 	return _cena
 

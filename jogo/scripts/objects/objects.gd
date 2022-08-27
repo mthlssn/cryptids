@@ -14,10 +14,8 @@ func get_sprite_width_tile():
 func get_sprite_height_tile():
 	return _sprite_height_tile
 
-func interacao():	
-	var node_pai = get_parent().get_parent()
-	
+func interacao():		
 	if interaction:
-		DialogBox.add_mensagem(interaction.msg_queue, node_pai)
+		DialogBox.add_mensagem(interaction.msg_queue)
 	else:
-		DialogBox.add_mensagem(["Ainda não tem interação", "Reclama com o Thalisson!", "Vlw :)"], node_pai)
+		DialogBox.add_mensagem(["Ainda não tem interação", "Reclama com o Thalisson!", "Vlw :)"])
