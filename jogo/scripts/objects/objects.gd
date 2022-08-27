@@ -6,7 +6,7 @@ export(CELL_TYPES) var type = CELL_TYPES.PORTAL
 export var _sprite_width_tile = 1 
 export var _sprite_height_tile = 1 
 
-export var texto = " "
+export(Resource) var interaction
 
 func get_sprite_width_tile():
 	return _sprite_width_tile
@@ -14,18 +14,10 @@ func get_sprite_width_tile():
 func get_sprite_height_tile():
 	return _sprite_height_tile
 
-func interacao():
-	var posicao = self.position
-
-	posicao.x = (posicao.x - 16)+ ((_sprite_width_tile * 32)/2)
-	posicao.y = posicao.y + 16
-	
+func interacao():	
 	var node_pai = get_parent().get_parent()
 	
-	var next_level_resource = load("res://scenes/label.tscn")
-	var next_level = next_level_resource.instance()
-	node_pai.add_child(next_level)
-	
-	for i in node_pai.get_children():
-		if i.name == "label":
-			i.mostrar_texto(texto, posicao)
+	if interaction:
+		DialogBox.add_mensagem(interaction.msg_queue, node_pai)
+	else:
+		DialogBox.add_mensagem(["Ainda não tem interação", "Reclama com o Thalisson!", "Vlw :)"], node_pai)

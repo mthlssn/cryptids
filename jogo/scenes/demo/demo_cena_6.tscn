@@ -40,7 +40,6 @@ margin_right = 144.0
 
 [node name="arvore" parent="tilemap" instance=ExtResource( 9 )]
 position = Vector2( 304, 560 )
-texto = "Isso não eh um pinheiro"
 
 [node name="girassol1" parent="tilemap" instance=ExtResource( 10 )]
 position = Vector2( 112, 112 )

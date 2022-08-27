@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog.gd" type="Script" id=1]
+[ext_resource path="res://assets/omori-release-date.jpg" type="Texture" id=2]
+
+[node name="dialog_box" type="CanvasLayer"]
+pause_mode = 2
+layer = 2
+script = ExtResource( 1 )
+
+[node name="dialog" type="NinePatchRect" parent="."]
+margin_left = 8.0
+margin_top = 208.0
+margin_right = 472.0
+margin_bottom = 280.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 10, 10, 1380, 767 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="text" type="RichTextLabel" parent="dialog"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 456.0
+margin_bottom = 64.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+
+[node name="timer" type="Timer" parent="dialog"]
+wait_time = 0.05
+
+[node name="timer_2" type="Timer" parent="dialog"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="dialog/timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dialog/timer_2" to="." method="_on_timer_2_timeout"]

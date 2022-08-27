@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "DialogMetadata",
+"language": "GDScript",
+"path": "res://scripts/dialog/dialog_metadata.gd"
+} ]
+_global_script_class_icons={
+"DialogMetadata": ""
+}
+
 [application]
 
 config/name="cryptids"
