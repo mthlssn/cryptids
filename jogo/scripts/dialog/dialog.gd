@@ -11,14 +11,15 @@ var max_length_text = 0
 var posicao_text = 0
 
 var node_pause
+var pausar = false
 
 func _ready():
 	if msg_queue.size() == 0:
 		hide()
 
-func add_mensagem(mensagem, node_pai):
+func add_mensagem(mensagem):
 	text.bbcode_text = ""
-	node_pause = node_pai
+	node_pause = Global.get_node_demo_cena()
 	tecla = "ui_accept"
 	msg_queue = mensagem
 	
@@ -33,17 +34,30 @@ func add_mensagem(mensagem, node_pai):
 func _input(event):
 	if event.is_action_pressed(tecla):
 		show_message()
+	
+	if event.is_action_pressed("esc") && visible == true:
+		timer.stop()
+		posicao_text = max_length_text - 1
+		pausar = true
+		show_message()
 
 func show_message() -> void:
 	if not timer.is_stopped():
 		text.visible_characters = text.bbcode_text.length()		
-		return
 
 	if max_length_text <= (posicao_text+1):
 		tecla = "nada"
-		node_pause.get_tree().paused = false
+		msg_queue = []
+		
 		hide()
-		return
+		
+		node_pause.get_tree().paused = false
+		
+		if pausar:
+			pausar = false
+			Pause.pause()
+		
+		return	
 	
 	if node_pause.get_tree().paused == false:
 		node_pause.get_tree().paused = true

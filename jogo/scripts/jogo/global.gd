@@ -12,6 +12,14 @@ var _direcao_player = Vector2(1,0)
 var _cena_atual = 1
 var _cena_anterior = 1
 
+var _node_demo_cena
+
+func set_node_demo_cena(node):
+	_node_demo_cena = node
+
+func get_node_demo_cena():
+	return _node_demo_cena
+
 func set_cena_atual(cena):
 	_cena_anterior = _cena_atual
 	_cena_atual = cena
