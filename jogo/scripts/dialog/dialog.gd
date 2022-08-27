@@ -2,6 +2,7 @@ extends CanvasLayer
 
 onready var text := $dialog/text
 onready var timer := $dialog/timer
+onready var timer2 := $dialog/timer_2
 
 var msg_queue : Array = []
 var tecla = "nada"
@@ -14,10 +15,9 @@ var node_pause
 func _ready():
 	if msg_queue.size() == 0:
 		hide()
-		
-	text.bbcode_text = ""
 
 func add_mensagem(mensagem, node_pai):
+	text.bbcode_text = ""
 	node_pause = node_pai
 	tecla = "ui_accept"
 	msg_queue = mensagem
@@ -28,7 +28,7 @@ func add_mensagem(mensagem, node_pai):
 	if not visible:
 		show()
 	
-	show_message()
+	timer2.start()
 
 func _input(event):
 	if event.is_action_pressed(tecla):
@@ -41,11 +41,8 @@ func show_message() -> void:
 
 	if max_length_text <= (posicao_text+1):
 		tecla = "nada"
+		node_pause.get_tree().paused = false
 		hide()
-		
-		if node_pause.get_tree().paused == true:
-			node_pause.get_tree().paused = false
-			
 		return
 	
 	if node_pause.get_tree().paused == false:
@@ -63,3 +60,7 @@ func _on_timer_timeout():
 	if text.visible_characters == text.bbcode_text.length():
 		timer.stop()
 	text.visible_characters += 1
+
+
+func _on_timer_2_timeout():
+	show_message()
