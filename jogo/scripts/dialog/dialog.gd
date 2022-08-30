@@ -43,7 +43,8 @@ func _input(event):
 
 func show_message() -> void:
 	if not timer.is_stopped():
-		text.visible_characters = text.bbcode_text.length()		
+		text.visible_characters = text.bbcode_text.length()
+		return
 
 	if max_length_text <= (posicao_text+1):
 		tecla = "nada"
