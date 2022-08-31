@@ -1,7 +1,6 @@
 extends TileMap
 
-enum { EMPTY = -1,  OBSTACLE, PORTAL, PLAYER, OBJECT}
-
+enum { EMPTY = -1,  OBSTACLE, PORTAL, PLAYER, OBJECT, NPC, FOLLOW}
 func _ready():
 	Global.set_cena_atual(get_parent().get_cena())
 	

@@ -66,13 +66,13 @@ func get_direcao():
 func update_direcao_sprite(direcao):
 	match direcao:
 		Vector2(1,0):
-			$Sprite.frame = 10
+			$sprite.frame = 10
 		Vector2(-1,0):
-			$Sprite.frame = 7
+			$sprite.frame = 7
 		Vector2(0,1):
-			$Sprite.frame = 1
+			$sprite.frame = 1
 		Vector2(0,-1):
-			$Sprite.frame = 4
+			$sprite.frame = 4
 
 # função que move o player
 func mover(direcao, direcao_alvo):
