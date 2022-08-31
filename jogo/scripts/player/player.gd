@@ -1,4 +1,10 @@
-extends "res://scripts/tilemap/coisas.gd"
+extends Node2D
+
+# tipo da celula 3 = PLAYER
+onready var type = 3 
+
+# tamanho da sprit do player
+onready var _sprite_h_and_w_tile = 1 
 
 onready var tilemap = get_parent()
 
@@ -102,3 +108,11 @@ func mover(direcao, direcao_alvo):
 	
 	# desbloqueia a entrada de dados
 	set_process(true)
+
+# função que retorna o tamanho da sprit do player
+func get_sprite_width_tile():
+	return _sprite_h_and_w_tile
+
+# função que retorna o tamanho da sprit do player
+func get_sprite_height_tile():
+	return _sprite_h_and_w_tile

@@ -14,7 +14,7 @@ func get_sprite_width_tile():
 func get_sprite_height_tile():
 	return _sprite_height_tile
 
-func interacao():		
+func interacao():
 	if interaction:
 		DialogBox.add_mensagem(interaction.msg_queue)
 	else:

@@ -5,6 +5,5 @@
 [node name="modelo" type="Node2D"]
 script = ExtResource( 2 )
 type = 3
-texto = ""
 
 [node name="sprite" type="Sprite" parent="."]
