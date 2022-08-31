@@ -14,6 +14,15 @@ var _cena_anterior = 1
 
 var _node_demo_cena
 
+var _followers : Array
+
+func set_followers(followers):
+	_followers = followers
+
+func get_followers():
+	return _followers
+
+
 func set_node_demo_cena(node):
 	_node_demo_cena = node
 

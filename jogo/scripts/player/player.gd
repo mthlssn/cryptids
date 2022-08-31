@@ -116,3 +116,6 @@ func get_sprite_width_tile():
 # função que retorna o tamanho da sprit do player
 func get_sprite_height_tile():
 	return _sprite_h_and_w_tile
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	tilemap.call_followers()

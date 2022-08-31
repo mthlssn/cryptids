@@ -87,3 +87,5 @@ anims/walk_right = SubResource( 5 )
 anims/walk_up = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

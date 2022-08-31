@@ -44,6 +44,8 @@ func solicitar_movimento(player, direcao):
 	match tipo_celula_alvo:
 		EMPTY:
 			return atualizar_posicao_player(player, celula_comeco, proxima_celula)
+		FOLLOW:
+			return atualizar_posicao_player(player, celula_comeco, proxima_celula)
 		PORTAL:
 			verificar_sair_tela(direcao)
 			
@@ -64,3 +66,7 @@ func atualizar_posicao_player(player, celula_comeco, celula_alvo):
 	set_cellv(celula_comeco, EMPTY)
 	
 	return map_to_world(celula_alvo) + (cell_size / 2)
+
+func call_followers():
+	var followers = Global.get_followers()
+	
