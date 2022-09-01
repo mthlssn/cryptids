@@ -5,11 +5,13 @@ func _ready():
 	Global.set_cena_atual(get_parent().get_cena())
 	
 	for node in get_children():
-		var width = node.get_sprite_width_tile()
-		var height = node.get_sprite_height_tile()
-		var posicao = node.position
-
-		if node.name != "player":
+		if node.name == "followers":
+			pass
+		elif node.name != "player":
+			var width = node.get_sprite_width_tile()
+			var height = node.get_sprite_height_tile()
+			var posicao = node.position
+			
 			for i in height:
 				for f in width:	
 					set_cellv(world_to_map(posicao), node.type)
@@ -43,9 +45,11 @@ func solicitar_movimento(player, direcao):
 	var tipo_celula_alvo = get_cellv(proxima_celula)
 	match tipo_celula_alvo:
 		EMPTY:
-			return atualizar_posicao_player(player, celula_comeco, proxima_celula)
+			atualizar_posicao(player, celula_comeco, proxima_celula)
+			return map_to_world(proxima_celula) + (cell_size / 2)
 		FOLLOW:
-			return atualizar_posicao_player(player, celula_comeco, proxima_celula)
+			atualizar_posicao(player, celula_comeco, proxima_celula)
+			return map_to_world(proxima_celula) + (cell_size / 2)
 		PORTAL:
 			verificar_sair_tela(direcao)
 			
@@ -61,12 +65,14 @@ func verificar_sair_tela(direcao):
 		Vector2(0,1):	
 			node_pai.mudar_cena(3)
 	
-func atualizar_posicao_player(player, celula_comeco, celula_alvo):
+func atualizar_posicao(player, celula_comeco, celula_alvo):
 	set_cellv(celula_alvo, player.type)
 	set_cellv(celula_comeco, EMPTY)
-	
-	return map_to_world(celula_alvo) + (cell_size / 2)
 
 func call_followers():
 	var followers = Global.get_followers()
+	var pos_followers : Array
 	
+	for i in followers:
+		var celula_comeco = world_to_map(followers[i].position)
+		atualizar_posicao(followers[i], celula_comeco, pos_followers)

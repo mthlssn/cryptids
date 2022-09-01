@@ -17,7 +17,7 @@ func _ready():
 func _process(_delta):
 	var direcao
 	if not Transition.get_animando():
-		direcao = get_direcao()
+		pass
 
 	if direcao:
 		Global.set_direcao_player(direcao)
@@ -27,15 +27,6 @@ func _process(_delta):
 			update_direcao_sprite(direcao)
 		else:
 			movimentacao(direcao)
-	
-	interagir()
-
-func interagir():
-	if Input.is_action_just_pressed("key_e"):
-		var alvo = tilemap.world_to_map(self.position) + Global.get_direcao_player()
-		var node = tilemap.get_celula_player(alvo)
-		if node:
-			node.interacao()
 
 # função que solicita movimento e e move o personagem
 func movimentacao(direcao):
@@ -44,23 +35,6 @@ func movimentacao(direcao):
 	var posicao_alvo = tilemap.solicitar_movimento(self, direcao)
 	if posicao_alvo:
 		mover(direcao, posicao_alvo)
-
-# função que retorna a direção
-func get_direcao():
-	# salvando a direção de acordo com oq o usuário digitou
-	var direcao: Vector2 = Vector2(
-		int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left")),
-		int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
-	)
-	
-	# somando o eixo X e Y do vetor
-	var soma_direcao = direcao.x + direcao.y
-	
-	# condição para não ser possível andar nas diagonais
-	if soma_direcao == -2 || soma_direcao == 2 || soma_direcao == 0:
-		return
-	else:
-		return direcao
 
 # função que gira a sprite
 func update_direcao_sprite(direcao):
