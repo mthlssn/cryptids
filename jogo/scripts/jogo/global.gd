@@ -1,5 +1,7 @@
 extends Node
 
+# vars
+
 var _posicao_player_cena1 = Vector2(6,6)
 var _posicao_player_cena2 = Vector2(7,23)
 var _posicao_player_cena3 = Vector2(0,4)
@@ -8,6 +10,9 @@ var _posicao_player_cena5 = Vector2(14,3)
 var _posicao_player_cena6 = Vector2(7,19)
 
 var _direcao_player = Vector2(1,0)
+var _ultima_direcao_player = Vector2(1,0)
+
+var _ultima_posicao_player = Vector2()
 
 var _cena_atual = 1
 var _cena_anterior = 1
@@ -16,12 +21,45 @@ var _node_demo_cena
 
 var _followers : Array
 
+var _posicao_followers : Array
+
+# ------------- funcs ----------------
+
+func get_ultima_posicao_player():
+	return _ultima_posicao_player
+
+func set_ultima_posicao_player(ultima_posicao):
+	_ultima_posicao_player = ultima_posicao
+
+func get_direcao_player():
+	return _direcao_player
+
+func set_direcao_player(direcao):
+	_direcao_player = direcao
+
+func get_ultima_direcao_player():
+	return _ultima_direcao_player
+
+func set_ultima_direcao_player(ultima_direcao):
+	print(ultima_direcao)
+	print(_ultima_direcao_player)
+	print()
+	_ultima_direcao_player = ultima_direcao
+	print(ultima_direcao)
+	print(_ultima_direcao_player)
+	print()
+
+func set_posicao_followers(posicao_followers):
+	_posicao_followers = posicao_followers
+
+func get_posicao_followers():
+	return _posicao_followers
+
 func set_followers(followers):
 	_followers = followers
 
 func get_followers():
 	return _followers
-
 
 func set_node_demo_cena(node):
 	_node_demo_cena = node
@@ -75,12 +113,6 @@ func get_posicao_player():
 		6:
 			_posicao_player_cena6 = Vector2(_posicao_player_cena5.x, _posicao_player_cena6.y)
 			return _posicao_player_cena6
-
-func get_direcao_player():
-	return _direcao_player
-
-func set_direcao_player(direcao):
-	_direcao_player = direcao
 
 func set_posicao_player(posicao):
 	match _cena_atual:

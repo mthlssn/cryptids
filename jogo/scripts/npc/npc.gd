@@ -1,10 +1,7 @@
 extends Node2D
 
-# tipo da celula 3 = PLAYER
-onready var type = 3 
-
-# tamanho da sprit do player
-onready var _sprite_h_and_w_tile = 1 
+# tipo da celula 5 = FOLLOWER
+onready var type = 5 
 
 onready var tilemap = get_parent()
 
@@ -13,28 +10,6 @@ export var dividido = 1.0
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	update_direcao_sprite(Global.get_direcao_player())
-		
-func _process(_delta):
-	var direcao
-	if not Transition.get_animando():
-		pass
-
-	if direcao:
-		Global.set_direcao_player(direcao)
-		
-		# condição para girar o personagem ou fazer ele andar
-		if Input.is_action_pressed("shift"):
-			update_direcao_sprite(direcao)
-		else:
-			movimentacao(direcao)
-
-# função que solicita movimento e e move o personagem
-func movimentacao(direcao):
-	update_direcao_sprite(direcao)
-	
-	var posicao_alvo = tilemap.solicitar_movimento(self, direcao)
-	if posicao_alvo:
-		mover(direcao, posicao_alvo)
 
 # função que gira a sprite
 func update_direcao_sprite(direcao):
@@ -48,10 +23,22 @@ func update_direcao_sprite(direcao):
 		Vector2(0,-1):
 			$sprite.frame = 4
 
+func direcao_npc(direcao_alvo):
+	if position.x < direcao_alvo.x:
+		return Vector2(1,0)
+	elif position.x > direcao_alvo.x:
+		return Vector2(-1,0)
+	elif position.y < direcao_alvo.y:
+		return Vector2(0,1)
+	elif position.y > direcao_alvo.y:
+		return Vector2(0,-1)
+	
 # função que move o player
-func mover(direcao, direcao_alvo):
+func mover(direcao_alvo):
 	# bloqueia a entrada de dados 
 	set_process(false)
+	
+	var direcao = direcao_npc(direcao_alvo)
 	
 	# guarda o nome da animação
 	var string_direcao: String
@@ -82,11 +69,3 @@ func mover(direcao, direcao_alvo):
 	
 	# desbloqueia a entrada de dados
 	set_process(true)
-
-# função que retorna o tamanho da sprit do player
-func get_sprite_width_tile():
-	return _sprite_h_and_w_tile
-
-# função que retorna o tamanho da sprit do player
-func get_sprite_height_tile():
-	return _sprite_h_and_w_tile

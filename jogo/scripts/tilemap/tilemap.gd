@@ -1,12 +1,20 @@
 extends TileMap
 
 enum { EMPTY = -1,  OBSTACLE, PORTAL, PLAYER, OBJECT, NPC, FOLLOW}
+
+onready var maria := $followers/maria
+
 func _ready():
 	Global.set_cena_atual(get_parent().get_cena())
 	
 	for node in get_children():
 		if node.name == "followers":
-			pass
+			for node_ysort in node.get_children():
+				var posicao_player = Global.get_posicao_player()
+				
+				node_ysort.position.x = map_to_world(posicao_player).x + 16
+				node_ysort.position.y = map_to_world(posicao_player).y + 16
+				set_cellv(posicao_player, node_ysort.type)
 		elif node.name != "player":
 			var width = node.get_sprite_width_tile()
 			var height = node.get_sprite_height_tile()
@@ -28,13 +36,14 @@ func _ready():
 
 func get_celula_player(alvo):
 	for node in get_children():
-		var width = node.get_sprite_width_tile()
-		var widthv = Vector2(0,0)
-				
-		for i in width:
-			if (world_to_map(node.position) + widthv) == alvo:
-				return node
-			widthv += Vector2(1,0)
+		if node.name != "followers":
+			var width = node.get_sprite_width_tile()
+			var widthv = Vector2(0,0)
+					
+			for i in width:
+				if (world_to_map(node.position) + widthv) == alvo:
+					return node
+				widthv += Vector2(1,0)
 
 func solicitar_movimento(player, direcao):
 	var celula_comeco = world_to_map(player.position)
@@ -70,9 +79,16 @@ func atualizar_posicao(player, celula_comeco, celula_alvo):
 	set_cellv(celula_comeco, EMPTY)
 
 func call_followers():
-	var followers = Global.get_followers()
-	var pos_followers : Array
+	# var followers = Global.get_followers()
+	# var pos_followers : Array
 	
-	for i in followers:
-		var celula_comeco = world_to_map(followers[i].position)
-		atualizar_posicao(followers[i], celula_comeco, pos_followers)
+	# for i in followers:
+	#	var celula_comeco = world_to_map(followers[i].position)
+	#	atualizar_posicao(followers[i], celula_comeco, pos_followers)
+	
+	if maria.position == $player.position:
+		return
+	
+	var posicao = Global.get_ultima_posicao_player()
+	
+	maria.mover(posicao)

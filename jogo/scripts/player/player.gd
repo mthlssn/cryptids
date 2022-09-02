@@ -3,17 +3,16 @@ extends Node2D
 # tipo da celula 3 = PLAYER
 onready var type = 3 
 
-# tamanho da sprit do player
-onready var _sprite_h_and_w_tile = 1 
-
 onready var tilemap = get_parent()
 
 export var dividido = 1.0
 
+onready var _sprite_h_and_w_tile = 1 
+
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	update_direcao_sprite(Global.get_direcao_player())
-		
+
 func _process(_delta):
 	var direcao
 	if not Transition.get_animando():
@@ -43,6 +42,7 @@ func movimentacao(direcao):
 	
 	var posicao_alvo = tilemap.solicitar_movimento(self, direcao)
 	if posicao_alvo:
+		Global.set_ultima_posicao_player(self.position)
 		mover(direcao, posicao_alvo)
 
 # função que retorna a direção
@@ -108,7 +108,7 @@ func mover(direcao, direcao_alvo):
 	
 	# desbloqueia a entrada de dados
 	set_process(true)
-
+	
 # função que retorna o tamanho da sprit do player
 func get_sprite_width_tile():
 	return _sprite_h_and_w_tile
