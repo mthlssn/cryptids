@@ -18,4 +18,4 @@ func interacao():
 	if interaction:
 		DialogBox.add_mensagem(interaction.msg_queue)
 	else:
-		DialogBox.add_mensagem(["Ainda não tem interação", "Reclama com o Thalisson!", "Vlw :)"])
+		DialogBox.add_mensagem(["Ainda não tem interação", "Desculpe :)"])

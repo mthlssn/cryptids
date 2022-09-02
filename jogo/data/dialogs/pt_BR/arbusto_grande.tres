@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-msg_queue = [ "Sou uma arvore", "Uma arvore seca", "Sei que vc n perguntou :(", "teste TEste", "Opa leo, blz?" ]
+msg_queue = [ "Com esse tamanho poderia esconder algumas verdades.", "Uma grande decepção.", "Um grande arbusto." ]

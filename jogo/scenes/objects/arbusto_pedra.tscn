@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/cenarios/cen1/pedraGrande.png" type="Texture" id=1]
 [ext_resource path="res://scripts/objects/objects.gd" type="Script" id=2]
+[ext_resource path="res://data/dialogs/pt_BR/arbusto_pedra.tres" type="Resource" id=3]
 
 [node name="arbusto-pedra" type="Node2D"]
 script = ExtResource( 2 )
 type = 0
 _sprite_width_tile = 2
-texto = "Isso são pedras e arbustos"
+interaction = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( -48, -48 )

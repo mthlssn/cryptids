@@ -9,8 +9,8 @@
 [ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/npcs/maria.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/objects/arvore_seca.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/objects/arbusto1.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/objects/arbusto-pedra.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/objects/arbusto_grande.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/objects/arbusto_pedra.tscn" type="PackedScene" id=11]
 
 [node name="demo_cena_1" type="Node2D"]
 script = ExtResource( 5 )

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+msg_queue = [ "Usou tudo que o mundo tinha a oferecer.", "Os arbustos continuam o ciclo da vida enquanto escondem seu túmulo.", "Uma árvore morta." ]
