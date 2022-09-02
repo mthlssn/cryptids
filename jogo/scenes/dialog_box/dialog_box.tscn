@@ -14,7 +14,7 @@ margin_top = 208.0
 margin_right = 472.0
 margin_bottom = 280.0
 texture = ExtResource( 2 )
-region_rect = Rect2( 10, 10, 1380, 767 )
+region_rect = Rect2( 3144.52, 288.271, 7.98926, 7.98901 )
 __meta__ = {
 "_edit_group_": true
 }

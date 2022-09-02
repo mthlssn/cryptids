@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/cenas/gerenciar_cenas.gd" type="Script" id=1]
 [ext_resource path="res://scenes/camera/camera.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/cenarios/cen4/cena4.png" type="Texture" id=7]
+[ext_resource path="res://scenes/npcs/maria.tscn" type="PackedScene" id=8]
 
 [node name="demo_cena_4" type="Node2D"]
 script = ExtResource( 1 )
@@ -26,6 +27,11 @@ position = Vector2( 80, 597 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="tilemap/player"]
 remote_path = NodePath("../../../camera")
+
+[node name="followers" type="YSort" parent="tilemap"]
+
+[node name="maria" parent="tilemap/followers" instance=ExtResource( 8 )]
+position = Vector2( 208, 136 )
 
 [node name="portal1" parent="tilemap" instance=ExtResource( 6 )]
 position = Vector2( 48, 656 )

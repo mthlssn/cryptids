@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cenarios/cen1/folhagem.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/cenas/gerenciar_cenas.gd" type="Script" id=5]
 [ext_resource path="res://assets/cenarios/cen1/cena1.png" type="Texture" id=6]
 [ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/npcs/maria.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/objects/arvore_seca.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/objects/arbusto1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/objects/arbusto-pedra.tscn" type="PackedScene" id=11]
@@ -28,6 +29,11 @@ position = Vector2( 240, 144 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="tilemap/player"]
 remote_path = NodePath("../../../camera")
+
+[node name="followers" type="YSort" parent="tilemap"]
+
+[node name="maria" parent="tilemap/followers" instance=ExtResource( 8 )]
+position = Vector2( 208, 136 )
 
 [node name="portal1" parent="tilemap" instance=ExtResource( 7 )]
 position = Vector2( 208, -16 )
