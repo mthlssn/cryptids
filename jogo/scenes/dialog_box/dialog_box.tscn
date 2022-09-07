@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/dialog/dialog.gd" type="Script" id=1]
 [ext_resource path="res://assets/dialog_box/dialog_box_personagem.png" type="Texture" id=2]
@@ -7,7 +7,11 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 9
-extra_spacing_bottom = 1
+extra_spacing_top = 1
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 9
 font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=2]
@@ -24,10 +28,23 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 440, 64 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "setinha"
-length = 0.25
+length = 0.26
+loop = true
 step = 0.02
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -36,10 +53,145 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12, 0.24 ),
+"times": PoolRealArray( 0, 0.12, 0.26 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 440, 64 ), Vector2( 447, 64 ), Vector2( 455, 64 ) ]
+"values": [ Vector2( 440, 64 ), Vector2( 443, 64 ), Vector2( 446, 64 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.26 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("dialog:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 464, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dialog:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, 200 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("dialog:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("dialog:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 464, 80 ), Vector2( 40, 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dialog:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, 200 ), Vector2( 220, 290 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("dialog:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 40, 20 ), Vector2( 464, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dialog:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 220, 290 ), Vector2( 8, 200 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
 }
 
 [node name="dialog_box" type="CanvasLayer"]
@@ -59,22 +211,25 @@ __meta__ = {
 }
 
 [node name="text" type="RichTextLabel" parent="dialog"]
-margin_left = 16.0
-margin_top = 16.0
+margin_left = 104.0
+margin_top = 24.0
 margin_right = 448.0
 margin_bottom = 64.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/normal_font = SubResource( 1 )
-text = "teste teste teste
-AGORA EM CAIXA ALTA
-COM ACENTO ãê"
 
-[node name="timer" type="Timer" parent="dialog"]
-wait_time = 0.05
+[node name="name" type="Label" parent="dialog"]
+margin_left = 18.0
+margin_top = 4.0
+margin_right = 71.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
 
-[node name="timer_2" type="Timer" parent="dialog"]
-wait_time = 0.16
-one_shot = true
+[node name="personagem" type="Sprite" parent="dialog"]
+position = Vector2( 45, 47 )
+scale = Vector2( 0.855263, 0.855263 )
 
 [node name="setinha" type="Node2D" parent="dialog"]
 position = Vector2( 440, 64 )
@@ -83,8 +238,23 @@ position = Vector2( 440, 64 )
 texture = ExtResource( 4 )
 
 [node name="animation_player" type="AnimationPlayer" parent="dialog/setinha"]
+autoplay = "setinha"
+playback_speed = 0.4
 anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
 
-[connection signal="timeout" from="dialog/timer" to="." method="_on_timer_timeout"]
+[node name="timer_2" type="Timer" parent="dialog"]
+wait_time = 0.16
+one_shot = true
+
+[node name="timer" type="Timer" parent="dialog"]
+wait_time = 0.05
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/close = SubResource( 7 )
+anims/open = SubResource( 6 )
+
 [connection signal="timeout" from="dialog/timer_2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="dialog/timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="animation_player" to="." method="_on_animation_player_animation_finished"]

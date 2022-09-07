@@ -5,6 +5,10 @@ onready var text := $dialog/text
 onready var timer := $dialog/timer
 onready var timer2 := $dialog/timer_2
 onready var setinha := $dialog/setinha
+onready var sprite_setinha := $dialog/setinha/sprite
+onready var label_name := $dialog/name
+onready var personagem_foto := $dialog/personagem
+onready var animacao := $animation_player
 
 onready var dialog_box_c_per = preload("res://assets/dialog_box/dialog_box_personagem.png")
 onready var dialog_box_s_per = preload("res://assets/dialog_box/dialog_box_sem_personagem.png")
@@ -22,17 +26,24 @@ func _ready():
 	if msg_queue.size() == 0:
 		hide()
 
-func call_dialog_box(mensagem, tem_foto):
-	text.bbcode_text = ""
+func call_dialog_box(mensagem, personagem, nome, foto):
 	node_pause = Global.get_node_demo_cena()
+	node_pause.get_tree().paused = true
+	
+	text.bbcode_text = ""
 	tecla = "ui_accept"
 	msg_queue = mensagem
+	label_name.text = ""
+	personagem_foto.texture = null
+	
 	setinha.hide()
 	
 	max_length_text = msg_queue.size()
 	posicao_text = -1
 	
-	if tem_foto:
+	sprite_setinha.position = Vector2(0, -2)
+	
+	if personagem:
 		dialog.texture = dialog_box_c_per
 		dialog.region_rect = Rect2(0, 0, 440, 80)
 		
@@ -40,17 +51,27 @@ func call_dialog_box(mensagem, tem_foto):
 		text.margin_left = 104
 		text.margin_right = 448
 		text.margin_top = 24
+		
+		dialog.margin_top = 200
 	else:
 		dialog.texture = dialog_box_s_per
 		dialog.region_rect = Rect2(0, 0, 439, 71) 
 		
-		text.margin_bottom = 64
+		text.margin_bottom = 58
 		text.margin_left = 16
 		text.margin_right = 448
-		text.margin_top = 26
-	
+		text.margin_top = 16
+		
+		dialog.margin_top = 208
+		
+	if nome != null:
+		label_name.text = nome
+		
+	if foto != null:
+		personagem_foto.texture = foto
+		
 	if not visible:
-		show()
+		animacao.play("open")
 	
 	timer2.start()
 
@@ -68,26 +89,25 @@ func show_message() -> void:
 	setinha.hide()
 	if not timer.is_stopped():
 		text.visible_characters = text.bbcode_text.length()
-		setinha.show()
 		return
 
 	if max_length_text <= (posicao_text+1):
 		tecla = "nada"
 		msg_queue = []
-		
-		hide()
+		text.bbcode_text = ""
 		
 		node_pause.get_tree().paused = false
 		
 		if pausar:
+			hide()
 			pausar = false
 			Pause.pause()
+		else:
+			animacao.play("close")
+			yield(animacao, "animation_finished")
 		
-		return	
+		return
 	
-	if node_pause.get_tree().paused == false:
-		node_pause.get_tree().paused = true
-
 	posicao_text += 1
 	var _msg : String = msg_queue[posicao_text]
 	
@@ -102,6 +122,9 @@ func _on_timer_timeout():
 		setinha.show()
 	text.visible_characters += 1
 
-
 func _on_timer_2_timeout():
 	show_message()
+
+func _on_animation_player_animation_finished(anim_name):
+	label_name.show()
+	personagem_foto.show()

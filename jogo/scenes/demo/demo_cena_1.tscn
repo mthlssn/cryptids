@@ -44,6 +44,7 @@ margin_right = 80.0
 
 [node name="arvore_seca" parent="tilemap" instance=ExtResource( 9 )]
 position = Vector2( 80, 144 )
+imagem = null
 
 [node name="arbusto" parent="tilemap" instance=ExtResource( 10 )]
 position = Vector2( 336, 208 )

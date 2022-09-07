@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-msg_queue = [ "A FUNDAÇÃO DA VIDA VERDE.", "UMA PROTUBERÂNCIA DAS PROFUNDEZAS.", "PEDRAS GRANDES." ]
+msg_queue = [ "A fundação da vida verde.", "Uma protuberância das profundezas.", "Pedras grandes." ]

@@ -63,7 +63,7 @@ position = Vector2( 144, 272 )
 position = Vector2( 240, 203 )
 
 [node name="bottom_right" parent="camera/limites" index="1"]
-position = Vector2( 480, 768 )
+position = Vector2( 480, 767 )
 
 [node name="folhas" type="Sprite" parent="."]
 texture = ExtResource( 7 )

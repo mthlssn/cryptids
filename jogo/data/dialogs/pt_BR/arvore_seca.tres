@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-msg_queue = [ "USOU TUDO QUE O MUNDO TINHA A OFERECER.", "OS ARBUSTOS CONTINUAM O CICLO DA VIDA ENQUANTO ESCONDEM SEU TÚMULO.", "UMA ÁRVORE MORTA." ]
+msg_queue = [ "Usou tudo que o mundo tinha a oferecer.", "Os arbustor continuam o ciclo da vida enquanto escondem seu túmulo.", "Uma árvore morta." ]
