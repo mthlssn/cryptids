@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
+nome = "arbusto_grande"
 msg_queue = [ "Com esse tamanho poderia esconder algumas verdades.", "Uma grande decepção.", "Um grande arbusto." ]
+reacoes = [ "normal" ]
+mostrar_depois = [ 2 ]

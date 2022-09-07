@@ -70,6 +70,7 @@ tracks/0/keys = {
 }
 
 [node name="maria" type="Node2D"]
+visible = false
 script = ExtResource( 1 )
 dividido = 1.3
 

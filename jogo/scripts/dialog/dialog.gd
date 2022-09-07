@@ -5,7 +5,7 @@ onready var text := $dialog/text
 onready var timer := $dialog/timer
 onready var timer2 := $dialog/timer_2
 onready var setinha := $dialog/setinha
-onready var sprite_setinha := $dialog/setinha/sprite
+onready var animacao_setinha := $dialog/setinha/animation_player
 onready var label_name := $dialog/name
 onready var personagem_foto := $dialog/personagem
 onready var animacao := $animation_player
@@ -30,9 +30,10 @@ func call_dialog_box(mensagem, personagem, nome, foto):
 	node_pause = Global.get_node_demo_cena()
 	node_pause.get_tree().paused = true
 	
+	msg_queue = mensagem
+	
 	text.bbcode_text = ""
 	tecla = "ui_accept"
-	msg_queue = mensagem
 	label_name.text = ""
 	personagem_foto.texture = null
 	
@@ -40,8 +41,6 @@ func call_dialog_box(mensagem, personagem, nome, foto):
 	
 	max_length_text = msg_queue.size()
 	posicao_text = -1
-	
-	sprite_setinha.position = Vector2(0, -2)
 	
 	if personagem:
 		dialog.texture = dialog_box_c_per
@@ -72,8 +71,6 @@ func call_dialog_box(mensagem, personagem, nome, foto):
 		
 	if not visible:
 		animacao.play("open")
-	
-	timer2.start()
 
 func _input(event):
 	if event.is_action_pressed(tecla):
@@ -87,6 +84,8 @@ func _input(event):
 
 func show_message() -> void:
 	setinha.hide()
+	animacao_setinha.stop()
+	
 	if not timer.is_stopped():
 		text.visible_characters = text.bbcode_text.length()
 		return
@@ -120,14 +119,14 @@ func _on_timer_timeout():
 	if text.visible_characters == text.bbcode_text.length():
 		timer.stop()
 		setinha.show()
+		animacao_setinha.play("setinha")
 	text.visible_characters += 1
 
 func _on_timer_2_timeout():
 	show_message()
 
 func _on_animation_player_animation_finished(anim_name):
-	label_name.show()
-	personagem_foto.show()
-	
-	if anim_name:
-		pass
+	if anim_name == "open":
+		label_name.show()
+		personagem_foto.show()
+		timer2.start()

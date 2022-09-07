@@ -5,13 +5,17 @@ onready var type = 3
 
 onready var tilemap = get_parent()
 
-export var dividido = 1.0
+# ideal = 1.3
+export var velocidade = 1.0
 
 onready var _sprite_h_and_w_tile = 1 
+
+onready var animacao = $animation_player
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	update_direcao_sprite(Global.get_direcao_player())
+	animacao.playback_speed = velocidade
 
 func _process(_delta):
 	var direcao
@@ -92,19 +96,19 @@ func mover(direcao, direcao_alvo):
 			string_direcao = "up"
 	
 	# roda a animação
-	$AnimationPlayer.play("walk_" + string_direcao)
+	animacao.play("walk_" + string_direcao)
 	
 	# configura o Tween
 	$Tween.interpolate_property(
 		self, "position", self.position, direcao_alvo, 
-		($AnimationPlayer.current_animation_length/dividido), Tween.TRANS_LINEAR
+		(animacao.current_animation_length/velocidade), Tween.TRANS_LINEAR
 	)
 	
 	# começa o movimento
 	$Tween.start()
 	
 	# suspende a execução do código até que a animação acabe
-	yield($AnimationPlayer, "animation_finished")
+	yield(animacao, "animation_finished")
 	
 	# desbloqueia a entrada de dados
 	set_process(true)
@@ -118,7 +122,7 @@ func get_sprite_height_tile():
 	return _sprite_h_and_w_tile
 
 func _on_AnimationPlayer_animation_started(anim_name):
-	tilemap.call_followers()
+	#tilemap.call_followers()
 	
 	if anim_name:
 		pass
