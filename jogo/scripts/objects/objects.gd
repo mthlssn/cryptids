@@ -16,6 +16,6 @@ func get_sprite_height_tile():
 
 func interacao():
 	if interaction:
-		DialogBox.add_mensagem(interaction.msg_queue)
+		DialogBox.call_dialog_box(interaction.msg_queue, true)
 	else:
-		DialogBox.add_mensagem(["Ainda não tem interação", "Desculpe :)"])
+		DialogBox.call_dialog_box(["Ainda não tem interação", "Desculpe :)"], false)
