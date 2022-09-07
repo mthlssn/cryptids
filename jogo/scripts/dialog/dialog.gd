@@ -128,3 +128,6 @@ func _on_timer_2_timeout():
 func _on_animation_player_animation_finished(anim_name):
 	label_name.show()
 	personagem_foto.show()
+	
+	if anim_name:
+		pass

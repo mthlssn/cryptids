@@ -119,3 +119,6 @@ func get_sprite_height_tile():
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	tilemap.call_followers()
+	
+	if anim_name:
+		pass
