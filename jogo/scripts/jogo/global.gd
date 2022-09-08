@@ -23,7 +23,17 @@ var _followers : Array
 
 var _posicao_followers : Array
 
+var _interagidos : Array = []
+
 # ------------- funcs ----------------
+
+func get_interagidos():
+	return _interagidos
+
+func set_interagidos(interagido):
+	var size = _interagidos.size()
+	_interagidos.resize(size+1)
+	_interagidos[size] = interagido
 
 func get_ultima_posicao_player():
 	return _ultima_posicao_player

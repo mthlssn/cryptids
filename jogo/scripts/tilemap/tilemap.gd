@@ -11,10 +11,11 @@ func _ready():
 		if node.name == "followers":
 			for node_ysort in node.get_children():
 				var posicao_player = Global.get_posicao_player()
+				node_ysort.position = map_to_world(posicao_player)
 				
 				node_ysort.position.x = map_to_world(posicao_player).x + 16
 				node_ysort.position.y = map_to_world(posicao_player).y + 16
-				set_cellv(posicao_player, node_ysort.type)
+				set_cellv(world_to_map(node_ysort.position), node_ysort.type)
 		elif node.name != "player":
 			var width = node.get_sprite_width_tile()
 			var height = node.get_sprite_height_tile()
@@ -44,6 +45,10 @@ func get_celula_player(alvo):
 				if (world_to_map(node.position) + widthv) == alvo:
 					return node
 				widthv += Vector2(1,0)
+		elif node.name == "followers":
+			for node_ysort in node.get_children():
+				if (world_to_map(node_ysort.position)) == alvo:
+					return node_ysort
 
 func solicitar_movimento(player, direcao):
 	var celula_comeco = world_to_map(player.position)
@@ -76,7 +81,8 @@ func verificar_sair_tela(direcao):
 	
 func atualizar_posicao(player, celula_comeco, celula_alvo):
 	set_cellv(celula_alvo, player.type)
-	set_cellv(celula_comeco, EMPTY)
+	set_cellv(celula_comeco, FOLLOW)
+	set_cellv(world_to_map(maria.position), EMPTY)
 
 func call_followers():
 	# var followers = Global.get_followers()

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome = "maria"
+msg_queue = [ "OIIIIIIIIIIIIIIIIIII", "Salve", "Como vc tá?", "Olha eu estou Feliz", "Heheheh :)" ]
+msg_queue1 = [  ]
+reacoes = [ "normal", "normal", "triste", "normal", "triste" ]

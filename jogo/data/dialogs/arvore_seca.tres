@@ -1,7 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://scripts/dialog/dialog_metadata.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-msg_queue = [ "Sou uma arvore", "Uma arvore seca", "Sei que vc n perguntou :(", "teste TEste", "Opa leo, blz?" ]
