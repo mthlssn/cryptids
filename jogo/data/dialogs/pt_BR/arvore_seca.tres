@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nome = "arvore_seca"
 msg_queue = [ "Usou tudo que o mundo tinha a oferecer.", "Os arbustor continuam o ciclo da vida enquanto escondem seu túmulo.", "Uma árvore morta." ]
-reacoes = [ "normal" ]
-mostrar_depois = [ 2 ]
+msg_queue1 = [ "Uma árvore morta." ]
+reacoes = [  ]

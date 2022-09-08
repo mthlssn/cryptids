@@ -57,7 +57,6 @@ func solicitar_movimento(player, direcao):
 	Global.set_posicao_player(celula_comeco)
 	
 	var tipo_celula_alvo = get_cellv(proxima_celula)
-	print(tipo_celula_alvo)
 	match tipo_celula_alvo:
 		EMPTY:
 			atualizar_posicao(player, celula_comeco, proxima_celula)

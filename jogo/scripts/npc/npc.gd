@@ -78,6 +78,5 @@ func mover(direcao_alvo):
 	set_process(true)
 
 func interacao():
-	print("opa")
 	if interaction:
 		DialogBox.call_dialog_box(msg_queue, true, nome, path_images, interaction.reacoes)

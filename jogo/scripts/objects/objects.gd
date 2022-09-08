@@ -14,8 +14,6 @@ var msg_queue
 
 var interagido = false
 
-var copia : Array
-
 func _ready():
 	if interaction :
 		var interagidos = Global.get_interagidos()
@@ -25,22 +23,6 @@ func _ready():
 				if interagidos[i] == interaction.nome:
 					interagido = true
 					break
-		
-		msg_queue = interaction.msg_queue
-		var mostrar_depois = interaction.mostrar_depois
-		var size = mostrar_depois.size()
-		
-		if size <= 1:
-			copia.resize(size+1)
-		else:
-			copia.resize(size)
-		
-		if !type == CELL_TYPES.PORTAL:
-			for i in size:
-				copia[i] = msg_queue[mostrar_depois[i]]
-		
-		if size <= 1:
-			copia.pop_back()
 
 func get_sprite_width_tile():
 	return _sprite_width_tile
@@ -50,10 +32,10 @@ func get_sprite_height_tile():
 
 func interacao():
 	if interaction:
-		if interagido and copia.size() > 0:
-			DialogBox.call_dialog_box(copia, false, null, null, null)
+		if interagido:
+			DialogBox.call_dialog_box(interaction.msg_queue1, false, null, null, null)
 		else:
-			DialogBox.call_dialog_box(msg_queue, false, null, null, null)
+			DialogBox.call_dialog_box(interaction.msg_queue, false, null, null, null)
 			interagido = true
 			Global.set_interagidos(interaction.nome)
 

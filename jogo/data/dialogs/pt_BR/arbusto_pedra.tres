@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nome = "arbusto_pedra"
 msg_queue = [ "A fundação da vida verde.", "Uma protuberância das profundezas.", "Pedras grandes." ]
-reacoes = [ "normal" ]
-mostrar_depois = [ 2 ]
+msg_queue1 = [ "Pedras grandes" ]
+reacoes = [  ]
