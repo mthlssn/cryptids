@@ -1,6 +1,6 @@
 extends Node2D
 
-enum CELL_TYPES{EMPTY = -1,  OBSTACLE, PORTAL, PLAYER, OBJECT}
+enum CELL_TYPES{EMPTY = -1,  OBSTACLE, PORTAL, PLAYER, OBJECT, NPC, FOLLOW}
 export(CELL_TYPES) var type = CELL_TYPES.PORTAL
 
 export var nome : String
@@ -51,11 +51,9 @@ func get_sprite_height_tile():
 func interacao():
 	if interaction:
 		if interagido and copia.size() > 0:
-			DialogBox.call_dialog_box(copia, false, null, null)
+			DialogBox.call_dialog_box(copia, false, null, null, null)
 		else:
-			DialogBox.call_dialog_box(msg_queue, false, null, null)
+			DialogBox.call_dialog_box(msg_queue, false, null, null, null)
 			interagido = true
 			Global.set_interagidos(interaction.nome)
-	else:
-		DialogBox.call_dialog_box(["Ainda não tem interação", "Desculpe :)"], true, "Thalisson", null)
 

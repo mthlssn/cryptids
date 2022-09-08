@@ -7,11 +7,18 @@ onready var tilemap = get_parent()
 
 export var dividido = 1.0
 
+export var nome : String
+export(String, FILE) var path_images 
+
+export(Resource) var interaction
+var msg_queue
+
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	update_direcao_sprite(Global.get_direcao_player())
+	msg_queue = interaction.msg_queue
 
-# função que gira a sprite
+# função que gira a sprite 
 func update_direcao_sprite(direcao):
 	match direcao:
 		Vector2(1,0):
@@ -69,3 +76,8 @@ func mover(direcao_alvo):
 	
 	# desbloqueia a entrada de dados
 	set_process(true)
+
+func interacao():
+	print("opa")
+	if interaction:
+		DialogBox.call_dialog_box(msg_queue, true, nome, path_images, interaction.reacoes)

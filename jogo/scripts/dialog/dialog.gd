@@ -22,15 +22,25 @@ var posicao_text = 0
 var node_pause
 var pausar = false
 
+var cont = 0
+
+var reacoes
+var path_image
+
 func _ready():
 	if msg_queue.size() == 0:
 		hide()
 
-func call_dialog_box(mensagem, personagem, nome, foto):
+func call_dialog_box(mensagem, personagem, nome, path_imagem, reacoes_npc):
 	node_pause = Global.get_node_demo_cena()
 	node_pause.get_tree().paused = true
 	
+	reacoes = reacoes_npc
+	
 	msg_queue = mensagem
+	
+	reacoes = reacoes_npc
+	path_image = path_imagem
 	
 	text.bbcode_text = ""
 	tecla = "ui_accept"
@@ -62,18 +72,20 @@ func call_dialog_box(mensagem, personagem, nome, foto):
 		text.margin_top = 16
 		
 		dialog.margin_top = 208
+	
+	if path_image != null:
+		mudar_imagem()
 		
 	if nome != null:
 		label_name.text = nome
-		
-	if foto != null:
-		personagem_foto.texture = foto
 		
 	if not visible:
 		animacao.play("open")
 
 func _input(event):
 	if event.is_action_pressed(tecla):
+		if path_image != null:
+			mudar_imagem()
 		show_message()
 	
 	if event.is_action_pressed("esc") && visible == true:
@@ -94,6 +106,7 @@ func show_message() -> void:
 		tecla = "nada"
 		msg_queue = []
 		text.bbcode_text = ""
+		cont = 0
 		
 		node_pause.get_tree().paused = false
 		
@@ -115,11 +128,17 @@ func show_message() -> void:
 	
 	timer.start()
 
+func mudar_imagem():
+	if reacoes.size() > cont:
+		var imagem = path_image + reacoes[cont] + ".png"
+		personagem_foto.texture = load(imagem)
+
 func _on_timer_timeout():
 	if text.visible_characters == text.bbcode_text.length():
 		timer.stop()
 		setinha.show()
 		animacao_setinha.play("setinha")
+		cont += 1
 	text.visible_characters += 1
 
 func _on_timer_2_timeout():

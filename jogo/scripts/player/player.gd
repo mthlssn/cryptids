@@ -21,7 +21,7 @@ func _process(_delta):
 	var direcao
 	if not Transition.get_animando():
 		direcao = get_direcao()
-
+		
 	if direcao:
 		Global.set_direcao_player(direcao)
 		
@@ -37,6 +37,7 @@ func interagir():
 	if Input.is_action_just_pressed("key_e"):
 		var alvo = tilemap.world_to_map(self.position) + Global.get_direcao_player()
 		var node = tilemap.get_celula_player(alvo)
+		print(node)
 		if node:
 			node.interacao()
 
@@ -122,7 +123,7 @@ func get_sprite_height_tile():
 	return _sprite_h_and_w_tile
 
 func _on_AnimationPlayer_animation_started(anim_name):
-	#tilemap.call_followers()
+	tilemap.call_followers()
 	
 	if anim_name:
 		pass

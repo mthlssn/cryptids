@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enzo.png-5e3d3954cdf70e9d5a1d741a602e791d.stex"
+path="res://.import/triste.png-990db03f0b0365c86919f27f8f4ff3be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dialog_box/personagens/principal/enzo.png"
-dest_files=[ "res://.import/enzo.png-5e3d3954cdf70e9d5a1d741a602e791d.stex" ]
+source_file="res://assets/dialog_box/personagens/maria/triste.png"
+dest_files=[ "res://.import/triste.png-990db03f0b0365c86919f27f8f4ff3be.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

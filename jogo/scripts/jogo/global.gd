@@ -32,7 +32,6 @@ func get_interagidos():
 
 func set_interagidos(interagido):
 	var size = _interagidos.size()
-	
 	_interagidos.resize(size+1)
 	_interagidos[size] = interagido
 

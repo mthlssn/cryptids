@@ -6,7 +6,7 @@
 
 [node name="arbusto-pedra" type="Node2D"]
 script = ExtResource( 2 )
-type = 0
+type = 3
 _sprite_width_tile = 2
 interaction = ExtResource( 3 )
 
