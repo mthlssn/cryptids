@@ -11,6 +11,7 @@ export var velocidade = 1.0
 onready var _sprite_h_and_w_tile = 1 
 
 onready var animacao = $animation_player
+onready var tween = $tween
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
@@ -99,21 +100,20 @@ func mover(direcao, direcao_alvo):
 	animacao.play("walk_" + string_direcao)
 	
 	# configura o Tween
-	$tween.interpolate_property(
+	tween.interpolate_property(
 		self, "position", self.position, direcao_alvo, 
 		(animacao.current_animation_length/velocidade), Tween.TRANS_LINEAR
 	)
 	
 	# começa o movimento
-	$tween.start()
+	tween.start()
 	
 	# suspende a execução do código até que a animação acabe
 	yield(animacao, "animation_finished")
 	
 	# desbloqueia a entrada de dados
 	set_process(true)
-	print("passou")
-	
+
 # função que retorna o tamanho da sprit do player
 func get_sprite_width_tile():
 	return _sprite_h_and_w_tile

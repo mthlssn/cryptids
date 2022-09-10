@@ -10,7 +10,6 @@ export var _sprite_width_tile = 1
 export var _sprite_height_tile = 1 
 
 export(Resource) var interaction
-var msg_queue 
 
 var interagido = false
 

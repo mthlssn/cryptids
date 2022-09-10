@@ -1,22 +1,23 @@
 extends Node2D
 
 # tipo da celula 5 = FOLLOWER
-onready var type = 5 
+onready var type = 3 
 
 onready var tilemap = get_parent()
 
-export var dividido = 1.0
+export var velocidade = 1.0
 
 export var nome : String
 export(String, FILE) var path_images 
 
+onready var animacao = $animation_player
+
 export(Resource) var interaction
-var msg_queue
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	update_direcao_sprite(Global.get_direcao_player())
-	msg_queue = interaction.msg_queue
+	animacao.playback_speed = velocidade
 
 # função que gira a sprite 
 func update_direcao_sprite(direcao):
@@ -60,23 +61,23 @@ func mover(direcao_alvo):
 			string_direcao = "up"
 	
 	# roda a animação
-	$AnimationPlayer.play("walk_" + string_direcao)
+	animacao.play("walk_" + string_direcao)
 	
 	# configura o Tween
 	$Tween.interpolate_property(
 		self, "position", self.position, direcao_alvo, 
-		($AnimationPlayer.current_animation_length/dividido), Tween.TRANS_LINEAR
+		(animacao.current_animation_length/velocidade), Tween.TRANS_LINEAR
 	)
 	
 	# começa o movimento
 	$Tween.start()
 	
 	# suspende a execução do código até que a animação acabe
-	yield($AnimationPlayer, "animation_finished")
+	yield(animacao, "animation_finished")
 	
 	# desbloqueia a entrada de dados
 	set_process(true)
 
 func interacao():
 	if interaction:
-		DialogBox.call_dialog_box(msg_queue, true, nome, path_images, interaction.reacoes)
+		DialogBox.call_dialog_box(interaction.msg_queue, true, nome, path_images, interaction.reacoes)

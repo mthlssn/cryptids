@@ -1,21 +1,22 @@
 extends TileMap
 
-enum { EMPTY = -1,  OBSTACLE, PORTAL, PLAYER, OBJECT, NPC, FOLLOW}
+enum { EMPTY = -1,  OBSTACLE, PORTAL, PLAYERS, OBJECT, NPC, FOLLOW}
 
-onready var maria := $followers/maria
+#onready var maria := $followers/maria
 
 func _ready():
 	Global.set_cena_atual(get_parent().get_cena())
 	
 	for node in get_children():
-		if node.name == "followers":
+		if node.name == "players":
 			for node_ysort in node.get_children():
-				var posicao_player = Global.get_posicao_player()
-				node_ysort.position = map_to_world(posicao_player)
-				
-				node_ysort.position.x = map_to_world(posicao_player).x + 16
-				node_ysort.position.y = map_to_world(posicao_player).y + 16
-				set_cellv(world_to_map(node_ysort.position), node_ysort.type)
+				if node_ysort.name != "Timer":
+					var posicao_player = Global.get_posicao_player()
+					node_ysort.position = map_to_world(posicao_player)
+					
+					node_ysort.position.x = map_to_world(posicao_player).x + 16
+					node_ysort.position.y = map_to_world(posicao_player).y + 16
+					set_cellv(world_to_map(node_ysort.position), node.type)
 		elif node.name != "player":
 			var width = node.get_sprite_width_tile()
 			var height = node.get_sprite_height_tile()
@@ -37,7 +38,7 @@ func _ready():
 
 func get_celula_player(alvo):
 	for node in get_children():
-		if node.name != "followers":
+		if node.name != "players":
 			var width = node.get_sprite_width_tile()
 			var widthv = Vector2(0,0)
 					
@@ -45,7 +46,7 @@ func get_celula_player(alvo):
 				if (world_to_map(node.position) + widthv) == alvo:
 					return node
 				widthv += Vector2(1,0)
-		elif node.name == "followers":
+		elif node.name == "players":
 			for node_ysort in node.get_children():
 				if (world_to_map(node_ysort.position)) == alvo:
 					return node_ysort
@@ -61,11 +62,12 @@ func solicitar_movimento(player, direcao):
 		EMPTY:
 			atualizar_posicao(player, celula_comeco, proxima_celula)
 			return map_to_world(proxima_celula) + (cell_size / 2)
-		FOLLOW:
+		PLAYERS:
 			atualizar_posicao(player, celula_comeco, proxima_celula)
 			return map_to_world(proxima_celula) + (cell_size / 2)
 		PORTAL:
 			verificar_sair_tela(direcao)
+			return map_to_world(proxima_celula) + (cell_size / 2)
 			
 func verificar_sair_tela(direcao):
 	var node_pai = get_parent()
@@ -80,9 +82,9 @@ func verificar_sair_tela(direcao):
 			node_pai.mudar_cena(3)
 	
 func atualizar_posicao(player, celula_comeco, celula_alvo):
-	set_cellv(celula_alvo, player.type)
-	set_cellv(celula_comeco, FOLLOW)
-	set_cellv(world_to_map(maria.position), EMPTY)
+	set_cellv(celula_alvo, PLAYERS)
+	set_cellv(celula_comeco, EMPTY)
+	#set_cellv(world_to_map(maria.position), EMPTY)
 
 func call_followers():
 	# var followers = Global.get_followers()
@@ -92,9 +94,9 @@ func call_followers():
 	#	var celula_comeco = world_to_map(followers[i].position)
 	#	atualizar_posicao(followers[i], celula_comeco, pos_followers)
 	
-	if maria.position == $player.position:
-		return
+	#if maria.position == $player.position:
+		#return
 	
 	var posicao = Global.get_ultima_posicao_player()
 	
-	maria.mover(posicao)
+	#maria.mover(posicao)

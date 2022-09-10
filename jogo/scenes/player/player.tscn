@@ -80,12 +80,9 @@ hframes = 12
 frame = 2
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
-playback_speed = 1.3
 anims/walk_down = SubResource( 3 )
 anims/walk_left = SubResource( 4 )
 anims/walk_right = SubResource( 5 )
 anims/walk_up = SubResource( 2 )
 
-[node name="Tween" type="Tween" parent="."]
-
-[connection signal="animation_started" from="animation_player" to="." method="_on_AnimationPlayer_animation_started"]
+[node name="tween" type="Tween" parent="."]

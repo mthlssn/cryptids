@@ -7,4 +7,4 @@ script = ExtResource( 1 )
 nome = "maria"
 msg_queue = [ "OIIIIIIIIIIIIIIIIIII", "Salve", "Como vc tá?", "Olha eu estou Feliz", "Heheheh :)" ]
 msg_queue1 = [  ]
-reacoes = [ "normal", "normal", "triste", "normal", "triste" ]
+reacoes = [ "normal", "normal", "triste", "triste", "triste" ]

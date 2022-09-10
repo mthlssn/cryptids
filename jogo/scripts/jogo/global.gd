@@ -41,14 +41,14 @@ func get_ultima_posicao_player():
 func set_ultima_posicao_player(ultima_posicao):
 	_ultima_posicao_player = ultima_posicao
 
+func get_ultima_direcao_player():
+	return _ultima_direcao_player
+
 func get_direcao_player():
 	return _direcao_player
 
 func set_direcao_player(direcao):
 	_direcao_player = direcao
-
-func get_ultima_direcao_player():
-	return _ultima_direcao_player
 
 func set_ultima_direcao_player(ultima_direcao):
 	print(ultima_direcao)
