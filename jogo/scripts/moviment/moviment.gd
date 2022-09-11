@@ -1,6 +1,6 @@
 extends Node
 
-enum {SPRITE, ANIMATION_PLAYER, TWEEN}
+enum {SPRITE, ANIMATION_PLAYER, TWEEN, REMOTE_TRANSFORM}
 
 onready var type = 5 
 
@@ -26,19 +26,27 @@ var ultima_posi
 func _ready():
 	for i in personagens.size():
 		var sla = personagens[i]
-	
+		
 		var scenes = load(sla)
 		var instance = scenes.instance()
 		add_child(instance)
 	
 	personagens = get_children()
-		
-	print(personagens)
-	print("---------------")
-	print(" ")
 	
 	controlar = personagens.size() - 1
 	
+	var remote_transform = RemoteTransform2D.new()
+	personagens[controlar].add_child(remote_transform)
+	print("filhos perosnagem: ", personagens[controlar].get_children())
+	
+	print(" ")
+	
+	var opa = get_parent().get_parent().get_children()
+	
+	var camera = opa[2].name
+	
+	print(camera)
+		
 	nodes_perso = get_children()
 	
 	for i in personagens.size():
@@ -47,6 +55,9 @@ func _ready():
 		nodes_perso[i][ANIMATION_PLAYER].playback_speed = velocidade
 		nodes_perso[i][SPRITE].frame = 1
 	
+	nodes_perso[controlar][REMOTE_TRANSFORM].set_remote_node("camera")
+	
+	print(nodes_perso[controlar][REMOTE_TRANSFORM].get_remote_node()," ", nodes_perso[controlar][REMOTE_TRANSFORM].get_use_global_coordinates()," ", nodes_perso[controlar][REMOTE_TRANSFORM].get_update_position()," ", nodes_perso[controlar][REMOTE_TRANSFORM].get_update_scale())
 	#update_direcao_sprite(Global.get_direcao_player())
 	#animacao.playback_speed = velocidade
 	
@@ -92,7 +103,6 @@ func movimentacao(direcao):
 
 		for i in controlar+1:
 			var cont = controlar - i 
-			print(personagens[cont])
 			
 			if cont != controlar:
 				direcao = (ultima_posi - personagens[cont].position) / 32
