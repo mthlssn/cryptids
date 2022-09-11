@@ -38,7 +38,6 @@ _sprite_height_tile = 3
 margin_bottom = 80.0
 
 [node name="camera" parent="." instance=ExtResource( 2 )]
-position = Vector2( 80, 597 )
 
 [node name="bottom_right" parent="camera/limites" index="1"]
 position = Vector2( 480, 640 )

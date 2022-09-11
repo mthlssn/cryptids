@@ -9,7 +9,7 @@ var players : Array
 onready var tilemap = get_parent()
 
 # ideal = 1.3
-export var velocidade = 1.3
+export var velocidade = 1.5
 
 onready var _sprite_h_and_w_tile = 1 
 
@@ -37,13 +37,10 @@ func _ready():
 	
 	var remote_transform = RemoteTransform2D.new()
 	personagens[controlar].add_child(remote_transform)
-	print("filhos perosnagem: ", personagens[controlar].get_children())
-	
-	print(" ")
 	
 	var opa = get_parent().get_parent().get_children()
 	
-	var camera = opa[2].name
+	var camera = opa[2].get_path()
 	
 	print(camera)
 		
@@ -55,10 +52,9 @@ func _ready():
 		nodes_perso[i][ANIMATION_PLAYER].playback_speed = velocidade
 		nodes_perso[i][SPRITE].frame = 1
 	
-	nodes_perso[controlar][REMOTE_TRANSFORM].set_remote_node("camera")
+	nodes_perso[controlar][REMOTE_TRANSFORM].set_remote_node(camera)
 	
-	print(nodes_perso[controlar][REMOTE_TRANSFORM].get_remote_node()," ", nodes_perso[controlar][REMOTE_TRANSFORM].get_use_global_coordinates()," ", nodes_perso[controlar][REMOTE_TRANSFORM].get_update_position()," ", nodes_perso[controlar][REMOTE_TRANSFORM].get_update_scale())
-	#update_direcao_sprite(Global.get_direcao_player())
+	#update_direcao_spwrite(Global.get_direcao_player())
 	#animacao.playback_speed = velocidade
 	
 	#players = Global.get_followers()
@@ -100,7 +96,7 @@ func movimentacao(direcao):
 	var posicao_alvo = tilemap.solicitar_movimento(personagens[controlar], direcao)
 	if posicao_alvo:
 		Global.set_ultima_posicao_player(personagens[controlar].position)
-
+		
 		for i in controlar+1:
 			var cont = controlar - i 
 			
@@ -108,7 +104,7 @@ func movimentacao(direcao):
 				direcao = (ultima_posi - personagens[cont].position) / 32
 				posicao_alvo = ultima_posi
 			
-			mover(personagens[cont], nodes_perso[cont][ANIMATION_PLAYER], nodes_perso[mexer][TWEEN], direcao, posicao_alvo, cont)
+			mover(personagens[cont], nodes_perso[cont][ANIMATION_PLAYER], nodes_perso[cont][TWEEN], direcao, posicao_alvo, cont)
 
 # função que retorna a direção
 func get_direcao():
