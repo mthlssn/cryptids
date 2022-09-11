@@ -9,12 +9,11 @@ var players : Array
 onready var tilemap = get_parent()
 
 # ideal = 1.3
-export var velocidade = 1.0
+export var velocidade = 1.3
 
 onready var _sprite_h_and_w_tile = 1 
 
-var personagens : Array 
-var teste = "player"
+export(Array, String, FILE) var personagens : Array 
 
 var nodes_perso : Array
 
@@ -25,7 +24,18 @@ var ultima_posi
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
+	for i in personagens.size():
+		var sla = personagens[i]
+	
+		var scenes = load(sla)
+		var instance = scenes.instance()
+		add_child(instance)
+	
 	personagens = get_children()
+		
+	print(personagens)
+	print("---------------")
+	print(" ")
 	
 	controlar = personagens.size() - 1
 	
@@ -35,6 +45,7 @@ func _ready():
 		var temp : Array = personagens[i].get_children()
 		nodes_perso[i] = temp
 		nodes_perso[i][ANIMATION_PLAYER].playback_speed = velocidade
+		nodes_perso[i][SPRITE].frame = 1
 	
 	#update_direcao_sprite(Global.get_direcao_player())
 	#animacao.playback_speed = velocidade
@@ -89,13 +100,6 @@ func movimentacao(direcao):
 			
 			mover(personagens[cont], nodes_perso[cont][ANIMATION_PLAYER], nodes_perso[mexer][TWEEN], direcao, posicao_alvo, cont)
 
-		#var teste = personagens
-	
-		#var dentro_bixo2 = personagens[0].get_children()
-		#mexer = 0
-		#update_direcao_sprite(dentro_bixo2[SPRITE], Global.get_ultima_direcao_player())
-		#mover(teste[0], dentro_bixo2[ANIMATION_PLAYER], dentro_bixo2[TWEEN], Global.get_ultima_direcao_player(), Global.get_ultima_posicao_player())
-
 # função que retorna a direção
 func get_direcao():
 	# salvando a direção de acordo com oq o usuário digitou
@@ -139,7 +143,6 @@ func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
 	# guarda o nome da animação
 	var string_direcao: String
 	if temp == -1 or temp == 1:
-		print("entrou")
 		match direcao:
 			Vector2(1,0):
 				string_direcao = "right"
@@ -164,9 +167,7 @@ func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
 	
 	# suspende a execução do código até que a animação acabe
 	if cont == 0:
-		print("opa")
 		yield(nodes_perso[controlar][ANIMATION_PLAYER], "animation_finished")
-		print("saiu")
 	
 	# desbloqueia a entrada de dados
 	set_process(true)
