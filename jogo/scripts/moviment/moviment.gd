@@ -4,79 +4,67 @@ enum {SPRITE, ANIMATION_PLAYER, TWEEN, REMOTE_TRANSFORM}
 
 onready var type = 5 
 
-var players : Array
+onready var _sprite_h_and_w_tile = 1 
 
 onready var tilemap = get_parent()
 
 # ideal = 1.3
-export var velocidade = 1.5
+export var velocidade = 1.3
 
-onready var _sprite_h_and_w_tile = 1 
+var players : Array
 
-export(Array, String, FILE) var personagens : Array 
-
-var nodes_perso : Array
-
-var mexer 
+var nodes_player : Array
+ 
 var controlar
 
 var ultima_posi
+var penultima_posi
+
+var direcao
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
-	for i in personagens.size():
-		var sla = personagens[i]
+	players = Global.get_players()
+	
+	for i in players.size():
+		var sla = players[i]
 		
 		var scenes = load(sla)
 		var instance = scenes.instance()
 		add_child(instance)
 	
-	personagens = get_children()
+	players = get_children()
 	
-	controlar = personagens.size() - 1
+	controlar = players.size() - 1
 	
 	var remote_transform = RemoteTransform2D.new()
-	personagens[controlar].add_child(remote_transform)
+	players[controlar].add_child(remote_transform)
 	
 	var opa = get_parent().get_parent().get_children()
 	
 	var camera = opa[2].get_path()
-	
-	print(camera)
 		
-	nodes_perso = get_children()
+	nodes_player = get_children()
 	
-	for i in personagens.size():
-		var temp : Array = personagens[i].get_children()
-		nodes_perso[i] = temp
-		nodes_perso[i][ANIMATION_PLAYER].playback_speed = velocidade
-		nodes_perso[i][SPRITE].frame = 1
+	for i in players.size():
+		var temp : Array = players[i].get_children()
+		nodes_player[i] = temp
+		nodes_player[i][ANIMATION_PLAYER].playback_speed = velocidade
+		update_direcao_sprite(nodes_player[i][SPRITE], Global.get_direcao_player())
 	
-	nodes_perso[controlar][REMOTE_TRANSFORM].set_remote_node(camera)
-	
-	#update_direcao_spwrite(Global.get_direcao_player())
-	#animacao.playback_speed = velocidade
-	
-	#players = Global.get_followers()
-	#var players_antes = get_children()
-	
-	#for i in players.size():
-	#	if players[i] != players_antes[i].name:
-	#		remove_child(players_antes[i].name)
-			
-	#get_node("res://scenes/player/player.tscn")
+	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera)
 
 func _process(_delta):
-	mexer = 1
 	var direcao
 	if not Transition.get_animando():
 		direcao = get_direcao()
 		
 	if direcao:
 		Global.set_direcao_player(direcao)
+		
 		# condição para girar o personagem ou fazer ele andar
 		if Input.is_action_pressed("shift"):
-			update_direcao_sprite(nodes_perso[controlar][SPRITE], direcao)
+			update_direcao_sprite(nodes_player[controlar][SPRITE], direcao)
 		else:
 			movimentacao(direcao)
 	
@@ -84,27 +72,29 @@ func _process(_delta):
 
 func interagir():
 	if Input.is_action_just_pressed("key_e"):
-		var alvo = tilemap.world_to_map(personagens[mexer].position) + Global.get_direcao_player()
+		var alvo = tilemap.world_to_map(players[controlar].position) + Global.get_direcao_player()
 		var node = tilemap.get_celula_player(alvo)
+		print(tilemap.get_cellv(alvo))
 		if node:
 			node.interacao()
 
 # função que solicita movimento e e move o personagem
 func movimentacao(direcao):
-	update_direcao_sprite(nodes_perso[controlar][SPRITE], direcao)
+	update_direcao_sprite(nodes_player[controlar][SPRITE], direcao)
 	
-	var posicao_alvo = tilemap.solicitar_movimento(personagens[controlar], direcao)
+	var posicao_alvo = tilemap.solicitar_movimento(players[controlar], direcao)
 	if posicao_alvo:
-		Global.set_ultima_posicao_player(personagens[controlar].position)
+		Global.set_ultima_posicao_player(players[controlar].position)
 		
 		for i in controlar+1:
 			var cont = controlar - i 
-			
+
 			if cont != controlar:
-				direcao = (ultima_posi - personagens[cont].position) / 32
+				direcao = (ultima_posi - players[cont].position) / 32
 				posicao_alvo = ultima_posi
 			
-			mover(personagens[cont], nodes_perso[cont][ANIMATION_PLAYER], nodes_perso[cont][TWEEN], direcao, posicao_alvo, cont)
+			mover(players[cont], nodes_player[cont][ANIMATION_PLAYER], nodes_player[cont][TWEEN], direcao, posicao_alvo, cont)
+			tilemap.atualizar_posicao(players[cont].position, posicao_alvo)
 
 # função que retorna a direção
 func get_direcao():
@@ -137,7 +127,7 @@ func update_direcao_sprite(sprite, direcao):
 
 # função que move o player
 func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
-	
+	penultima_posi = ultima_posi
 	ultima_posi = var_self.position
 	
 	# bloqueia a entrada de dados 
@@ -173,8 +163,8 @@ func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
 	
 	# suspende a execução do código até que a animação acabe
 	if cont == 0:
-		yield(nodes_perso[controlar][ANIMATION_PLAYER], "animation_finished")
-	
+		yield(nodes_player[controlar][ANIMATION_PLAYER], "animation_finished")
+		
 	# desbloqueia a entrada de dados
 	set_process(true)
 	

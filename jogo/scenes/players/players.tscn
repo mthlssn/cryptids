@@ -4,4 +4,3 @@
 
 [node name="players" type="YSort"]
 script = ExtResource( 1 )
-personagens = [ "res://scenes/npcs/maria.tscn", "res://scenes/npcs/maria.tscn", "res://scenes/player/player.tscn" ]

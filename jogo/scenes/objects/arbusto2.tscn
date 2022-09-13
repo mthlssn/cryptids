@@ -7,7 +7,6 @@
 script = ExtResource( 2 )
 type = 3
 _sprite_width_tile = 2
-texto = ""
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( -48, -48 )

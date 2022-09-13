@@ -27,3 +27,4 @@ func mudar_cena(lado):
 			_caminho_cena = _cena_inferior
 	
 	Transition.fade_into(_caminho_cena)
+	Global.set_mover(true)
