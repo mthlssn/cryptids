@@ -96,7 +96,7 @@ func get_posicao_player():
 		4:
 			match _cena_anterior:
 				3:
-					_posicao_player_cena4 = Vector2(_posicao_player_cena3.x , _posicao_player_cena4.y)
+					_posicao_player_cena4 = Vector2(_posicao_player_cena3.x, _posicao_player_cena4.y)
 				5:
 					_posicao_player_cena4 = Vector2(_posicao_player_cena4.x, _posicao_player_cena5.y+1)
 			return _posicao_player_cena4

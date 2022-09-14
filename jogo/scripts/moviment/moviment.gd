@@ -2,8 +2,6 @@ extends Node
 
 enum {SPRITE, ANIMATION_PLAYER, TWEEN, REMOTE_TRANSFORM}
 
-onready var type = 5 
-
 onready var _sprite_h_and_w_tile = 1 
 
 onready var tilemap = get_parent()
@@ -18,18 +16,15 @@ var nodes_player : Array
 var controlar
 
 var ultima_posi
-var penultima_posi
-
-var direcao
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	players = Global.get_players()
 	
 	for i in players.size():
-		var sla = players[i]
+		var path_scenes = players[i]
 		
-		var scenes = load(sla)
+		var scenes = load(path_scenes)
 		var instance = scenes.instance()
 		add_child(instance)
 	
@@ -74,7 +69,7 @@ func interagir():
 	if Input.is_action_just_pressed("key_e"):
 		var alvo = tilemap.world_to_map(players[controlar].position) + Global.get_direcao_player()
 		var node = tilemap.get_celula_player(alvo)
-		print(tilemap.get_cellv(alvo))
+
 		if node:
 			node.interacao()
 
@@ -88,7 +83,7 @@ func movimentacao(direcao):
 		
 		for i in controlar+1:
 			var cont = controlar - i 
-
+			
 			if cont != controlar:
 				direcao = (ultima_posi - players[cont].position) / 32
 				posicao_alvo = ultima_posi
@@ -127,7 +122,6 @@ func update_direcao_sprite(sprite, direcao):
 
 # função que move o player
 func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
-	penultima_posi = ultima_posi
 	ultima_posi = var_self.position
 	
 	# bloqueia a entrada de dados 
@@ -148,7 +142,7 @@ func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
 				string_direcao = "down"
 			Vector2(0,-1):
 				string_direcao = "up"
-	
+		
 		# roda a animação
 		animacao.play("walk_" + string_direcao)
 		
