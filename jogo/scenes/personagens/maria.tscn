@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scripts/npc/npc.gd" type="Script" id=1]
 [ext_resource path="res://assets/npcs/maria/sprites.png" type="Texture" id=2]
-[ext_resource path="res://data/dialogs/pt_BR/maria.tres" type="Resource" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.48
@@ -71,11 +69,6 @@ tracks/0/keys = {
 }
 
 [node name="maria" type="Node2D"]
-script = ExtResource( 1 )
-dividido = 1.3
-nome = "maria"
-path_images = "res://assets/dialog_box/personagens/maria/"
-interaction = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -83,11 +76,11 @@ offset = Vector2( 0, -9 )
 hframes = 12
 frame = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="animation_player" type="AnimationPlayer" parent="."]
 playback_speed = 1.3
 anims/walk_down = SubResource( 1 )
 anims/walk_left = SubResource( 2 )
 anims/walk_right = SubResource( 3 )
 anims/walk_up = SubResource( 4 )
 
-[node name="Tween" type="Tween" parent="."]
+[node name="tween" type="Tween" parent="."]

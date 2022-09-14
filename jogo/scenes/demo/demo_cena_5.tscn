@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/cenas/gerenciar_cenas.gd" type="Script" id=1]
 [ext_resource path="res://scenes/camera/camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/objects/arvore_seca.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/players/players.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/cenarios/cen5/folhagem.png" type="Texture" id=7]
 [ext_resource path="res://assets/cenarios/cen5/cena5.png" type="Texture" id=8]
-[ext_resource path="res://scenes/npcs/maria.tscn" type="PackedScene" id=9]
 
 [node name="demo_cena_5" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,16 +22,7 @@ centered = false
 [node name="tilemap" parent="." instance=ExtResource( 3 )]
 tile_data = PoolIntArray( -65532, 0, 0, -65526, 0, 0, 4, 0, 0, 10, 0, 0, 65539, 0, 0, 65540, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131083, 0, 0, 131084, 0, 0, 262143, 0, 0, 327679, 0, 0, 393215, 0, 0, 327681, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0 )
 
-[node name="followers" type="YSort" parent="tilemap"]
-
-[node name="maria" parent="tilemap/followers" instance=ExtResource( 9 )]
-position = Vector2( 208, 136 )
-
-[node name="player" parent="tilemap" instance=ExtResource( 5 )]
-position = Vector2( 224, 146 )
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="tilemap/player"]
-remote_path = NodePath("../../../camera")
+[node name="players" parent="tilemap" instance=ExtResource( 5 )]
 
 [node name="portal1" parent="tilemap" instance=ExtResource( 6 )]
 position = Vector2( 496, 80 )

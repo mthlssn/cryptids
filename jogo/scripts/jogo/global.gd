@@ -2,15 +2,14 @@ extends Node
 
 # vars
 
-var _posicao_player_cena1 = Vector2(6,6)
+var _posicao_player_cena1 = Vector2(6,5)
 var _posicao_player_cena2 = Vector2(7,23)
 var _posicao_player_cena3 = Vector2(0,4)
 var _posicao_player_cena4 = Vector2(2,19)
 var _posicao_player_cena5 = Vector2(14,3)
 var _posicao_player_cena6 = Vector2(7,19)
 
-var _direcao_player = Vector2(1,0)
-var _ultima_direcao_player = Vector2(1,0)
+var _direcao_player = Vector2(0,-1)
 
 var _ultima_posicao_player = Vector2()
 
@@ -19,13 +18,19 @@ var _cena_anterior = 1
 
 var _node_demo_cena
 
-var _followers : Array
-
-var _posicao_followers : Array
+var _players : Array = ["res://scenes/personagens/maria.tscn", "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn"]
 
 var _interagidos : Array = []
 
+var _mover = false
+
 # ------------- funcs ----------------
+
+func get_mover():
+	return _mover
+
+func set_mover(mover):
+	_mover = mover
 
 func get_interagidos():
 	return _interagidos
@@ -47,29 +52,11 @@ func get_direcao_player():
 func set_direcao_player(direcao):
 	_direcao_player = direcao
 
-func get_ultima_direcao_player():
-	return _ultima_direcao_player
+func set_players(players):
+	_players = players
 
-func set_ultima_direcao_player(ultima_direcao):
-	print(ultima_direcao)
-	print(_ultima_direcao_player)
-	print()
-	_ultima_direcao_player = ultima_direcao
-	print(ultima_direcao)
-	print(_ultima_direcao_player)
-	print()
-
-func set_posicao_followers(posicao_followers):
-	_posicao_followers = posicao_followers
-
-func get_posicao_followers():
-	return _posicao_followers
-
-func set_followers(followers):
-	_followers = followers
-
-func get_followers():
-	return _followers
+func get_players():
+	return _players
 
 func set_node_demo_cena(node):
 	_node_demo_cena = node
@@ -109,7 +96,7 @@ func get_posicao_player():
 		4:
 			match _cena_anterior:
 				3:
-					_posicao_player_cena4 = Vector2(_posicao_player_cena3.x , _posicao_player_cena4.y)
+					_posicao_player_cena4 = Vector2(_posicao_player_cena3.x, _posicao_player_cena4.y)
 				5:
 					_posicao_player_cena4 = Vector2(_posicao_player_cena4.x, _posicao_player_cena5.y+1)
 			return _posicao_player_cena4
