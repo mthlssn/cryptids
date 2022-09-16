@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome = [ "Pudim", "Maria", "Maria", "???", "Maria", "???", "Maria", "???", "Pudim", "Maria", "???", "Maria" ]
+msg_queue = [ "AU! AU!", "Pudim! Calma, vamos pra casa, papai vai ficar bravo!", "Ah! Oi! :)", "...", " Você também tá perdido?", "...", "Hm... você é bem quieto. Qual é seu nome?", "...", "snif snif...", "Já sei! Vou te chamar de ???! É um ótimo nome, não é?", "...", " Vamos, vou nos tirar dessa enrascada!" ]
+imagens = [ "res://assets/dialog_box/personagens/maria/normal.png" ]

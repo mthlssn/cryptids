@@ -7,7 +7,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 9
-extra_spacing_top = 1
+extra_spacing_top = 5
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -217,21 +217,30 @@ margin_top = 200.0
 margin_right = 472.0
 margin_bottom = 280.0
 texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 440, 80 )
+region_rect = Rect2( 0, 0, 480, 90 )
+patch_margin_top = 31
+patch_margin_right = 27
+patch_margin_bottom = 9
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="text" type="RichTextLabel" parent="dialog"]
-margin_left = 104.0
-margin_top = 24.0
-margin_right = 448.0
-margin_bottom = 64.0
+margin_left = 106.0
+margin_top = 18.0
+margin_right = 459.0
+margin_bottom = 74.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/normal_font = SubResource( 1 )
+bbcode_text = "Opa teste teste
+Vamos lá
+Tres Colunas"
+text = "Opa teste teste
+Vamos lá
+Tres Colunas"
 
 [node name="name" type="Label" parent="dialog"]
-margin_left = 16.0
+margin_left = 24.0
 margin_top = 3.0
 margin_right = 74.0
 margin_bottom = 22.0
@@ -240,13 +249,14 @@ align = 1
 valign = 1
 
 [node name="personagem" type="Sprite" parent="dialog"]
-position = Vector2( 45, 47 )
-scale = Vector2( 0.855263, 0.855263 )
+position = Vector2( 17, 24 )
+centered = false
 
 [node name="setinha" type="Node2D" parent="dialog"]
 position = Vector2( 440, 64 )
 
 [node name="sprite" type="Sprite" parent="dialog/setinha"]
+position = Vector2( -8, -8 )
 texture = ExtResource( 4 )
 
 [node name="animation_player" type="AnimationPlayer" parent="dialog/setinha"]

@@ -10,7 +10,12 @@ func _ready():
 	for node in get_children():
 		if node.name == "players":
 			for node_players in node.get_children():
-				var posicao_player = Global.get_posicao_player() - Global.get_direcao_player()
+				var direcao_player = Global.get_direcao_player()
+				var posicao_player
+				if direcao_player.x != 0:
+					posicao_player = Global.get_posicao_player() - direcao_player
+				elif direcao_player.y != 0:
+					posicao_player = Global.get_posicao_player() - direcao_player
 				
 				node_players.position = map_to_world(posicao_player)
 				
@@ -21,11 +26,13 @@ func _ready():
 			var width = node.get_sprite_width_tile()
 			var height = node.get_sprite_height_tile()
 			var posicao = node.position
+			var posicao_inicial = posicao
 			
 			for i in height:
 				for j in width:	
 					set_cellv(world_to_map(posicao), node.type)
 					posicao.x += 32
+				posicao.x = posicao_inicial.x
 				posicao.y += 32
 	
 	if Global.get_mover():
@@ -34,18 +41,22 @@ func _ready():
 
 func get_celula_player(alvo):
 	for node in get_children():
-
-		var width = node.get_sprite_width_tile()
-		var height = node.get_sprite_height_tile()
-		
-		var hei_and_wid_v = Vector2(0,0)
-		
-		for i in height:
-			for j in width:
-				if (world_to_map(node.position) + hei_and_wid_v) == alvo:
-					return node
-				hei_and_wid_v += Vector2(1,0)
-			hei_and_wid_v += Vector2(0,1)
+		if node.name != "players":
+			var width = node.get_sprite_width_tile()
+			var height = node.get_sprite_height_tile()
+			
+			var hei_and_wid_v = Vector2(0,0)
+			
+			for i in height:
+				for j in width:
+					if (world_to_map(node.position) + hei_and_wid_v) == alvo:
+						return node
+					hei_and_wid_v += Vector2(1,0)
+				hei_and_wid_v += Vector2(0,1)
+		else:
+			for node_players in node.get_children():
+				if world_to_map(node_players.position) == alvo:
+					return node_players
 
 func solicitar_movimento(player, direcao):
 	var celula_comeco = world_to_map(player.position)

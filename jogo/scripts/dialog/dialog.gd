@@ -24,23 +24,20 @@ var pausar = false
 
 var cont = 0
 
-var reacoes
-var path_image
+var imagens
+var nomes
 
 func _ready():
 	if msg_queue.size() == 0:
 		hide()
 
-func call_dialog_box(mensagem, personagem, nome, path_imagem, reacoes_npc):
+func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	node_pause = Global.get_node_demo_cena()
 	node_pause.get_tree().paused = true
 	
-	reacoes = reacoes_npc
-	
+	nomes = nomes_perso
 	msg_queue = mensagem
-	
-	reacoes = reacoes_npc
-	path_image = path_imagem
+	imagens = imagens_perso
 	
 	text.bbcode_text = ""
 	tecla = "ui_accept"
@@ -54,38 +51,36 @@ func call_dialog_box(mensagem, personagem, nome, path_imagem, reacoes_npc):
 	
 	if personagem:
 		dialog.texture = dialog_box_c_per
-		dialog.region_rect = Rect2(0, 0, 440, 80)
 		
-		text.margin_bottom = 64
-		text.margin_left = 104
-		text.margin_right = 448
-		text.margin_top = 24
-		
-		dialog.margin_top = 200
+		text.margin_bottom = 74
+		text.margin_left = 106
+		text.margin_right = 459
+		text.margin_top = 18
 	else:
 		dialog.texture = dialog_box_s_per
-		dialog.region_rect = Rect2(0, 0, 439, 71) 
 		
-		text.margin_bottom = 58
-		text.margin_left = 16
-		text.margin_right = 448
-		text.margin_top = 16
-		
-		dialog.margin_top = 208
+		text.margin_bottom = 74
+		text.margin_left = 22
+		text.margin_right = 459
+		text.margin_top = 18
 	
-	if path_image != null:
+	if imagens_perso != null:
 		mudar_imagem()
 		
-	if nome != null:
-		label_name.text = nome
+	if nomes != null:
+		mudar_nome()
 		
 	if not visible:
 		animacao.play("open")
 
 func _input(event):
 	if event.is_action_pressed(tecla):
-		if path_image != null:
+		if imagens != null:
 			mudar_imagem()
+			
+		if nomes != null:
+			mudar_nome()
+			
 		show_message()
 	
 	if event.is_action_pressed("esc") && visible == true:
@@ -129,16 +124,21 @@ func show_message() -> void:
 	timer.start()
 
 func mudar_imagem():
-	if reacoes.size() > cont:
-		var imagem = path_image + reacoes[cont] + ".png"
-		personagem_foto.texture = load(imagem)
+	if imagens.size() > cont:
+		personagem_foto.texture = load(imagens[cont])
+
+func mudar_nome():
+	if nomes.size() > cont:
+		label_name.text = nomes[cont]
 
 func _on_timer_timeout():
 	if text.visible_characters == text.bbcode_text.length():
+		cont += 1
+		
 		timer.stop()
+		
 		setinha.show()
 		animacao_setinha.play("setinha")
-		cont += 1
 	text.visible_characters += 1
 
 func _on_timer_2_timeout():
