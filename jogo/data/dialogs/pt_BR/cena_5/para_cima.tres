@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome = [ "Maria", "Maria", "Pudim", "Maria", "Pudim" ]
+msg_queue = [ "Calma, pudim! Vem, deixa ela quieta ai.", "Aqui é uma surpresa pra depois.", "...", "Não Pudim! Já tá ficando de noite, amanhã a gente volta.", "au!" ]
+imagens = [ "res://assets/dialog_box/personagens/maria/triste.png" ]

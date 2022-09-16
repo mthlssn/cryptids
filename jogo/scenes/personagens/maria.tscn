@@ -72,8 +72,6 @@ tracks/0/keys = {
 
 [node name="maria" type="Node2D"]
 script = ExtResource( 1 )
-nome = "Maria"
-path_folder_images = "res://assets/dialog_box/personagens/maria/"
 interaction = [ ExtResource( 3 ) ]
 
 [node name="sprite" type="Sprite" parent="."]

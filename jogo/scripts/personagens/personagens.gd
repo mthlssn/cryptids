@@ -1,9 +1,6 @@
 extends Node2D
 
-export var nome : String
-export(String, FILE) var path_folder_images
-
-export(Array, Resource) var interaction = []
+export(Array, Resource) var interaction : Array
 
 func interacao():
 	if interaction:
