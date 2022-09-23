@@ -18,7 +18,7 @@ var _cena_anterior = 1
 
 var _node_demo_cena
 
-var _players : Array = ["res://scenes/personagens/maria.tscn", "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn"]
+var _players : Array = ["res://scenes/personagens/maria.tscn","res://scenes/personagens/player.tscn"]
 
 var _interagidos : Array = []
 

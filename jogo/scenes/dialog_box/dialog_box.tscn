@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/dialog/dialog.gd" type="Script" id=1]
 [ext_resource path="res://assets/dialog_box/dialog_box_personagem.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/PixeloidSans-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/dialog_box/setinha.png" type="Texture" id=4]
+[ext_resource path="res://assets/dialog_box/personagens/player/normal.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 9
@@ -40,6 +41,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.5, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "setinha"
@@ -47,19 +72,19 @@ length = 0.26
 loop = true
 step = 0.02
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12, 0.26 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.26 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 440, 64 ), Vector2( 443, 64 ), Vector2( 446, 64 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:modulate")
+tracks/1/path = NodePath("sprite:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -68,7 +93,61 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.26 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
+"values": [ Vector2( -3.5, 0 ), Vector2( 3.5, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "xis"
+length = 0.26
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.26 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.85, 0.85 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -121,10 +200,107 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("dialog/personagem:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("dialog/personagem:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 18, 26 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("dialog/name:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 24, 5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("dialog/name:rect_size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 52, 17 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("dialog/name:rect_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("dialog/text:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 106, 19 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("dialog/text:rect_scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("dialog/set_ou_xis:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 454, 65 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "close"
 length = 0.2
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("dialog:rect_size")
 tracks/0/interp = 1
@@ -135,7 +311,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 464, 80 ), Vector2( 40, 20 ) ]
+"values": [ Vector2( 480, 90 ), Vector2( 40, 20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("dialog:rect_position")
@@ -147,7 +323,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 8, 200 ), Vector2( 220, 290 ) ]
+"values": [ Vector2( 0, 198 ), Vector2( 220, 290 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -163,10 +339,83 @@ tracks/2/keys = {
 "method": "hide"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("dialog/personagem:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.09, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5887, 0.6671 ), Vector2( 0.3145, 0.5185 ), Vector2( 0.086, 0.67 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("dialog/personagem:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 18, 26 ), Vector2( 1.45, 2.1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("dialog/text:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.54, 0.65 ), Vector2( 0.311, 0.5 ), Vector2( 0.081, 0.6 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("dialog/name:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 24, 5 ), Vector2( 2, 0.35 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("dialog/name:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.081, 0.09 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("dialog/set_ou_xis:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 454, 65 ), Vector2( 31, 30 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "open"
 length = 0.2
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("dialog:rect_size")
 tracks/0/interp = 1
@@ -177,7 +426,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 40, 20 ), Vector2( 464, 80 ) ]
+"values": [ Vector2( 40, 20 ), Vector2( 480, 90 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("dialog:rect_position")
@@ -189,7 +438,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 220, 290 ), Vector2( 8, 200 ) ]
+"values": [ Vector2( 220, 290 ), Vector2( 0, 198 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -204,6 +453,78 @@ tracks/2/keys = {
 "args": [  ],
 "method": "show"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("dialog/personagem:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.45, 2.1 ), Vector2( 18, 26 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("dialog/personagem:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.06, 0.13, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.086, 0.668 ), Vector2( 0.3602, 0.5066 ), Vector2( 0.6801, 0.7433 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("dialog/name:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 0.35 ), Vector2( 24, 5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("dialog/name:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.081, 0.09 ), Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("dialog/text:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.07, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.08, 0.6 ), Vector2( 0.402, 0.5 ), Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("dialog/set_ou_xis:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 31, 30 ), Vector2( 454, 65 ) ]
 }
 
 [node name="dialog_box" type="CanvasLayer"]
@@ -227,7 +548,7 @@ __meta__ = {
 
 [node name="text" type="RichTextLabel" parent="dialog"]
 margin_left = 106.0
-margin_top = 18.0
+margin_top = 19.0
 margin_right = 459.0
 margin_bottom = 74.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
@@ -241,29 +562,35 @@ Tres Colunas"
 
 [node name="name" type="Label" parent="dialog"]
 margin_left = 24.0
-margin_top = 3.0
-margin_right = 74.0
+margin_top = 5.0
+margin_right = 76.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 4 )
+text = "opa"
 align = 1
 valign = 1
 
 [node name="personagem" type="Sprite" parent="dialog"]
-position = Vector2( 17, 24 )
+position = Vector2( 18, 26 )
+texture = ExtResource( 5 )
 centered = false
 
-[node name="setinha" type="Node2D" parent="dialog"]
-position = Vector2( 440, 64 )
+[node name="set_ou_xis" type="Node2D" parent="dialog"]
+position = Vector2( 454, 65 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="sprite" type="Sprite" parent="dialog/setinha"]
-position = Vector2( -8, -8 )
+[node name="sprite" type="Sprite" parent="dialog/set_ou_xis"]
 texture = ExtResource( 4 )
+offset = Vector2( -6.5, 0 )
 
-[node name="animation_player" type="AnimationPlayer" parent="dialog/setinha"]
-autoplay = "setinha"
+[node name="animation_player" type="AnimationPlayer" parent="dialog/set_ou_xis"]
+autoplay = "xis"
 playback_speed = 0.4
 anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
+anims/xis = SubResource( 8 )
 
 [node name="timer" type="Timer" parent="dialog"]
 wait_time = 0.05

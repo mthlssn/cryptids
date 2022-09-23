@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 nome = [ "Maria", "NADA" ]
 msg_queue = [ "OIIIIIIIIIIIIIIIIIII", "Salve", "Como vc tá?", "Olha eu estou Feliz", "Heheheh :)" ]
-imagens = [ "res://assets/dialog_box/personagens/maria/normal.png", "res://assets/dialog_box/personagens/maria/triste.png" ]
+imagens = [ "res://assets/dialog_box/personagens/player/normal.png" ]

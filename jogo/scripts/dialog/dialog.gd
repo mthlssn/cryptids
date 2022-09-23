@@ -4,14 +4,18 @@ onready var dialog := $dialog
 onready var text := $dialog/text
 onready var timer := $dialog/timer
 onready var timer2 := $dialog/timer_2
-onready var setinha := $dialog/setinha
-onready var animacao_setinha := $dialog/setinha/animation_player
+onready var set_ou_xis := $dialog/set_ou_xis
+onready var sprite_set_ou_xis := $dialog/set_ou_xis/sprite
+onready var animacao_set_ou_xis := $dialog/set_ou_xis/animation_player
 onready var label_name := $dialog/name
 onready var personagem_foto := $dialog/personagem
 onready var animacao := $animation_player
 
 onready var dialog_box_c_per = preload("res://assets/dialog_box/dialog_box_personagem.png")
 onready var dialog_box_s_per = preload("res://assets/dialog_box/dialog_box_sem_personagem.png")
+
+onready var sprite_setinha = preload("res://assets/dialog_box/setinha.png")
+onready var sprite_xis = preload("res://assets/dialog_box/xis.png")
 
 var msg_queue : Array = []
 var tecla = "nada"
@@ -44,7 +48,8 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	label_name.text = ""
 	personagem_foto.texture = null
 	
-	setinha.hide()
+	set_ou_xis.hide()
+	sprite_set_ou_xis.texture = sprite_setinha
 	
 	max_length_text = msg_queue.size()
 	posicao_text = -1
@@ -55,14 +60,14 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 		text.margin_bottom = 74
 		text.margin_left = 106
 		text.margin_right = 459
-		text.margin_top = 18
+		text.margin_top = 19
 	else:
 		dialog.texture = dialog_box_s_per
 		
 		text.margin_bottom = 74
 		text.margin_left = 22
 		text.margin_right = 459
-		text.margin_top = 18
+		text.margin_top = 19
 	
 	if imagens_perso != null:
 		mudar_imagem()
@@ -90,8 +95,8 @@ func _input(event):
 		show_message()
 
 func show_message() -> void:
-	setinha.hide()
-	animacao_setinha.stop()
+	set_ou_xis.hide()
+	animacao_set_ou_xis.stop()
 	
 	if not timer.is_stopped():
 		text.visible_characters = text.bbcode_text.length()
@@ -137,8 +142,13 @@ func _on_timer_timeout():
 		
 		timer.stop()
 		
-		setinha.show()
-		animacao_setinha.play("setinha")
+		if cont == msg_queue.size():
+			sprite_set_ou_xis.texture = sprite_xis
+			animacao_set_ou_xis.play("xis")
+		else:
+			animacao_set_ou_xis.play("setinha")
+			
+		set_ou_xis.show()
 	text.visible_characters += 1
 
 func _on_timer_2_timeout():
