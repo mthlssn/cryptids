@@ -26,6 +26,10 @@ var _mover = false
 
 # ------------- funcs ----------------
 
+func _ready():
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
+
 func get_mover():
 	return _mover
 

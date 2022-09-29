@@ -11,7 +11,7 @@ func get_animando():
 func set_animando_false():
 	_animando = false
 
-func fade_into(scene):
+func fade(scene):
 	_scene_to_go = scene
 	_animation.play("fade")
 	_animando = true
