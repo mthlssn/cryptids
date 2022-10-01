@@ -25,11 +25,15 @@ tile_data = PoolIntArray( -65531, 0, 0, -65527, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0,
 
 [node name="players" parent="tilemap" instance=ExtResource( 3 )]
 
-[node name="portal1" parent="tilemap" instance=ExtResource( 7 )]
+[node name="area" type="Node2D" parent="tilemap"]
+visible = false
+
+[node name="portal1" parent="tilemap/area" instance=ExtResource( 7 )]
 position = Vector2( 208, -16 )
 _sprite_width_tile = 3
+function = "verificar_sair_tela"
 
-[node name="cor" parent="tilemap/portal1" index="0"]
+[node name="cor" parent="tilemap/area/portal1" index="0"]
 margin_right = 80.0
 
 [node name="arvore_seca" parent="tilemap" instance=ExtResource( 9 )]
@@ -51,5 +55,5 @@ position = Vector2( 480, 288 )
 texture = ExtResource( 2 )
 centered = false
 
-[editable path="tilemap/portal1"]
+[editable path="tilemap/area/portal1"]
 [editable path="camera"]

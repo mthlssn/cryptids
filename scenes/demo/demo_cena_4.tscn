@@ -23,19 +23,24 @@ tile_data = PoolIntArray( 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65
 
 [node name="players" parent="tilemap" instance=ExtResource( 5 )]
 
-[node name="portal1" parent="tilemap" instance=ExtResource( 6 )]
-position = Vector2( 48, 656 )
-_sprite_width_tile = 3
+[node name="area" type="Node2D" parent="tilemap"]
+visible = false
 
-[node name="cor" parent="tilemap/portal1" index="0"]
-margin_right = 80.0
-
-[node name="portal2" parent="tilemap" instance=ExtResource( 6 )]
+[node name="portal2" parent="tilemap/area" instance=ExtResource( 6 )]
 position = Vector2( -16, 112 )
 _sprite_height_tile = 3
+function = "verificar_sair_tela"
 
-[node name="cor" parent="tilemap/portal2" index="0"]
+[node name="cor" parent="tilemap/area/portal2" index="0"]
 margin_bottom = 80.0
+
+[node name="portal1" parent="tilemap/area" instance=ExtResource( 6 )]
+position = Vector2( 48, 656 )
+_sprite_width_tile = 3
+function = "verificar_sair_tela"
+
+[node name="cor" parent="tilemap/area/portal1" index="0"]
+margin_right = 80.0
 
 [node name="camera" parent="." instance=ExtResource( 2 )]
 
@@ -46,6 +51,6 @@ position = Vector2( 480, 640 )
 texture = ExtResource( 4 )
 centered = false
 
-[editable path="tilemap/portal1"]
-[editable path="tilemap/portal2"]
+[editable path="tilemap/area/portal2"]
+[editable path="tilemap/area/portal1"]
 [editable path="camera"]

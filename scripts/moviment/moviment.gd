@@ -68,7 +68,8 @@ func _process(_delta):
 func interagir():
 	if Input.is_action_just_pressed("key_e"):
 		var alvo = tilemap.world_to_map(players[controlar].position) + Global.get_direcao_player()
-		var node = tilemap.get_celula_player(alvo)
+		var node = tilemap.get_node_celula(alvo, false)
+		print(node)
 		if node:
 			node.interacao()
 

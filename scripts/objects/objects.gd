@@ -1,12 +1,16 @@
 extends Node2D
 
-enum CELL_TYPES{EMPTY = -1,  OBSTACLE, PORTAL, PLAYER, OBJECT, NPC, FOLLOW}
-export(CELL_TYPES) var type = CELL_TYPES.PORTAL
+enum CELL_TYPES{EMPTY = -1,  OBSTACLE, AREA, PLAYER, OBJECT, NPC, FOLLOW}
+export(CELL_TYPES) var type = CELL_TYPES.AREA
 
 export var _sprite_width_tile = 1 
 export var _sprite_height_tile = 1 
 
 export(Resource) var interaction
+
+export var function : String = "" 
+
+export var apagar = false
 
 var interagido = false
 
