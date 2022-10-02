@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
+nome_dr = ""
 nome = [ "Pudim", "Maria", "Maria", "???", "Maria", "???", "Maria", "???", "Pudim", "Maria", "???", "Maria" ]
 msg_queue = [ "AU! AU!", "Pudim! Calma, vamos pra casa, papai vai ficar bravo!", "Ah! Oi! :)", "...", "Você também tá perdido?", "...", "Hm... você é bem quieto. Qual é seu nome?", "...", "snif snif...", "Já sei! Vou te chamar de ???! É um ótimo nome, não é?", "...", "Vamos, vou nos tirar dessa enrascada!" ]
 imagens = [ "res://assets/dialog_box/personagens/bixo/normal.png", "res://assets/dialog_box/personagens/maria/triste.png", "res://assets/dialog_box/personagens/maria/feliz.png", "res://assets/dialog_box/personagens/player/normal.png", "res://assets/dialog_box/personagens/maria/normal.png", "res://assets/dialog_box/personagens/player/normal.png", "res://assets/dialog_box/personagens/maria/pensante.png", "res://assets/dialog_box/personagens/player/normal.png", "res://assets/dialog_box/personagens/bixo/normal.png", "res://assets/dialog_box/personagens/maria/normal.png", "res://assets/dialog_box/personagens/player/normal.png", "res://assets/dialog_box/personagens/maria/feliz.png" ]

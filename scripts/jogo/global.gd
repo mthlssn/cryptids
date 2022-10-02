@@ -39,11 +39,10 @@ func get_nodes_apagados():
 
 func set_nodes_apagados(cena, nodes_apagados):
 	var size = _nodes_apagados[cena - 1].size()
-	_nodes_apagados[cena - 1].resize(size+1)
-	_nodes_apagados[cena - 1][size] = nodes_apagados
 	
-	_nodes_apagados[cena - 1] = nodes_apagados
-	print(_nodes_apagados)
+	_nodes_apagados[cena - 1].resize(size+1)
+		
+	_nodes_apagados[cena - 1][size-1] = nodes_apagados
 
 func inicializar_nodes_apagados():
 	for i in _nodes_apagados.size():

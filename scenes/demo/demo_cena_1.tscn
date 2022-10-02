@@ -30,7 +30,6 @@ visible = false
 
 [node name="portal1" parent="tilemap/area" instance=ExtResource( 7 )]
 position = Vector2( 208, -16 )
-_sprite_width_tile = 3
 function = "verificar_sair_tela"
 
 [node name="cor" parent="tilemap/area/portal1" index="0"]

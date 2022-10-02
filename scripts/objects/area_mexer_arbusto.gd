@@ -1,4 +1,4 @@
 extends "objects.gd"
 
-func function():
+func colisao():
 	print("opa")

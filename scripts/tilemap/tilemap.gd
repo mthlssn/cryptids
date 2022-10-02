@@ -8,15 +8,8 @@ func _ready():
 	Global.set_cena_atual(get_parent().get_cena())
 	
 	var global_nodes_apagados = Global.get_nodes_apagados()
-	var index_vetor = get_parent().get_cena() - 1
+	var nodes_apagados = global_nodes_apagados[get_parent().get_cena() - 1]
 	
-	print(global_nodes_apagados)
-	
-	for nodes in global_nodes_apagados[index_vetor]:
-		print(nodes)
-		if nodes != " ":
-			print(get_node(nodes))
-
 	for node in get_children():
 		if node.name == "players":
 			for node_players in node.get_children():
@@ -34,18 +27,25 @@ func _ready():
 				set_cellv(world_to_map(node_players.position), PLAYERS)
 		elif node.name == "area":
 			for node_area in node.get_children():
-				var width = node_area.get_sprite_width_tile()
-				var height = node_area.get_sprite_height_tile()
-				var posicao = node_area.position
-				var posicao_inicial = posicao
+				var setar_celula = true;
 				
-				for i in height:
-					for j in width:
-						set_cellv(world_to_map(posicao), node_area.type)
-						posicao.x += 32
-					posicao.x = posicao_inicial.x
-					posicao.y += 32
-
+				for nome_node_apagado in nodes_apagados:
+					if nome_node_apagado == node_area.name:
+						setar_celula = false
+						node_area.queue_free()
+				
+				if setar_celula:
+					var width = node_area.get_sprite_width_tile()
+					var height = node_area.get_sprite_height_tile()
+					var posicao = node_area.position
+					var posicao_inicial = posicao
+					
+					for i in height:
+						for j in width:
+							set_cellv(world_to_map(posicao), node_area.type)
+							posicao.x += 32
+						posicao.x = posicao_inicial.x
+						posicao.y += 32
 		else:
 			var width = node.get_sprite_width_tile()
 			var height = node.get_sprite_height_tile()
@@ -111,7 +111,7 @@ func limpar_area(node):
 		posicao.x = posicao_inicial.x
 		posicao.y += 32
 	
-	Global.set_nodes_apagados(get_parent().get_cena(), get_path_to(node))
+	Global.set_nodes_apagados(get_parent().get_cena(), node.name)
 	
 	node.queue_free()
 
@@ -134,7 +134,7 @@ func solicitar_movimento(player, direcao):
 			var apagar = node_area.apagar
 			
 			if funcao_node == "":
-				node_area.function()
+				node_area.colisao()
 			
 			if apagar:
 				limpar_area(node_area)
@@ -143,10 +143,6 @@ func solicitar_movimento(player, direcao):
 				"verificar_sair_tela":
 					verificar_sair_tela(direcao)
 					return map_to_world(proxima_celula) + (cell_size / 2)
-				"mexeu_arbusto_nao":
-					pass
-					#var interaction : Resource = load("res://data/dialogs/pt_BR/cena_3/saida_de_baixo.tres")
-					# DialogBox.call_dialog_box(true, interaction.msg_queue, interaction.nome, interaction.imagens)
 
 func verificar_sair_tela(direcao):
 	var node_pai = get_parent()
