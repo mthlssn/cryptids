@@ -7,7 +7,7 @@ onready var _sprite_h_and_w_tile = 1
 onready var tilemap = get_parent()
 
 # ideal = 1.3
-export var velocidade = 1.3
+export var velocidade = 5
 
 var players : Array
 
@@ -69,7 +69,7 @@ func interagir():
 	if Input.is_action_just_pressed("key_e"):
 		var alvo = tilemap.world_to_map(players[controlar].position) + Global.get_direcao_player()
 		var node = tilemap.get_node_celula(alvo, false)
-		print(node)
+
 		if node:
 			node.interacao()
 

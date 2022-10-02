@@ -7,6 +7,16 @@ onready var players := $players
 func _ready():
 	Global.set_cena_atual(get_parent().get_cena())
 	
+	var global_nodes_apagados = Global.get_nodes_apagados()
+	var index_vetor = get_parent().get_cena() - 1
+	
+	print(global_nodes_apagados)
+	
+	for nodes in global_nodes_apagados[index_vetor]:
+		print(nodes)
+		if nodes != " ":
+			print(get_node(nodes))
+
 	for node in get_children():
 		if node.name == "players":
 			for node_players in node.get_children():
@@ -100,7 +110,9 @@ func limpar_area(node):
 			posicao.x += 32
 		posicao.x = posicao_inicial.x
 		posicao.y += 32
-		
+	
+	Global.set_nodes_apagados(get_parent().get_cena(), get_path_to(node))
+	
 	node.queue_free()
 
 func solicitar_movimento(player, direcao):
@@ -110,7 +122,7 @@ func solicitar_movimento(player, direcao):
 	Global.set_posicao_player(celula_comeco)
 
 	var tipo_celula_alvo = get_cellv(proxima_celula)
-	print(tipo_celula_alvo)
+
 	match tipo_celula_alvo:
 		EMPTY:
 			return map_to_world(proxima_celula) + (cell_size / 2)
@@ -121,6 +133,9 @@ func solicitar_movimento(player, direcao):
 			var funcao_node = node_area.function
 			var apagar = node_area.apagar
 			
+			if funcao_node == "":
+				node_area.function()
+			
 			if apagar:
 				limpar_area(node_area)
 			
@@ -128,11 +143,10 @@ func solicitar_movimento(player, direcao):
 				"verificar_sair_tela":
 					verificar_sair_tela(direcao)
 					return map_to_world(proxima_celula) + (cell_size / 2)
-				"mexer_arbusto":
-					print("meexe ai arbusto")
 				"mexeu_arbusto_nao":
-					var interaction : Resource = load("res://data/dialogs/pt_BR/cena_3/saida_de_baixo.tres")
-					DialogBox.call_dialog_box(true, interaction.msg_queue, interaction.nome, interaction.imagens)
+					pass
+					#var interaction : Resource = load("res://data/dialogs/pt_BR/cena_3/saida_de_baixo.tres")
+					# DialogBox.call_dialog_box(true, interaction.msg_queue, interaction.nome, interaction.imagens)
 
 func verificar_sair_tela(direcao):
 	var node_pai = get_parent()
