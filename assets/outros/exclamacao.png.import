@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/feliz.png-f5a376a7829f767f9b4becb6ae435ea2.stex"
+path="res://.import/exclamacao.png-4e10046f2f3d7f95e82f74abcf2896fe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dialog_box/personagens/maria/feliz.png"
-dest_files=[ "res://.import/feliz.png-f5a376a7829f767f9b4becb6ae435ea2.stex" ]
+source_file="res://assets/outros/exclamacao.png"
+dest_files=[ "res://.import/exclamacao.png-4e10046f2f3d7f95e82f74abcf2896fe.stex" ]
 
 [params]
 

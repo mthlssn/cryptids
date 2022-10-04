@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-nome = "arbusto_pedra"
+nome_dr = "arbusto_pedra"
 msg_queue = [ "A fundação da vida verde.", "Uma protuberância das profundezas.", "Pedras grandes." ]
 msg_queue1 = [ "Pedras grandes" ]

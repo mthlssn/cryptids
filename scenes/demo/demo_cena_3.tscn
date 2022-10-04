@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/cenas/gerenciar_cenas.gd" type="Script" id=1]
 [ext_resource path="res://scenes/camera/camera.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/cenarios/cen3/cena3.png" type="Texture" id=7]
 [ext_resource path="res://scenes/objects/lenha.tscn" type="PackedScene" id=8]
+[ext_resource path="res://data/dialogs/pt_BR/cena_3/saida_de_baixo.tres" type="Resource" id=9]
+[ext_resource path="res://scripts/objects/chamar_dialogo.gd" type="Script" id=10]
 
 [node name="demo_cena_3" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,18 +26,30 @@ tile_data = PoolIntArray( -65536, 0, 0, -65532, 0, 0, 0, 0, 0, 4, 0, 0, 65536, 0
 
 [node name="players" parent="tilemap" instance=ExtResource( 5 )]
 
-[node name="portal1" parent="tilemap" instance=ExtResource( 6 )]
-position = Vector2( -16, 112 )
-_sprite_height_tile = 2
+[node name="area" type="Node2D" parent="tilemap"]
+visible = false
 
-[node name="cor" parent="tilemap/portal1" index="0"]
+[node name="portal1" parent="tilemap/area" instance=ExtResource( 6 )]
+position = Vector2( -16, 112 )
+function = "verificar_sair_tela"
+
+[node name="cor" parent="tilemap/area/portal1" index="0"]
 margin_bottom = 48.0
 
-[node name="portal2" parent="tilemap" instance=ExtResource( 6 )]
+[node name="portal2" parent="tilemap/area" instance=ExtResource( 6 )]
 position = Vector2( 48, -16 )
-_sprite_width_tile = 3
+function = "verificar_sair_tela"
 
-[node name="cor" parent="tilemap/portal2" index="0"]
+[node name="cor" parent="tilemap/area/portal2" index="0"]
+margin_right = 80.0
+
+[node name="chamar_dialogo" parent="tilemap/area" instance=ExtResource( 6 )]
+position = Vector2( 48, 496 )
+script = ExtResource( 10 )
+dialogo_resource = ExtResource( 9 )
+personagem = true
+
+[node name="cor" parent="tilemap/area/chamar_dialogo" index="0"]
 margin_right = 80.0
 
 [node name="lenha" parent="tilemap" instance=ExtResource( 8 )]
@@ -53,6 +67,7 @@ position = Vector2( 640, 480 )
 texture = ExtResource( 3 )
 centered = false
 
-[editable path="tilemap/portal1"]
-[editable path="tilemap/portal2"]
+[editable path="tilemap/area/portal1"]
+[editable path="tilemap/area/portal2"]
+[editable path="tilemap/area/chamar_dialogo"]
 [editable path="camera"]

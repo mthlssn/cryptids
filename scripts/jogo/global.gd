@@ -18,17 +18,35 @@ var _cena_anterior = 1
 
 var _node_demo_cena
 
-var _players : Array = ["res://scenes/personagens/maria.tscn","res://scenes/personagens/player.tscn"]
+var _players : Array = ["res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn"]
 
 var _interagidos : Array = []
 
 var _mover = false
 
+var _nodes_apagados : Array = []
+
 # ------------- funcs ----------------
 
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	_nodes_apagados.resize(6)
+	inicializar_nodes_apagados()
 	pass
+
+func get_nodes_apagados():
+	return _nodes_apagados
+
+func set_nodes_apagados(cena, nodes_apagados):
+	var size = _nodes_apagados[cena - 1].size()
+	
+	_nodes_apagados[cena - 1].resize(size+1)
+		
+	_nodes_apagados[cena - 1][size-1] = nodes_apagados
+
+func inicializar_nodes_apagados():
+	for i in _nodes_apagados.size():
+		_nodes_apagados[i] = [" "]
 
 func get_mover():
 	return _mover
