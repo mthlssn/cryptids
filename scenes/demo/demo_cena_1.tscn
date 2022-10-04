@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cenarios/cen1/folhagem.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/cenas/gerenciar_cenas.gd" type="Script" id=5]
 [ext_resource path="res://assets/cenarios/cen1/cena1.png" type="Texture" id=6]
 [ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/objects/chamar_exclamacao.gd" type="Script" id=8]
 [ext_resource path="res://scenes/objects/arvore_seca.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/objects/arbusto_grande.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/objects/arbusto_pedra.tscn" type="PackedScene" id=11]
@@ -35,6 +36,11 @@ function = "verificar_sair_tela"
 [node name="cor" parent="tilemap/area/portal1" index="0"]
 margin_right = 80.0
 
+[node name="chamar_exclamacao" parent="tilemap/area" instance=ExtResource( 7 )]
+position = Vector2( 400, 48 )
+script = ExtResource( 8 )
+apagar = true
+
 [node name="arvore_seca" parent="tilemap" instance=ExtResource( 9 )]
 position = Vector2( 80, 144 )
 
@@ -55,4 +61,5 @@ texture = ExtResource( 2 )
 centered = false
 
 [editable path="tilemap/area/portal1"]
+[editable path="tilemap/area/chamar_exclamacao"]
 [editable path="camera"]

@@ -7,7 +7,7 @@ onready var _sprite_h_and_w_tile = 1
 onready var tilemap = get_parent()
 
 # ideal = 1.3
-export var velocidade = 5
+export var velocidade = 1.3
 
 var players : Array
 
