@@ -5,10 +5,9 @@ enum {EMPTY = -1,  OBSTACLE, AREA, PLAYERS, OBJECT}
 onready var players := $players
 
 func _ready():
-	Global.set_cena_atual(get_parent().get_cena())
+	#Global.set_cena_atual(get_parent().get_cena())
 	
-	var global_nodes_apagados = Global.get_nodes_apagados()
-	var nodes_apagados = global_nodes_apagados[get_parent().get_cena() - 1]
+	var nodes_apagados = Global.get_nodes_apagados()
 	
 	for node in get_children():
 		if node.name == "players":
@@ -111,7 +110,7 @@ func limpar_area(node):
 		posicao.x = posicao_inicial.x
 		posicao.y += 32
 	
-	Global.set_nodes_apagados(get_parent().get_cena(), node.name)
+	Global.set_nodes_apagados(node.name)
 	
 	node.queue_free()
 

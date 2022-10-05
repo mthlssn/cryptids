@@ -111,7 +111,7 @@ func limpar_area(node):
 		posicao.x = posicao_inicial.x
 		posicao.y += 32
 	
-	Global.set_nodes_apagados(get_parent().get_cena(), node.name)
+	Global.set_nodes_apagados(node.name)
 	
 	node.queue_free()
 

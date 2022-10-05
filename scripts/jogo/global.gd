@@ -30,23 +30,17 @@ var _nodes_apagados : Array = []
 
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	_nodes_apagados.resize(6)
-	inicializar_nodes_apagados()
 	pass
 
 func get_nodes_apagados():
 	return _nodes_apagados
 
-func set_nodes_apagados(cena, nodes_apagados):
-	var size = _nodes_apagados[cena - 1].size()
+func set_nodes_apagados(nodes_apagados):
+	var size = _nodes_apagados.size()
 	
-	_nodes_apagados[cena - 1].resize(size+1)
+	_nodes_apagados.resize(size+1)
 		
-	_nodes_apagados[cena - 1][size-1] = nodes_apagados
-
-func inicializar_nodes_apagados():
-	for i in _nodes_apagados.size():
-		_nodes_apagados[i] = [" "]
+	_nodes_apagados[size-1] = nodes_apagados
 
 func get_mover():
 	return _mover

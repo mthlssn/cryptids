@@ -32,14 +32,16 @@ func _ready():
 	
 	controlar = players.size() - 1
 	
+	nodes_player = get_children()
+	
 	var remote_transform = RemoteTransform2D.new()
 	players[controlar].add_child(remote_transform)
 	
-	var opa = get_parent().get_parent().get_children()
+	var nodes_filhos_demo = get_parent().get_parent().get_children()
 	
-	var camera = opa[2].get_path()
-		
-	nodes_player = get_children()
+	var nodes_cameras = nodes_filhos_demo[2].get_children()
+	
+	var camera = nodes_cameras[0].get_path()
 	
 	for i in players.size():
 		var temp : Array = players[i].get_children()
@@ -48,6 +50,7 @@ func _ready():
 		update_direcao_sprite(nodes_player[i][SPRITE], Global.get_direcao_player())
 	
 	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera)
+	print(nodes_player[controlar][REMOTE_TRANSFORM].get_remo
 
 func _process(_delta):
 	var direcao
@@ -161,7 +164,7 @@ func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
 		
 	# desbloqueia a entrada de dados
 	set_process(true)
-	
+
 # função que retorna o tamanho da sprit do player
 func get_sprite_width_tile():
 	return _sprite_h_and_w_tile
