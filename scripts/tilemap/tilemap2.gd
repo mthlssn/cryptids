@@ -9,15 +9,19 @@ func _ready():
 	
 	var nodes_apagados = Global.get_nodes_apagados()
 	
+	var posicao_global = Vector2(7,-58) #Global.get_posicao_player()
+	
 	for node in get_children():
+		print(node)
 		if node.name == "players":
 			for node_players in node.get_children():
+				print(node_players)
 				var direcao_player = Global.get_direcao_player()
 				var posicao_player
 				if direcao_player.x != 0:
-					posicao_player = Global.get_posicao_player() - direcao_player
+					posicao_player = posicao_global - direcao_player
 				elif direcao_player.y != 0:
-					posicao_player = Global.get_posicao_player() - direcao_player
+					posicao_player = posicao_global - direcao_player
 				
 				node_players.position = map_to_world(posicao_player)
 				

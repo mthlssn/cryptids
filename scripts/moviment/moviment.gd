@@ -50,8 +50,8 @@ func _ready():
 		update_direcao_sprite(nodes_player[i][SPRITE], Global.get_direcao_player())
 	
 	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera)
-	print(nodes_player[controlar][REMOTE_TRANSFORM].get_remo
-
+	print(nodes_player[controlar][REMOTE_TRANSFORM].get_remote_node())
+	
 func _process(_delta):
 	var direcao
 	if not Transition.get_animando():
@@ -164,6 +164,7 @@ func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
 		
 	# desbloqueia a entrada de dados
 	set_process(true)
+	print(self, " moveu")
 
 # função que retorna o tamanho da sprit do player
 func get_sprite_width_tile():

@@ -22,14 +22,14 @@
 
 [node name="cenarios" type="Node2D" parent="."]
 
-[node name="cenario1" type="Sprite" parent="cenarios"]
-position = Vector2( 0, -288 )
-texture = ExtResource( 2 )
-centered = false
-
 [node name="cenario2" type="Sprite" parent="cenarios"]
 position = Vector2( 0, -1056 )
 texture = ExtResource( 5 )
+centered = false
+
+[node name="cenario1" type="Sprite" parent="cenarios"]
+position = Vector2( 0, -288 )
+texture = ExtResource( 2 )
 centered = false
 
 [node name="cenario3" type="Sprite" parent="cenarios"]
@@ -57,59 +57,42 @@ script = ExtResource( 17 )
 
 [node name="players" parent="tilemap" instance=ExtResource( 16 )]
 
-[node name="cameras" type="Node2D" parent="."]
+[node name="camera" parent="." instance=ExtResource( 14 )]
 
-[node name="camera1" parent="cameras" instance=ExtResource( 14 )]
-current = false
-
-[node name="top_left" parent="cameras/camera1/limites" index="0"]
+[node name="top_left" parent="camera/limites1" index="0"]
 position = Vector2( 0, -288 )
 
-[node name="bottom_right" parent="cameras/camera1/limites" index="1"]
+[node name="bottom_right" parent="camera/limites1" index="1"]
 position = Vector2( 480, 0 )
 
-[node name="camera2" parent="cameras" instance=ExtResource( 14 )]
-current = false
-
-[node name="top_left" parent="cameras/camera2/limites" index="0"]
+[node name="top_left" parent="camera/limites2" index="0"]
 position = Vector2( 0, -1056 )
 
-[node name="bottom_right" parent="cameras/camera2/limites" index="1"]
+[node name="bottom_right" parent="camera/limites2" index="1"]
 position = Vector2( 480, -289 )
 
-[node name="camera3" parent="cameras" instance=ExtResource( 14 )]
-current = false
+[node name="top_left" parent="camera/limites3" index="0"]
+position = Vector2( 480, -1056 )
 
-[node name="top_left" parent="cameras/camera3/limites" index="0"]
-position = Vector2( 480, -1048 )
-
-[node name="bottom_right" parent="cameras/camera3/limites" index="1"]
+[node name="bottom_right" parent="camera/limites3" index="1"]
 position = Vector2( 1120, -568 )
 
-[node name="camera4" parent="cameras" instance=ExtResource( 14 )]
-current = false
-
-[node name="top_left" parent="cameras/camera4/limites" index="0"]
+[node name="top_left" parent="camera/limites4" index="0"]
 position = Vector2( 480, -1688 )
 
-[node name="bottom_right" parent="cameras/camera4/limites" index="1"]
+[node name="bottom_right" parent="camera/limites4" index="1"]
 position = Vector2( 960, -1048 )
 
-[node name="camera5" parent="cameras" instance=ExtResource( 14 )]
-current = false
-
-[node name="top_left" parent="cameras/camera5/limites" index="0"]
+[node name="top_left" parent="camera/limites5" index="0"]
 position = Vector2( 0, -1656 )
 
-[node name="bottom_right" parent="cameras/camera5/limites" index="1"]
+[node name="bottom_right" parent="camera/limites5" index="1"]
 position = Vector2( 480, -1368 )
 
-[node name="camera6" parent="cameras" instance=ExtResource( 14 )]
-
-[node name="top_left" parent="cameras/camera6/limites" index="0"]
+[node name="top_left" parent="camera/limites6" index="0"]
 position = Vector2( 0, -2296 )
 
-[node name="bottom_right" parent="cameras/camera6/limites" index="1"]
+[node name="bottom_right" parent="camera/limites6" index="1"]
 position = Vector2( 480, -1656 )
 
 [node name="folhas" type="Node2D" parent="."]
@@ -149,9 +132,4 @@ position = Vector2( 0, -2296 )
 texture = ExtResource( 15 )
 centered = false
 
-[editable path="cameras/camera1"]
-[editable path="cameras/camera2"]
-[editable path="cameras/camera3"]
-[editable path="cameras/camera4"]
-[editable path="cameras/camera5"]
-[editable path="cameras/camera6"]
+[editable path="camera"]
