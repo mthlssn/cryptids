@@ -2,20 +2,19 @@ extends TileMap
 
 enum {EMPTY = -1,  OBSTACLE, AREA, PLAYERS, OBJECT}
 
-onready var players := $players
+onready var players_node := $players
 
 func _ready():
 	#Global.set_cena_atual(get_parent().get_cena())
+	Global.set_cena_atual(1)
 	
 	var nodes_apagados = Global.get_nodes_apagados()
 	
-	var posicao_global = Vector2(7,-58) #Global.get_posicao_player()
+	var posicao_global = Vector2(7,-6) #Global.get_posicao_player()
 	
 	for node in get_children():
-		print(node)
 		if node.name == "players":
 			for node_players in node.get_children():
-				print(node_players)
 				var direcao_player = Global.get_direcao_player()
 				var posicao_player
 				if direcao_player.x != 0:
@@ -63,7 +62,7 @@ func _ready():
 				posicao.y += 32
 	
 	if Global.get_mover():
-		players.movimentacao(Global.get_direcao_player())
+		players_node.movimentacao(Global.get_direcao_player())
 		Global.set_mover(false)
 
 func get_node_celula(alvo, area):
@@ -133,19 +132,21 @@ func solicitar_movimento(player, direcao):
 			return map_to_world(proxima_celula) + (cell_size / 2)
 		AREA:
 			var node_area = get_node_celula(proxima_celula, true)
-			var funcao_node = node_area.function
-			var apagar = node_area.apagar
 			
-			if funcao_node == "":
+			if node_area.apagar:
+				limpar_area(node_area)
+				
+			if node_area.colisao:
 				node_area.colisao()
 			
-			if apagar:
-				limpar_area(node_area)
-			
-			match funcao_node:
-				"verificar_sair_tela":
-					verificar_sair_tela(direcao)
-					return map_to_world(proxima_celula) + (cell_size / 2)
+			match node_area.function:
+				"area_portal":
+					var players = get_node("players").get_children()
+					for i in players.size() - 1 :
+						players[i].position = players[players.size()-1].position + (direcao * 64)
+						
+					player.position = player.position + (direcao * 64)
+					return map_to_world(proxima_celula + (direcao * 2)) + (cell_size / 2)
 
 func verificar_sair_tela(direcao):
 	var node_pai = get_parent()

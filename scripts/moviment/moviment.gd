@@ -6,10 +6,10 @@ onready var _sprite_h_and_w_tile = 1
 
 onready var tilemap = get_parent()
 
+export(Array, String, FILE, "*.tscn") var players
+
 # ideal = 1.3
 export var velocidade = 1.3
-
-var players : Array
 
 var nodes_player : Array
  
@@ -19,7 +19,14 @@ var ultima_posi
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
-	players = Global.get_players()
+	print(players)
+	print(Global.get_players())
+	if Global.get_players() == []:
+		print("entrou")
+		Global.set_players(players)
+	else:
+		print("entrou-2")
+		players = Global.get_players()
 	
 	for i in players.size():
 		var path_scenes = players[i]
@@ -27,6 +34,8 @@ func _ready():
 		var scenes = load(path_scenes)
 		var instance = scenes.instance()
 		add_child(instance)
+	
+	print("opa")
 	
 	players = get_children()
 	
@@ -37,20 +46,15 @@ func _ready():
 	var remote_transform = RemoteTransform2D.new()
 	players[controlar].add_child(remote_transform)
 	
-	var nodes_filhos_demo = get_parent().get_parent().get_children()
-	
-	var nodes_cameras = nodes_filhos_demo[2].get_children()
-	
-	var camera = nodes_cameras[0].get_path()
+	var camera_path = get_parent().get_parent().get_node("camera").get_path()
 	
 	for i in players.size():
 		var temp : Array = players[i].get_children()
 		nodes_player[i] = temp
 		nodes_player[i][ANIMATION_PLAYER].playback_speed = velocidade
 		update_direcao_sprite(nodes_player[i][SPRITE], Global.get_direcao_player())
-	
-	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera)
-	print(nodes_player[controlar][REMOTE_TRANSFORM].get_remote_node())
+		
+	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera_path)
 	
 func _process(_delta):
 	var direcao
@@ -164,7 +168,6 @@ func mover(var_self, animacao, tween, direcao, posicao_alvo, cont):
 		
 	# desbloqueia a entrada de dados
 	set_process(true)
-	print(self, " moveu")
 
 # função que retorna o tamanho da sprit do player
 func get_sprite_width_tile():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cenarios/cen1/cena1.png" type="Texture" id=2]
@@ -17,13 +17,15 @@
 [ext_resource path="res://assets/cenarios/cen6/luz.png" type="Texture" id=15]
 [ext_resource path="res://scenes/players/players.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scripts/tilemap/tilemap2.gd" type="Script" id=17]
+[ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scripts/objects/area_portal.gd" type="Script" id=19]
 
 [node name="demo" type="Node2D"]
 
 [node name="cenarios" type="Node2D" parent="."]
 
 [node name="cenario2" type="Sprite" parent="cenarios"]
-position = Vector2( 0, -1056 )
+position = Vector2( 0, -1120 )
 texture = ExtResource( 5 )
 centered = false
 
@@ -33,22 +35,22 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="cenario3" type="Sprite" parent="cenarios"]
-position = Vector2( 480, -1048 )
+position = Vector2( 544, -1112 )
 texture = ExtResource( 7 )
 centered = false
 
 [node name="cenario4" type="Sprite" parent="cenarios"]
-position = Vector2( 480, -1688 )
+position = Vector2( 544, -1816 )
 texture = ExtResource( 3 )
 centered = false
 
 [node name="cenario5" type="Sprite" parent="cenarios"]
-position = Vector2( 0, -1656 )
+position = Vector2( 0, -1784 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="cenario6" type="Sprite" parent="cenarios"]
-position = Vector2( 0, -2296 )
+position = Vector2( 0, -2488 )
 texture = ExtResource( 6 )
 centered = false
 
@@ -56,6 +58,99 @@ centered = false
 script = ExtResource( 17 )
 
 [node name="players" parent="tilemap" instance=ExtResource( 16 )]
+players = [ "res://scenes/personagens/maria.tscn", "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn" ]
+
+[node name="area" type="Node2D" parent="tilemap"]
+
+[node name="area_portal1" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 208, -304 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 2
+
+[node name="cor" parent="tilemap/area/area_portal1" index="0"]
+margin_right = 80.0
+
+[node name="area_portal2" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 208, -336 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 1
+
+[node name="cor" parent="tilemap/area/area_portal2" index="0"]
+margin_right = 80.0
+
+[node name="area_portal3" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 496, -1008 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 3
+
+[node name="cor" parent="tilemap/area/area_portal3" index="0"]
+margin_bottom = 48.0
+
+[node name="area_portal4" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 528, -1008 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 2
+
+[node name="cor" parent="tilemap/area/area_portal4" index="0"]
+margin_bottom = 48.0
+
+[node name="area_portal5" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 592, -1128 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 4
+
+[node name="cor" parent="tilemap/area/area_portal5" index="0"]
+margin_right = 72.0
+
+[node name="area_portal6" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 592, -1160 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 3
+
+[node name="cor" parent="tilemap/area/area_portal6" index="0"]
+margin_right = 72.0
+
+[node name="area_portal7" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 528, -1712 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 5
+
+[node name="cor" parent="tilemap/area/area_portal7" index="0"]
+margin_bottom = 80.0
+
+[node name="area_portal8" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 496, -1712 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 4
+
+[node name="cor" parent="tilemap/area/area_portal8" index="0"]
+margin_bottom = 80.0
+
+[node name="area_portal9" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 176, -1800 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 6
+
+[node name="cor" parent="tilemap/area/area_portal9" index="0"]
+margin_right = 144.0
+
+[node name="area_portal10" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 176, -1832 )
+script = ExtResource( 19 )
+function = "area_portal"
+proxima_camera = 5
+
+[node name="cor" parent="tilemap/area/area_portal10" index="0"]
+margin_right = 144.0
 
 [node name="camera" parent="." instance=ExtResource( 14 )]
 
@@ -66,34 +161,34 @@ position = Vector2( 0, -288 )
 position = Vector2( 480, 0 )
 
 [node name="top_left" parent="camera/limites2" index="0"]
-position = Vector2( 0, -1056 )
+position = Vector2( 0, -1120 )
 
 [node name="bottom_right" parent="camera/limites2" index="1"]
-position = Vector2( 480, -289 )
+position = Vector2( 480, -353 )
 
 [node name="top_left" parent="camera/limites3" index="0"]
-position = Vector2( 480, -1056 )
+position = Vector2( 544, -1112 )
 
 [node name="bottom_right" parent="camera/limites3" index="1"]
-position = Vector2( 1120, -568 )
+position = Vector2( 1184, -632 )
 
 [node name="top_left" parent="camera/limites4" index="0"]
-position = Vector2( 480, -1688 )
+position = Vector2( 544, -1816 )
 
 [node name="bottom_right" parent="camera/limites4" index="1"]
-position = Vector2( 960, -1048 )
+position = Vector2( 1024, -1176 )
 
 [node name="top_left" parent="camera/limites5" index="0"]
-position = Vector2( 0, -1656 )
+position = Vector2( 0, -1784 )
 
 [node name="bottom_right" parent="camera/limites5" index="1"]
-position = Vector2( 480, -1368 )
+position = Vector2( 480, -1496 )
 
 [node name="top_left" parent="camera/limites6" index="0"]
-position = Vector2( 0, -2296 )
+position = Vector2( 0, -2488 )
 
 [node name="bottom_right" parent="camera/limites6" index="1"]
-position = Vector2( 480, -1656 )
+position = Vector2( 480, -1848 )
 
 [node name="folhas" type="Node2D" parent="."]
 
@@ -103,33 +198,43 @@ texture = ExtResource( 10 )
 centered = false
 
 [node name="folhas2" type="Sprite" parent="folhas"]
-position = Vector2( 0, -1056 )
+position = Vector2( 0, -1120 )
 texture = ExtResource( 12 )
 centered = false
 
 [node name="folhas3" type="Sprite" parent="folhas"]
-position = Vector2( 480, -1048 )
+position = Vector2( 544, -1112 )
 texture = ExtResource( 11 )
 centered = false
 
 [node name="folhas4" type="Sprite" parent="folhas"]
-position = Vector2( 480, -1688 )
+position = Vector2( 544, -1816 )
 texture = ExtResource( 4 )
 centered = false
 
 [node name="folhas5" type="Sprite" parent="folhas"]
-position = Vector2( 0, -1656 )
+position = Vector2( 0, -1784 )
 texture = ExtResource( 9 )
 centered = false
 
 [node name="folhas6" type="Sprite" parent="folhas"]
-position = Vector2( 0, -2296 )
+position = Vector2( 0, -2488 )
 texture = ExtResource( 13 )
 centered = false
 
 [node name="luz" type="Sprite" parent="."]
-position = Vector2( 0, -2296 )
+position = Vector2( 0, -2488 )
 texture = ExtResource( 15 )
 centered = false
 
+[editable path="tilemap/area/area_portal1"]
+[editable path="tilemap/area/area_portal2"]
+[editable path="tilemap/area/area_portal3"]
+[editable path="tilemap/area/area_portal4"]
+[editable path="tilemap/area/area_portal5"]
+[editable path="tilemap/area/area_portal6"]
+[editable path="tilemap/area/area_portal7"]
+[editable path="tilemap/area/area_portal8"]
+[editable path="tilemap/area/area_portal9"]
+[editable path="tilemap/area/area_portal10"]
 [editable path="camera"]

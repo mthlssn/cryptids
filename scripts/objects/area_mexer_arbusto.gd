@@ -1,4 +1,4 @@
-extends "objects.gd"
+extends "area.gd"
 
 func colisao():
 	print("opa")
