@@ -36,7 +36,7 @@ func _ready():
 		hide()
 
 func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
-	node_pause = Global.get_node_demo_cena()
+	node_pause = Global.get_node_demo()
 	node_pause.get_tree().paused = true
 	
 	nomes = nomes_perso

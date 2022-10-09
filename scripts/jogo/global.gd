@@ -16,9 +16,9 @@ var _ultima_posicao_player = Vector2()
 var _cena_atual = 1
 var _cena_anterior = 1
 
-var _node_demo_cena
+var _node_demo
 
-var _players : Array = ["res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn"]
+var _players : Array = []
 
 var _interagidos : Array = []
 
@@ -29,24 +29,18 @@ var _nodes_apagados : Array = []
 # ------------- funcs ----------------
 
 func _ready():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	_nodes_apagados.resize(6)
-	inicializar_nodes_apagados()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass
 
 func get_nodes_apagados():
 	return _nodes_apagados
 
-func set_nodes_apagados(cena, nodes_apagados):
-	var size = _nodes_apagados[cena - 1].size()
+func set_nodes_apagados(nodes_apagados):
+	var size = _nodes_apagados.size()
 	
-	_nodes_apagados[cena - 1].resize(size+1)
+	_nodes_apagados.resize(size+1)
 		
-	_nodes_apagados[cena - 1][size-1] = nodes_apagados
-
-func inicializar_nodes_apagados():
-	for i in _nodes_apagados.size():
-		_nodes_apagados[i] = [" "]
+	_nodes_apagados[size-1] = nodes_apagados
 
 func get_mover():
 	return _mover
@@ -80,11 +74,11 @@ func set_players(players):
 func get_players():
 	return _players
 
-func set_node_demo_cena(node):
-	_node_demo_cena = node
+func set_node_demo(node):
+	_node_demo = node
 
-func get_node_demo_cena():
-	return _node_demo_cena
+func get_node_demo():
+	return _node_demo
 
 func set_cena_atual(cena):
 	_cena_anterior = _cena_atual

@@ -2,13 +2,16 @@ extends TileMap
 
 enum {EMPTY = -1,  OBSTACLE, AREA, PLAYERS, OBJECT}
 
-onready var players := $players
+onready var players_node := $players
+
+var player_soli_mov
+var direcao_soli_mov
+var proxima_celula
 
 func _ready():
-	Global.set_cena_atual(get_parent().get_cena())
+	var nodes_apagados = Global.get_nodes_apagados()
 	
-	var global_nodes_apagados = Global.get_nodes_apagados()
-	var nodes_apagados = global_nodes_apagados[get_parent().get_cena() - 1]
+	var posicao_global = Vector2(7,-6) #Global.get_posicao_player()
 	
 	for node in get_children():
 		if node.name == "players":
@@ -16,9 +19,9 @@ func _ready():
 				var direcao_player = Global.get_direcao_player()
 				var posicao_player
 				if direcao_player.x != 0:
-					posicao_player = Global.get_posicao_player() - direcao_player
+					posicao_player = posicao_global - direcao_player
 				elif direcao_player.y != 0:
-					posicao_player = Global.get_posicao_player() - direcao_player
+					posicao_player = posicao_global - direcao_player
 				
 				node_players.position = map_to_world(posicao_player)
 				
@@ -60,7 +63,7 @@ func _ready():
 				posicao.y += 32
 	
 	if Global.get_mover():
-		players.movimentacao(Global.get_direcao_player())
+		players_node.movimentacao(Global.get_direcao_player())
 		Global.set_mover(false)
 
 func get_node_celula(alvo, area):
@@ -111,13 +114,15 @@ func limpar_area(node):
 		posicao.x = posicao_inicial.x
 		posicao.y += 32
 	
-	Global.set_nodes_apagados(get_parent().get_cena(), node.name)
+	Global.set_nodes_apagados(node.name)
 	
 	node.queue_free()
 
 func solicitar_movimento(player, direcao):
+	player_soli_mov = player
+	direcao_soli_mov = direcao
 	var celula_comeco = world_to_map(player.position)
-	var proxima_celula = celula_comeco + direcao
+	proxima_celula = celula_comeco + direcao
 
 	Global.set_posicao_player(celula_comeco)
 
@@ -130,32 +135,15 @@ func solicitar_movimento(player, direcao):
 			return map_to_world(proxima_celula) + (cell_size / 2)
 		AREA:
 			var node_area = get_node_celula(proxima_celula, true)
-			var funcao_node = node_area.function
-			var apagar = node_area.apagar
 			
-			if funcao_node == "":
-				node_area.colisao()
-			
-			if apagar:
+			if node_area.apagar:
 				limpar_area(node_area)
-			
-			match funcao_node:
-				"verificar_sair_tela":
-					verificar_sair_tela(direcao)
-					return map_to_world(proxima_celula) + (cell_size / 2)
+				
+			if node_area.colisao:
+				node_area.colisao(self)
+				
+			#match node_area.function:
 
-func verificar_sair_tela(direcao):
-	var node_pai = get_parent()
-	match direcao:
-		Vector2(-1,0):
-			node_pai.mudar_cena(0)
-		Vector2(1,0):
-			node_pai.mudar_cena(1)
-		Vector2(0,-1):
-			node_pai.mudar_cena(2)
-		Vector2(0,1):	
-			node_pai.mudar_cena(3)
-	
 func atualizar_posicao(posicao_comeco, posicao_alvo):
 	posicao_comeco = world_to_map(posicao_comeco)
 	if get_cellv(posicao_comeco) != AREA:

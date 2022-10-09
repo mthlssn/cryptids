@@ -2,7 +2,7 @@ extends "objects.gd"
 
 export var personagem = true
 
-func colisao():
+func colisao(tilemap):
 	if personagem:
 		DialogBox.call_dialog_box(true, dialogo_resource.msg_queue, dialogo_resource.nome, dialogo_resource.imagens)
 	else:

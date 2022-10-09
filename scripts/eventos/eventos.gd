@@ -8,4 +8,4 @@ func chamar_evento():
 			evento_1()
 		
 func evento_1():
-	Transition.fade("res://scenes/demo/demo_cena_1.tscn")
+	Transition.fade(self, "res://scenes/demo/demo.tscn", 1)
