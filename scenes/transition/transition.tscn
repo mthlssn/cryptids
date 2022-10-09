@@ -30,7 +30,7 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "trocar_cena"
+"method": "chamar_funcao"
 }, {
 "args": [  ],
 "method": "set_animando_false"

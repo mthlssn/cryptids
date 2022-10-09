@@ -8,7 +8,7 @@ func _input(event):
 		pause()
 		
 func pause():
-	var node_pause = Global.get_node_demo_cena()
+	var node_pause = Global.get_node_demo()
 		
 	if node_pause:
 		if node_pause.get_tree().paused == false:

@@ -19,13 +19,9 @@ var ultima_posi
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
-	print(players)
-	print(Global.get_players())
 	if Global.get_players() == []:
-		print("entrou")
 		Global.set_players(players)
 	else:
-		print("entrou-2")
 		players = Global.get_players()
 	
 	for i in players.size():
@@ -34,9 +30,7 @@ func _ready():
 		var scenes = load(path_scenes)
 		var instance = scenes.instance()
 		add_child(instance)
-	
-	print("opa")
-	
+
 	players = get_children()
 	
 	controlar = players.size() - 1
