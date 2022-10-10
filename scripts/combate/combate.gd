@@ -1,13 +1,10 @@
-extends Control
+extends CanvasLayer
 
+onready var primeiro_botao := $personagens/player/botao
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	$TextureButton.grab_focus()
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	$TextureButton2.focus_mode = 0
+	primeiro_botao.grab_focus()
+
+func _on_botao_pressed():
+	$acoes/agir/botao.grab_focus()
+	

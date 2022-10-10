@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/normal.png-bc535702e028f9da02529193c4269b9c.stex"
+path="res://.import/frameEscuro.png-8b6d76d5e7b46c0f09b244bf6ca66c37.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dialog_box/personagens/bixo/normal.png"
-dest_files=[ "res://.import/normal.png-bc535702e028f9da02529193c4269b9c.stex" ]
+source_file="res://assets/combate/frameEscuro.png"
+dest_files=[ "res://.import/frameEscuro.png-8b6d76d5e7b46c0f09b244bf6ca66c37.stex" ]
 
 [params]
 
