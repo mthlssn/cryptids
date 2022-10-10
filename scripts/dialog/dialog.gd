@@ -21,15 +21,15 @@ var msg_queue : Array = []
 var tecla = "nada"
 
 var max_length_text = 0
-var posicao_text = 0
 
 var node_pause
 var pausar = false
 
 var cont = 0
 
-var imagens
-var nomes
+var _imagens
+var _nomes
+var _msg 
 
 func _ready():
 	if msg_queue.size() == 0:
@@ -39,9 +39,9 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	node_pause = Global.get_node_demo()
 	node_pause.get_tree().paused = true
 	
-	nomes = nomes_perso
+	_nomes = nomes_perso
 	msg_queue = mensagem
-	imagens = imagens_perso
+	_imagens = imagens_perso
 	
 	text.bbcode_text = ""
 	tecla = "ui_accept"
@@ -52,7 +52,6 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	sprite_set_ou_xis.texture = sprite_setinha
 	
 	max_length_text = msg_queue.size()
-	posicao_text = -1
 	
 	if personagem:
 		dialog.texture = dialog_box_c_per
@@ -72,25 +71,28 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	if imagens_perso != null:
 		mudar_imagem()
 		
-	if nomes != null:
+	if _nomes != null:
 		mudar_nome()
 		
-	if not visible:
-		animacao.play("open")
+	mudar_texto()
+		
+	animacao.play("open")
 
 func _input(event):
 	if event.is_action_pressed(tecla):
-		if imagens != null:
+		if _imagens != null:
 			mudar_imagem()
 			
-		if nomes != null:
+		if _nomes != null:
 			mudar_nome()
+		
+		mudar_texto()
 			
 		show_message()
 	
 	if event.is_action_pressed("esc") && visible == true:
 		timer.stop()
-		posicao_text = max_length_text - 1
+		cont = max_length_text - 1
 		pausar = true
 		show_message()
 
@@ -102,7 +104,7 @@ func show_message() -> void:
 		text.visible_characters = text.bbcode_text.length()
 		return
 
-	if max_length_text <= (posicao_text+1):
+	if max_length_text <= (cont):
 		tecla = "nada"
 		msg_queue = []
 		text.bbcode_text = ""
@@ -117,11 +119,8 @@ func show_message() -> void:
 		else:
 			animacao.play("close")
 			yield(animacao, "animation_finished")
-		
-		return
 	
-	posicao_text += 1
-	var _msg : String = msg_queue[posicao_text]
+		return
 	
 	text.visible_characters = 0
 	text.bbcode_text = _msg
@@ -129,12 +128,22 @@ func show_message() -> void:
 	timer.start()
 
 func mudar_imagem():
-	if imagens.size() > cont:
-		personagem_foto.texture = load(imagens[cont])
+	if _imagens.size() > cont:
+		personagem_foto.texture = load(_imagens[cont])
 
 func mudar_nome():
-	if nomes.size() > cont:
-		label_name.text = nomes[cont]
+	if _nomes.size() > cont:
+		if _nomes[cont] == "{nome_player}":
+			label_name.text = Global.get_nome_player()
+		else:
+			label_name.text = _nomes[cont]
+			
+func mudar_texto():
+	if msg_queue.size() > cont:
+		if "{nome_player}" in msg_queue[cont]:
+			_msg = msg_queue[cont].format({"nome_player": Global.get_nome_player()})
+		else:
+			_msg = msg_queue[cont]
 
 func _on_timer_timeout():
 	if text.visible_characters == text.bbcode_text.length():
@@ -149,6 +158,7 @@ func _on_timer_timeout():
 			animacao_set_ou_xis.play("setinha")
 			
 		set_ou_xis.show()
+		
 	text.visible_characters += 1
 
 func _on_timer_2_timeout():

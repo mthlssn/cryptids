@@ -26,11 +26,17 @@ var _mover = false
 
 var _nodes_apagados : Array = []
 
+# - #var_nome_player"
+var _nome_player = "Thalisson"
+
 # ------------- funcs ----------------
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass
+
+func get_nome_player():
+	return _nome_player
 
 func get_nodes_apagados():
 	return _nodes_apagados
