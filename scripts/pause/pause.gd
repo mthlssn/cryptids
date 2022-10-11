@@ -4,7 +4,7 @@ func _ready():
 	hide()
 
 func _input(event):
-	if event.is_action_pressed("esc"):
+	if event.is_action_pressed("esc") && Global.get_pausar():
 		pause()
 		
 func pause():
