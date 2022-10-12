@@ -27,8 +27,12 @@ func _on_continuar_botao_pressed():
 func _on_configuracao_botao_pressed():
 	pass # Replace with function body.
 
-func _on_tela_inicial_botao_pressed():
+func _on_tela_inicial_salvar_botao_pressed():
 	DataPlayer.save_data_dictionary()
 	DataPlayer.save_data(1)
+	pause()
+	Transition.fade(node_pause, "res://scenes/start_scene/start_scene.tscn", 1, "fade_2")
+
+func _on_tela_inicial_sem_salvar_botao_pressed():
 	pause()
 	Transition.fade(node_pause, "res://scenes/start_scene/start_scene.tscn", 1, "fade_2")

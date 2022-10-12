@@ -107,6 +107,7 @@ func show_message() -> void:
 		text.bbcode_text = ""
 		cont = 0
 		cont_msg_queue = 0
+		node_input_box = null
 		
 		Global.set_mover(true)
 		
@@ -162,12 +163,9 @@ func mudar_nome():
 			label_name.text = Global.get_nome_player()
 		else:
 			label_name.text = _nomes[cont]
-			
-# cont_msg_queue
 
 func mudar_texto():
 	if _msg_queue.size() > cont_msg_queue:
-		print(_msg_queue[cont_msg_queue])
 		if "func" in _msg_queue[cont_msg_queue]:
 			match _msg_queue[cont_msg_queue]:
 				"func_chamar_input()":
