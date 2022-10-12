@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = ""
-nome = [ "Pudim", "Maria", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Pudim", "Maria", "{nome_player}", "Maria" ]
-msg_queue = [ "AU! AU!", "Pudim! Calma, vamos pra casa, papai vai ficar bravo!", "Ah! Oi! :)", "...", "Você também tá perdido?", "...", "Hm... você é bem quieto. Qual é seu nome?", "...", "snif snif...", "func_chamar_input()", "Já sei! Vou te chamar de {nome_player}! É um ótimo nome, não é?", "...", "Vamos, vou nos tirar dessa enrascada!" ]
-imagens = [ "res://assets/dialog_box/personagens/bixo/normal.png", "res://assets/dialog_box/personagens/maria/triste.png", "res://assets/dialog_box/personagens/maria/feliz.png", "res://assets/dialog_box/personagens/player/normal.png", "res://assets/dialog_box/personagens/maria/normal.png", "res://assets/dialog_box/personagens/player/normal.png", "res://assets/dialog_box/personagens/maria/pensante.png", "res://assets/dialog_box/personagens/player/normal.png", "res://assets/dialog_box/personagens/bixo/normal.png", "res://assets/dialog_box/personagens/maria/normal.png", "res://assets/dialog_box/personagens/player/normal.png", "res://assets/dialog_box/personagens/maria/feliz.png" ]
+nome = [ "Maria", "Maria", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Mel", "Maria", "{nome_player}", "Maria" ]
+msg_queue = [ "AU! AU!", "Mel! Calma, vamos pra casa, papai vai ficar bravo!", "Ah! Oi! :)", "...", "Você também tá perdido?", "...", "Hm... você é bem quieto. Qual é seu nome?", "...", "snif snif...", "func_chamar_input()", "Já sei! Vou te chamar de {nome_player}! É um ótimo nome, não é?", "...", "Vamos, vou nos tirar dessa enrascada!" ]
+imagens = [ "maria_feliz", "maria_feliz", "maria_normal", "mel_normal", "maria_pensante", "player_normal", "maria_triste", "maria_pensante", "maria_feliz", "maria_normal", "maria_pensante", "player_normal" ]

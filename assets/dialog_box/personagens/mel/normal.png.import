@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/normal.png-bc535702e028f9da02529193c4269b9c.stex"
+path="res://.import/normal.png-b20569f9449e7622d397d4bffc5d9f51.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dialog_box/personagens/bixo/normal.png"
-dest_files=[ "res://.import/normal.png-bc535702e028f9da02529193c4269b9c.stex" ]
+source_file="res://assets/dialog_box/personagens/mel/normal.png"
+dest_files=[ "res://.import/normal.png-b20569f9449e7622d397d4bffc5d9f51.stex" ]
 
 [params]
 
