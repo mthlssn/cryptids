@@ -72,6 +72,8 @@ script = ExtResource( 17 )
 
 [node name="players" parent="tilemap" instance=ExtResource( 16 )]
 players = [ "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn" ]
+posi_players = [ Vector2( 7, -4 ), Vector2( 7, -5 ) ]
+dire_players = [ Vector2( 0, -1 ), Vector2( 0, -1 ) ]
 
 [node name="area" type="Node2D" parent="tilemap"]
 visible = false
@@ -188,9 +190,6 @@ position = Vector2( 272, -529 )
 
 [node name="arbusto3" parent="tilemap" instance=ExtResource( 26 )]
 position = Vector2( 152, -849 )
-
-[node name="arbusto4" parent="tilemap" instance=ExtResource( 23 )]
-position = Vector2( 0, -1 )
 
 [node name="arbusto5" parent="tilemap" instance=ExtResource( 23 )]
 position = Vector2( 208, -1009 )

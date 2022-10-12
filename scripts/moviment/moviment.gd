@@ -7,6 +7,8 @@ onready var _sprite_h_and_w_tile = 1
 onready var tilemap = get_parent()
 
 export(Array, String, FILE, "*.tscn") var players
+export(Array, Vector2) var posi_players
+export(Array, Vector2) var dire_players
 
 # ideal = 1.3
 export var velocidade = 1.3
@@ -20,7 +22,15 @@ var ultima_posi
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
 	if Global.get_players() == []:
+		for i in posi_players.size():
+			posi_players[i] = posi_players[i] * 32
+			
+			posi_players[i].x += 16
+			posi_players[i].y += 16
+		
 		Global.set_players(players)
+		Global.set_posicao_players(posi_players)
+		Global.set_direcao_players(dire_players)
 	else:
 		players = Global.get_players()
 	
@@ -42,11 +52,13 @@ func _ready():
 	
 	var camera_path = get_parent().get_parent().get_node("camera").get_path()
 	
+	dire_players = Global.get_direcao_players()
+	
 	for i in players.size():
 		var temp : Array = players[i].get_children()
 		nodes_player[i] = temp
 		nodes_player[i][ANIMATION_PLAYER].playback_speed = velocidade
-		update_direcao_sprite(nodes_player[i][SPRITE], Global.get_direcao_player())
+		update_direcao_sprite(nodes_player[i][SPRITE], dire_players[i])
 		
 	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera_path)
 	
@@ -56,7 +68,9 @@ func _process(_delta):
 		direcao = get_direcao()
 		
 	if direcao:
-		Global.set_direcao_player(direcao)
+		dire_players.resize(nodes_player.size())
+		dire_players[controlar] = direcao
+		Global.set_direcao_players(dire_players)
 		
 		# condição para girar o personagem ou fazer ele andar
 		if Input.is_action_pressed("shift"):
@@ -68,7 +82,7 @@ func _process(_delta):
 
 func interagir():
 	if Input.is_action_just_pressed("key_e"):
-		var alvo = tilemap.world_to_map(players[controlar].position) + Global.get_direcao_player()
+		var alvo = tilemap.world_to_map(players[controlar].position) + dire_players[controlar]
 		var node = tilemap.get_node_celula(alvo, false)
 
 		if node and node.type != 1:
@@ -80,17 +94,20 @@ func movimentacao(direcao):
 	
 	var posicao_alvo = tilemap.solicitar_movimento(players[controlar], direcao)
 	if posicao_alvo:
-		Global.set_ultima_posicao_player(players[controlar].position)
-		
+		posi_players.resize(nodes_player.size())
 		for i in controlar+1:
 			var cont = controlar - i 
 			
 			if cont != controlar:
 				direcao = (ultima_posi - players[cont].position) / 32
 				posicao_alvo = ultima_posi
+				dire_players[cont] = direcao
 			
+			posi_players[cont] = posicao_alvo
 			mover(players[cont], nodes_player[cont][ANIMATION_PLAYER], nodes_player[cont][TWEEN], direcao, posicao_alvo, cont)
 			tilemap.atualizar_posicao(players[cont].position, posicao_alvo)
+		
+		Global.set_posicao_players(posi_players)
 
 # função que retorna a direção
 func get_direcao():

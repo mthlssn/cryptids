@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var _animation = $AnimationPlayer
+onready var _animation = $animation_player
 var _scene_to_go = ""
 
 var _node
@@ -13,12 +13,13 @@ func get_animando():
 func set_animando_false():
 	_animando = false
 
-func fade(node, scene, velocidade):
+# animacao = "fade" ou "fade_2"
+func fade(node, scene, velocidade, animacao):
 	_animation.playback_speed = velocidade
 	_node = node
 	
 	_scene_to_go = scene
-	_animation.play("fade")
+	_animation.play(animacao)
 	_animando = true
 
 func chamar_funcao():

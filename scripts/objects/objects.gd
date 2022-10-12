@@ -24,7 +24,11 @@ func interacao():
 		else:
 			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
 			interagido = true
-			Global.set_interagidos(dialogo_resource.nome_dr)
+			
+			var temp = Global.get_interagidos()
+			temp.resize(temp.size() + 1)
+			temp[temp.size() - 1] = dialogo_resource.nome_dr
+			Global.set_interagidos(temp)
 
 func verificar_status():
 	var interagidos = Global.get_interagidos()

@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/start_scene/start_scene.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font1.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/fonts/font2.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/temas/botao_start_scene.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 33
@@ -10,18 +10,10 @@ use_mipmaps = true
 extra_spacing_char = 5
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 8
-use_mipmaps = true
-font_data = ExtResource( 3 )
-
-[node name="start_scene" type="Node2D"]
+[node name="start_scene" type="Control"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [ -40.0 ]
-}
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="background" type="ColorRect" parent="."]
 margin_right = 480.0
 margin_bottom = 288.0
 color = Color( 0, 0, 0, 1 )
@@ -31,7 +23,7 @@ __meta__ = {
 
 [node name="cryptids" type="Label" parent="."]
 margin_right = 480.0
-margin_bottom = 256.0
+margin_bottom = 192.0
 size_flags_vertical = 5
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -39,12 +31,67 @@ text = "CRYPTIDS"
 align = 1
 valign = 1
 
-[node name="enter" type="Label" parent="."]
-margin_top = 40.0
+[node name="botoes" type="Control" parent="."]
+
+[node name="continuar_botao" type="Button" parent="botoes"]
+margin_left = 204.0
+margin_top = 168.0
+margin_right = 276.0
+margin_bottom = 178.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "continuar"
+
+[node name="novo_jogo_botao" type="Button" parent="botoes"]
+margin_left = 204.0
+margin_top = 183.0
+margin_right = 276.0
+margin_bottom = 193.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "novo jogo"
+
+[node name="configuracao_botao" type="Button" parent="botoes"]
+margin_left = 188.0
+margin_top = 200.0
+margin_right = 292.0
+margin_bottom = 210.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "configurações"
+
+[node name="sair_botao" type="Button" parent="botoes"]
+margin_left = 224.0
+margin_top = 216.0
+margin_right = 256.0
+margin_bottom = 226.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "sair"
+
+[node name="Popup" type="Popup" parent="."]
 margin_right = 480.0
 margin_bottom = 288.0
-size_flags_horizontal = 4
-custom_fonts/font = SubResource( 2 )
-text = "press ENTER"
-align = 1
-valign = 1
+
+[node name="background2" type="ColorRect" parent="Popup"]
+margin_left = 90.0
+margin_top = 128.0
+margin_right = 390.0
+margin_bottom = 288.0
+color = Color( 0.760784, 0.168627, 0.168627, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button2" type="Button" parent="Popup"]
+margin_left = 225.0
+margin_top = 222.0
+margin_right = 292.0
+margin_bottom = 242.0
+text = "OPAAAA"
+
+[connection signal="pressed" from="botoes/continuar_botao" to="." method="_on_continuar_botao_pressed"]
+[connection signal="pressed" from="botoes/novo_jogo_botao" to="." method="_on_novo_jogo_botao_pressed"]
+[connection signal="pressed" from="botoes/configuracao_botao" to="." method="_on_configuracao_botao_pressed"]
+[connection signal="pressed" from="botoes/sair_botao" to="." method="_on_sair_botao_pressed"]
+[connection signal="pressed" from="Popup/Button2" to="." method="_on_Button2_pressed"]
