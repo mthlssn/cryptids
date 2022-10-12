@@ -22,6 +22,9 @@ func fade(node, scene, velocidade, animacao):
 	_animation.play(animacao)
 	_animando = true
 
+	_animation.play("fade")
+	Global.set_mover(false)
+
 func chamar_funcao():
 	if _scene_to_go != "":
 		get_tree().call_deferred("change_scene", _scene_to_go)

@@ -15,6 +15,19 @@ var _nodes_apagados
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
+	
+func set_pausar(pausar):
+	_pausar = pausar
+	
+func get_pausar():
+	return _pausar	
+		
+func get_nome_player():
+	return _nome_player
+	
+func set_nome_player(nome_player):
+	_nome_player = nome_player
 
 func set_valores_iniciais():
 	_posicao_players = []
