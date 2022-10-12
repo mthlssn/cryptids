@@ -10,11 +10,6 @@ var data_dictionary = {}
 
 var data_dictionary_empty = {}
 
-func _ready():
-	#save_data(1, false)
-	#load_data(1)
-	pass
-
 func save_data(save):
 	get_save_path(save)
 	
@@ -77,7 +72,3 @@ func load_data_dictionary():
 	Global.set_nome_player(data_dictionary["nome_player"])
 	Global.set_players(data_dictionary["players"])
 	Global.set_posicao_players(data_dictionary["posicao_players"])
-
-func _input(event):
-	if event.is_action_pressed("salvar"):
-		DataPlayer.save_data(1)

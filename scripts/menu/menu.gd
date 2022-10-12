@@ -6,7 +6,7 @@ func _ready():
 	hide()
 
 func _input(event):
-	if event.is_action_pressed("esc") && Global.get_pausar():
+	if event.is_action_pressed("ui_cancel") && Global.get_pausar():
 		pause()
 		
 func pause():
