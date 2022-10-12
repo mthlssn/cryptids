@@ -26,11 +26,28 @@ var _mover = false
 
 var _nodes_apagados : Array = []
 
+var _pausar = true
+
+# {nome_player}"
+var _nome_player = "???"
+
 # ------------- funcs ----------------
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass
+	
+func set_pausar(pausar):
+	_pausar = pausar
+
+func get_pausar():
+	return _pausar	
+	
+func get_nome_player():
+	return _nome_player
+
+func set_nome_player(nome_player):
+	_nome_player = nome_player
 
 func get_nodes_apagados():
 	return _nodes_apagados
