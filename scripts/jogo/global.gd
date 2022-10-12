@@ -11,6 +11,11 @@ var _interagidos
 var _mover
 var _nodes_apagados
 
+var _pausar = true
+
+# {nome_player}"
+var _nome_player = "???"
+
 # ------------- funcs ----------------
 
 func _ready():

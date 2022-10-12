@@ -17,42 +17,36 @@ onready var dialog_box_s_per = preload("res://assets/dialog_box/dialog_box_sem_p
 onready var sprite_setinha = preload("res://assets/dialog_box/setinha.png")
 onready var sprite_xis = preload("res://assets/dialog_box/xis.png")
 
-var msg_queue : Array = []
+var _msg_queue : Array = []
+var _imagens
+var _nomes
+var _msg 
+
 var tecla = "nada"
 
-var max_length_text = 0
-var posicao_text = 0
-
-var node_pause
 var pausar = false
 
 var cont = 0
+var cont_msg_queue = 0
 
-var imagens
-var nomes
+var node_input_box
 
 func _ready():
-	if msg_queue.size() == 0:
+	if _msg_queue.size() == 0:
 		hide()
 
 func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
-	node_pause = Global.get_node_demo()
-	node_pause.get_tree().paused = true
-	
-	nomes = nomes_perso
-	msg_queue = mensagem
-	imagens = imagens_perso
+	_nomes = nomes_perso
+	_msg_queue = mensagem
+	_imagens = imagens_perso
 	
 	text.bbcode_text = ""
 	tecla = "ui_accept"
 	label_name.text = ""
 	personagem_foto.texture = null
 	
-	set_ou_xis.hide()
-	sprite_set_ou_xis.texture = sprite_setinha
-	
-	max_length_text = msg_queue.size()
-	posicao_text = -1
+	sprite_set_ou_xis.texture = null
+	Global.set_mover(false)
 	
 	if personagem:
 		dialog.texture = dialog_box_c_per
@@ -68,47 +62,53 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 		text.margin_left = 22
 		text.margin_right = 459
 		text.margin_top = 19
+		
+	mudar_texto()
+		
+	if _nomes != null:
+		mudar_nome()
 	
 	if imagens_perso != null:
 		mudar_imagem()
 		
-	if nomes != null:
-		mudar_nome()
-		
-	if not visible:
-		animacao.play("open")
+	animacao.play("open")
 
 func _input(event):
 	if event.is_action_pressed(tecla):
-		if imagens != null:
-			mudar_imagem()
-			
-		if nomes != null:
+		if mudar_texto():
+			return
+		
+		if _nomes != null:
 			mudar_nome()
-			
+		
+		if _imagens != null:
+			mudar_imagem()
+		
 		show_message()
 	
 	if event.is_action_pressed("esc") && visible == true:
-		timer.stop()
-		posicao_text = max_length_text - 1
-		pausar = true
-		show_message()
+		if not node_input_box:
+			timer.stop()
+			cont_msg_queue = _msg_queue.size()
+			pausar = true
+			show_message()
 
 func show_message() -> void:
-	set_ou_xis.hide()
+	sprite_set_ou_xis.texture = null
 	animacao_set_ou_xis.stop()
 	
 	if not timer.is_stopped():
 		text.visible_characters = text.bbcode_text.length()
 		return
 
-	if max_length_text <= (posicao_text+1):
+	if _msg_queue.size() <= cont_msg_queue:
 		tecla = "nada"
-		msg_queue = []
+		_msg_queue = []
 		text.bbcode_text = ""
 		cont = 0
+		cont_msg_queue = 0
 		
-		node_pause.get_tree().paused = false
+		Global.set_mover(true)
 		
 		if pausar:
 			hide()
@@ -117,38 +117,30 @@ func show_message() -> void:
 		else:
 			animacao.play("close")
 			yield(animacao, "animation_finished")
-		
-		return
 	
-	posicao_text += 1
-	var _msg : String = msg_queue[posicao_text]
+		return
 	
 	text.visible_characters = 0
 	text.bbcode_text = _msg
 	
 	timer.start()
 
-func mudar_imagem():
-	if imagens.size() > cont:
-		personagem_foto.texture = load(imagens[cont])
-
-func mudar_nome():
-	if nomes.size() > cont:
-		label_name.text = nomes[cont]
-
 func _on_timer_timeout():
 	if text.visible_characters == text.bbcode_text.length():
 		cont += 1
+		cont_msg_queue += 1
 		
 		timer.stop()
 		
-		if cont == msg_queue.size():
+		if cont == _msg_queue.size():
 			sprite_set_ou_xis.texture = sprite_xis
 			animacao_set_ou_xis.play("xis")
 		else:
+			sprite_set_ou_xis.texture = sprite_setinha
 			animacao_set_ou_xis.play("setinha")
 			
-		set_ou_xis.show()
+		#set_ou_xis.show()
+		
 	text.visible_characters += 1
 
 func _on_timer_2_timeout():
@@ -159,3 +151,38 @@ func _on_animation_player_animation_finished(anim_name):
 		label_name.show()
 		personagem_foto.show()
 		timer2.start()
+
+func mudar_imagem():
+	if _imagens.size() > cont:
+		personagem_foto.texture = load(_imagens[cont])
+
+func mudar_nome():
+	if _nomes.size() > cont:
+		if _nomes[cont] == "{nome_player}":
+			label_name.text = Global.get_nome_player()
+		else:
+			label_name.text = _nomes[cont]
+			
+# cont_msg_queue
+
+func mudar_texto():
+	if _msg_queue.size() > cont_msg_queue:
+		print(_msg_queue[cont_msg_queue])
+		if "func" in _msg_queue[cont_msg_queue]:
+			match _msg_queue[cont_msg_queue]:
+				"func_chamar_input()":
+					Global.set_pausar(false)
+					chamar_input()
+			cont_msg_queue += 1
+			return true
+		
+		if "{nome_player}" in _msg_queue[cont_msg_queue]:
+			_msg = _msg_queue[cont_msg_queue].format({"nome_player": Global.get_nome_player()})
+		else:
+			_msg = _msg_queue[cont_msg_queue]
+
+func chamar_input():
+	tecla = "nada"
+	var cena = load("res://scenes/dialog_box/input_box.tscn")
+	node_input_box = cena.instance()
+	add_child(node_input_box)

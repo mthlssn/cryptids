@@ -64,7 +64,7 @@ func _ready():
 	
 func _process(_delta):
 	var direcao
-	if not Transition.get_animando():
+	if Global.get_mover():
 		direcao = get_direcao()
 		
 	if direcao:
