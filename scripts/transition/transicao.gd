@@ -19,11 +19,11 @@ func fade(node, scene, velocidade, animacao):
 	_node = node
 	
 	_scene_to_go = scene
-	_animation.play(animacao)
-	_animando = true
-
 	_animation.play("fade")
 	Global.set_mover(false)
+	
+	_animation.play(animacao)
+	_animando = true
 
 func chamar_funcao():
 	if _scene_to_go != "":

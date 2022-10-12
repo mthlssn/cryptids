@@ -15,7 +15,16 @@ var _nodes_apagados
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	pass
+
+func set_valores_iniciais():
+	_posicao_players = []
+	_direcao_players = []
+	_cena_atual = 1
+	_node_demo = null
+	_players = []
+	_interagidos = []
+	_mover = false
+	_nodes_apagados = []
 	
 func set_pausar(pausar):
 	_pausar = pausar
@@ -28,16 +37,6 @@ func get_nome_player():
 	
 func set_nome_player(nome_player):
 	_nome_player = nome_player
-
-func set_valores_iniciais():
-	_posicao_players = []
-	_direcao_players = []
-	_cena_atual = 1
-	_node_demo = null
-	_players = []
-	_interagidos = []
-	_mover = false
-	_nodes_apagados = []
 
 func get_nodes_apagados():
 	return _nodes_apagados
