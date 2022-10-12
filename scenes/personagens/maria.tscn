@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/personagens/maria.gd" type="Script" id=1]
-[ext_resource path="res://assets/npcs/maria/sprites.png" type="Texture" id=2]
+[ext_resource path="res://assets/personagens/maria_sprite.png" type="Texture" id=2]
 [ext_resource path="res://data/dialogs/pt_BR/cena_2/pudim_arbusto_grande.tres" type="Resource" id=3]
 [ext_resource path="res://assets/outros/exclamacao.png" type="Texture" id=4]
 

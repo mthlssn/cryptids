@@ -58,21 +58,25 @@ func get_save_path(save):
 
 func save_data_dictionary():
 	data_dictionary = {
-		"posicao_players" : Global.get_posicao_players(), 
-		"direcao_player" : Global.get_direcao_players(),
 		"cena_atual" : Global.get_cena_atual(),
-		"players" : Global.get_players(),
+		"direcao_player" : Global.get_direcao_players(),
 		"interagidos" : Global.get_interagidos(),
-		"nodes_apagados" : Global.get_nodes_apagados()
+		"mover" : Global.get_mover(),
+		"nodes_apagados" : Global.get_nodes_apagados(),
+		"nome_player" : Global.get_nome_player(),
+		"players" : Global.get_players(),
+		"posicao_players" : Global.get_posicao_players(), 
 	}
 
 func load_data_dictionary():
-	Global.set_posicao_players(data_dictionary["posicao_players"])
-	Global.set_direcao_players(data_dictionary["direcao_player"])
 	Global.set_cena_atual(data_dictionary["cena_atual"])
-	Global.set_players(data_dictionary["players"])
+	Global.set_direcao_players(data_dictionary["direcao_player"])
 	Global.set_interagidos(data_dictionary["interagidos"])
+	Global.set_mover(data_dictionary["mover"])
 	Global.set_nodes_apagados(data_dictionary["nodes_apagados"])
+	Global.set_nome_player(data_dictionary["nome_player"])
+	Global.set_players(data_dictionary["players"])
+	Global.set_posicao_players(data_dictionary["posicao_players"])
 
 func _input(event):
 	if event.is_action_pressed("salvar"):
