@@ -1,30 +1,15 @@
 extends Node
 
-# vars
+# ------------- vars ----------------
 
-var _posicao_player_cena1 = Vector2(6,5)
-var _posicao_player_cena2 = Vector2(7,23)
-var _posicao_player_cena3 = Vector2(0,4)
-var _posicao_player_cena4 = Vector2(2,19)
-var _posicao_player_cena5 = Vector2(14,3)
-var _posicao_player_cena6 = Vector2(7,19)
-
-var _direcao_player = Vector2(0,-1)
-
-var _ultima_posicao_player = Vector2()
-
-var _cena_atual = 1
-var _cena_anterior = 1
-
+var _posicao_players 
+var _direcao_players
+var _cena_atual
 var _node_demo
-
-var _players : Array = []
-
-var _interagidos : Array = []
-
-var _mover = false
-
-var _nodes_apagados : Array = []
+var _players
+var _interagidos
+var _mover
+var _nodes_apagados
 
 var _pausar = true
 
@@ -35,17 +20,26 @@ var _nome_player = "???"
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	pass
+
+func set_valores_iniciais():
+	_posicao_players = []
+	_direcao_players = []
+	_cena_atual = 1
+	_node_demo = null
+	_players = []
+	_interagidos = []
+	_mover = false
+	_nodes_apagados = []
 	
 func set_pausar(pausar):
 	_pausar = pausar
-
+	
 func get_pausar():
 	return _pausar	
-	
+		
 func get_nome_player():
 	return _nome_player
-
+	
 func set_nome_player(nome_player):
 	_nome_player = nome_player
 
@@ -53,11 +47,7 @@ func get_nodes_apagados():
 	return _nodes_apagados
 
 func set_nodes_apagados(nodes_apagados):
-	var size = _nodes_apagados.size()
-	
-	_nodes_apagados.resize(size+1)
-		
-	_nodes_apagados[size-1] = nodes_apagados
+	_nodes_apagados = nodes_apagados
 
 func get_mover():
 	return _mover
@@ -68,22 +58,14 @@ func set_mover(mover):
 func get_interagidos():
 	return _interagidos
 
-func set_interagidos(interagido):
-	var size = _interagidos.size()
-	_interagidos.resize(size+1)
-	_interagidos[size] = interagido
+func set_interagidos(interagidos):
+	_interagidos = interagidos
 
-func get_ultima_posicao_player():
-	return _ultima_posicao_player
+func get_direcao_players():
+	return _direcao_players
 
-func set_ultima_posicao_player(ultima_posicao):
-	_ultima_posicao_player = ultima_posicao
-
-func get_direcao_player():
-	return _direcao_player
-
-func set_direcao_player(direcao):
-	_direcao_player = direcao
+func set_direcao_players(direcao_players):
+	_direcao_players = direcao_players
 
 func set_players(players):
 	_players = players
@@ -98,66 +80,13 @@ func get_node_demo():
 	return _node_demo
 
 func set_cena_atual(cena):
-	_cena_anterior = _cena_atual
 	_cena_atual = cena
 
 func get_cena_atual():
 	return _cena_atual
-	
-func get_cena_anterior():
-	return _cena_anterior
 
-func get_posicao_player():
-	match _cena_atual:
-		1:
-			_posicao_player_cena1 = Vector2(_posicao_player_cena2.x, _posicao_player_cena1.y)
-			return _posicao_player_cena1
-		2:
-			match _cena_anterior:
-				1:
-					_posicao_player_cena2 = Vector2(_posicao_player_cena1.x, _posicao_player_cena2.y)
-				3:
-					_posicao_player_cena2 = Vector2(_posicao_player_cena2.x, _posicao_player_cena3.y)
-			return _posicao_player_cena2
-		3:
-			match _cena_anterior:
-				2:
-					_posicao_player_cena3 = Vector2(_posicao_player_cena3.x, _posicao_player_cena2.y)
-				4:
-					_posicao_player_cena3 = Vector2(_posicao_player_cena4.x, _posicao_player_cena3.y)
-			return _posicao_player_cena3
-		4:
-			match _cena_anterior:
-				3:
-					_posicao_player_cena4 = Vector2(_posicao_player_cena3.x, _posicao_player_cena4.y)
-				5:
-					_posicao_player_cena4 = Vector2(_posicao_player_cena4.x, _posicao_player_cena5.y+1)
-			return _posicao_player_cena4
-		5:
-			match _cena_anterior:
-				4:
-					_posicao_player_cena5 = Vector2(_posicao_player_cena5.x, _posicao_player_cena4.y-1)
-				6:
-					_posicao_player_cena5 = Vector2(_posicao_player_cena6.x, _posicao_player_cena5.y)
-			return _posicao_player_cena5
-		6:
-			_posicao_player_cena6 = Vector2(_posicao_player_cena5.x, _posicao_player_cena6.y)
-			return _posicao_player_cena6
+func set_posicao_players(posicao_players):
+	_posicao_players = posicao_players
 
-func set_posicao_player(posicao):
-	match _cena_atual:
-		1:
-			_posicao_player_cena1 = posicao
-		2:
-			_posicao_player_cena2 = posicao
-		3:
-			_posicao_player_cena3 = posicao
-		4:
-			_posicao_player_cena4 = posicao
-		5:
-			_posicao_player_cena5 = posicao
-		6:
-			_posicao_player_cena6 = posicao
-			
-func chamar_trocar_cena(scene_to_go):
-	load("res://scenes/jogo.tscn").instance().trocar_cena(scene_to_go)
+func get_posicao_players():
+	return _posicao_players

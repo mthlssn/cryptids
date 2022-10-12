@@ -11,23 +11,18 @@ var proxima_celula
 func _ready():
 	var nodes_apagados = Global.get_nodes_apagados()
 	
-	var posicao_global = Vector2(7,-6) #Global.get_posicao_player()
-	
 	for node in get_children():
 		if node.name == "players":
+			var global_posicao_player = Global.get_posicao_players()
+			var cont = 0
+			
 			for node_players in node.get_children():
-				var direcao_player = Global.get_direcao_player()
-				var posicao_player
-				if direcao_player.x != 0:
-					posicao_player = posicao_global - direcao_player
-				elif direcao_player.y != 0:
-					posicao_player = posicao_global - direcao_player
+				var posicao_player = global_posicao_player[cont]
 				
-				node_players.position = map_to_world(posicao_player)
-				
-				node_players.position.x = map_to_world(posicao_player).x + 16
-				node_players.position.y = map_to_world(posicao_player).y + 16
+				node_players.position = posicao_player
+
 				set_cellv(world_to_map(node_players.position), PLAYERS)
+				cont += 1
 		elif node.name == "area":
 			for node_area in node.get_children():
 				var setar_celula = true;
@@ -61,10 +56,6 @@ func _ready():
 					posicao.x += 32
 				posicao.x = posicao_inicial.x
 				posicao.y += 32
-	
-	if Global.get_mover():
-		players_node.movimentacao(Global.get_direcao_player())
-		Global.set_mover(false)
 
 func get_node_celula(alvo, area):
 	for node in get_children():
@@ -99,6 +90,7 @@ func get_node_celula(alvo, area):
 						if not area:
 							return node
 					hei_and_wid_v += Vector2(1,0)
+				hei_and_wid_v.x = 0
 				hei_and_wid_v += Vector2(0,1)
 
 func limpar_area(node):
@@ -114,7 +106,10 @@ func limpar_area(node):
 		posicao.x = posicao_inicial.x
 		posicao.y += 32
 	
-	Global.set_nodes_apagados(node.name)
+	var temp = Global.get_nodes_apagados()
+	temp.resize(temp.size() + 1)
+	temp[temp.size() - 1] = node.name
+	Global.set_nodes_apagados(temp)
 	
 	node.queue_free()
 
@@ -123,8 +118,6 @@ func solicitar_movimento(player, direcao):
 	direcao_soli_mov = direcao
 	var celula_comeco = world_to_map(player.position)
 	proxima_celula = celula_comeco + direcao
-
-	Global.set_posicao_player(celula_comeco)
 
 	var tipo_celula_alvo = get_cellv(proxima_celula)
 
