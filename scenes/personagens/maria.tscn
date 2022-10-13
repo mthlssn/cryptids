@@ -112,7 +112,7 @@ interaction = [ ExtResource( 3 ) ]
 texture = ExtResource( 2 )
 offset = Vector2( 0, -9 )
 hframes = 12
-frame = 2
+frame = 6
 
 [node name="exclamacao" type="Sprite" parent="sprite"]
 visible = false

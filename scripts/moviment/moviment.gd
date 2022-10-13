@@ -66,6 +66,7 @@ func _process(_delta):
 	var direcao
 	if Global.get_mover():
 		direcao = get_direcao()
+		interagir()
 		
 	if direcao:
 		dire_players.resize(nodes_player.size())
@@ -77,8 +78,6 @@ func _process(_delta):
 			update_direcao_sprite(nodes_player[controlar][SPRITE], direcao)
 		else:
 			movimentacao(direcao)
-	
-	interagir()
 
 func interagir():
 	if Input.is_action_just_pressed("key_e"):
