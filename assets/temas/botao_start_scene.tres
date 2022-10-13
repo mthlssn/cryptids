@@ -4,6 +4,7 @@
 
 [sub_resource type="DynamicFont" id=3]
 size = 8
+extra_spacing_top = 1
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxEmpty" id=8]

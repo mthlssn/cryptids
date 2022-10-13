@@ -73,7 +73,7 @@ func _process(_delta):
 		Global.set_direcao_players(dire_players)
 		
 		# condição para girar o personagem ou fazer ele andar
-		if Input.is_action_pressed("shift"):
+		if Input.is_action_pressed("girar"):
 			update_direcao_sprite(nodes_player[controlar][SPRITE], direcao)
 		else:
 			movimentacao(direcao)
