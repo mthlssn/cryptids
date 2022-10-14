@@ -8,10 +8,7 @@ var keybinds = {}
 
 var node_botao_mudando
 var waiting_input = false
-
-func _ready():
-	#salvar_arquivo_inicial()
-	pass
+var selecionar = true
 
 func chamar_controles():
 	atualizar_texto_botao()
@@ -40,8 +37,6 @@ func load_file():
 			keybinds[key] = key_value
 	elif erro == 7:
 		salvar_arquivo_inicial()
-		
-	config_file.clear()
 
 func set_game_binds():
 	for key in keybinds.keys():
@@ -51,10 +46,9 @@ func set_game_binds():
 		if !actionlist.empty():
 			InputMap.action_erase_event(key, actionlist[0])
 		
-		if value != null:
-			var new_key = InputEventKey.new()
-			new_key.set_scancode(value)
-			InputMap.action_add_event(key, new_key)
+		var new_key = InputEventKey.new()
+		new_key.set_scancode(value)
+		InputMap.action_add_event(key, new_key)
 
 func write_config():
 	for key in keybinds.keys():
@@ -72,18 +66,20 @@ func _input(event):
 			mudar_uma_tecla(value)
 			
 			$timer.start()
+			selecionar = false
 
 func selecionar_uma_tecla(tecla):
-	for nodes in get_nodes_botoes():
-		if tecla in nodes.name:
-			node_botao_mudando = nodes
-		else:
-			nodes.focus_mode = 0
-	$redefinir_teclas.focus_mode = 0
-	$controles_voltar.focus_mode = 0
-	
-	node_botao_mudando.text = ""
-	waiting_input = true
+	if selecionar:
+		for nodes in get_nodes_botoes():
+			if tecla in nodes.name:
+				node_botao_mudando = nodes
+			else:
+				nodes.focus_mode = 0
+		$redefinir_teclas.focus_mode = 0
+		$controles_voltar.focus_mode = 0
+		
+		node_botao_mudando.text = ""
+		waiting_input = true
 
 func mudar_uma_tecla(value):
 	var key
@@ -138,6 +134,15 @@ func salvar_arquivo_inicial():
 		file.store_line(configuracoes_iniciais)
 		file.close()
 
+func _on_timer_timeout():
+	for nodes in get_nodes_botoes():
+		nodes.focus_mode = 2
+		
+	$redefinir_teclas.focus_mode = 2
+	$controles_voltar.focus_mode = 2
+	
+	selecionar = true
+
 func get_nodes_botoes():
 	return [get_node("container_horizontal/container_vertical2/botao_cima"),
 	get_node("container_horizontal/container_vertical2/botao_baixo"),
@@ -147,11 +152,3 @@ func get_nodes_botoes():
 	get_node("container_horizontal/container_vertical3/botao_interagir"),
 	get_node("container_horizontal/container_vertical3/botao_sair"),
 	get_node("container_horizontal/container_vertical3/botao_girar")]
-
-
-func _on_timer_timeout():
-	for nodes in get_nodes_botoes():
-		nodes.focus_mode = 2
-		
-	$redefinir_teclas.focus_mode = 2
-	$controles_voltar.focus_mode = 2

@@ -4,52 +4,96 @@ var save_path_1 : String = "user://save1.dat"
 var save_path_2 : String = "user://save2.dat"
 var save_path_3 : String = "user://save3.dat"
 
-var save_path
+var saves_path : String = "user://saves.ini"
+var config_file
 
 var data_dictionary = {}
 
-var data_dictionary_empty = {}
+func salvar():
+	var temp = Global.get_saves()
+	temp[Global.get_save()] = Global.get_nome_player()
+	Global.set_saves(temp)
+	
+	save_saves()
+	save_data_dictionary()
+	save_data(Global.get_save())
+
+func carregar():
+	load_data(Global.get_save())
+	load_data_dictionary()
+
+func apagar():
+	var temp = Global.get_saves()
+	temp[Global.get_save()] = "nd"
+	Global.set_saves(temp)
+	
+	save_saves()
+	clear_data(Global.get_save())
+	save_data(Global.get_save())
 
 func save_data(save):
-	get_save_path(save)
-	
 	var file : File = File.new()
-	var erro = file.open(save_path, File.WRITE)
+	var erro = file.open(get_save_path(save), File.WRITE)
 	
 	if erro == OK:
 		file.store_var(data_dictionary)
 		file.close()
 
 func load_data(save):
-	get_save_path(save)
-	
 	var file : File = File.new()
 	
-	if file.file_exists(save_path):
-		var erro = file.open(save_path, File.READ)
+	if file.file_exists(get_save_path(save)):
+		var erro = file.open(get_save_path(save), File.READ)
 		
 		if erro == OK:
 			data_dictionary = file.get_var()
 			file.close()
 
 func clear_data(save):
-	get_save_path(save)
+	var data_dictionary_empty = {}
 	
 	var file : File = File.new()
-	var erro = file.open(save_path, File.WRITE)
+	var erro = file.open(get_save_path(save), File.WRITE)
 	
 	if erro == OK:
 		file.store_var(data_dictionary_empty)
 		file.close()
 
+func save_saves():
+	var saves = Global.get_saves()
+	
+	for key in saves.keys():
+		var key_value = saves[key]
+		config_file.set_value("saves", key, key_value)
+		
+	config_file.save(saves_path)
+
+func load_saves():
+	config_file = ConfigFile.new()
+	var erro = config_file.load(saves_path)
+	
+	var saves = Global.get_saves()
+	
+	if erro == OK:
+		for key in config_file.get_section_keys("saves"):
+			var key_value = config_file.get_value("saves", key)
+			saves[key] = key_value
+		Global.set_saves(saves)
+	elif erro == 7:
+		var saves_vazios = "[saves]\n\nsave1=\"nd\"\nsave2=\"nd\"\nsave3=\"nd\""
+		var file : File = File.new()
+		if file.open(saves_path, File.WRITE) == OK:
+			file.store_line(saves_vazios)
+			file.close()
+
 func get_save_path(save):
 	match save:
-		1:
-			save_path = save_path_1
-		2:
-			save_path = save_path_2
-		3:
-			save_path = save_path_3
+		"save1":
+			return save_path_1
+		"save2":
+			return save_path_2
+		"save3":
+			return save_path_3
 
 func save_data_dictionary():
 	data_dictionary = {

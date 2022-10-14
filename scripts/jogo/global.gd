@@ -2,25 +2,29 @@ extends Node
 
 # ------------- vars ----------------
 
-var _cena_atual
+var _cena_atual : int
 
-var _direcao_players
+var _direcao_players : Array
 
-var _interagidos
+var _interagidos : Array
 
-var _mover
+var _mover : bool
 
-var _node_demo
+var _node_demo : Node
 
-var _nodes_apagados
+var _nodes_apagados : Array
 
-var _nome_player # {nome_player}
+var _nome_player : String # {nome_player}
 
-var _pausar
+var _pausar : bool
 
-var _players
+var _players : Array
 
-var _posicao_players 
+var _posicao_players : Array
+
+var _save : String
+
+var _saves : Dictionary
 
 # ------------- funcs ----------------
 
@@ -38,6 +42,8 @@ func set_valores_iniciais():
 	_pausar = true
 	_players = []
 	_posicao_players = []
+	_save = ""
+	_saves = {"save1" : "nd", "save2" : "nd", "save3" : "nd"}
 
 #------- cena_atual:
 func set_cena_atual(cena):
@@ -108,3 +114,17 @@ func set_posicao_players(posicao_players):
 
 func get_posicao_players():
 	return _posicao_players
+
+#------- save:
+func set_save(save):
+	_save = save
+
+func get_save():
+	return _save
+
+#------- saves:
+func set_saves(saves):
+	_saves = saves
+
+func get_saves():
+	return _saves
