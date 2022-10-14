@@ -17,16 +17,20 @@ onready var botao_configuracoes_voltar := $popup_configuracoes/botoes_configurac
 onready var botao_configuracoes_controles := $popup_configuracoes/botoes_configuracoes/controles_botao
 onready var botoes_controles := $popup_configuracoes/botoes_controles
 onready var botao_controle_voltar := $popup_configuracoes/botoes_controles/controles_voltar
+onready var botoes_video := $popup_configuracoes/botoes_video
+onready var botao_video_voltar := $popup_configuracoes/botoes_video/video_voltar
 
 func _ready():
 	Global.set_valores_iniciais()
-	botoes_controles.iniciar()
+	DataPlayer.set_configs_iniciais()
 	
 	botao_jogar.grab_focus()
 	titulo.text = ""
 	
-	botoes_controles.hide()
 	botoes_opcoes.hide()
+	
+	botoes_controles.hide()
+	botoes_video.hide()
 
 #================ tela_inicial
 
@@ -86,6 +90,13 @@ func _on_controles_botao_pressed():
 	titulo.text = "configurações/controles:"
 	botao_controle_voltar.grab_focus()
 
+func _on_video_botao_pressed():
+	botoes_video.chamar_video()
+	botoes_video.show()
+	botoes_configuracoes.hide()
+	titulo.text = "configurações/vídeo:"
+	botao_video_voltar.grab_focus()
+
 func _on_configuracoes_voltar_pressed():
 	popup_configuracoes.hide()
 	titulo.text = ""
@@ -101,6 +112,18 @@ func _on_redefinir_teclas_pressed():
 func _on_controles_voltar_pressed():
 	botoes_controles.definir()
 	botoes_controles.hide()
+	botoes_configuracoes.show()
+	titulo.text = "configurações:"
+	botao_configuracoes_controles.grab_focus()
+
+#================ configuração - vídeo
+
+func _on_botao_definir_tamanho_tela(extra_arg_0): # tamanho_tela = extra_arg_0
+	botoes_video.selecionar_tamanho(extra_arg_0)
+
+func _on_video_voltar_pressed():
+	botoes_video.fechar()
+	botoes_video.hide()
 	botoes_configuracoes.show()
 	titulo.text = "configurações:"
 	botao_configuracoes_controles.grab_focus()

@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/start_scene/start_scene.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font1.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/temas/botao_start_scene.tres" type="Theme" id=3]
 [ext_resource path="res://assets/fonts/font2.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://scripts/start_scene/configurar_controles.gd" type="Script" id=5]
+[ext_resource path="res://scripts/start_scene/botoes_controles.gd" type="Script" id=5]
 [ext_resource path="res://scripts/start_scene/botoes_jogar.gd" type="Script" id=6]
+[ext_resource path="res://scripts/start_scene/botoes_video.gd" type="Script" id=7]
+[ext_resource path="res://scripts/start_scene/grupo_botoes_video.tres" type="ButtonGroup" id=8]
+[ext_resource path="res://assets/outros/seta_direita.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 33
@@ -22,6 +25,39 @@ bg_color = Color( 1, 0, 0, 1 )
 expand_margin_left = 5.0
 expand_margin_right = 3.0
 expand_margin_top = 1.0
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("setinha:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "setinha"
+length = 0.6
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("setinha:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 8, 0 ) ]
+}
 
 [node name="start_scene" type="Control"]
 script = ExtResource( 1 )
@@ -223,19 +259,41 @@ mouse_filter = 2
 theme = ExtResource( 3 )
 text = "voltar"
 
-[node name="botoes_controles" type="Control" parent="popup_configuracoes"]
-script = ExtResource( 5 )
+[node name="botoes_video" type="Control" parent="popup_configuracoes"]
+script = ExtResource( 7 )
 
-[node name="redefinir_teclas" type="Button" parent="popup_configuracoes/botoes_controles"]
-margin_left = 164.0
-margin_top = 240.0
-margin_right = 316.0
-margin_bottom = 249.0
+[node name="tela_inteira_botao" type="Button" parent="popup_configuracoes/botoes_video"]
+margin_left = 192.0
+margin_top = 184.0
+margin_right = 288.0
+margin_bottom = 193.0
 mouse_filter = 2
 theme = ExtResource( 3 )
-text = "redefinir controles"
+group = ExtResource( 8 )
+text = "tela inteira"
 
-[node name="controles_voltar" type="Button" parent="popup_configuracoes/botoes_controles"]
+[node name="960x576_botao" type="Button" parent="popup_configuracoes/botoes_video"]
+margin_left = 204.0
+margin_top = 200.0
+margin_right = 276.0
+margin_bottom = 209.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+button_mask = 0
+group = ExtResource( 8 )
+text = "960 x 576"
+
+[node name="720x432_botao" type="Button" parent="popup_configuracoes/botoes_video"]
+margin_left = 204.0
+margin_top = 216.0
+margin_right = 276.0
+margin_bottom = 225.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+group = ExtResource( 8 )
+text = "720 x 432"
+
+[node name="video_voltar" type="Button" parent="popup_configuracoes/botoes_video"]
 margin_left = 216.0
 margin_top = 256.0
 margin_right = 264.0
@@ -243,6 +301,18 @@ margin_bottom = 265.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 text = "voltar"
+
+[node name="setinha" type="Sprite" parent="popup_configuracoes/botoes_video"]
+position = Vector2( 168, 184 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="animation_player" type="AnimationPlayer" parent="popup_configuracoes/botoes_video"]
+anims/RESET = SubResource( 4 )
+anims/setinha = SubResource( 5 )
+
+[node name="botoes_controles" type="Control" parent="popup_configuracoes"]
+script = ExtResource( 5 )
 
 [node name="container_horizontal" type="HBoxContainer" parent="popup_configuracoes/botoes_controles"]
 margin_top = 125.0
@@ -252,8 +322,8 @@ custom_constants/separation = 5
 alignment = 1
 
 [node name="container_vertical1" type="VBoxContainer" parent="popup_configuracoes/botoes_controles/container_horizontal"]
-margin_left = 74.0
-margin_right = 166.0
+margin_left = 72.0
+margin_right = 164.0
 margin_bottom = 180.0
 custom_constants/separation = 9
 alignment = 1
@@ -297,8 +367,8 @@ margin_bottom = 133.0
 text = "                       "
 
 [node name="container_vertical2" type="VBoxContainer" parent="popup_configuracoes/botoes_controles/container_horizontal"]
-margin_left = 170.0
-margin_right = 238.0
+margin_left = 169.0
+margin_right = 237.0
 margin_bottom = 180.0
 custom_constants/separation = 9
 alignment = 1
@@ -394,8 +464,8 @@ margin_bottom = 133.0
 text = "                 "
 
 [node name="container_vertical4" type="VBoxContainer" parent="popup_configuracoes/botoes_controles/container_horizontal"]
-margin_left = 314.0
-margin_right = 406.0
+margin_left = 315.0
+margin_right = 407.0
 margin_bottom = 180.0
 custom_constants/separation = 9
 alignment = 1
@@ -434,6 +504,24 @@ margin_right = 92.0
 margin_bottom = 133.0
 text = "                       "
 
+[node name="redefinir_teclas" type="Button" parent="popup_configuracoes/botoes_controles"]
+margin_left = 164.0
+margin_top = 240.0
+margin_right = 316.0
+margin_bottom = 249.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "redefinir controles"
+
+[node name="controles_voltar" type="Button" parent="popup_configuracoes/botoes_controles"]
+margin_left = 216.0
+margin_top = 256.0
+margin_right = 264.0
+margin_bottom = 265.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "voltar"
+
 [node name="timer" type="Timer" parent="popup_configuracoes/botoes_controles"]
 wait_time = 0.5
 one_shot = true
@@ -449,9 +537,12 @@ one_shot = true
 [connection signal="pressed" from="popup_jogar/botoes_opcoes/apagar_botao" to="." method="_on_apagar_botao_pressed"]
 [connection signal="pressed" from="popup_jogar/botoes_opcoes/opcoes_voltar" to="." method="_on_jogar_opcoes_voltar_pressed"]
 [connection signal="pressed" from="popup_configuracoes/botoes_configuracoes/controles_botao" to="." method="_on_controles_botao_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_configuracoes/video_botao" to="." method="_on_video_botao_pressed"]
 [connection signal="pressed" from="popup_configuracoes/botoes_configuracoes/configuracoes_voltar" to="." method="_on_configuracoes_voltar_pressed"]
-[connection signal="pressed" from="popup_configuracoes/botoes_controles/redefinir_teclas" to="." method="_on_redefinir_teclas_pressed"]
-[connection signal="pressed" from="popup_configuracoes/botoes_controles/controles_voltar" to="." method="_on_controles_voltar_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_video/tela_inteira_botao" to="." method="_on_botao_definir_tamanho_tela" binds= [ "tela_inteira" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_video/960x576_botao" to="." method="_on_botao_definir_tamanho_tela" binds= [ "960x576" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_video/720x432_botao" to="." method="_on_botao_definir_tamanho_tela" binds= [ "720x432" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_video/video_voltar" to="." method="_on_video_voltar_pressed"]
 [connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2/botao_cima" to="." method="_on_botao_difinir_controles" binds= [ "cima" ]]
 [connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2/botao_baixo" to="." method="_on_botao_difinir_controles" binds= [ "baixo" ]]
 [connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2/botao_direita" to="." method="_on_botao_difinir_controles" binds= [ "direita" ]]
@@ -460,4 +551,6 @@ one_shot = true
 [connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3/botao_interagir" to="." method="_on_botao_difinir_controles" binds= [ "interagir" ]]
 [connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3/botao_sair" to="." method="_on_botao_difinir_controles" binds= [ "sair" ]]
 [connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3/botao_girar" to="." method="_on_botao_difinir_controles" binds= [ "girar" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/redefinir_teclas" to="." method="_on_redefinir_teclas_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/controles_voltar" to="." method="_on_controles_voltar_pressed"]
 [connection signal="timeout" from="popup_configuracoes/botoes_controles/timer" to="popup_configuracoes/botoes_controles" method="_on_timer_timeout"]

@@ -46,9 +46,9 @@ DataPlayer="*res://scripts/jogo/data_player.gd"
 
 window/size/width=480
 window/size/height=288
-window/size/test_width=704
-window/size/test_height=430
-window/vsync/use_vsync=false
+window/size/resizable=false
+window/size/test_width=960
+window/size/test_height=576
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

@@ -1,8 +1,8 @@
 extends Control
 
 func chamar_jogar():
-	DataPlayer.load_saves()
-	var saves = Global.get_saves()
+	DataPlayer.load_configs("saves")
+	var saves = DataPlayer.get_saves()
 	
 	for key in saves.keys():
 		if saves[key] == "nd":
@@ -11,9 +11,9 @@ func chamar_jogar():
 			get_nodes_botoes(key).text = saves[key]
 
 func selecionar_um_save(save):
-	var saves = Global.get_saves()
+	var saves = DataPlayer.get_saves()
 	
-	Global.set_save(save)
+	DataPlayer.set_save(save)
 	
 	if saves[save] == "nd":
 		Eventos.chamar_evento()

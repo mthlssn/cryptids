@@ -21,11 +21,6 @@ var _pausar : bool
 var _players : Array
 
 var _posicao_players : Array
-
-var _save : String
-
-var _saves : Dictionary
-
 # ------------- funcs ----------------
 
 func _ready():
@@ -42,8 +37,6 @@ func set_valores_iniciais():
 	_pausar = true
 	_players = []
 	_posicao_players = []
-	_save = ""
-	_saves = {"save1" : "nd", "save2" : "nd", "save3" : "nd"}
 
 #------- cena_atual:
 func set_cena_atual(cena):
@@ -114,17 +107,3 @@ func set_posicao_players(posicao_players):
 
 func get_posicao_players():
 	return _posicao_players
-
-#------- save:
-func set_save(save):
-	_save = save
-
-func get_save():
-	return _save
-
-#------- saves:
-func set_saves(saves):
-	_saves = saves
-
-func get_saves():
-	return _saves

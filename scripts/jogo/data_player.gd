@@ -4,89 +4,165 @@ var save_path_1 : String = "user://save1.dat"
 var save_path_2 : String = "user://save2.dat"
 var save_path_3 : String = "user://save3.dat"
 
-var saves_path : String = "user://saves.ini"
+var configs_path : String = "user://configs.ini"
 var config_file
 
 var data_dictionary = {}
 
-func salvar():
-	var temp = Global.get_saves()
-	temp[Global.get_save()] = Global.get_nome_player()
-	Global.set_saves(temp)
+var _save : String
+
+var _saves = {
+	"save1" : "nd",
+	"save2" : "nd", 
+	"save3" : "nd"
+}
+
+var _keybinds = {
+	"ui_up" : 87,
+	"ui_down" : 83,
+	"ui_right" : 68,
+	"ui_left" : 65,
+	"ui_accept" : 32,
+	"interagir" : 69,
+	"ui_cancel" : 81,
+	"girar" : 16777237
+}
+
+var _tamanho_tela : Dictionary = {
+	"tamanho_tela" : "720x432"
+}
+
+var _keybinds_iniciais = _keybinds.duplicate()
+
+func set_configs_iniciais():
+	load_configs("saves")
+	load_configs("keybinds")
+	load_configs("tamanho_tela")
 	
-	save_saves()
-	save_data_dictionary()
-	save_data(Global.get_save())
+	set_tela()
+	set_game_binds()
+
+# ================= data
+
+func salvar():
+	_saves[_save] = Global.get_nome_player()
+	save_configs("saves")
+	_save_data_dictionary()
+	save_data(_save)
 
 func carregar():
-	load_data(Global.get_save())
-	load_data_dictionary()
+	load_data(_save)
+	_load_data_dictionary()
 
 func apagar():
-	var temp = Global.get_saves()
-	temp[Global.get_save()] = "nd"
-	Global.set_saves(temp)
-	
-	save_saves()
-	clear_data(Global.get_save())
-	save_data(Global.get_save())
+	_saves[_save] = "nd"
+	save_configs("saves")
+	clear_data(_save)
+	save_data(_save)
 
 func save_data(save):
 	var file : File = File.new()
-	var erro = file.open(get_save_path(save), File.WRITE)
 	
-	if erro == OK:
+	if file.open(_get_save_path(save), File.WRITE) == OK:
 		file.store_var(data_dictionary)
 		file.close()
 
 func load_data(save):
 	var file : File = File.new()
 	
-	if file.file_exists(get_save_path(save)):
-		var erro = file.open(get_save_path(save), File.READ)
-		
-		if erro == OK:
+	if file.file_exists(_get_save_path(save)):
+		if file.open(_get_save_path(save), File.READ) == OK:
 			data_dictionary = file.get_var()
 			file.close()
 
 func clear_data(save):
 	var data_dictionary_empty = {}
-	
 	var file : File = File.new()
-	var erro = file.open(get_save_path(save), File.WRITE)
 	
-	if erro == OK:
+	if file.open(_get_save_path(save), File.WRITE) == OK:
 		file.store_var(data_dictionary_empty)
 		file.close()
 
-func save_saves():
-	var saves = Global.get_saves()
-	
-	for key in saves.keys():
-		var key_value = saves[key]
-		config_file.set_value("saves", key, key_value)
-		
-	config_file.save(saves_path)
+# ================= configs
 
-func load_saves():
-	config_file = ConfigFile.new()
-	var erro = config_file.load(saves_path)
+func save_configs(selection):
+	var config
+	match selection:
+		"saves":
+			config = _saves
+		"keybinds":
+			config = _keybinds
+		"tamanho_tela":
+			config = _tamanho_tela
 	
-	var saves = Global.get_saves()
+	for key in config.keys():
+		var key_value = config[key]
+		config_file.set_value(selection, key, key_value)
+		
+	config_file.save(configs_path)
+
+func load_configs(selection):
+	config_file = ConfigFile.new()
+	var erro = config_file.load(configs_path)
 	
 	if erro == OK:
-		for key in config_file.get_section_keys("saves"):
-			var key_value = config_file.get_value("saves", key)
-			saves[key] = key_value
-		Global.set_saves(saves)
+		for key in config_file.get_section_keys(selection):
+			var key_value = config_file.get_value(selection, key)
+			match selection:
+				"saves":
+					_saves[key] = key_value
+				"keybinds":
+					_keybinds[key] = key_value
+				"tamanho_tela":
+					_tamanho_tela[key] = key_value
 	elif erro == 7:
-		var saves_vazios = "[saves]\n\nsave1=\"nd\"\nsave2=\"nd\"\nsave3=\"nd\""
 		var file : File = File.new()
-		if file.open(saves_path, File.WRITE) == OK:
-			file.store_line(saves_vazios)
+	
+		if file.open(configs_path, File.WRITE) == OK:
 			file.close()
+		
+		save_configs("saves")
+		save_configs("keybinds")
+		save_configs("tamanho_tela")
 
-func get_save_path(save):
+
+# ================= gets_and_sets
+
+#------- keybinds:
+func set_keybinds(keybinds):
+	_keybinds = keybinds.duplicate()
+
+func get_keybinds():
+	return _keybinds.duplicate()
+
+#------- keybinds_iniciais:
+func get_keybinds_iniciais():
+	return _keybinds_iniciais.duplicate()
+
+#------- save:
+func set_save(save):
+	_save = save
+
+func get_save():
+	return _save
+
+#------- saves:
+func set_saves(saves):
+	_saves = saves.duplicate()
+
+func get_saves():
+	return _saves.duplicate()
+
+#------- tamanho_tela:
+func set_tamanho_tela(tamanho_tela):
+	_tamanho_tela = tamanho_tela.duplicate()
+
+func get_tamanho_tela():
+	return _tamanho_tela.duplicate()
+
+# ================= funcs
+
+func _get_save_path(save):
 	match save:
 		"save1":
 			return save_path_1
@@ -95,7 +171,7 @@ func get_save_path(save):
 		"save3":
 			return save_path_3
 
-func save_data_dictionary():
+func _save_data_dictionary():
 	data_dictionary = {
 		"cena_atual" : Global.get_cena_atual(),
 		"direcao_player" : Global.get_direcao_players(),
@@ -107,7 +183,7 @@ func save_data_dictionary():
 		"posicao_players" : Global.get_posicao_players(), 
 	}
 
-func load_data_dictionary():
+func _load_data_dictionary():
 	Global.set_cena_atual(data_dictionary["cena_atual"])
 	Global.set_direcao_players(data_dictionary["direcao_player"])
 	Global.set_interagidos(data_dictionary["interagidos"])
@@ -116,3 +192,29 @@ func load_data_dictionary():
 	Global.set_nome_player(data_dictionary["nome_player"])
 	Global.set_players(data_dictionary["players"])
 	Global.set_posicao_players(data_dictionary["posicao_players"])
+
+func set_game_binds(): 
+	for key in _keybinds.keys():
+		var value = _keybinds[key]
+		
+		var actionlist = InputMap.get_action_list(key)
+		if !actionlist.empty():
+			InputMap.action_erase_event(key, actionlist[0])
+		
+		var new_key = InputEventKey.new()
+		new_key.set_scancode(value)
+		InputMap.action_add_event(key, new_key)
+
+func set_tela():
+	OS.window_fullscreen = false
+	
+	var tamanho = _tamanho_tela["tamanho_tela"]
+	match tamanho:
+		"tela_inteira":
+			OS.window_fullscreen = true
+		"960x576":
+			OS.window_size = Vector2(960,576)
+		"720x432":
+			OS.window_size = Vector2(720,432)
+	
+	OS.center_window()
