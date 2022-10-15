@@ -38,9 +38,9 @@ config/icon="res://icon.png"
 Transition="*res://scenes/transition/transition.tscn"
 Global="*res://scripts/jogo/global.gd"
 DialogBox="*res://scenes/dialog_box/dialog_box.tscn"
-Pause="*res://scenes/menu/menu.tscn"
 Eventos="*res://scripts/eventos/eventos.gd"
 DataPlayer="*res://scripts/jogo/data_player.gd"
+Menu="*res://scenes/menu/menu.tscn"
 
 [display]
 
