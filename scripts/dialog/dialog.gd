@@ -114,7 +114,7 @@ func show_message() -> void:
 		if pausar:
 			hide()
 			pausar = false
-			Pause.pause()
+			Menu.pause()
 		else:
 			animacao.play("close")
 			yield(animacao, "animation_finished")

@@ -44,6 +44,9 @@ func selecionar_uma_tecla(tecla):
 		
 		node_botao_mudando.text = ""
 		waiting_input = true
+		
+		if Global.get_node_demo():
+			Global.get_node_demo().get_tree().paused = true
 
 func mudar_uma_tecla(value):
 	var key
@@ -101,6 +104,9 @@ func _on_timer_timeout():
 	$controles_voltar.focus_mode = 2
 	
 	selecionar = true
+	
+	if Global.get_node_demo():
+			Global.get_node_demo().get_tree().paused = false
 
 func get_nodes_botoes():
 	return [get_node("container_horizontal/container_vertical2/botao_cima"),
