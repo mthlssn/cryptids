@@ -110,7 +110,7 @@ interaction = [ ExtResource( 3 ) ]
 
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-offset = Vector2( 0, -9 )
+offset = Vector2( 0, -7 )
 hframes = 12
 frame = 6
 
