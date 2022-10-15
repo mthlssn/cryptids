@@ -86,7 +86,7 @@ func _input(event):
 		
 		show_message()
 	
-	if event.is_action_pressed("esc") && visible == true:
+	if event.is_action_pressed("ui_cancel") && visible == true:
 		if not node_input_box:
 			timer.stop()
 			cont_msg_queue = _msg_queue.size()
@@ -114,7 +114,7 @@ func show_message() -> void:
 		if pausar:
 			hide()
 			pausar = false
-			Pause.pause()
+			Menu.pause()
 		else:
 			animacao.play("close")
 			yield(animacao, "animation_finished")

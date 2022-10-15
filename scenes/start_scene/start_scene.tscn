@@ -1,14 +1,63 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/start_scene/start_scene.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/font1.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/temas/botao_start_scene.tres" type="Theme" id=3]
+[ext_resource path="res://assets/fonts/font2.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/start_scene/botoes_controles.gd" type="Script" id=5]
+[ext_resource path="res://scripts/start_scene/botoes_jogar.gd" type="Script" id=6]
+[ext_resource path="res://scripts/start_scene/botoes_video.gd" type="Script" id=7]
+[ext_resource path="res://scripts/start_scene/grupo_botoes_video.tres" type="ButtonGroup" id=8]
+[ext_resource path="res://assets/outros/seta_direita.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 33
 use_mipmaps = true
 extra_spacing_char = 5
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0, 0, 1 )
+expand_margin_left = 5.0
+expand_margin_right = 3.0
+expand_margin_top = 1.0
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("setinha:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "setinha"
+length = 0.6
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("setinha:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 8, 0 ) ]
+}
 
 [node name="start_scene" type="Control"]
 script = ExtResource( 1 )
@@ -33,67 +82,475 @@ valign = 1
 
 [node name="botoes" type="Control" parent="."]
 
-[node name="continuar_botao" type="Button" parent="botoes"]
-margin_left = 204.0
-margin_top = 168.0
-margin_right = 276.0
-margin_bottom = 178.0
+[node name="jogar_botao" type="Button" parent="botoes"]
+margin_left = 220.0
+margin_top = 176.0
+margin_right = 260.0
+margin_bottom = 185.0
 mouse_filter = 2
 theme = ExtResource( 3 )
-text = "continuar"
-
-[node name="novo_jogo_botao" type="Button" parent="botoes"]
-margin_left = 204.0
-margin_top = 183.0
-margin_right = 276.0
-margin_bottom = 193.0
-mouse_filter = 2
-theme = ExtResource( 3 )
-text = "novo jogo"
+text = "jogar"
+align = 2
 
 [node name="configuracao_botao" type="Button" parent="botoes"]
 margin_left = 188.0
-margin_top = 200.0
+margin_top = 192.0
 margin_right = 292.0
-margin_bottom = 210.0
+margin_bottom = 201.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 text = "configurações"
 
 [node name="sair_botao" type="Button" parent="botoes"]
 margin_left = 224.0
-margin_top = 216.0
+margin_top = 208.0
 margin_right = 256.0
-margin_bottom = 226.0
+margin_bottom = 217.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 text = "sair"
 
-[node name="popup_configuracoes" type="Popup" parent="."]
+[node name="titulo" type="Label" parent="."]
+margin_left = 150.0
+margin_top = 144.0
+margin_right = 330.0
+margin_bottom = 154.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+
+[node name="popup_jogar" type="Popup" parent="."]
 margin_right = 480.0
 margin_bottom = 288.0
+popup_exclusive = true
 
-[node name="background" type="ColorRect" parent="popup_configuracoes"]
-margin_left = 90.0
-margin_top = 128.0
-margin_right = 390.0
+[node name="background" type="ColorRect" parent="popup_jogar"]
+margin_left = 96.0
+margin_top = 168.0
+margin_right = 384.0
 margin_bottom = 288.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="voltar" type="Button" parent="popup_configuracoes"]
+[node name="botoes_jogar" type="Control" parent="popup_jogar"]
+script = ExtResource( 6 )
+
+[node name="save1_botao" type="Button" parent="popup_jogar/botoes_jogar"]
+margin_left = 192.0
+margin_top = 184.0
+margin_right = 288.0
+margin_bottom = 193.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "            "
+
+[node name="save2_botao" type="Button" parent="popup_jogar/botoes_jogar"]
+margin_left = 192.0
+margin_top = 200.0
+margin_right = 288.0
+margin_bottom = 209.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "            "
+
+[node name="save3_botao" type="Button" parent="popup_jogar/botoes_jogar"]
+margin_left = 192.0
+margin_top = 216.0
+margin_right = 288.0
+margin_bottom = 225.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "            "
+
+[node name="jogar_voltar" type="Button" parent="popup_jogar/botoes_jogar"]
 margin_left = 216.0
 margin_top = 256.0
 margin_right = 264.0
-margin_bottom = 264.0
+margin_bottom = 265.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 text = "voltar"
 
-[connection signal="pressed" from="botoes/continuar_botao" to="." method="_on_continuar_botao_pressed"]
-[connection signal="pressed" from="botoes/novo_jogo_botao" to="." method="_on_novo_jogo_botao_pressed"]
+[node name="botoes_opcoes" type="Control" parent="popup_jogar"]
+
+[node name="continuar_botao" type="Button" parent="popup_jogar/botoes_opcoes"]
+margin_left = 160.0
+margin_top = 200.0
+margin_right = 232.0
+margin_bottom = 209.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "continuar"
+
+[node name="apagar_botao" type="Button" parent="popup_jogar/botoes_opcoes"]
+margin_left = 256.0
+margin_top = 200.0
+margin_right = 304.0
+margin_bottom = 209.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_styles/focus = SubResource( 3 )
+text = "apagar"
+
+[node name="opcoes_voltar" type="Button" parent="popup_jogar/botoes_opcoes"]
+margin_left = 216.0
+margin_top = 256.0
+margin_right = 264.0
+margin_bottom = 265.0
+focus_neighbour_left = NodePath("../continuar_botao")
+focus_neighbour_right = NodePath("../apagar_botao")
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "voltar"
+
+[node name="popup_configuracoes" type="Popup" parent="."]
+margin_right = 480.0
+margin_bottom = 288.0
+popup_exclusive = true
+
+[node name="background" type="ColorRect" parent="popup_configuracoes"]
+margin_left = 96.0
+margin_top = 168.0
+margin_right = 384.0
+margin_bottom = 288.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="botoes_configuracoes" type="Control" parent="popup_configuracoes"]
+
+[node name="audio_botao" type="Button" parent="popup_configuracoes/botoes_configuracoes"]
+margin_left = 220.0
+margin_top = 184.0
+margin_right = 260.0
+margin_bottom = 193.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "audio"
+
+[node name="controles_botao" type="Button" parent="popup_configuracoes/botoes_configuracoes"]
+margin_left = 204.0
+margin_top = 200.0
+margin_right = 276.0
+margin_bottom = 209.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "controles"
+
+[node name="video_botao" type="Button" parent="popup_configuracoes/botoes_configuracoes"]
+margin_left = 220.0
+margin_top = 216.0
+margin_right = 260.0
+margin_bottom = 225.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "vídeo"
+
+[node name="configuracoes_voltar" type="Button" parent="popup_configuracoes/botoes_configuracoes"]
+margin_left = 216.0
+margin_top = 256.0
+margin_right = 264.0
+margin_bottom = 265.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "voltar"
+
+[node name="botoes_video" type="Control" parent="popup_configuracoes"]
+script = ExtResource( 7 )
+
+[node name="tela_inteira_botao" type="Button" parent="popup_configuracoes/botoes_video"]
+margin_left = 192.0
+margin_top = 184.0
+margin_right = 288.0
+margin_bottom = 193.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+group = ExtResource( 8 )
+text = "tela inteira"
+
+[node name="960x576_botao" type="Button" parent="popup_configuracoes/botoes_video"]
+margin_left = 204.0
+margin_top = 200.0
+margin_right = 276.0
+margin_bottom = 209.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+button_mask = 0
+group = ExtResource( 8 )
+text = "960 x 576"
+
+[node name="720x432_botao" type="Button" parent="popup_configuracoes/botoes_video"]
+margin_left = 204.0
+margin_top = 216.0
+margin_right = 276.0
+margin_bottom = 225.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+group = ExtResource( 8 )
+text = "720 x 432"
+
+[node name="video_voltar" type="Button" parent="popup_configuracoes/botoes_video"]
+margin_left = 216.0
+margin_top = 256.0
+margin_right = 264.0
+margin_bottom = 265.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "voltar"
+
+[node name="setinha" type="Sprite" parent="popup_configuracoes/botoes_video"]
+position = Vector2( 168, 184 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="animation_player" type="AnimationPlayer" parent="popup_configuracoes/botoes_video"]
+anims/RESET = SubResource( 4 )
+anims/setinha = SubResource( 5 )
+
+[node name="botoes_controles" type="Control" parent="popup_configuracoes"]
+script = ExtResource( 5 )
+
+[node name="container_horizontal" type="HBoxContainer" parent="popup_configuracoes/botoes_controles"]
+margin_top = 125.0
+margin_right = 480.0
+margin_bottom = 305.0
+custom_constants/separation = 5
+alignment = 1
+
+[node name="container_vertical1" type="VBoxContainer" parent="popup_configuracoes/botoes_controles/container_horizontal"]
+margin_left = 72.0
+margin_right = 164.0
+margin_bottom = 180.0
+custom_constants/separation = 9
+alignment = 1
+
+[node name="cima" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical1"]
+margin_top = 47.0
+margin_right = 92.0
+margin_bottom = 56.0
+theme = ExtResource( 3 )
+text = "cima:"
+align = 2
+
+[node name="baixo" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical1"]
+margin_top = 65.0
+margin_right = 92.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+text = "baixo:"
+align = 2
+
+[node name="direita" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical1"]
+margin_top = 83.0
+margin_right = 92.0
+margin_bottom = 92.0
+theme = ExtResource( 3 )
+text = "direita:"
+align = 2
+
+[node name="esquerda" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical1"]
+margin_top = 101.0
+margin_right = 92.0
+margin_bottom = 110.0
+theme = ExtResource( 3 )
+text = "esquerda:"
+align = 2
+
+[node name="espaco" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical1"]
+margin_top = 119.0
+margin_right = 92.0
+margin_bottom = 133.0
+text = "                       "
+
+[node name="container_vertical2" type="VBoxContainer" parent="popup_configuracoes/botoes_controles/container_horizontal"]
+margin_left = 169.0
+margin_right = 237.0
+margin_bottom = 180.0
+custom_constants/separation = 9
+alignment = 1
+
+[node name="botao_cima" type="Button" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2"]
+margin_top = 47.0
+margin_right = 68.0
+margin_bottom = 56.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "W"
+
+[node name="botao_baixo" type="Button" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2"]
+margin_top = 65.0
+margin_right = 68.0
+margin_bottom = 74.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "S"
+
+[node name="botao_direita" type="Button" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2"]
+margin_top = 83.0
+margin_right = 68.0
+margin_bottom = 92.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "d"
+
+[node name="botao_esquerda" type="Button" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2"]
+margin_top = 101.0
+margin_right = 68.0
+margin_bottom = 110.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "A"
+
+[node name="espaco" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2"]
+margin_top = 119.0
+margin_right = 68.0
+margin_bottom = 133.0
+text = "                 "
+
+[node name="container_vertical3" type="VBoxContainer" parent="popup_configuracoes/botoes_controles/container_horizontal"]
+margin_left = 242.0
+margin_right = 310.0
+margin_bottom = 180.0
+custom_constants/separation = 9
+alignment = 1
+
+[node name="botao_selecionar" type="Button" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3"]
+margin_top = 47.0
+margin_right = 68.0
+margin_bottom = 56.0
+focus_neighbour_bottom = NodePath("../botao_interagir")
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "Space"
+
+[node name="botao_interagir" type="Button" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3"]
+margin_top = 65.0
+margin_right = 68.0
+margin_bottom = 74.0
+focus_neighbour_top = NodePath("../botao_selecionar")
+focus_neighbour_bottom = NodePath("../botao_sair")
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "E"
+
+[node name="botao_sair" type="Button" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3"]
+margin_top = 83.0
+margin_right = 68.0
+margin_bottom = 92.0
+focus_neighbour_top = NodePath("../botao_interagir")
+focus_neighbour_bottom = NodePath("../botao_girar")
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "Q"
+
+[node name="botao_girar" type="Button" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3"]
+margin_top = 101.0
+margin_right = 68.0
+margin_bottom = 110.0
+focus_neighbour_top = NodePath("../botao_sair")
+focus_neighbour_bottom = NodePath("../../../redefinir_teclas")
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "Shift"
+
+[node name="espaco" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3"]
+margin_top = 119.0
+margin_right = 68.0
+margin_bottom = 133.0
+text = "                 "
+
+[node name="container_vertical4" type="VBoxContainer" parent="popup_configuracoes/botoes_controles/container_horizontal"]
+margin_left = 315.0
+margin_right = 407.0
+margin_bottom = 180.0
+custom_constants/separation = 9
+alignment = 1
+
+[node name="selecionar" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical4"]
+margin_top = 47.0
+margin_right = 92.0
+margin_bottom = 56.0
+theme = ExtResource( 3 )
+text = ":selecionar"
+
+[node name="interagir" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical4"]
+margin_top = 65.0
+margin_right = 92.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+text = ":interagir"
+
+[node name="sair" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical4"]
+margin_top = 83.0
+margin_right = 92.0
+margin_bottom = 92.0
+theme = ExtResource( 3 )
+text = ":sair"
+
+[node name="girar" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical4"]
+margin_top = 101.0
+margin_right = 92.0
+margin_bottom = 110.0
+theme = ExtResource( 3 )
+text = ":girar"
+
+[node name="espaco" type="Label" parent="popup_configuracoes/botoes_controles/container_horizontal/container_vertical4"]
+margin_top = 119.0
+margin_right = 92.0
+margin_bottom = 133.0
+text = "                       "
+
+[node name="redefinir_teclas" type="Button" parent="popup_configuracoes/botoes_controles"]
+margin_left = 164.0
+margin_top = 240.0
+margin_right = 316.0
+margin_bottom = 249.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "redefinir controles"
+
+[node name="controles_voltar" type="Button" parent="popup_configuracoes/botoes_controles"]
+margin_left = 216.0
+margin_top = 256.0
+margin_right = 264.0
+margin_bottom = 265.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+text = "voltar"
+
+[node name="timer" type="Timer" parent="popup_configuracoes/botoes_controles"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="pressed" from="botoes/jogar_botao" to="." method="_on_jogar_botao_pressed"]
 [connection signal="pressed" from="botoes/configuracao_botao" to="." method="_on_configuracao_botao_pressed"]
 [connection signal="pressed" from="botoes/sair_botao" to="." method="_on_sair_botao_pressed"]
-[connection signal="pressed" from="popup_configuracoes/voltar" to="." method="_on_voltar_pressed"]
+[connection signal="pressed" from="popup_jogar/botoes_jogar/save1_botao" to="." method="_on_botao_escolher_save" binds= [ "save1" ]]
+[connection signal="pressed" from="popup_jogar/botoes_jogar/save2_botao" to="." method="_on_botao_escolher_save" binds= [ "save2" ]]
+[connection signal="pressed" from="popup_jogar/botoes_jogar/save3_botao" to="." method="_on_botao_escolher_save" binds= [ "save3" ]]
+[connection signal="pressed" from="popup_jogar/botoes_jogar/jogar_voltar" to="." method="_on_jogar_voltar_pressed"]
+[connection signal="pressed" from="popup_jogar/botoes_opcoes/continuar_botao" to="." method="_on_continuar_botao_pressed"]
+[connection signal="pressed" from="popup_jogar/botoes_opcoes/apagar_botao" to="." method="_on_apagar_botao_pressed"]
+[connection signal="pressed" from="popup_jogar/botoes_opcoes/opcoes_voltar" to="." method="_on_jogar_opcoes_voltar_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_configuracoes/controles_botao" to="." method="_on_controles_botao_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_configuracoes/video_botao" to="." method="_on_video_botao_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_configuracoes/configuracoes_voltar" to="." method="_on_configuracoes_voltar_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_video/tela_inteira_botao" to="." method="_on_botao_definir_tamanho_tela" binds= [ "tela_inteira" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_video/960x576_botao" to="." method="_on_botao_definir_tamanho_tela" binds= [ "960x576" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_video/720x432_botao" to="." method="_on_botao_definir_tamanho_tela" binds= [ "720x432" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_video/video_voltar" to="." method="_on_video_voltar_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2/botao_cima" to="." method="_on_botao_difinir_controles" binds= [ "cima" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2/botao_baixo" to="." method="_on_botao_difinir_controles" binds= [ "baixo" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2/botao_direita" to="." method="_on_botao_difinir_controles" binds= [ "direita" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical2/botao_esquerda" to="." method="_on_botao_difinir_controles" binds= [ "esquerda" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3/botao_selecionar" to="." method="_on_botao_difinir_controles" binds= [ "selecionar" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3/botao_interagir" to="." method="_on_botao_difinir_controles" binds= [ "interagir" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3/botao_sair" to="." method="_on_botao_difinir_controles" binds= [ "sair" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/container_horizontal/container_vertical3/botao_girar" to="." method="_on_botao_difinir_controles" binds= [ "girar" ]]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/redefinir_teclas" to="." method="_on_redefinir_teclas_pressed"]
+[connection signal="pressed" from="popup_configuracoes/botoes_controles/controles_voltar" to="." method="_on_controles_voltar_pressed"]
+[connection signal="timeout" from="popup_configuracoes/botoes_controles/timer" to="popup_configuracoes/botoes_controles" method="_on_timer_timeout"]
