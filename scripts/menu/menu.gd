@@ -6,7 +6,7 @@ func _ready():
 	hide()
 
 func _input(event):
-	if event.is_action_pressed("esc") && Global.get_pausar():
+	if event.is_action_pressed("ui_cancel") && Global.get_pausar():
 		pause()
 		
 func pause():
@@ -28,8 +28,7 @@ func _on_configuracao_botao_pressed():
 	pass # Replace with function body.
 
 func _on_tela_inicial_salvar_botao_pressed():
-	DataPlayer.save_data_dictionary()
-	DataPlayer.save_data(1)
+	DataPlayer.salvar()
 	pause()
 	Transition.fade(node_pause, "res://scenes/start_scene/start_scene.tscn", 1, "fade_2")
 

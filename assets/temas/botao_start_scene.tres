@@ -1,15 +1,22 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/font2.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=3]
 size = 8
+extra_spacing_top = 1
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="StyleBoxFlat" id=7]
 content_margin_top = 1.0
+bg_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 5.0
+expand_margin_right = 3.0
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 1, 1, 1, 1 )
 expand_margin_left = 5.0
 expand_margin_right = 3.0
@@ -29,3 +36,7 @@ Button/styles/focus = SubResource( 7 )
 Button/styles/hover = SubResource( 7 )
 Button/styles/normal = SubResource( 8 )
 Button/styles/pressed = SubResource( 7 )
+CheckBox/colors/font_color = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_focus = Color( 0, 0, 0, 1 )
+CheckBox/fonts/font = SubResource( 3 )
+CheckBox/styles/focus = SubResource( 9 )

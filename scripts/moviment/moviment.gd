@@ -66,6 +66,7 @@ func _process(_delta):
 	var direcao
 	if Global.get_mover():
 		direcao = get_direcao()
+		interagir()
 		
 	if direcao:
 		dire_players.resize(nodes_player.size())
@@ -73,15 +74,13 @@ func _process(_delta):
 		Global.set_direcao_players(dire_players)
 		
 		# condição para girar o personagem ou fazer ele andar
-		if Input.is_action_pressed("shift"):
+		if Input.is_action_pressed("girar"):
 			update_direcao_sprite(nodes_player[controlar][SPRITE], direcao)
 		else:
 			movimentacao(direcao)
-	
-	interagir()
 
 func interagir():
-	if Input.is_action_just_pressed("key_e"):
+	if Input.is_action_just_pressed("interagir"):
 		var alvo = tilemap.world_to_map(players[controlar].position) + dire_players[controlar]
 		var node = tilemap.get_node_celula(alvo, false)
 
@@ -113,8 +112,8 @@ func movimentacao(direcao):
 func get_direcao():
 	# salvando a direção de acordo com oq o usuário digitou
 	var direcao: Vector2 = Vector2(
-		int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left")),
-		int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
+		int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")),
+		int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	)
 	
 	# somando o eixo X e Y do vetor
