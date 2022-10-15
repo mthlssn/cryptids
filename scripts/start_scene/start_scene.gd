@@ -15,6 +15,7 @@ onready var popup_configuracoes := $popup_configuracoes
 onready var botoes_configuracoes := $popup_configuracoes/botoes_configuracoes
 onready var botao_configuracoes_voltar := $popup_configuracoes/botoes_configuracoes/configuracoes_voltar
 onready var botao_configuracoes_controles := $popup_configuracoes/botoes_configuracoes/controles_botao
+onready var botao_configuracoes_video := $popup_configuracoes/botoes_configuracoes/video_botao
 onready var botoes_controles := $popup_configuracoes/botoes_controles
 onready var botao_controle_voltar := $popup_configuracoes/botoes_controles/controles_voltar
 onready var botoes_video := $popup_configuracoes/botoes_video
@@ -126,4 +127,4 @@ func _on_video_voltar_pressed():
 	botoes_video.hide()
 	botoes_configuracoes.show()
 	titulo.text = "configurações:"
-	botao_configuracoes_controles.grab_focus()
+	botao_configuracoes_video.grab_focus()

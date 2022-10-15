@@ -28,8 +28,6 @@ func selecionar_tamanho(tamanho):
 func mostar_setinha():
 	$setinha.show()
 	
-	print($setinha.position.y)
-	
 	match tamanho_selecionado["tamanho_tela"]:
 		"tela_inteira":
 			$setinha.position.y = 184
