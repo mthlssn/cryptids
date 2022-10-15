@@ -71,9 +71,9 @@ tile_data = PoolIntArray( -5111806, 0, 0, -5111805, 0, 0, -5111804, 0, 0, -51118
 script = ExtResource( 17 )
 
 [node name="players" parent="tilemap" instance=ExtResource( 16 )]
-players = [ "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn" ]
-posi_players = [ Vector2( 7, -4 ), Vector2( 7, -5 ) ]
-dire_players = [ Vector2( 0, -1 ), Vector2( 0, -1 ) ]
+players = [ "res://scenes/personagens/mel.tscn", "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn" ]
+posi_players = [ Vector2( 7, -3 ), Vector2( 7, -4 ), Vector2( 7, -5 ) ]
+dire_players = [ Vector2( 0, -1 ), Vector2( 0, -1 ), Vector2( 0, -1 ) ]
 
 [node name="area" type="Node2D" parent="tilemap"]
 visible = false
