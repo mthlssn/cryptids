@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=1]
+[ext_resource path="res://assets/cenarios/cen2/moita3_inverso.png" type="Texture" id=2]
+
+[node name="arbusto3" type="Node2D"]
+script = ExtResource( 1 )
+type = 3
+_sprite_width_tile = 2
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( -48, -48 )
+texture = ExtResource( 2 )
+centered = false

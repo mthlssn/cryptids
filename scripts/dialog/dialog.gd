@@ -155,7 +155,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 func mudar_imagem():
 	if _imagens.size() > cont:
-		personagem_foto.texture = load(_imagens[cont])
+		personagem_foto.texture = load(get_path_imagem(_imagens[cont]))
 
 func mudar_nome():
 	if _nomes.size() > cont:
@@ -178,6 +178,21 @@ func mudar_texto():
 			_msg = _msg_queue[cont_msg_queue].format({"nome_player": Global.get_nome_player()})
 		else:
 			_msg = _msg_queue[cont_msg_queue]
+
+func get_path_imagem(imagem):
+	match imagem:
+		"player_normal":
+			return "res://assets/dialog_box/personagens/player/normal.png"
+		"maria_feliz":
+			return "res://assets/dialog_box/personagens/maria/feliz.png"
+		"maria_normal":
+			return "res://assets/dialog_box/personagens/maria/normal.png"
+		"maria_pensante":
+			return "res://assets/dialog_box/personagens/maria/pensante.png"
+		"maria_triste":
+			return "res://assets/dialog_box/personagens/maria/triste.png"
+		"mel_normal":
+			return "res://assets/dialog_box/personagens/mel/normal.png"
 
 func chamar_input():
 	tecla = "nada"

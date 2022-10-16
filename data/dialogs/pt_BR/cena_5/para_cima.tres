@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-nome = [ "Maria", "Maria", "Pudim", "Maria", "Pudim" ]
-msg_queue = [ "Calma, pudim! Vem, deixa ela quieta ai.", "Aqui é uma surpresa pra depois.", "...", "Não Pudim! Já tá ficando de noite, amanhã a gente volta.", "au!" ]
-imagens = [ "res://assets/dialog_box/personagens/maria/triste.png" ]
+nome_dr = ""
+nome = [ "Maria", "Maria", "Mel" ]
+msg_queue = [ "AH! Já sei onde a gente tá!", " É pra cima.", "snif snif…" ]
+imagens = [ "player_normal", "player_normal", "mel_normal" ]
