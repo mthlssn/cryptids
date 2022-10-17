@@ -29,7 +29,7 @@ var _nodes_apagados : Array = []
 # ------------- funcs ----------------
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass
 
 func get_nodes_apagados():
