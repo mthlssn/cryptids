@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cenarios/cen1/cena1.png" type="Texture" id=2]
@@ -26,6 +26,106 @@
 [ext_resource path="res://scenes/objects/arvore_seca.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scenes/objects/arbusto_triplo.tscn" type="PackedScene" id=25]
 [ext_resource path="res://scenes/objects/arbusto_triplo2.tscn" type="PackedScene" id=26]
+[ext_resource path="res://data/dialogs/pt_BR/cena_2/interaja_c_moita.tres" type="Resource" id=27]
+[ext_resource path="res://scripts/objects/chamar_dialogo.gd" type="Script" id=28]
+[ext_resource path="res://scenes/personagens/maria.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenes/personagens/mel.tscn" type="PackedScene" id=30]
+[ext_resource path="res://data/dialogs/pt_BR/maria/maria_espinhos.tres" type="Resource" id=31]
+[ext_resource path="res://scripts/objects/cutscene_maria.gd" type="Script" id=32]
+[ext_resource path="res://scenes/personagens/player.tscn" type="PackedScene" id=33]
+[ext_resource path="res://data/dialogs/pt_BR/cena_2/pudim_arbusto_grande.tres" type="Resource" id=34]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -44, -48 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "mexer_arbusto"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -44, -48 ), Vector2( -41, -48 ), Vector2( -45, -48 ), Vector2( -48, -49 ), Vector2( -45, -48 ), Vector2( -48, -48 ), Vector2( -45, -48 ), Vector2( -42, -48 ), Vector2( -44, -48 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+step = 0.001
+
+[sub_resource type="Animation" id=4]
+resource_name = "cutscene_maria"
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("tilemap/player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.001, 0.002 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 528, -937 ), Vector2( 432, -1009 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tilemap/player:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001, 0.002 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("tilemap/player/sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.002 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("tilemap/area/cutscene_maria")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.381, 0.541 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "dialogo"
+}, {
+"args": [  ],
+"method": "dialogo"
+} ]
+}
 
 [node name="demo" type="Node2D"]
 script = ExtResource( 21 )
@@ -78,10 +178,18 @@ dire_players = [ Vector2( 0, -1 ), Vector2( 0, -1 ), Vector2( 0, -1 ) ]
 [node name="area" type="Node2D" parent="tilemap"]
 visible = false
 
+[node name="exclamacao" parent="tilemap/area" instance=ExtResource( 18 )]
+visible = false
+position = Vector2( 176, -240 )
+script = ExtResource( 20 )
+apagar = true
+
+[node name="cor" parent="tilemap/area/exclamacao" index="0"]
+margin_right = 144.0
+
 [node name="portal1" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 208, -304 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 2
 
 [node name="cor" parent="tilemap/area/portal1" index="0"]
@@ -90,16 +198,41 @@ margin_right = 80.0
 [node name="portal2" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 208, -336 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 1
 
 [node name="cor" parent="tilemap/area/portal2" index="0"]
 margin_right = 80.0
 
+[node name="mexer_arbusto" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 144, -945 )
+function = "mexer_arbusto"
+colisao = false
+apagar = true
+
+[node name="cor" parent="tilemap/area/mexer_arbusto" index="0"]
+margin_right = 240.0
+
+[node name="dg_interaja_c_arbusto" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 432, -1009 )
+script = ExtResource( 28 )
+dialogo_resource = ExtResource( 27 )
+personagem = false
+
+[node name="cor" parent="tilemap/area/dg_interaja_c_arbusto" index="0"]
+margin_bottom = 48.0
+
+[node name="cutscene_maria" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 464, -1009 )
+script = ExtResource( 32 )
+dialogo_resource = ExtResource( 34 )
+apagar = true
+
+[node name="cor" parent="tilemap/area/cutscene_maria" index="0"]
+margin_bottom = 48.0
+
 [node name="portal3" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 496, -1008 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 3
 
 [node name="cor" parent="tilemap/area/portal3" index="0"]
@@ -108,7 +241,6 @@ margin_bottom = 48.0
 [node name="portal4" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 528, -1008 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 2
 
 [node name="cor" parent="tilemap/area/portal4" index="0"]
@@ -117,7 +249,6 @@ margin_bottom = 48.0
 [node name="portal5" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 592, -1128 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 4
 
 [node name="cor" parent="tilemap/area/portal5" index="0"]
@@ -126,7 +257,6 @@ margin_right = 72.0
 [node name="portal6" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 592, -1160 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 3
 
 [node name="cor" parent="tilemap/area/portal6" index="0"]
@@ -135,7 +265,6 @@ margin_right = 72.0
 [node name="portal7" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 528, -1712 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 5
 
 [node name="cor" parent="tilemap/area/portal7" index="0"]
@@ -144,7 +273,6 @@ margin_bottom = 80.0
 [node name="portal8" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 496, -1712 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 4
 
 [node name="cor" parent="tilemap/area/portal8" index="0"]
@@ -153,7 +281,6 @@ margin_bottom = 80.0
 [node name="portal9" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 176, -1800 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 6
 
 [node name="cor" parent="tilemap/area/portal9" index="0"]
@@ -162,24 +289,15 @@ margin_right = 144.0
 [node name="portal10" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 176, -1832 )
 script = ExtResource( 19 )
-function = "area_portal"
 proxima_camera = 5
 
 [node name="cor" parent="tilemap/area/portal10" index="0"]
 margin_right = 144.0
 
-[node name="exclamacao" parent="tilemap/area" instance=ExtResource( 18 )]
-position = Vector2( 176, -240 )
-script = ExtResource( 20 )
-apagar = true
-
-[node name="cor" parent="tilemap/area/exclamacao" index="0"]
-margin_right = 144.0
-
 [node name="arvore_seca" parent="tilemap" instance=ExtResource( 24 )]
 position = Vector2( 80, -145 )
 
-[node name="arbusto1" parent="tilemap" instance=ExtResource( 23 )]
+[node name="arbusto_grande1" parent="tilemap" instance=ExtResource( 23 )]
 position = Vector2( 336, -81 )
 
 [node name="arbusto-pedra" parent="tilemap" instance=ExtResource( 22 )]
@@ -189,15 +307,33 @@ position = Vector2( 144, -81 )
 position = Vector2( 272, -529 )
 
 [node name="arbusto3" parent="tilemap" instance=ExtResource( 26 )]
-position = Vector2( 152, -849 )
+position = Vector2( 144, -849 )
 
-[node name="arbusto5" parent="tilemap" instance=ExtResource( 23 )]
+[node name="arbusto_grande2" parent="tilemap" instance=ExtResource( 23 )]
 position = Vector2( 208, -1009 )
+
+[node name="animation_player" type="AnimationPlayer" parent="tilemap/arbusto_grande2"]
+playback_speed = 0.7
+anims/RESET = SubResource( 1 )
+anims/mexer_arbusto = SubResource( 2 )
+
+[node name="maria" parent="tilemap" instance=ExtResource( 29 )]
+position = Vector2( 496, -1040 )
+interaction = ExtResource( 31 )
+
+[node name="mel" parent="tilemap" instance=ExtResource( 30 )]
+position = Vector2( 496, -944 )
+
+[node name="player" parent="tilemap" instance=ExtResource( 33 )]
+position = Vector2( 528, -937 )
+
+[node name="sprite" parent="tilemap/player" index="0"]
+frame = 10
 
 [node name="camera" parent="." instance=ExtResource( 14 )]
 
 [node name="top_left" parent="camera/limites1" index="0"]
-position = Vector2( 0, -288 )
+position = Vector2( 0, -320 )
 
 [node name="bottom_right" parent="camera/limites1" index="1"]
 position = Vector2( 480, 0 )
@@ -206,10 +342,10 @@ position = Vector2( 480, 0 )
 position = Vector2( 0, -1120 )
 
 [node name="bottom_right" parent="camera/limites2" index="1"]
-position = Vector2( 480, -353 )
+position = Vector2( 512, -320 )
 
 [node name="top_left" parent="camera/limites3" index="0"]
-position = Vector2( 544, -1112 )
+position = Vector2( 512, -1112 )
 
 [node name="bottom_right" parent="camera/limites3" index="1"]
 position = Vector2( 1184, -632 )
@@ -269,8 +405,18 @@ position = Vector2( 0, -2488 )
 texture = ExtResource( 15 )
 centered = false
 
+[node name="animation_player" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/cutscene_maria = SubResource( 4 )
+
+[connection signal="animation_finished" from="animation_player" to="tilemap/area/cutscene_maria" method="_on_animation_player_animation_finished"]
+
+[editable path="tilemap/area/exclamacao"]
 [editable path="tilemap/area/portal1"]
 [editable path="tilemap/area/portal2"]
+[editable path="tilemap/area/mexer_arbusto"]
+[editable path="tilemap/area/dg_interaja_c_arbusto"]
+[editable path="tilemap/area/cutscene_maria"]
 [editable path="tilemap/area/portal3"]
 [editable path="tilemap/area/portal4"]
 [editable path="tilemap/area/portal5"]
@@ -279,5 +425,6 @@ centered = false
 [editable path="tilemap/area/portal8"]
 [editable path="tilemap/area/portal9"]
 [editable path="tilemap/area/portal10"]
-[editable path="tilemap/area/exclamacao"]
+[editable path="tilemap/arbusto_grande2"]
+[editable path="tilemap/player"]
 [editable path="camera"]

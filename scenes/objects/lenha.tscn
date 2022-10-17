@@ -6,10 +6,15 @@
 [node name="lenha" type="Node2D"]
 script = ExtResource( 2 )
 type = 3
-_sprite_width_tile = 2
-_sprite_height_tile = 2
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( -24, -48 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="cor" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 48.0
+margin_bottom = 48.0
+color = Color( 0, 0, 0, 0.537255 )

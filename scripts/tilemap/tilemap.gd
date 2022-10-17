@@ -135,7 +135,9 @@ func solicitar_movimento(player, direcao):
 			if node_area.colisao:
 				node_area.colisao(self)
 				
-			#match node_area.function:
+			match node_area.function:
+				"mexer_arbusto":
+					get_node("arbusto_grande2/animation_player").play("mexer_arbusto")
 
 func atualizar_posicao(posicao_comeco, posicao_alvo):
 	posicao_comeco = world_to_map(posicao_comeco)
@@ -145,4 +147,3 @@ func atualizar_posicao(posicao_comeco, posicao_alvo):
 	posicao_alvo = world_to_map(posicao_alvo)
 	if get_cellv(posicao_alvo) != AREA:
 		set_cellv(posicao_alvo, PLAYERS)
-

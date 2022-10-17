@@ -7,3 +7,10 @@ script = ExtResource( 2 )
 type = 3
 
 [node name="sprite" type="Sprite" parent="."]
+
+[node name="cor" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+color = Color( 0, 0, 0, 0.537255 )
