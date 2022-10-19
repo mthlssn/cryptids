@@ -29,6 +29,8 @@ var _pausar = false
 var _cont = 0
 var _cont_msg_queue = 0
 
+var _node_cutscene
+
 var _node_input_box
 
 func _ready():
@@ -100,7 +102,12 @@ func show_message() -> void:
 	if not timer.is_stopped():
 		text.visible_characters = text.bbcode_text.length()
 		return
-
+	
+	if _node_cutscene:
+		match _node_cutscene.name:
+			"cutscene_maria":
+				_node_cutscene.iniciou()
+	
 	if _msg_queue.size() <= _cont_msg_queue:
 		_tecla = "nada"
 		_msg_queue = []
@@ -108,6 +115,7 @@ func show_message() -> void:
 		_cont = 0
 		_cont_msg_queue = 0
 		_node_input_box = null
+		_node_cutscene = null
 		
 		Global.set_mover(true)
 		
@@ -200,9 +208,9 @@ func chamar_input():
 	_node_input_box = cena.instance()
 	add_child(_node_input_box)
 
-#------- cont:
-func get_cont():
-	return _cont
+#------- node_cutscene:
+func set_node_cutscene(node_cutscene):
+	_node_cutscene = node_cutscene
 
 #------- tecla:
 func set_tecla(tecla):

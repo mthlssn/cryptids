@@ -79,7 +79,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 432, -1009 ) ]
+"values": [ Vector2( 528, -944 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("tilemap/player/sprite:frame")
@@ -141,10 +141,34 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 7 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("camera:zoom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("camera:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "empurrar_para_tras"
-length = 1.6
+length = 1.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("tilemap/player:position")
@@ -153,10 +177,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.01, 0.1, 0.3, 0.8, 0.86, 1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.01, 0.2, 0.7, 0.76, 0.9, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 528, -937 ), Vector2( 432, -1009 ), Vector2( 432, -1009 ), Vector2( 432, -1009 ), Vector2( 457, -1009 ), Vector2( 456, -1017 ), Vector2( 447, -1009 ), Vector2( 432, -1009 ) ]
+"values": [ Vector2( 528, -937 ), Vector2( 432, -1008 ), Vector2( 432, -1008 ), Vector2( 457, -1009 ), Vector2( 456, -1017 ), Vector2( 447, -1009 ), Vector2( 432, -1009 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("tilemap/player:visible")
@@ -177,7 +201,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.48, 0.65, 0.8, 1.13, 1.41, 1.6 ),
+"times": PoolRealArray( 0, 0.2, 0.38, 0.55, 0.7, 1.03, 1.31, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 10, 9, 10, 11, 10, 9, 10, 10 ]
@@ -189,10 +213,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.01, 0.1, 0.4, 1.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.01, 0.3, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 496, -1040 ), Vector2( 496, -1008 ), Vector2( 496, -1008 ), Vector2( 496, -1008 ), Vector2( 464, -1008 ) ]
+"values": [ Vector2( 496, -1040 ), Vector2( 496, -1008 ), Vector2( 496, -1008 ), Vector2( 464, -1008 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("tilemap/maria/sprite:frame")
@@ -201,7 +225,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.4, 0.74, 1.06, 1.4 ),
+"times": PoolRealArray( 0, 0.3, 0.64, 0.96, 1.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 6, 7, 8, 7 ]
@@ -213,10 +237,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.01, 0.1, 0.4, 1.04, 1.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.01, 0.3, 0.94, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 496, -944 ), Vector2( 496, -991 ), Vector2( 496, -991 ), Vector2( 496, -991 ), Vector2( 464, -991 ), Vector2( 464, -991 ) ]
+"values": [ Vector2( 496, -944 ), Vector2( 496, -991 ), Vector2( 496, -991 ), Vector2( 464, -991 ), Vector2( 464, -991 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("tilemap/mel/sprite:frame")
@@ -225,7 +249,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.4, 0.61, 0.82, 1.04, 1.4 ),
+"times": PoolRealArray( 0, 0.3, 0.51, 0.72, 0.94, 1.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 7, 8, 7, 6, 7, 7 ]
@@ -237,16 +261,44 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 1.6 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.01, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "esconder_players"
+}, {
 "args": [  ],
 "method": "dialogo"
 } ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("camera:zoom")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 10.556 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("camera:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -11 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "empurrar_para_tras2"
+length = 1.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("tilemap/player:position")
@@ -255,10 +307,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.01, 0.1, 0.2, 0.65, 0.8, 0.95, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 528, -937 ), Vector2( 432, -1009 ) ]
+"values": [ Vector2( 528, -937 ), Vector2( 432, -976 ), Vector2( 432, -976 ), Vector2( 432, -976 ), Vector2( 457, -985 ), Vector2( 456, -1017 ), Vector2( 447, -1001 ), Vector2( 432, -1009 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("tilemap/player:visible")
@@ -267,10 +319,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.78 ),
+"times": PoolRealArray( 0, 0.01, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ false, true, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("tilemap/player/sprite:frame")
@@ -279,60 +331,99 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.36, 0.5, 0.65, 1.03, 1.31, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 10 ]
+"values": [ 10, 9, 10, 11, 10, 9, 10, 10 ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath("tilemap/area/cutscene_maria")
+tracks/3/type = "value"
+tracks/3/path = NodePath("tilemap/maria:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.07, 0.15, 0.22, 0.29, 0.35, 0.42, 0.49, 0.56, 0.63, 0.71, 0.8, 0.88, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.01, 0.1, 0.3, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 496, -1040 ), Vector2( 496, -1008 ), Vector2( 496, -1008 ), Vector2( 496, -1008 ), Vector2( 464, -1008 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tilemap/maria/sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.64, 0.96, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 6, 7, 8, 7 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("tilemap/mel:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.01, 0.1, 0.3, 0.94, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 496, -944 ), Vector2( 496, -991 ), Vector2( 496, -991 ), Vector2( 496, -991 ), Vector2( 464, -991 ), Vector2( 464, -991 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("tilemap/mel/sprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.51, 0.72, 0.94, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 7, 6, 7, 7 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("tilemap/area/cutscene_maria")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.01, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
+"method": "esconder_players"
+}, {
+"args": [  ],
 "method": "dialogo"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
-}, {
-"args": [  ],
-"method": "pausar"
 } ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("camera:zoom")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 10.556 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("camera:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -11 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -345,8 +436,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.22, 0.29, 0.35, 0.42, 0.49, 0.56, 0.63, 0.71, 0.8, 0.88, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.01, 0.11, 0.21, 0.25, 0.28, 0.32, 0.36, 0.4, 0.5, 0.54, 0.58, 0.62, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "pausar"
@@ -383,7 +474,43 @@ tracks/0/keys = {
 }, {
 "args": [  ],
 "method": "pausar"
+}, {
+"args": [  ],
+"method": "pausar"
+}, {
+"args": [  ],
+"method": "pausar"
+}, {
+"args": [  ],
+"method": "pausar"
+}, {
+"args": [  ],
+"method": "pausar"
+}, {
+"args": [  ],
+"method": "pausar"
+}, {
+"args": [  ],
+"method": "pausar"
+}, {
+"args": [  ],
+"method": "pausar"
+}, {
+"args": [  ],
+"method": "pausar"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tilemap/maria/sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.21, 0.49, 0.71 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 7, 1, 7 ]
 }
 
 [node name="demo" type="Node2D"]
@@ -431,7 +558,7 @@ script = ExtResource( 17 )
 
 [node name="players" parent="tilemap" instance=ExtResource( 16 )]
 players = [ "res://scenes/personagens/player.tscn" ]
-posi_players = [ Vector2( 7, -5 ) ]
+posi_players = [ Vector2( 240, -144 ) ]
 dire_players = [ Vector2( 0, -1 ) ]
 velocidade = 1.0
 
@@ -484,6 +611,7 @@ personagem = false
 margin_bottom = 48.0
 
 [node name="cutscene_maria" parent="tilemap/area" instance=ExtResource( 18 )]
+visible = false
 position = Vector2( 464, -1009 )
 script = ExtResource( 32 )
 dialogo_resource = ExtResource( 34 )
@@ -593,7 +721,7 @@ frame = 7
 
 [node name="player" parent="tilemap" instance=ExtResource( 33 )]
 visible = false
-position = Vector2( 432, -1009 )
+position = Vector2( 528, -944 )
 
 [node name="sprite" parent="tilemap/player" index="0"]
 frame = 10
@@ -680,7 +808,6 @@ anims/empurrar_para_tras2 = SubResource( 6 )
 anims/girar_maria = SubResource( 4 )
 
 [connection signal="animation_finished" from="animation_player" to="tilemap/area/cutscene_maria" method="_on_animation_player_animation_finished"]
-[connection signal="animation_started" from="animation_player" to="tilemap/area/cutscene_maria" method="_on_animation_player_animation_started"]
 
 [editable path="tilemap/area/exclamacao"]
 [editable path="tilemap/area/portal1"]
