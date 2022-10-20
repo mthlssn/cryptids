@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 nome_dr = "espinhos"
 msg_queue = [ "Os espinhos bloqueiam o caminho." ]
-msg_queue1 = [  ]
+msg_queue1 = [ "Os espinhos bloqueiam o caminho." ]
