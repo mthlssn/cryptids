@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_s_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "arbusto_duplo"
+msg_queue = [ "Não muitos, porém, o suficiente.", "Arbustos unidos." ]
+msg_queue1 = [ "Arbustos unidos." ]

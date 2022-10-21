@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/personagens/maria.gd" type="Script" id=1]
-[ext_resource path="res://assets/npcs/maria/sprites.png" type="Texture" id=2]
+[ext_resource path="res://assets/personagens/maria_sprite.png" type="Texture" id=2]
 [ext_resource path="res://data/dialogs/pt_BR/cena_2/pudim_arbusto_grande.tres" type="Resource" id=3]
 [ext_resource path="res://assets/outros/exclamacao.png" type="Texture" id=4]
 
@@ -110,9 +110,9 @@ interaction = [ ExtResource( 3 ) ]
 
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-offset = Vector2( 0, -9 )
+offset = Vector2( 0, -7 )
 hframes = 12
-frame = 2
+frame = 6
 
 [node name="exclamacao" type="Sprite" parent="sprite"]
 visible = false
