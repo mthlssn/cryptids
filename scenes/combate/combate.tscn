@@ -1,43 +1,483 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://assets/dialog_box/dialog_box_personagem.png" type="Texture" id=1]
+[ext_resource path="res://assets/combate/baseCombate.png" type="Texture" id=1]
 [ext_resource path="res://scripts/combate/combate.gd" type="Script" id=2]
-[ext_resource path="res://assets/dialog_box/dialog_box_sem_personagem.png" type="Texture" id=3]
-[ext_resource path="res://assets/cenarios/cen6/cena6.png" type="Texture" id=4]
-[ext_resource path="res://assets/cenarios/cen3/cena3.png" type="Texture" id=5]
+[ext_resource path="res://assets/dialog_box/personagens/player/normal.png" type="Texture" id=3]
+[ext_resource path="res://assets/combate/setaBaixo.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/windows_command_prompt.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/combate/barraVida.png" type="Texture" id=6]
+[ext_resource path="res://assets/combate/vida.png" type="Texture" id=7]
+[ext_resource path="res://assets/combate/energia.png" type="Texture" id=8]
+[ext_resource path="res://assets/combate/frameEscuro.png" type="Texture" id=9]
+[ext_resource path="res://scripts/combate/botao_personagem.gd" type="Script" id=10]
+[ext_resource path="res://assets/combate/frameClaro.png" type="Texture" id=11]
+[ext_resource path="res://assets/combate/barraEnergia.png" type="Texture" id=12]
+[ext_resource path="res://assets/dialog_box/personagens/maria/normal.png" type="Texture" id=13]
+[ext_resource path="res://assets/dialog_box/personagens/mel/normal.png" type="Texture" id=14]
+[ext_resource path="res://assets/combate/background.jpeg" type="Texture" id=15]
+[ext_resource path="res://scripts/combate/acoes.gd" type="Script" id=16]
+[ext_resource path="res://assets/combate/botaoEscuro.png" type="Texture" id=17]
+[ext_resource path="res://assets/combate/botaoClaro.png" type="Texture" id=18]
+[ext_resource path="res://assets/combate/pular_s_cor.png" type="Texture" id=19]
+[ext_resource path="res://assets/combate/fugir_s_cor.png" type="Texture" id=20]
+[ext_resource path="res://assets/combate/agir_s_cor.png" type="Texture" id=21]
+[ext_resource path="res://assets/combate/itens_s_cor.png" type="Texture" id=22]
+[ext_resource path="res://assets/combate/text_box.png" type="Texture" id=23]
 
-[node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("setinha:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 28, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("setinha:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "setinha"
+length = 0.8
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("setinha:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 28, -20 ), Vector2( 28, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("setinha:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+outline_size = 1
+outline_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 15
+extra_spacing_top = 2
+font_data = ExtResource( 5 )
+
+[node name="combate" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="TextureButton" type="TextureButton" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 488.0
-margin_bottom = 98.0
-rect_scale = Vector2( 0.25, 0.25 )
-focus_neighbour_bottom = NodePath("../TextureButton2")
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 4 )
-texture_focused = ExtResource( 3 )
+[node name="background" type="TextureRect" parent="."]
+margin_right = 1400.0
+margin_bottom = 1050.0
+rect_scale = Vector2( 0.342, 0.274 )
+texture = ExtResource( 15 )
 
-[node name="TextureButton2" type="TextureButton" parent="."]
-margin_left = 8.0
-margin_top = 40.0
-margin_right = 488.0
-margin_bottom = 130.0
-rect_scale = Vector2( 0.25, 0.25 )
-focus_mode = 1
-texture_normal = ExtResource( 1 )
-texture_focused = ExtResource( 3 )
+[node name="base_combate" type="NinePatchRect" parent="."]
+margin_top = 198.0
+margin_right = 480.0
+margin_bottom = 288.0
+texture = ExtResource( 1 )
 
-[node name="TextureButton3" type="TextureButton" parent="."]
-margin_left = 8.0
-margin_top = 72.0
-margin_right = 488.0
-margin_bottom = 162.0
-rect_scale = Vector2( 0.25, 0.25 )
-texture_normal = ExtResource( 1 )
-texture_disabled = ExtResource( 5 )
-texture_focused = ExtResource( 3 )
+[node name="personagens" type="Control" parent="."]
+
+[node name="player" type="Control" parent="personagens"]
+margin_left = 13.0
+margin_top = 203.0
+margin_right = 13.0
+margin_bottom = 203.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="botao" type="TextureButton" parent="personagens/player"]
+margin_right = 64.0
+margin_bottom = 60.0
+mouse_filter = 2
+button_mask = 0
+texture_normal = ExtResource( 9 )
+texture_focused = ExtResource( 11 )
+
+[node name="personagem" type="TextureRect" parent="personagens/player"]
+anchor_top = 0.0319149
+anchor_bottom = 0.0319149
+margin_top = 7.0
+margin_right = 65.0
+margin_bottom = 55.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="setinha" type="Sprite" parent="personagens/player/personagem"]
+visible = false
+position = Vector2( 28, -20 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="animation_player" type="AnimationPlayer" parent="personagens/player/personagem"]
+autoplay = "setinha"
+anims/RESET = SubResource( 2 )
+anims/setinha = SubResource( 3 )
+
+[node name="nome" type="Label" parent="personagens/player"]
+visible = false
+margin_top = 62.0
+margin_right = 65.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = "PLAYER"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="barra_vida" type="TextureProgress" parent="personagens/player"]
+margin_top = 65.0
+margin_right = 65.0
+margin_bottom = 71.0
+value = 100.0
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+texture_progress_offset = Vector2( 15, 1 )
+
+[node name="barra_energia" type="TextureProgress" parent="personagens/player"]
+margin_top = 74.0
+margin_right = 64.0
+margin_bottom = 80.0
+value = 100.0
+texture_over = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( 15, 1 )
+
+[node name="maria" type="Control" parent="personagens"]
+margin_left = 82.0
+margin_top = 203.0
+margin_right = 75.0
+margin_bottom = 202.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="botao" type="TextureButton" parent="personagens/maria"]
+margin_right = 64.0
+margin_bottom = 60.0
+mouse_filter = 2
+button_mask = 0
+texture_normal = ExtResource( 9 )
+texture_focused = ExtResource( 11 )
+
+[node name="personagem" type="TextureRect" parent="personagens/maria"]
+anchor_top = 0.0319149
+anchor_bottom = 0.0319149
+margin_top = 7.0
+margin_right = 65.0
+margin_bottom = 55.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="setinha" type="Sprite" parent="personagens/maria/personagem"]
+visible = false
+position = Vector2( 28, -20 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="animation_player" type="AnimationPlayer" parent="personagens/maria/personagem"]
+autoplay = "setinha"
+anims/RESET = SubResource( 2 )
+anims/setinha = SubResource( 3 )
+
+[node name="nome" type="Label" parent="personagens/maria"]
+visible = false
+margin_top = 62.0
+margin_right = 65.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = "MARIA"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="barra_vida" type="TextureProgress" parent="personagens/maria"]
+margin_top = 65.0
+margin_right = 65.0
+margin_bottom = 71.0
+value = 100.0
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+texture_progress_offset = Vector2( 15, 1 )
+
+[node name="barra_energia" type="TextureProgress" parent="personagens/maria"]
+margin_top = 74.0
+margin_right = 64.0
+margin_bottom = 80.0
+value = 100.0
+texture_over = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( 15, 1 )
+
+[node name="mel" type="Control" parent="personagens"]
+margin_left = 151.0
+margin_top = 203.0
+margin_right = 145.0
+margin_bottom = 202.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="botao" type="TextureButton" parent="personagens/mel"]
+margin_right = 64.0
+margin_bottom = 60.0
+mouse_filter = 2
+button_mask = 0
+texture_normal = ExtResource( 9 )
+texture_focused = ExtResource( 11 )
+
+[node name="personagem" type="TextureRect" parent="personagens/mel"]
+anchor_top = 0.0319149
+anchor_bottom = 0.0319149
+margin_top = 7.0
+margin_right = 65.0
+margin_bottom = 55.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="setinha" type="Sprite" parent="personagens/mel/personagem"]
+visible = false
+position = Vector2( 28, -20 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="animation_player" type="AnimationPlayer" parent="personagens/mel/personagem"]
+autoplay = "setinha"
+anims/RESET = SubResource( 2 )
+anims/setinha = SubResource( 3 )
+
+[node name="nome" type="Label" parent="personagens/mel"]
+visible = false
+margin_top = 62.0
+margin_right = 65.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = "MEL"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="barra_vida" type="TextureProgress" parent="personagens/mel"]
+margin_top = 65.0
+margin_right = 65.0
+margin_bottom = 71.0
+value = 100.0
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+texture_progress_offset = Vector2( 15, 1 )
+
+[node name="barra_energia" type="TextureProgress" parent="personagens/mel"]
+margin_top = 74.0
+margin_right = 64.0
+margin_bottom = 80.0
+value = 100.0
+texture_over = ExtResource( 12 )
+texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( 15, 1 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+margin_left = 219.0
+margin_top = 204.0
+margin_right = 474.0
+margin_bottom = 284.0
+texture = ExtResource( 23 )
+region_rect = Rect2( 0, 0, 255, 80 )
+
+[node name="acoes" type="Control" parent="."]
+script = ExtResource( 16 )
+
+[node name="agir" type="Control" parent="acoes"]
+margin_left = 233.0
+margin_top = 214.0
+margin_right = 233.0
+margin_bottom = 214.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="botao" type="TextureButton" parent="acoes/agir"]
+margin_right = 111.0
+margin_bottom = 26.0
+mouse_filter = 2
+texture_normal = ExtResource( 17 )
+texture_focused = ExtResource( 18 )
+
+[node name="nome" type="Label" parent="acoes/agir"]
+margin_left = 34.0
+margin_top = 4.0
+margin_right = 105.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 4 )
+text = "AGIR"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="icon" type="TextureRect" parent="acoes/agir"]
+margin_left = 18.0
+margin_top = 5.0
+margin_right = 33.0
+margin_bottom = 21.0
+texture = ExtResource( 21 )
+
+[node name="pular" type="Control" parent="acoes"]
+margin_left = 352.0
+margin_top = 214.0
+margin_right = 352.0
+margin_bottom = 214.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="botao" type="TextureButton" parent="acoes/pular"]
+margin_right = 111.0
+margin_bottom = 26.0
+mouse_filter = 2
+texture_normal = ExtResource( 17 )
+texture_focused = ExtResource( 18 )
+
+[node name="nome" type="Label" parent="acoes/pular"]
+margin_left = 34.0
+margin_top = 4.0
+margin_right = 105.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 4 )
+text = "PULAR"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="icon" type="TextureRect" parent="acoes/pular"]
+margin_left = 18.0
+margin_top = 5.0
+margin_right = 33.0
+margin_bottom = 21.0
+texture = ExtResource( 19 )
+
+[node name="itens" type="Control" parent="acoes"]
+margin_left = 233.0
+margin_top = 248.0
+margin_right = 233.0
+margin_bottom = 248.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="botao" type="TextureButton" parent="acoes/itens"]
+margin_right = 111.0
+margin_bottom = 26.0
+mouse_filter = 2
+texture_normal = ExtResource( 17 )
+texture_focused = ExtResource( 18 )
+
+[node name="nome" type="Label" parent="acoes/itens"]
+margin_left = 34.0
+margin_top = 4.0
+margin_right = 105.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 4 )
+text = "ITENS"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="icon" type="TextureRect" parent="acoes/itens"]
+margin_left = 18.0
+margin_top = 5.0
+margin_right = 33.0
+margin_bottom = 21.0
+texture = ExtResource( 22 )
+
+[node name="fugir" type="Control" parent="acoes"]
+margin_left = 352.0
+margin_top = 248.0
+margin_right = 352.0
+margin_bottom = 248.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="botao" type="TextureButton" parent="acoes/fugir"]
+margin_right = 111.0
+margin_bottom = 26.0
+mouse_filter = 2
+texture_normal = ExtResource( 17 )
+texture_focused = ExtResource( 18 )
+
+[node name="nome" type="Label" parent="acoes/fugir"]
+margin_left = 34.0
+margin_top = 4.0
+margin_right = 105.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 4 )
+text = "FUGIR"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="icon" type="TextureRect" parent="acoes/fugir"]
+margin_left = 18.0
+margin_top = 5.0
+margin_right = 33.0
+margin_bottom = 21.0
+texture = ExtResource( 20 )
+
+[connection signal="focus_entered" from="personagens/player/botao" to="personagens/player" method="_on_botao_focus_entered"]
+[connection signal="focus_exited" from="personagens/player/botao" to="personagens/player" method="_on_botao_focus_exited"]
+[connection signal="pressed" from="personagens/player/botao" to="." method="_on_botao_pressed"]
+[connection signal="focus_entered" from="personagens/maria/botao" to="personagens/maria" method="_on_botao_focus_entered"]
+[connection signal="focus_exited" from="personagens/maria/botao" to="personagens/maria" method="_on_botao_focus_exited"]
+[connection signal="pressed" from="personagens/maria/botao" to="." method="_on_botao_pressed"]
+[connection signal="focus_entered" from="personagens/mel/botao" to="personagens/mel" method="_on_botao_focus_entered"]
+[connection signal="focus_exited" from="personagens/mel/botao" to="personagens/mel" method="_on_botao_focus_exited"]
+[connection signal="pressed" from="personagens/mel/botao" to="." method="_on_botao_pressed"]
+[connection signal="focus_entered" from="acoes/agir/botao" to="acoes" method="_on_botao_focus_entered" binds= [ "agir" ]]
+[connection signal="focus_exited" from="acoes/agir/botao" to="acoes" method="_on_botao_focus_exited" binds= [ "agir" ]]
+[connection signal="focus_entered" from="acoes/pular/botao" to="acoes" method="_on_botao_focus_entered" binds= [ "pular" ]]
+[connection signal="focus_exited" from="acoes/pular/botao" to="acoes" method="_on_botao_focus_exited" binds= [ "pular" ]]
+[connection signal="focus_entered" from="acoes/itens/botao" to="acoes" method="_on_botao_focus_entered" binds= [ "itens" ]]
+[connection signal="focus_exited" from="acoes/itens/botao" to="acoes" method="_on_botao_focus_exited" binds= [ "itens" ]]
+[connection signal="focus_entered" from="acoes/fugir/botao" to="acoes" method="_on_botao_focus_entered" binds= [ "fugir" ]]
+[connection signal="focus_exited" from="acoes/fugir/botao" to="acoes" method="_on_botao_focus_exited" binds= [ "fugir" ]]
