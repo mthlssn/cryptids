@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/combate/baseCombate.png" type="Texture" id=1]
 [ext_resource path="res://scripts/combate/combate.gd" type="Script" id=2]
@@ -15,13 +15,14 @@
 [ext_resource path="res://assets/dialog_box/personagens/maria/normal.png" type="Texture" id=13]
 [ext_resource path="res://assets/dialog_box/personagens/mel/normal.png" type="Texture" id=14]
 [ext_resource path="res://assets/combate/background.jpeg" type="Texture" id=15]
-[ext_resource path="res://scripts/combate/personagem.gd" type="Script" id=16]
+[ext_resource path="res://scripts/combate/acoes.gd" type="Script" id=16]
 [ext_resource path="res://assets/combate/botaoEscuro.png" type="Texture" id=17]
 [ext_resource path="res://assets/combate/botaoClaro.png" type="Texture" id=18]
-[ext_resource path="res://assets/combate/agir.png" type="Texture" id=19]
-[ext_resource path="res://assets/combate/fugir.png" type="Texture" id=20]
-[ext_resource path="res://assets/combate/itens.png" type="Texture" id=21]
-[ext_resource path="res://assets/combate/pular.png" type="Texture" id=22]
+[ext_resource path="res://assets/combate/pular_s_cor.png" type="Texture" id=19]
+[ext_resource path="res://assets/combate/fugir_s_cor.png" type="Texture" id=20]
+[ext_resource path="res://assets/combate/agir_s_cor.png" type="Texture" id=21]
+[ext_resource path="res://assets/combate/itens_s_cor.png" type="Texture" id=22]
+[ext_resource path="res://assets/combate/text_box.png" type="Texture" id=23]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -101,7 +102,6 @@ rect_scale = Vector2( 0.342, 0.274 )
 texture = ExtResource( 15 )
 
 [node name="base_combate" type="NinePatchRect" parent="."]
-modulate = Color( 0.52549, 0.501961, 0.6, 1 )
 margin_top = 198.0
 margin_right = 480.0
 margin_bottom = 288.0
@@ -150,6 +150,7 @@ anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
 
 [node name="nome" type="Label" parent="personagens/player"]
+visible = false
 margin_top = 62.0
 margin_right = 65.0
 margin_bottom = 68.0
@@ -160,18 +161,18 @@ valign = 1
 uppercase = true
 
 [node name="barra_vida" type="TextureProgress" parent="personagens/player"]
-margin_top = 70.0
+margin_top = 65.0
 margin_right = 65.0
-margin_bottom = 76.0
+margin_bottom = 71.0
 value = 100.0
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
 texture_progress_offset = Vector2( 15, 1 )
 
 [node name="barra_energia" type="TextureProgress" parent="personagens/player"]
-margin_top = 77.0
+margin_top = 74.0
 margin_right = 64.0
-margin_bottom = 83.0
+margin_bottom = 80.0
 value = 100.0
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 8 )
@@ -218,6 +219,7 @@ anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
 
 [node name="nome" type="Label" parent="personagens/maria"]
+visible = false
 margin_top = 62.0
 margin_right = 65.0
 margin_bottom = 68.0
@@ -228,18 +230,18 @@ valign = 1
 uppercase = true
 
 [node name="barra_vida" type="TextureProgress" parent="personagens/maria"]
-margin_top = 70.0
+margin_top = 65.0
 margin_right = 65.0
-margin_bottom = 76.0
+margin_bottom = 71.0
 value = 100.0
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
 texture_progress_offset = Vector2( 15, 1 )
 
 [node name="barra_energia" type="TextureProgress" parent="personagens/maria"]
-margin_top = 77.0
+margin_top = 74.0
 margin_right = 64.0
-margin_bottom = 83.0
+margin_bottom = 80.0
 value = 100.0
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 8 )
@@ -286,6 +288,7 @@ anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
 
 [node name="nome" type="Label" parent="personagens/mel"]
+visible = false
 margin_top = 62.0
 margin_right = 65.0
 margin_bottom = 68.0
@@ -296,31 +299,40 @@ valign = 1
 uppercase = true
 
 [node name="barra_vida" type="TextureProgress" parent="personagens/mel"]
-margin_top = 70.0
+margin_top = 65.0
 margin_right = 65.0
-margin_bottom = 76.0
+margin_bottom = 71.0
 value = 100.0
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
 texture_progress_offset = Vector2( 15, 1 )
 
 [node name="barra_energia" type="TextureProgress" parent="personagens/mel"]
-margin_top = 77.0
+margin_top = 74.0
 margin_right = 64.0
-margin_bottom = 83.0
+margin_bottom = 80.0
 value = 100.0
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 8 )
 texture_progress_offset = Vector2( 15, 1 )
 
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+margin_left = 219.0
+margin_top = 204.0
+margin_right = 474.0
+margin_bottom = 284.0
+texture = ExtResource( 23 )
+region_rect = Rect2( 0, 0, 255, 80 )
+
 [node name="acoes" type="Control" parent="."]
+script = ExtResource( 16 )
 
 [node name="agir" type="Control" parent="acoes"]
 margin_left = 233.0
 margin_top = 214.0
 margin_right = 233.0
 margin_bottom = 214.0
-script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -344,19 +356,17 @@ valign = 1
 uppercase = true
 
 [node name="icon" type="TextureRect" parent="acoes/agir"]
-modulate = Color( 1, 1, 100, 1 )
 margin_left = 18.0
 margin_top = 5.0
 margin_right = 33.0
 margin_bottom = 21.0
-texture = ExtResource( 19 )
+texture = ExtResource( 21 )
 
 [node name="pular" type="Control" parent="acoes"]
 margin_left = 352.0
 margin_top = 214.0
 margin_right = 352.0
 margin_bottom = 214.0
-script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -380,19 +390,17 @@ valign = 1
 uppercase = true
 
 [node name="icon" type="TextureRect" parent="acoes/pular"]
-modulate = Color( 100, 100, 100, 1 )
 margin_left = 18.0
 margin_top = 5.0
 margin_right = 33.0
 margin_bottom = 21.0
-texture = ExtResource( 22 )
+texture = ExtResource( 19 )
 
 [node name="itens" type="Control" parent="acoes"]
 margin_left = 233.0
 margin_top = 248.0
 margin_right = 233.0
 margin_bottom = 248.0
-script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -416,19 +424,17 @@ valign = 1
 uppercase = true
 
 [node name="icon" type="TextureRect" parent="acoes/itens"]
-modulate = Color( 6.31, 8.38, 10.41, 1 )
 margin_left = 18.0
 margin_top = 5.0
 margin_right = 33.0
 margin_bottom = 21.0
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="fugir" type="Control" parent="acoes"]
 margin_left = 352.0
 margin_top = 248.0
 margin_right = 352.0
 margin_bottom = 248.0
-script = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -452,7 +458,6 @@ valign = 1
 uppercase = true
 
 [node name="icon" type="TextureRect" parent="acoes/fugir"]
-modulate = Color( 1, 1, 100, 1 )
 margin_left = 18.0
 margin_top = 5.0
 margin_right = 33.0
@@ -468,4 +473,11 @@ texture = ExtResource( 20 )
 [connection signal="focus_entered" from="personagens/mel/botao" to="personagens/mel" method="_on_botao_focus_entered"]
 [connection signal="focus_exited" from="personagens/mel/botao" to="personagens/mel" method="_on_botao_focus_exited"]
 [connection signal="pressed" from="personagens/mel/botao" to="." method="_on_botao_pressed"]
-[connection signal="pressed" from="acoes/fugir/botao" to="." method="_on_botao_pressed"]
+[connection signal="focus_entered" from="acoes/agir/botao" to="acoes" method="_on_botao_focus_entered" binds= [ "agir" ]]
+[connection signal="focus_exited" from="acoes/agir/botao" to="acoes" method="_on_botao_focus_exited" binds= [ "agir" ]]
+[connection signal="focus_entered" from="acoes/pular/botao" to="acoes" method="_on_botao_focus_entered" binds= [ "pular" ]]
+[connection signal="focus_exited" from="acoes/pular/botao" to="acoes" method="_on_botao_focus_exited" binds= [ "pular" ]]
+[connection signal="focus_entered" from="acoes/itens/botao" to="acoes" method="_on_botao_focus_entered" binds= [ "itens" ]]
+[connection signal="focus_exited" from="acoes/itens/botao" to="acoes" method="_on_botao_focus_exited" binds= [ "itens" ]]
+[connection signal="focus_entered" from="acoes/fugir/botao" to="acoes" method="_on_botao_focus_entered" binds= [ "fugir" ]]
+[connection signal="focus_exited" from="acoes/fugir/botao" to="acoes" method="_on_botao_focus_exited" binds= [ "fugir" ]]
