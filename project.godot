@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="cryptids"
-run/main_scene="res://scenes/combate/combate.tscn"
+run/main_scene="res://scenes/start_scene/start_scene.tscn"
 config/use_custom_user_dir=true
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -47,6 +47,7 @@ DialogBox="*res://scenes/dialog_box/dialog_box.tscn"
 Eventos="*res://scripts/eventos/eventos.gd"
 DataPlayer="*res://scripts/jogo/data_player.gd"
 Menu="*res://scenes/menu/menu.tscn"
+Inventario="*res://scripts/itens/inventario.gd"
 
 [display]
 

@@ -3,15 +3,18 @@ extends Node
 var _ficha
 var primeira_vez = true
 
-signal sarue_pronto
+var node_combate
+
+var _fala = "Uma criatura avança do meio das folhas."
 
 var imagem_path = "res://assets/personagens/sarue/normal.png"
 var posicao = Vector2(145, 46)
 
 var vez_acao = -1
-var ordem_acoes = ["arranhar", "arranhar", "arranhar"]
+var ordem_acoes = ["arranhar", "arranhar", "arranhar", "fugir"]
 
-func abrir_ficha():
+func abrir_ficha(combate):
+	node_combate = combate
 	_ficha = Ficha.new("Saruê", 2, 4, 3, 8, 3)
 	_ficha.gerar_aplicacoes()
 
@@ -19,12 +22,18 @@ func get_ficha():
 	return _ficha
 
 func acao_inimigo(personagens):
-	print("chamou")
+	if _ficha.get_atri_apli("hp") < 7:
+		node_combate.set_combate_finalizado(true)
+		return "O gambá escapou."
+	
 	vez_acao += 1
 	
 	match ordem_acoes[vez_acao]:
 		"arranhar":
 			return skill1(get_alvo(personagens))
+		"fugir":
+			node_combate.set_combate_finalizado(true)
+			return "O gambá escapou."
 
 #arranhar
 func skill1(alvo):
@@ -48,7 +57,7 @@ func skill1(alvo):
 		else:
 			texto = "O gambá avança. É inútil."
 	
-	if dano_recebido != 0 and primeira_vez:
+	if dano_recebido != 0 and primeira_vez and alvo.get_ficha().get_nome() == Global.get_nome_player():
 		texto = texto + " " + alvo.get_ficha().get_nome() + " aprendeu ARRANHAR."
 		
 		var temp = alvo.get_skills_player()
@@ -57,8 +66,11 @@ func skill1(alvo):
 		
 		primeira_vez = false
 	
-	emit_signal("sarue_pronto")
+	node_combate.set_node_vez(null)
 	return texto
+
+func get_fala():
+	return _fala
 
 func get_alvo(personagens):
 	var alvo

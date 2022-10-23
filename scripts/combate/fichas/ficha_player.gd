@@ -2,17 +2,17 @@ extends Node
 
 var _ficha
 
+var node_combate
+
 # Observar, Arranharm, Amigos
 var skills : Array = ["Observar", "nada", "nada", "nada"]
-var skills_desc : Array = ["- Estude seu inimigo...\n\n- 0 energia.", 
+var skills_desc : Array = ["- Estude seu inimigo.\n\n- 0 energia.", 
 "- Um ataque primitivo e instintivo, retalhe-os com suas garras.\n\n- 4 energia.\n\n- corpo-a-corpo.",
-"- Socorro.\n\b- 2 energia."]
-var skills_alvo : Array = ["inimigo", "inimigo", "aliados", "inimigos"]
+"- Socorro.\n\n- 2 energia."]
+var skills_alvo : Array = ["inimigo", "inimigo", "aliados"]
 
-var itens : Array = ["Desenho", "nada", "nada", "nada"]
-var itens_desc : Array = ["- Desenho da Maria.\n\n- Um desenho.\n\n- só q da Maria."]
-
-func abrir_ficha():
+func abrir_ficha(combate):
+	node_combate = combate
 	_ficha = Ficha.new(Global.get_nome_player(), 4, 5, 6, 7, 3)
 	_ficha.gerar_aplicacoes()
 
@@ -33,6 +33,7 @@ func skill1(alvo):
 		"Saruê":
 			texto = _ficha.get_nome() + " observa o inimigo... Uma criatura frágil mas nem tão indefesa, está tentando se proteger de nós."
 	
+	node_combate.set_node_vez(null)
 	return texto
 
 #arranhar
@@ -40,7 +41,9 @@ func skill2(alvo):
 	var dano
 	var texto
 	
-	_ficha.gastar_energia(4)
+	if not _ficha.gastar_energia(4):
+		node_combate.set_node_vez(self)
+		return "Você está muito cansado(a)."
 	
 	if int(_ficha.rng.randf_range(1, 100)) <= _ficha.get_atri_apli("crt"):
 		dano = _ficha.get_atri_apli("atk") * 2 + 2
@@ -56,15 +59,17 @@ func skill2(alvo):
 		else:
 			texto = _ficha.get_nome() + " avança. É inútil."
 	
+	node_combate.set_node_vez(null)
 	return texto
 
 #amigos
 func skill3(alvo):
-	var texto
-	_ficha.gastar_energia(2)
+	if not _ficha.gastar_energia(2):
+		node_combate.set_node_vez(self)
+		return "Você está muito cansado(a)."
 	
-	texto = "n entendi ;-;"
-	return texto
+	node_combate.set_node_vez(alvo)
+	return _ficha.get_nome() + " compra tempo para " + alvo.get_ficha().get_nome() + "."
 
 func get_skills_player():
 	return skills

@@ -5,6 +5,8 @@ var rng = RandomNumberGenerator.new()
 
 var _nome : String
 
+var _valores_iniciais : Array
+
 #status
 var _atk : int
 var _def : int
@@ -35,13 +37,26 @@ func gerar_aplicacoes():
 	_dge = 2 * _spd + _def
 	_res = 3 * _def
 	
+	_valores_iniciais = get_all()
+	
 	rng.randomize()
 
 func gastar_energia(valor):
-	_eng = _eng - valor
+	if (_eng - valor) < 0:
+		return false
+	else:
+		_eng = _eng - valor
+		return true
 
-func regenerar_energia():
-	_eng = _eng + _con
+func regenerar_energia(quantidade):
+	match quantidade:
+		"toda":
+			_eng = _valores_iniciais[6]
+		"con":
+			if _valores_iniciais[6] <= (_eng + _con):
+				_eng = _valores_iniciais[6]
+			else:
+				_eng = _eng + _con
 
 func verificar_desvio():
 	if int(rng.randf_range(1, 100)) <= _dge:

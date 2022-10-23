@@ -6,11 +6,11 @@ var opcao_selecionada
 
 var personagens
 
-var _finalizar_combate = false
+var _combate_finalizado = false
 
-var vez = -1
-var node_vez 
-var ordem : Array
+var _vez = -1
+var _node_vez = null
+var _ordem : Array
 
 onready var node_a := $acoes
 onready var node_d := $dialog
@@ -21,25 +21,9 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
-	Global.set_nome_player("Thalisson")
-	#var sla = ["opaaaa", "nada"]
-	#DialogBox.call_dialog_box(false, sla, null, null)
-	#var ficha = Ficha.new(4, 5, 6, 7, 3)
-	#get_node("opcoes").chamar_opcoes(["Intimidar", "Arranhar", "nada", "nada"], ["ele intimida", "ele arranha"])
-	
-	#get_node("personagens").chamar_personagens()
-	#personagem_vez = "maria"
-	#get_node("personagens").atulizar_personagens(personagem_vez)
-	#get_node("acoes").chamar_acoes()
-	#get_node("opcoes").chamar_opcoes(["Intimidar", "Arranhar", "nada", "nada"], ["ele intimida", "ele arranha"])
-	
-	#print(ficha.get_all()
-	
-	chamar_combate(["player", "sarue"])
-	#var opa = node_a.chamar_acoes()
-	#print(opa)
 
 func chamar_combate(perso):
+	Global.get_node_demo().get_tree().paused = true
 	personagens = perso
 	var inimigo = personagens[personagens.size() - 1]
 	
@@ -52,28 +36,36 @@ func chamar_combate(perso):
 	personagens[personagens.size() - 1] = load("res://scripts/combate/fichas/ficha_"+ inimigo +".gd").new()
 	
 	node_p.montar_personagens(personagens.duplicate())
-	node_p.atualizar_vida_energia()
 	
 	for i in personagens.size():
-		personagens[i].abrir_ficha()
+		personagens[i].abrir_ficha(self)
 	
-	ordem = gerar_ordem(personagens.duplicate())
+	node_p.atualizar_bar_vida_energia()
 	
-	rodar_combate()
+	_ordem = gerar_ordem(personagens.duplicate())
+	
+	node_d.chamar_dialogo(personagens[personagens.size() - 1].get_fala())
+	yield(node_d, "dialogo_fechado")
+	
+	$timer.start()
 
 func rodar_combate():
 	var jogador = null
-	vez += 1
 	
-	if _finalizar_combate:
-		return
+	_vez += 1
 	
-	if vez == ordem.size():
-		vez = -1
+	if _combate_finalizado:
+		return finalizar_combate()
+	
+	if _vez == _ordem.size():
+		_vez = -1
 	else:
-		node_vez = ordem[vez]
+		if _node_vez:
+			_vez -= 1
+		else:
+			_node_vez = _ordem[_vez]
 		
-		var nome_node = node_vez.get_ficha().get_nome()
+		var nome_node = _node_vez.get_ficha().get_nome()
 		if nome_node == Global.get_nome_player():
 			node_p.atulizar_personagens("player")
 			jogador = "player"
@@ -84,7 +76,11 @@ func rodar_combate():
 			node_p.atulizar_personagens("mel")
 			jogador = "mel"
 		else: #inimigo
-			node_d.chamar_dialogo(node_vez.acao_inimigo(personagens))
+			var texto = _node_vez.acao_inimigo(personagens)
+			node_p.atualizar_bar_vida_energia()
+			
+			node_d.chamar_dialogo(texto)
+			
 			yield(node_d, "dialogo_fechado")
 			jogador = null
 		
@@ -95,7 +91,8 @@ func rodar_combate():
 			
 			match acao_selecionada:
 				"agir":
-					node_o.chamar_opcoes(node_vez.skills, node_vez.skills_desc)
+					var voltar = false
+					node_o.chamar_opcoes_agir(_node_vez.skills, _node_vez.skills_desc)
 					yield(node_o, "opcao_apertada")
 					
 					var num
@@ -108,36 +105,59 @@ func rodar_combate():
 							num = 2
 						"opcao4":
 							num = 3
+						"voltar":
+							voltar = true
 					
-					node_p.chamar_personagens(node_vez.skills_alvo[num], jogador)
-					yield(node_p, "pers_apertado")
-					
-					var alvo
-					match personagem_selecionado:
-						"player":
-							alvo = personagens[0]
-						"maria":
-							alvo = personagens[1]
-						"mel":
-							alvo = personagens[2]
-						"inimigo":
-							alvo = personagens[personagens.size()-1]
-					
-					node_o.hide()
-					
-					node_d.chamar_dialogo(node_vez.usar_skill(num, alvo))
-					yield(node_d, "dialogo_fechado")
+					if not voltar:
+						node_p.chamar_personagens(_node_vez.skills_alvo[num], jogador)
+						yield(node_p, "pers_apertado")
+						
+						var alvo
+						match personagem_selecionado:
+							"player":
+								alvo = personagens[0]
+							"maria":
+								alvo = personagens[1]
+							"mel":
+								alvo = personagens[2]
+							"inimigo":
+								alvo = personagens[personagens.size()-1]
+						
+						node_o.hide()
+						node_d.chamar_dialogo(_node_vez.usar_skill(num, alvo))
+						node_p.atualizar_bar_vida_energia()
+						yield(node_d, "dialogo_fechado")
 				"itens":
-					node_o.chamar_opcoes(node_vez.itens, node_vez.itens_desc)
+					node_o.chamar_opcoes_itens()
 					yield(node_o, "opcao_apertada")
 					
-					node_p.chamar_personagens()
-					yield(node_p, "pers_apertado")
-					
-					node_o.hide()
+					match opcao_selecionada:
+						"opcao1":
+							var itens = Inventario.get_inventario()
+							
+							node_p.chamar_personagens(itens[0][2], jogador)
+							yield(node_p, "pers_apertado")
+							
+							var alvo
+							match personagem_selecionado:
+								"player":
+									alvo = personagens[0]
+								"maria":
+									alvo = personagens[1]
+								"mel":
+									alvo = personagens[2]
+								"inimigo":
+									alvo = personagens[personagens.size()-1]
+							
+							node_o.hide()
+							node_d.chamar_dialogo(Inventario.usar_item1(alvo, self))
+							node_p.atualizar_bar_vida_energia()
+							yield(node_d, "dialogo_fechado")
 				"pular":
-					node_vez.get_ficha().regenerar_energia()
+					_node_vez.get_ficha().regenerar_energia("con")
+					_node_vez = null
 					node_d.chamar_dialogo("Se desesperou, hm, é apenas um iniciante")
+					node_p.atualizar_bar_vida_energia()
 					yield(node_d, "dialogo_fechado")
 				"fugir":
 					var cont = 0
@@ -153,11 +173,18 @@ func rodar_combate():
 					if media >= spd_ini:
 						node_d.chamar_dialogo("Corra, não é necessário enfrentar seus medos!")
 						yield(node_d, "dialogo_fechado")
-						_finalizar_combate = true
+						_combate_finalizado = true
 					else:
 						node_d.chamar_dialogo("Ele n vai te deixar escapar!")
 						yield(node_d, "dialogo_fechado")
+						
+					_node_vez = null
+					
 	$timer.start()
+
+func finalizar_combate():
+	Global.get_node_demo().get_tree().paused = false
+	queue_free()
 
 func gerar_ordem(perso):
 	var _array_spd : Array
@@ -184,8 +211,14 @@ func gerar_ordem(perso):
 				perso[j] = temp
 	return perso
 
-func set_finalizar_combate(finalizar):
-	_finalizar_combate = finalizar
+func get_node_vez():
+	return _node_vez
+
+func set_node_vez(node):
+	_node_vez = node
+
+func set_combate_finalizado(finalizado):
+	_combate_finalizado = finalizado
 
 func set_personagem_selecionado(selecionado):
 	personagem_selecionado = selecionado
