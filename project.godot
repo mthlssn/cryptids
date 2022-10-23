@@ -18,16 +18,22 @@ _global_script_classes=[ {
 "class": "DialogMetadataSPerso",
 "language": "GDScript",
 "path": "res://scripts/dialog/dialog_metadata_s_perso.gd"
+}, {
+"base": "Node",
+"class": "Ficha",
+"language": "GDScript",
+"path": "res://scripts/combate/fichas/ficha.gd"
 } ]
 _global_script_class_icons={
 "DialogMetadataCPerso": "",
-"DialogMetadataSPerso": ""
+"DialogMetadataSPerso": "",
+"Ficha": ""
 }
 
 [application]
 
 config/name="cryptids"
-run/main_scene="res://scenes/start_scene/start_scene.tscn"
+run/main_scene="res://scenes/combate/combate.tscn"
 config/use_custom_user_dir=true
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )

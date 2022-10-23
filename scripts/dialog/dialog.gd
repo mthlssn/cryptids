@@ -182,17 +182,17 @@ func mudar_texto():
 func get_path_imagem(imagem):
 	match imagem:
 		"player_normal":
-			return "res://assets/dialog_box/personagens/player/normal.png"
+			return "res://assets/personagens/player/normal.png"
 		"maria_feliz":
-			return "res://assets/dialog_box/personagens/maria/feliz.png"
+			return "res://assets/personagens/maria/feliz.png"
 		"maria_normal":
-			return "res://assets/dialog_box/personagens/maria/normal.png"
+			return "res://assets/personagens/maria/normal.png"
 		"maria_pensante":
-			return "res://assets/dialog_box/personagens/maria/pensante.png"
+			return "res://assets/personagens/maria/pensante.png"
 		"maria_triste":
-			return "res://assets/dialog_box/personagens/maria/triste.png"
+			return "res://assets/personagens/maria/triste.png"
 		"mel_normal":
-			return "res://assets/dialog_box/personagens/mel/normal.png"
+			return "res://assets/personagens/mel/normal.png"
 
 func chamar_input():
 	tecla = "nada"

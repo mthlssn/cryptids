@@ -1,19 +1,18 @@
 extends Control
 
+var combate
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal acao_apertada
 
+func chamar_acoes():
+	combate = get_parent()
+	show()
+	$agir/botao.grab_focus()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_botao_pressed(extra_arg_0):
+	combate.set_acao_selecionada(extra_arg_0)
+	emit_signal("acao_apertada")
+	hide()
 
 func _on_botao_focus_entered(extra_arg_0):
 	match extra_arg_0:
