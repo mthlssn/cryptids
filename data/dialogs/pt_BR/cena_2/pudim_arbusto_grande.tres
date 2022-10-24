@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = ""
-nome = [ "Maria", "Maria", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Mel", "Maria", "{nome_player}", "Maria" ]
-msg_queue = [ "AU! AU!", "Mel! Calma, vamos pra casa, papai vai ficar bravo!", "Ah! Oi! :)", "...", "Você também tá perdido?", "...", "Hm... você é bem quieto. Qual é seu nome?", "...", "snif snif...", "func_chamar_input()", "Já sei! Vou te chamar de {nome_player}! É um ótimo nome, não é?", "...", "Vamos, vou nos tirar dessa enrascada!" ]
-imagens = [ "maria_feliz", "maria_feliz", "maria_normal", "mel_normal", "maria_pensante", "player_normal", "maria_triste", "maria_pensante", "maria_feliz", "maria_normal", "maria_pensante", "player_normal" ]
+nome = [ "Mel", "Maria", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "Maria", "Maria", "Mel", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria" ]
+msg_queue = [ "AU! AU!", "Mel! Calma, vamos pra casa, papai vai ficar bravo!", "Ah! Oi! :)", "...", "Você também tá perdido?", "...", "Hm... você é bem quieto. Qual é seu nome?", "...", "A gente acabou vindo parar aqui por engano.", "Eu sou a Maria e ela é a Mel.", "Ela é muito legal sempre, mas tá estranho hoje :(", "snif snif…", "Como você chama?", "...", "Você fala?", "...", "func_chamar_input()", "Já sei! Vou te chamar de {nome_player}! É um ótimo nome, não é?", "...", "Vamos, vou nos tirar dessa enrascada!" ]
+imagens = [ "mel_normal", "maria_normal", "maria_feliz", "player_normal", "maria_normal", "player_normal", "maria_pensante", "player_normal", "maria_normal", "maria_feliz", "maria_triste", "mel_normal", "maria_pensante", "player_normal", "maria_pensante", "player_normal", "maria_normal", "player_normal", "maria_feliz" ]

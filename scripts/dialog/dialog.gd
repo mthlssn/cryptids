@@ -22,14 +22,16 @@ var _imagens
 var _nomes
 var _msg 
 
-var tecla = "nada"
+var _tecla = "nada"
 
-var pausar = false
+var _pausar = false
 
-var cont = 0
-var cont_msg_queue = 0
+var _cont = 0
+var _cont_msg_queue = 0
 
-var node_input_box
+var _node_cutscene
+
+var _node_input_box
 
 func _ready():
 	if _msg_queue.size() == 0:
@@ -41,7 +43,7 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	_imagens = imagens_perso
 	
 	text.bbcode_text = ""
-	tecla = "ui_accept"
+	_tecla = "ui_accept"
 	label_name.text = ""
 	personagem_foto.texture = null
 	
@@ -74,7 +76,7 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	animacao.play("open")
 
 func _input(event):
-	if event.is_action_pressed(tecla):
+	if event.is_action_pressed(_tecla):
 		if mudar_texto():
 			return
 		
@@ -87,10 +89,10 @@ func _input(event):
 		show_message()
 	
 	if event.is_action_pressed("ui_cancel") && visible == true:
-		if not node_input_box:
+		if not _node_input_box:
 			timer.stop()
-			cont_msg_queue = _msg_queue.size()
-			pausar = true
+			_cont_msg_queue = _msg_queue.size()
+			_pausar = true
 			show_message()
 
 func show_message() -> void:
@@ -100,20 +102,26 @@ func show_message() -> void:
 	if not timer.is_stopped():
 		text.visible_characters = text.bbcode_text.length()
 		return
-
-	if _msg_queue.size() <= cont_msg_queue:
-		tecla = "nada"
+	
+	if _node_cutscene:
+		match _node_cutscene.name:
+			"cutscene_maria":
+				_node_cutscene.iniciou()
+	
+	if _msg_queue.size() <= _cont_msg_queue:
+		_tecla = "nada"
 		_msg_queue = []
 		text.bbcode_text = ""
-		cont = 0
-		cont_msg_queue = 0
-		node_input_box = null
+		_cont = 0
+		_cont_msg_queue = 0
+		_node_input_box = null
+		_node_cutscene = null
 		
 		Global.set_mover(true)
 		
-		if pausar:
+		if _pausar:
 			hide()
-			pausar = false
+			_pausar = false
 			Menu.pause()
 		else:
 			animacao.play("close")
@@ -128,12 +136,12 @@ func show_message() -> void:
 
 func _on_timer_timeout():
 	if text.visible_characters == text.bbcode_text.length():
-		cont += 1
-		cont_msg_queue += 1
+		_cont += 1
+		_cont_msg_queue += 1
 		
 		timer.stop()
 		
-		if cont == _msg_queue.size():
+		if _cont == _msg_queue.size():
 			sprite_set_ou_xis.texture = sprite_xis
 			animacao_set_ou_xis.play("xis")
 		else:
@@ -154,30 +162,30 @@ func _on_animation_player_animation_finished(anim_name):
 		timer2.start()
 
 func mudar_imagem():
-	if _imagens.size() > cont:
-		personagem_foto.texture = load(get_path_imagem(_imagens[cont]))
+	if _imagens.size() > _cont:
+		personagem_foto.texture = load(get_path_imagem(_imagens[_cont]))
 
 func mudar_nome():
-	if _nomes.size() > cont:
-		if _nomes[cont] == "{nome_player}":
+	if _nomes.size() > _cont:
+		if _nomes[_cont] == "{nome_player}":
 			label_name.text = Global.get_nome_player()
 		else:
-			label_name.text = _nomes[cont]
+			label_name.text = _nomes[_cont]
 
 func mudar_texto():
-	if _msg_queue.size() > cont_msg_queue:
-		if "func" in _msg_queue[cont_msg_queue]:
-			match _msg_queue[cont_msg_queue]:
+	if _msg_queue.size() > _cont_msg_queue:
+		if "func" in _msg_queue[_cont_msg_queue]:
+			match _msg_queue[_cont_msg_queue]:
 				"func_chamar_input()":
 					Global.set_pausar(false)
 					chamar_input()
-			cont_msg_queue += 1
+			_cont_msg_queue += 1
 			return true
 		
-		if "{nome_player}" in _msg_queue[cont_msg_queue]:
-			_msg = _msg_queue[cont_msg_queue].format({"nome_player": Global.get_nome_player()})
+		if "{nome_player}" in _msg_queue[_cont_msg_queue]:
+			_msg = _msg_queue[_cont_msg_queue].format({"nome_player": Global.get_nome_player()})
 		else:
-			_msg = _msg_queue[cont_msg_queue]
+			_msg = _msg_queue[_cont_msg_queue]
 
 func get_path_imagem(imagem):
 	match imagem:
@@ -195,7 +203,15 @@ func get_path_imagem(imagem):
 			return "res://assets/dialog_box/personagens/mel/normal.png"
 
 func chamar_input():
-	tecla = "nada"
+	_tecla = "nada"
 	var cena = load("res://scenes/dialog_box/input_box.tscn")
-	node_input_box = cena.instance()
-	add_child(node_input_box)
+	_node_input_box = cena.instance()
+	add_child(_node_input_box)
+
+#------- node_cutscene:
+func set_node_cutscene(node_cutscene):
+	_node_cutscene = node_cutscene
+
+#------- tecla:
+func set_tecla(tecla):
+	_tecla = tecla

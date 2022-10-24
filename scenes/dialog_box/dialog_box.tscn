@@ -596,7 +596,7 @@ anims/xis = SubResource( 8 )
 wait_time = 0.05
 
 [node name="timer_2" type="Timer" parent="dialog"]
-wait_time = 0.16
+wait_time = 0.3
 one_shot = true
 
 [node name="animation_player" type="AnimationPlayer" parent="."]

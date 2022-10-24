@@ -21,26 +21,37 @@ var ultima_posi
 
 # difinindo a a direção da sprite do inicio do jogo
 func _ready():
+	arrumar_fila()
+
+func arrumar_fila():
+	var path_scenes
+	
 	if Global.get_players() == []:
-		for i in posi_players.size():
-			posi_players[i] = posi_players[i] * 32
-			
-			posi_players[i].x += 16
-			posi_players[i].y += 16
-		
 		Global.set_players(players)
 		Global.set_posicao_players(posi_players)
 		Global.set_direcao_players(dire_players)
 	else:
-		players = Global.get_players()
+		posi_players = Global.get_posicao_players()
 	
-	for i in players.size():
-		var path_scenes = players[i]
-		
-		var scenes = load(path_scenes)
-		var instance = scenes.instance()
-		add_child(instance)
-
+	path_scenes = Global.get_players()
+	
+	var filhos = get_children()
+	var filho_nome = ""
+	
+	if filhos:
+		filho_nome = filhos[filhos.size()-1].name
+	
+	for i in path_scenes.size():
+		if  "player" in path_scenes[i] and filho_nome == "player":
+			pass
+		else:
+			var scenes = load(path_scenes[i])
+			var instance = scenes.instance()
+			add_child(instance)
+			instance.position =  posi_players[i]
+	
+	move_child(get_node("player"), get_children().size()-1)
+	
 	players = get_children()
 	
 	controlar = players.size() - 1
@@ -61,7 +72,7 @@ func _ready():
 		update_direcao_sprite(nodes_player[i][SPRITE], dire_players[i])
 		
 	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera_path)
-	
+
 func _process(_delta):
 	var direcao
 	if Global.get_mover():

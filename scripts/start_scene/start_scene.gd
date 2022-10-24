@@ -23,7 +23,6 @@ onready var botao_video_voltar := $popup_configuracoes/botoes_video/video_voltar
 
 func _ready():
 	Global.set_valores_iniciais()
-	DataPlayer.set_configs_iniciais()
 	
 	botao_jogar.grab_focus()
 	titulo.text = ""

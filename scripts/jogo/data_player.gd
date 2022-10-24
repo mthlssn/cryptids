@@ -34,7 +34,7 @@ var _tamanho_tela : Dictionary = {
 
 var _keybinds_iniciais = _keybinds.duplicate()
 
-func set_configs_iniciais():
+func _ready():
 	load_configs("saves")
 	load_configs("keybinds")
 	load_configs("tamanho_tela")
