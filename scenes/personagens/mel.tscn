@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/personagens/mel_sprite.png" type="Texture" id=1]
+[ext_resource path="res://assets/personagens/mel/mel_sprite.png" type="Texture" id=1]
 [ext_resource path="res://scripts/personagens/personagens.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=3]

@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "DialogMetadataSPerso",
 "language": "GDScript",
 "path": "res://scripts/dialog/dialog_metadata_s_perso.gd"
+}, {
+"base": "Node",
+"class": "Ficha",
+"language": "GDScript",
+"path": "res://scripts/combate/fichas/ficha.gd"
 } ]
 _global_script_class_icons={
 "DialogMetadataCPerso": "",
-"DialogMetadataSPerso": ""
+"DialogMetadataSPerso": "",
+"Ficha": ""
 }
 
 [application]
@@ -41,6 +47,7 @@ DialogBox="*res://scenes/dialog_box/dialog_box.tscn"
 Eventos="*res://scripts/eventos/eventos.gd"
 DataPlayer="*res://scripts/jogo/data_player.gd"
 Menu="*res://scenes/menu/menu.tscn"
+Inventario="*res://scripts/itens/inventario.gd"
 
 [display]
 

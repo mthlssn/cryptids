@@ -525,14 +525,14 @@ __meta__ = {
 
 [node name="cenarios" type="Node2D" parent="."]
 
-[node name="cenario2" type="Sprite" parent="cenarios"]
-position = Vector2( 0, -1120 )
-texture = ExtResource( 5 )
-centered = false
-
 [node name="cenario1" type="Sprite" parent="cenarios"]
 position = Vector2( 0, -288 )
 texture = ExtResource( 2 )
+centered = false
+
+[node name="cenario2" type="Sprite" parent="cenarios"]
+position = Vector2( 0, -1120 )
+texture = ExtResource( 5 )
 centered = false
 
 [node name="cenario3" type="Sprite" parent="cenarios"]
