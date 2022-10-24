@@ -13,7 +13,7 @@ func _on_input_text_entered(new_text):
 	if new_text.length() >= 3: 
 		Global.set_nome_player(new_text)
 		
-		get_parent().tecla = "ui_accept"
+		get_parent().set_tecla("ui_accept")
 		
 		Global.set_pausar(true)
 		

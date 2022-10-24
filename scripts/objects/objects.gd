@@ -3,12 +3,23 @@ extends Node2D
 enum CELL_TYPES{EMPTY = -1,  OBSTACLE, AREA, PLAYER, OBJECT, NPC, FOLLOW}
 export(CELL_TYPES) var type = CELL_TYPES.AREA
 
-export var _sprite_width_tile = 1 
-export var _sprite_height_tile = 1 
+var _sprite_width_tile = 1 
+var _sprite_height_tile = 1 
 
 export(Resource) var dialogo_resource
 
 var interagido = false
+
+func _ready():
+	if self.visible:
+		_sprite_width_tile = ($cor.margin_right + 16) / 32
+		_sprite_height_tile = ($cor.margin_bottom + 16) / 32
+	else:
+		position = Vector2(-480, -288)
+	
+	if self.get_parent().name != "area":
+		if not get_node("../area").visible:
+			$cor.hide()
 
 func get_sprite_width_tile():
 	return _sprite_width_tile

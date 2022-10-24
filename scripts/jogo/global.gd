@@ -24,8 +24,8 @@ var _posicao_players : Array
 # ------------- funcs ----------------
 
 func _ready():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	set_valores_iniciais()
 
 func set_valores_iniciais():
 	_cena_atual = 1

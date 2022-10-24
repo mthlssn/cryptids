@@ -1,20 +1,20 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/objects/objects.gd" type="Script" id=1]
-[ext_resource path="res://assets/cenarios/cen2/moita3_inverso.png" type="Texture" id=2]
+[ext_resource path="res://data/dialogs/pt_BR/cena_2/barranco.tres" type="Resource" id=2]
 
-[node name="arbusto_triplo2" type="Node2D"]
+[node name="barranco" type="Node2D"]
 script = ExtResource( 1 )
 type = 3
+dialogo_resource = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( -48, -48 )
-texture = ExtResource( 2 )
 centered = false
 
 [node name="cor" type="ColorRect" parent="."]
 margin_left = -16.0
 margin_top = -16.0
-margin_right = 48.0
-margin_bottom = 16.0
+margin_right = 16.0
+margin_bottom = 80.0
 color = Color( 0, 0, 0, 0.537255 )
