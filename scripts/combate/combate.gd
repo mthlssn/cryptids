@@ -21,9 +21,12 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
+	chamar_combate(["player", "sarue"])
 
 func chamar_combate(perso):
 	Global.get_node_demo().get_tree().paused = true
+	Global.set_pausar(false)
+	
 	personagens = perso
 	var inimigo = personagens[personagens.size() - 1]
 	
@@ -184,6 +187,7 @@ func rodar_combate():
 
 func finalizar_combate():
 	Global.get_node_demo().get_tree().paused = false
+	Global.set_pausar(true)
 	queue_free()
 
 func gerar_ordem(perso):

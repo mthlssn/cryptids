@@ -19,11 +19,7 @@ func get_sprite_height_tile():
 func interacao():
 	verificar_status()
 	if dialogo_resource:
-		if self.name == "arbusto5":
-			var sla = load("res://scenes/combate/combate.tscn").instance()
-			get_node("/root").add_child(sla)
-			sla.chamar_combate(["player", "sarue"])
-		elif interagido:
+		if interagido:
 			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue1, null, null)
 		else:
 			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
