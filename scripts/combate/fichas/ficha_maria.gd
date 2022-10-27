@@ -22,14 +22,14 @@ func usar_skill(num, alvo):
 func skill1(alvo):
 	if not _ficha.gastar_energia(4):
 		node_combate.set_node_vez(self)
-		return "Você está muito cansado(a)."
+		return ["Você está muito cansado(a)."]
 	
 	var eng_regenerada = alvo.get_ficha().get_atri_apli("eng")
 	alvo.get_ficha().regenerar_energia("con")
 	eng_regenerada = alvo.get_ficha().get_atri_apli("eng") - eng_regenerada
 	
 	node_combate.set_node_vez(null)
-	return alvo.get_ficha().get_nome() + " se sente um pouco melhor. " + alvo.get_ficha().get_nome() + " recupera " + String(eng_regenerada) + " de energia."
+	return [alvo.get_ficha().get_nome() + " se sente um pouco melhor.", alvo.get_ficha().get_nome() + " recupera " + String(eng_regenerada) + " de energia."]
 
 func get_ficha():
 	return _ficha

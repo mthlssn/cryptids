@@ -7,14 +7,14 @@ signal acao_apertada
 func chamar_acoes():
 	combate = get_parent()
 	show()
-	$agir/botao.grab_focus()
 
 func _on_botao_pressed(extra_arg_0):
-	combate.set_acao_selecionada(extra_arg_0)
+	combate.set_acao_apertada(extra_arg_0)
 	emit_signal("acao_apertada")
 	hide()
 
 func _on_botao_focus_entered(extra_arg_0):
+	combate.set_acao_selecionada(extra_arg_0)
 	match extra_arg_0:
 		"agir":
 			$agir/icon.texture = load("res://assets/combate/agir.png")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portao(92x64).png-ccecbe779e05d36b3549aaa0b852c96b.stex"
+path="res://.import/portao.png-1e7e778ef7e1b5a654efacfcec7b91e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portao(92x64).png"
-dest_files=[ "res://.import/portao(92x64).png-ccecbe779e05d36b3549aaa0b852c96b.stex" ]
+source_file="res://assets/cenarios/cen6/portao.png"
+dest_files=[ "res://.import/portao.png-1e7e778ef7e1b5a654efacfcec7b91e6.stex" ]
 
 [params]
 

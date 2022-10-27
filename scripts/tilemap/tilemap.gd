@@ -93,7 +93,7 @@ func get_node_celula(alvo, area):
 				hei_and_wid_v.x = 0
 				hei_and_wid_v += Vector2(0,1)
 
-func limpar_area(node):
+func apagar_node(node):
 	var width = node.get_sprite_width_tile()
 	var height = node.get_sprite_height_tile()
 	var posicao = node.position
@@ -130,13 +130,14 @@ func solicitar_movimento(player, direcao):
 			var node_area = get_node_celula(proxima_celula, true)
 			
 			if node_area.apagar:
-				limpar_area(node_area)
+				apagar_node(node_area)
 				
 			if node_area.colisao:
 				node_area.colisao(self)
 				
 			match node_area.function:
 				"mexer_arbusto":
+					get_node("arbusto_grande2").dialogo_resource = load("res://data/dialogs/pt_BR/objects/arbusto_grande_combate.tres")
 					get_node("arbusto_grande2/animation_player").play("mexer_arbusto")
 				"andar":
 					return map_to_world(proxima_celula) + (cell_size / 2)
@@ -149,3 +150,10 @@ func atualizar_posicao(posicao_comeco, posicao_alvo):
 	posicao_alvo = world_to_map(posicao_alvo)
 	if get_cellv(posicao_alvo) != AREA:
 		set_cellv(posicao_alvo, PLAYERS)
+
+
+func _on_animation_player_animation_finished(anim_name):
+	match anim_name:
+		"gamba":
+			apagar_node(get_node("gamba"))
+			apagar_node(get_node("area/dg_interaja_c_arbusto"))

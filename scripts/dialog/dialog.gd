@@ -73,7 +73,10 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	if imagens_perso != null:
 		mudar_imagem()
 		
-	animacao.play("open")
+	if "func" in _msg_queue[0]:
+		pass
+	else:
+		animacao.play("open")
 
 func _input(event):
 	if event.is_action_pressed(_tecla):
@@ -179,6 +182,10 @@ func mudar_texto():
 				"func_chamar_input()":
 					Global.set_pausar(false)
 					chamar_input()
+				"func_combate_sarue()":
+					var combate = load("res://scenes/combate/combate.tscn").instance()
+					Global.get_node_demo().add_child(combate)
+					#combate.chamar_combate(["player, sarue"])
 			_cont_msg_queue += 1
 			return true
 		

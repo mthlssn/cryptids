@@ -22,10 +22,10 @@ func usar_skill(num, alvo):
 func skill1(alvo):
 	if not _ficha.gastar_energia(3):
 		node_combate.set_node_vez(self)
-		return "Você está muito cansado(a)."
+		return ["Você está muito cansado(a)."]
 	
 	node_combate.set_node_vez(null)
-	return "Mel late sem parar. " + alvo.get_ficha().get_nome() + " parece hesitar."
+	return ["Mel late sem parar. ", alvo.get_ficha().get_nome() + " parece hesitar."]
 
 func get_ficha():
 	return _ficha

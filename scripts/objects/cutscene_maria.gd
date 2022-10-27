@@ -35,9 +35,9 @@ func func_transicao():
 	Global.set_mover(true)
 	nt.get_node("players").show()
 			
-	nt.limpar_area(nt.get_node("player"))
-	nt.limpar_area(nt.get_node("maria"))
-	nt.limpar_area(nt.get_node("mel"))
+	nt.apagar_node(nt.get_node("player"))
+	nt.apagar_node(nt.get_node("maria"))
+	nt.apagar_node(nt.get_node("mel"))
 	
 	Global.set_players(["res://scenes/personagens/mel.tscn", "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn"])
 	Global.set_posicao_players([Vector2(464,-976), Vector2(464,-1008), Vector2(432,-1008)])
@@ -45,7 +45,7 @@ func func_transicao():
 	
 	nt.get_node("players").arrumar_fila()
 	nt.get_node("../camera").mudar_camera()
-	nt.limpar_area(self)
+	nt.apagar_node(self)
 
 func esconder_players():
 	nt.get_node("players").hide()

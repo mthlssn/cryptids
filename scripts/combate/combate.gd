@@ -1,12 +1,18 @@
 extends CanvasLayer
 
-var personagem_selecionado
-var acao_selecionada
-var opcao_selecionada
+var personagem_apertado
+
+var acao_apertada = null
+var acao_selecionada = null
+
+var opcao_apertada
+var opcao_selecionada = null
 
 var personagens
 
 var _combate_finalizado = false
+
+var tela
 
 var _vez = -1
 var _node_vez = null
@@ -21,7 +27,19 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
-	chamar_combate(["player", "sarue"])
+	chamar_combate(["player", "gamba"])
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		match tela:
+			"opcoes":
+				node_o.hide()
+				acao_apertada = null
+				node_o.emitir_sinal_opc()
+			"personagens":
+				personagem_apertado = null
+				acao_apertada = "agir"
+				node_p.emitir_sinal_per()
 
 func chamar_combate(perso):
 	Global.get_node_demo().get_tree().paused = true
@@ -85,21 +103,38 @@ func rodar_combate():
 			node_d.chamar_dialogo(texto)
 			
 			yield(node_d, "dialogo_fechado")
+			
 			jogador = null
+			acao_apertada = null
 		
 		if jogador:
 			node_d.hide()
-			node_a.chamar_acoes()
-			yield(node_a, "acao_apertada")
 			
-			match acao_selecionada:
+			if not acao_apertada:
+				node_a.chamar_acoes()
+				
+				if not acao_selecionada:
+					$acoes/agir/botao.grab_focus()
+				else:
+					get_node("acoes/" + acao_selecionada + "/botao").grab_focus()
+				
+				yield(node_a, "acao_apertada")
+			
+			match acao_apertada:
 				"agir":
-					var voltar = false
+					tela = "opcoes"
 					node_o.chamar_opcoes_agir(_node_vez.skills, _node_vez.skills_desc)
+					
+					if not opcao_selecionada:
+						$opcoes/container_opcoes/opcao1.grab_focus()
+					else:
+						get_node("opcoes/container_opcoes/opcao" + String(opcao_selecionada + 1)).grab_focus()
+						
+					opcao_apertada = null
 					yield(node_o, "opcao_apertada")
 					
-					var num
-					match opcao_selecionada:
+					var num = null
+					match opcao_apertada:
 						"opcao1":
 							num = 0
 						"opcao2":
@@ -108,15 +143,16 @@ func rodar_combate():
 							num = 2
 						"opcao4":
 							num = 3
-						"voltar":
-							voltar = true
 					
-					if not voltar:
+					if num != null:
+						tela = "personagens"
 						node_p.chamar_personagens(_node_vez.skills_alvo[num], jogador)
+						
+						personagem_apertado = null
 						yield(node_p, "pers_apertado")
 						
-						var alvo
-						match personagem_selecionado:
+						var alvo =  null
+						match personagem_apertado:
 							"player":
 								alvo = personagens[0]
 							"maria":
@@ -125,43 +161,68 @@ func rodar_combate():
 								alvo = personagens[2]
 							"inimigo":
 								alvo = personagens[personagens.size()-1]
-						
-						node_o.hide()
-						node_d.chamar_dialogo(_node_vez.usar_skill(num, alvo))
-						node_p.atualizar_bar_vida_energia()
-						yield(node_d, "dialogo_fechado")
+								
+						if alvo != null:
+							node_o.hide()
+							
+							node_d.chamar_dialogo(_node_vez.usar_skill(num, alvo))
+							node_p.atualizar_bar_vida_energia()
+							yield(node_d, "dialogo_fechado")
+							
+							personagem_apertado = null
+							opcao_selecionada = null
+							acao_selecionada = null
+							acao_apertada = null
 				"itens":
+					tela = "opcoes"
 					node_o.chamar_opcoes_itens()
+					
+					opcao_apertada = null
 					yield(node_o, "opcao_apertada")
 					
+					var num = null
 					match opcao_selecionada:
 						"opcao1":
-							var itens = Inventario.get_inventario()
+							num = 0
+					
+					if num != null:
+						tela = "personagens"
+						var itens = Inventario.get_inventario()
 							
-							node_p.chamar_personagens(itens[0][2], jogador)
-							yield(node_p, "pers_apertado")
+						node_p.chamar_personagens(itens[num][2], jogador)
+						personagem_apertado = null
+						yield(node_p, "pers_apertado")
 							
-							var alvo
-							match personagem_selecionado:
-								"player":
-									alvo = personagens[0]
-								"maria":
-									alvo = personagens[1]
-								"mel":
-									alvo = personagens[2]
-								"inimigo":
-									alvo = personagens[personagens.size()-1]
+						var alvo = null
+						match personagem_apertado:
+							"player":
+								alvo = personagens[0]
+							"maria":
+								alvo = personagens[1]
+							"mel":
+								alvo = personagens[2]
+							"inimigo":
+								alvo = personagens[personagens.size()-1]
 							
+						if alvo != null:
 							node_o.hide()
 							node_d.chamar_dialogo(Inventario.usar_item1(alvo, self))
 							node_p.atualizar_bar_vida_energia()
 							yield(node_d, "dialogo_fechado")
+							
+							personagem_apertado = null
+							opcao_selecionada = null
+							acao_selecionada = null
+							acao_apertada = null
 				"pular":
 					_node_vez.get_ficha().regenerar_energia("con")
 					_node_vez = null
-					node_d.chamar_dialogo("Se desesperou, hm, é apenas um iniciante")
+					node_d.chamar_dialogo(["Se desesperou, hm, é apenas um iniciante"])
 					node_p.atualizar_bar_vida_energia()
 					yield(node_d, "dialogo_fechado")
+					
+					acao_apertada = null
+					acao_selecionada = null
 				"fugir":
 					var cont = 0
 					
@@ -174,20 +235,29 @@ func rodar_combate():
 					var media = cont / (personagens.size() - 1)
 					
 					if media >= spd_ini:
-						node_d.chamar_dialogo("Corra, não é necessário enfrentar seus medos!")
+						node_d.chamar_dialogo(["Corra, não é necessário enfrentar seus medos!"])
 						yield(node_d, "dialogo_fechado")
 						_combate_finalizado = true
 					else:
-						node_d.chamar_dialogo("Ele n vai te deixar escapar!")
+						node_d.chamar_dialogo(["Ele n vai te deixar escapar!"])
 						yield(node_d, "dialogo_fechado")
-						
+					
+					acao_selecionada = null
 					_node_vez = null
+					acao_apertada = null
 					
 	$timer.start()
 
 func finalizar_combate():
 	Global.get_node_demo().get_tree().paused = false
 	Global.set_pausar(true)
+	
+	if personagens[personagens.size()-1].get_ficha().get_nome() == "Gambá":
+		var nd = Global.get_node_demo() #node_demo
+		
+		nd.get_node("animation_player").play("gamba")
+		nd.get_node("tilemap/arbusto_grande2").dialogo_resource = load("res://data/dialogs/pt_BR/objects/arbusto_grande.tres")
+		
 	queue_free()
 
 func gerar_ordem(perso):
@@ -224,8 +294,14 @@ func set_node_vez(node):
 func set_combate_finalizado(finalizado):
 	_combate_finalizado = finalizado
 
-func set_personagem_selecionado(selecionado):
-	personagem_selecionado = selecionado
+func set_personagem_apertado(apertado):
+	personagem_apertado = apertado
+
+func set_acao_apertada(apertada):
+	acao_apertada = apertada
+
+func set_opcao_apertada(apertada):
+	opcao_apertada = apertada
 
 func set_acao_selecionada(selecionada):
 	acao_selecionada = selecionada
