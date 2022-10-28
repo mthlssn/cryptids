@@ -34,7 +34,7 @@ func set_valores_iniciais():
 	_mover = false
 	_node_demo = null
 	_nodes_apagados = []
-	_nome_player = "Player"
+	_nome_player = "???"
 	_pausar = true
 	_players = []
 	_posicao_players = []

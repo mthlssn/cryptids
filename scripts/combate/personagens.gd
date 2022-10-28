@@ -30,6 +30,7 @@ func chamar_personagens(tipo_alvo, perso):
 			get_node("player/botao").focus_mode = 0
 			get_node("maria/botao").focus_mode = 0
 			get_node("mel/botao").focus_mode = 0
+			get_node("inimigo/botao").show()
 			$inimigo/botao.grab_focus()
 		"aliados":
 			get_node("player/botao").focus_mode = 2
@@ -59,10 +60,16 @@ func montar_personagens(personagens):
 		get_node("maria/barra_vida").value = 0
 		get_node("maria/barra_energia").value = 0
 		
+		get_node("maria/barra_vida").texture_over = load("res://assets/combate/barra_escura_vida.png")
+		get_node("maria/barra_energia").texture_over = load("res://assets/combate/barra_escura_energia.png")
+		
 		get_node("mel/botao").focus_mode = 0
 		get_node("mel/botao/personagem").hide()
 		get_node("mel/barra_vida").value = 0
 		get_node("mel/barra_energia").value = 0
+		
+		get_node("mel/barra_vida").texture_over = load("res://assets/combate/barra_escura_vida.png")
+		get_node("mel/barra_energia").texture_over = load("res://assets/combate/barra_escura_energia.png")
 		
 		node_aliados = [get_node("player")]
 	else:
@@ -72,6 +79,8 @@ func montar_personagens(personagens):
 
 	$inimigo/personagem.texture = load(inimigo.imagem_path)
 	$inimigo/personagem.rect_position = inimigo.posicao
+	
+	get_node("inimigo/botao").hide()
 
 func atulizar_personagens(personagem_selecionado):
 	for personagens in node_aliados:

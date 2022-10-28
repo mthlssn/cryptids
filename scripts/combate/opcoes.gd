@@ -4,8 +4,6 @@ var combate
 
 signal opcao_apertada
 
-var selecionou = false
-
 onready var texto := $container_texto/texto
 onready var opcao1 := $container_opcoes/opcao1
 onready var opcao2 := $container_opcoes/opcao2
@@ -16,7 +14,6 @@ var _opcoes : Array
 var _descricoes : Array
 
 func chamar_opcoes_agir(opcoes, descricoes):
-	selecionou = false
 	combate = get_parent()
 	_opcoes = opcoes.duplicate()
 	_descricoes = descricoes
@@ -25,7 +22,6 @@ func chamar_opcoes_agir(opcoes, descricoes):
 	show()
 
 func chamar_opcoes_itens():
-	selecionou = false
 	combate = get_parent()
 	var itens = Inventario.get_inventario()
 	
@@ -42,8 +38,6 @@ func chamar_opcoes_itens():
 	
 	atualizar_botoes()
 	show()
-	
-	opcao1.grab_focus()
 
 func atualizar_botoes():
 	var botoes = get_node("container_opcoes").get_children()
@@ -63,7 +57,6 @@ func emitir_sinal_opc():
 	emit_signal("opcao_apertada")
 
 func _on_opcao_pressed(extra_arg_0):
-	selecionou = true
 	get_node("container_opcoes/" + extra_arg_0 + "/borda").show()
 	
 	combate.set_opcao_apertada(extra_arg_0)

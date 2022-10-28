@@ -137,7 +137,6 @@ func solicitar_movimento(player, direcao):
 				
 			match node_area.function:
 				"mexer_arbusto":
-					get_node("arbusto_grande2").dialogo_resource = load("res://data/dialogs/pt_BR/objects/arbusto_grande_combate.tres")
 					get_node("arbusto_grande2/animation_player").play("mexer_arbusto")
 				"andar":
 					return map_to_world(proxima_celula) + (cell_size / 2)
@@ -150,7 +149,6 @@ func atualizar_posicao(posicao_comeco, posicao_alvo):
 	posicao_alvo = world_to_map(posicao_alvo)
 	if get_cellv(posicao_alvo) != AREA:
 		set_cellv(posicao_alvo, PLAYERS)
-
 
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:

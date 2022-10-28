@@ -1,11 +1,13 @@
 extends NinePatchRect
 
-var combate = get_parent()
+var combate
 
 var _msg 
 var cont = 0
 
 var voltar = false
+
+var chamar_animacao_dano = false
 
 signal dialogo_fechado
 
@@ -22,6 +24,7 @@ onready var sprite_xis = preload("res://assets/dialog_box/xis.png")
 func _ready():
 	node_sprite_setinha_xis.texture = null
 	texto.bbcode_text = ""
+	combate = get_parent()
 
 func chamar_dialogo(mensagem):
 	show()
@@ -39,6 +42,9 @@ func show_message() -> void:
 		texto.visible_characters = texto.bbcode_text.length()
 		return
 	
+	if "dano" in _msg[cont]:
+		chamar_animacao_dano = true
+	
 	texto.visible_characters = 0
 	texto.bbcode_text = _msg[cont]
 	
@@ -54,6 +60,11 @@ func _on_setinha_xis_pressed():
 		show_message()
 
 func _on_timer_timeout():
+	if chamar_animacao_dano:
+		var animation = combate.get_node("animation_player")
+		animation.play("dano_" + combate.personagem_apertado)
+		chamar_animacao_dano = false
+		
 	if texto.visible_characters == texto.bbcode_text.length():
 		timer.stop()
 		cont += 1

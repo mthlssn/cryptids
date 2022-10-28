@@ -67,6 +67,7 @@ func skill1(alvo):
 		
 		primeira_vez = false
 	
+	node_combate.set_personagem_apertado("player")
 	node_combate.set_node_vez(null)
 	return texto
 

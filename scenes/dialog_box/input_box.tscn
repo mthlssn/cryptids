@@ -23,7 +23,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 13
+size = 8
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
@@ -61,12 +61,12 @@ __meta__ = {
 }
 
 [node name="label" type="Label" parent="input"]
-margin_left = 31.0
+margin_left = 27.0
 margin_top = -12.0
-margin_right = 118.0
+margin_right = 130.0
 margin_bottom = 1.0
 custom_fonts/font = SubResource( 4 )
-text = "DIGITE SEU NICK"
+text = "QUAL O NOME DELE?"
 
 [node name="mensagem" type="Label" parent="."]
 margin_right = 480.0

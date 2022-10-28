@@ -18,16 +18,14 @@ var _vez = -1
 var _node_vez = null
 var _ordem : Array
 
+var inimigo
+
 onready var node_a := $acoes
 onready var node_d := $dialog
 onready var node_o := $opcoes
 onready var node_p := $personagens
 
 var rng = RandomNumberGenerator.new()
-
-func _ready():
-	rng.randomize()
-	chamar_combate(["player", "gamba"])
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -36,6 +34,7 @@ func _input(event):
 				node_o.hide()
 				acao_apertada = null
 				node_o.emitir_sinal_opc()
+				opcao_selecionada = null
 			"personagens":
 				personagem_apertado = null
 				acao_apertada = "agir"
@@ -45,8 +44,14 @@ func chamar_combate(perso):
 	Global.get_node_demo().get_tree().paused = true
 	Global.set_pausar(false)
 	
+	rng.randomize()
+	
 	personagens = perso
-	var inimigo = personagens[personagens.size() - 1]
+	inimigo = personagens[personagens.size() - 1]
+	
+	match inimigo:
+		"gamba":
+			$animation_player.play("start_combate_gamba")
 	
 	personagens.pop_back()
 	var aliados = personagens.duplicate()
@@ -64,6 +69,8 @@ func chamar_combate(perso):
 	node_p.atualizar_bar_vida_energia()
 	
 	_ordem = gerar_ordem(personagens.duplicate())
+	
+	yield($animation_player, "animation_finished")
 	
 	node_d.chamar_dialogo(personagens[personagens.size() - 1].get_fala())
 	yield(node_d, "dialogo_fechado")
@@ -98,14 +105,13 @@ func rodar_combate():
 			jogador = "mel"
 		else: #inimigo
 			var texto = _node_vez.acao_inimigo(personagens)
-			node_p.atualizar_bar_vida_energia()
 			
 			node_d.chamar_dialogo(texto)
 			
 			yield(node_d, "dialogo_fechado")
 			
 			jogador = null
-			acao_apertada = null
+			set_null()
 		
 		if jogador:
 			node_d.hide()
@@ -166,16 +172,20 @@ func rodar_combate():
 							node_o.hide()
 							
 							node_d.chamar_dialogo(_node_vez.usar_skill(num, alvo))
-							node_p.atualizar_bar_vida_energia()
 							yield(node_d, "dialogo_fechado")
 							
-							personagem_apertado = null
-							opcao_selecionada = null
-							acao_selecionada = null
-							acao_apertada = null
+							if personagem_apertado == "inimigo":
+								node_p.get_node("inimigo/botao").hide()
+							
+							set_null()
 				"itens":
 					tela = "opcoes"
 					node_o.chamar_opcoes_itens()
+					
+					if not opcao_selecionada:
+						$opcoes/container_opcoes/opcao1.grab_focus()
+					else:
+						get_node("opcoes/container_opcoes/opcao" + String(opcao_selecionada + 1)).grab_focus()
 					
 					opcao_apertada = null
 					yield(node_o, "opcao_apertada")
@@ -210,10 +220,7 @@ func rodar_combate():
 							node_p.atualizar_bar_vida_energia()
 							yield(node_d, "dialogo_fechado")
 							
-							personagem_apertado = null
-							opcao_selecionada = null
-							acao_selecionada = null
-							acao_apertada = null
+							set_null()
 				"pular":
 					_node_vez.get_ficha().regenerar_energia("con")
 					_node_vez = null
@@ -242,13 +249,15 @@ func rodar_combate():
 						node_d.chamar_dialogo(["Ele n vai te deixar escapar!"])
 						yield(node_d, "dialogo_fechado")
 					
-					acao_selecionada = null
 					_node_vez = null
-					acao_apertada = null
+					set_null()
 					
 	$timer.start()
 
 func finalizar_combate():
+	$animation_player.play("close_combate")
+	yield($animation_player, "animation_finished")
+	
 	Global.get_node_demo().get_tree().paused = false
 	Global.set_pausar(true)
 	
@@ -256,8 +265,9 @@ func finalizar_combate():
 		var nd = Global.get_node_demo() #node_demo
 		
 		nd.get_node("animation_player").play("gamba")
-		nd.get_node("tilemap/arbusto_grande2").dialogo_resource = load("res://data/dialogs/pt_BR/objects/arbusto_grande.tres")
-		
+		nd.get_node("tilemap/arbusto_grande2").dg_interacao = true
+		nd.get_node("tilemap/arbusto_grande2").func_interacao = false
+	
 	queue_free()
 
 func gerar_ordem(perso):
@@ -284,6 +294,17 @@ func gerar_ordem(perso):
 				perso[i] = perso[j]
 				perso[j] = temp
 	return perso
+
+func set_background():
+	match inimigo:
+		"gamba":
+			$background.texture = load("res://assets/combate/background.jpeg")
+
+func set_null():
+	personagem_apertado = null
+	acao_selecionada = null
+	acao_apertada = null
+	opcao_selecionada = null
 
 func get_node_vez():
 	return _node_vez

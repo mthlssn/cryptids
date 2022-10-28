@@ -6,10 +6,12 @@ var _scene_to_go = ""
 var _node
 
 func set_animando_false():
+	self.hide()
 	Global.set_mover(true)
 
-# animacao = "fade" ou "fade_2"
+# animacao = "fade", "fade_2" e "fade_3"
 func fade(node, scene, velocidade, animacao):
+	self.show()
 	_animation.playback_speed = velocidade
 	_node = node
 	

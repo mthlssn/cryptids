@@ -6,6 +6,9 @@ export(CELL_TYPES) var type = CELL_TYPES.AREA
 var _sprite_width_tile = 1 
 var _sprite_height_tile = 1 
 
+export(bool) var dg_interacao = true
+export(bool) var func_interacao = false
+
 export(Resource) var dialogo_resource
 
 var interagido = false
@@ -29,7 +32,8 @@ func get_sprite_height_tile():
 
 func interacao():
 	verificar_status()
-	if dialogo_resource:
+	
+	if dg_interacao:
 		if interagido:
 			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue1, null, null)
 		else:
@@ -40,6 +44,13 @@ func interacao():
 			temp.resize(temp.size() + 1)
 			temp[temp.size() - 1] = dialogo_resource.nome_dr
 			Global.set_interagidos(temp)
+	
+	if func_interacao:
+		match self.name:
+			"arbusto_grande2":
+				var combate = load("res://scenes/combate/combate.tscn").instance()
+				Global.get_node_demo().add_child(combate)
+				combate.chamar_combate(["player", "gamba"])
 
 func verificar_status():
 	var interagidos = Global.get_interagidos()

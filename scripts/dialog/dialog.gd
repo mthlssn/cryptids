@@ -182,10 +182,6 @@ func mudar_texto():
 				"func_chamar_input()":
 					Global.set_pausar(false)
 					chamar_input()
-				"func_combate_sarue()":
-					var combate = load("res://scenes/combate/combate.tscn").instance()
-					Global.get_node_demo().add_child(combate)
-					#combate.chamar_combate(["player, sarue"])
 			_cont_msg_queue += 1
 			return true
 		

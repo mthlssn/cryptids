@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.jpeg-79a592173ba4e7caa9b97aae07989c72.stex"
+path="res://.import/barra_escura_vida.png-3c1d966090572fb9fa456e1ffb374b38.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/combate/background.jpeg"
-dest_files=[ "res://.import/background.jpeg-79a592173ba4e7caa9b97aae07989c72.stex" ]
+source_file="res://assets/combate/barra_escura_vida.png"
+dest_files=[ "res://.import/barra_escura_vida.png-3c1d966090572fb9fa456e1ffb374b38.stex" ]
 
 [params]
 
@@ -20,8 +20,8 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
-flags/mipmaps=true
+flags/filter=false
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

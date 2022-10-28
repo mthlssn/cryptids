@@ -71,6 +71,7 @@ tracks/1/keys = {
 
 [node name="transiiton" type="CanvasLayer"]
 layer = 2
+visible = false
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -158.0 ]
