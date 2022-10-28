@@ -24,6 +24,7 @@ func _ready():
 	arrumar_fila()
 
 func arrumar_fila():
+	Global.set_mover(false)
 	var path_scenes
 	
 	if Global.get_players() == []:
@@ -72,6 +73,7 @@ func arrumar_fila():
 		update_direcao_sprite(nodes_player[i][SPRITE], dire_players[i])
 		
 	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera_path)
+	Global.set_mover(true)
 
 func _process(_delta):
 	var direcao

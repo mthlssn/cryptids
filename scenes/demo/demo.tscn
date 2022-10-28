@@ -374,7 +374,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "empurrar_para_tras2"
-length = 1.5
+length = 2.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("tilemap/player:position")
@@ -383,10 +383,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.01, 0.1, 0.2, 0.65, 0.8, 0.95, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.01, 0.1, 0.2, 0.65, 0.79, 0.95, 1.5, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 528, -937 ), Vector2( 432, -976 ), Vector2( 432, -976 ), Vector2( 432, -976 ), Vector2( 457, -985 ), Vector2( 456, -1017 ), Vector2( 447, -1001 ), Vector2( 432, -1009 ) ]
+"values": [ Vector2( 528, -937 ), Vector2( 432, -976 ), Vector2( 432, -976 ), Vector2( 432, -976 ), Vector2( 457, -976 ), Vector2( 453, -984 ), Vector2( 432, -976 ), Vector2( 432, -976 ), Vector2( 432, -1008 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("tilemap/player:visible")
@@ -407,10 +407,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.36, 0.5, 0.65, 1.03, 1.31, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.36, 0.5, 0.65, 0.77, 0.9, 1.31, 1.61, 1.9, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 9, 10, 11, 10, 9, 10, 10 ]
+"values": [ 10, 9, 10, 11, 10, 9, 10, 4, 3, 4, 5, 10 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("tilemap/maria:position")
@@ -467,7 +467,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.01, 1.5 ),
+"times": PoolRealArray( 0.01, 2.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -688,7 +688,7 @@ tile_data = PoolIntArray( -5111806, 0, 0, -5111796, 0, 0, -5046270, 0, 0, -50462
 players = [ "res://scenes/personagens/player.tscn" ]
 posi_players = [ Vector2( 240, -144 ) ]
 dire_players = [ Vector2( 0, -1 ) ]
-velocidade = 10.0
+velocidade = 1.4
 
 [node name="area" type="Node2D" parent="tilemap"]
 visible = false
@@ -737,7 +737,6 @@ personagem = false
 margin_bottom = 48.0
 
 [node name="cutscene_maria" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 464, -1009 )
 script = ExtResource( 32 )
 dialogo_resource = ExtResource( 34 )
@@ -883,7 +882,6 @@ position = Vector2( 496, -944 )
 frame = 7
 
 [node name="player" parent="tilemap" instance=ExtResource( 33 )]
-visible = false
 position = Vector2( 528, -944 )
 
 [node name="sprite" parent="tilemap/player" index="0"]

@@ -32,7 +32,6 @@ func _on_animation_player_animation_finished(anim_name):
 			Transition.fade(self, "", 1, "fade")
 
 func func_transicao():
-	Global.set_mover(true)
 	nt.get_node("players").show()
 			
 	nt.apagar_node(nt.get_node("player"))

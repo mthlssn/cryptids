@@ -120,7 +120,8 @@ func show_message() -> void:
 		_node_input_box = null
 		_node_cutscene = null
 		
-		Global.set_mover(true)
+		if not _node_cutscene:
+			Global.set_mover(true)
 		
 		if _pausar:
 			hide()
