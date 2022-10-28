@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/combate/frame_claro.png" type="Texture" id=11]
 [ext_resource path="res://assets/combate/barra_energia.png" type="Texture" id=12]
 [ext_resource path="res://assets/personagens/maria/normal.png" type="Texture" id=13]
-[ext_resource path="res://assets/personagens/mel/normal.png" type="Texture" id=14]
+[ext_resource path="res://assets/personagens/biscoito/normal.png" type="Texture" id=14]
 [ext_resource path="res://assets/personagens/maria/triste.png" type="Texture" id=15]
 [ext_resource path="res://scripts/combate/acoes.gd" type="Script" id=16]
 [ext_resource path="res://assets/combate/botao_escuro.png" type="Texture" id=17]
@@ -513,7 +513,7 @@ tracks/22/keys = {
 "values": [ ExtResource( 13 ) ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("personagens/mel/botao/personagem:modulate")
+tracks/23/path = NodePath("personagens/biscoito/botao/personagem:modulate")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -827,7 +827,7 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("personagens/mel/botao/personagem:modulate")
+tracks/1/path = NodePath("personagens/biscoito/botao/personagem:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1574,13 +1574,13 @@ margin_right = 4.5
 margin_bottom = 2.0
 custom_fonts/font = SubResource( 5 )
 
-[node name="mel" type="Control" parent="personagens"]
+[node name="biscoito" type="Control" parent="personagens"]
 margin_left = 151.0
 margin_top = 203.0
 margin_right = 151.0
 margin_bottom = 203.0
 
-[node name="botao" type="TextureButton" parent="personagens/mel"]
+[node name="botao" type="TextureButton" parent="personagens/biscoito"]
 margin_right = 64.0
 margin_bottom = 60.0
 mouse_filter = 2
@@ -1588,7 +1588,7 @@ button_mask = 0
 texture_normal = ExtResource( 9 )
 texture_focused = ExtResource( 11 )
 
-[node name="personagem" type="TextureRect" parent="personagens/mel/botao"]
+[node name="personagem" type="TextureRect" parent="personagens/biscoito/botao"]
 anchor_top = 0.0319149
 anchor_bottom = 0.0319149
 margin_top = 5.08511
@@ -1596,17 +1596,17 @@ margin_right = 65.0
 margin_bottom = 55.0851
 texture = ExtResource( 14 )
 
-[node name="setinha" type="Sprite" parent="personagens/mel/botao/personagem"]
+[node name="setinha" type="Sprite" parent="personagens/biscoito/botao/personagem"]
 visible = false
 position = Vector2( 28, -20 )
 texture = ExtResource( 4 )
 centered = false
 
-[node name="animation_player" type="AnimationPlayer" parent="personagens/mel/botao/personagem"]
+[node name="animation_player" type="AnimationPlayer" parent="personagens/biscoito/botao/personagem"]
 anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
 
-[node name="barra_vida" type="TextureProgress" parent="personagens/mel"]
+[node name="barra_vida" type="TextureProgress" parent="personagens/biscoito"]
 margin_left = 3.0
 margin_top = 65.0
 margin_right = 58.0
@@ -1616,7 +1616,7 @@ texture_under = ExtResource( 36 )
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
 
-[node name="valor" type="Label" parent="personagens/mel/barra_vida"]
+[node name="valor" type="Label" parent="personagens/biscoito/barra_vida"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1628,7 +1628,7 @@ margin_right = 4.5
 margin_bottom = 2.0
 custom_fonts/font = SubResource( 5 )
 
-[node name="barra_energia" type="TextureProgress" parent="personagens/mel"]
+[node name="barra_energia" type="TextureProgress" parent="personagens/biscoito"]
 margin_left = 3.0
 margin_top = 74.0
 margin_right = 58.0
@@ -1638,7 +1638,7 @@ texture_under = ExtResource( 37 )
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 8 )
 
-[node name="valor" type="Label" parent="personagens/mel/barra_energia"]
+[node name="valor" type="Label" parent="personagens/biscoito/barra_energia"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1768,9 +1768,9 @@ anims/start_combate_gamba = SubResource( 17 )
 [connection signal="focus_entered" from="personagens/maria/botao" to="personagens" method="_on_botao_focus_entered" binds= [ "maria" ]]
 [connection signal="focus_exited" from="personagens/maria/botao" to="personagens" method="_on_botao_focus_exited" binds= [ "maria" ]]
 [connection signal="pressed" from="personagens/maria/botao" to="personagens" method="_on_botao_pressed" binds= [ "maria" ]]
-[connection signal="focus_entered" from="personagens/mel/botao" to="personagens" method="_on_botao_focus_entered" binds= [ "mel" ]]
-[connection signal="focus_exited" from="personagens/mel/botao" to="personagens" method="_on_botao_focus_exited" binds= [ "mel" ]]
-[connection signal="pressed" from="personagens/mel/botao" to="personagens" method="_on_botao_pressed" binds= [ "mel" ]]
+[connection signal="focus_entered" from="personagens/biscoito/botao" to="personagens" method="_on_botao_focus_entered" binds= [ "mel" ]]
+[connection signal="focus_exited" from="personagens/biscoito/botao" to="personagens" method="_on_botao_focus_exited" binds= [ "mel" ]]
+[connection signal="pressed" from="personagens/biscoito/botao" to="personagens" method="_on_botao_pressed" binds= [ "mel" ]]
 [connection signal="focus_entered" from="personagens/inimigo/botao" to="personagens" method="_on_botao_inimigo_focus_entered"]
 [connection signal="focus_exited" from="personagens/inimigo/botao" to="personagens" method="_on_botao_inimigo_focus_exited"]
 [connection signal="pressed" from="personagens/inimigo/botao" to="personagens" method="_on_botao_pressed" binds= [ "inimigo" ]]

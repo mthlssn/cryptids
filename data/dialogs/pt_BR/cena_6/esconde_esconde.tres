@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = "esconde_esconde"
-msg_queue = [ "Alguém cravou algumas coisas na árvore: “Maria, Papai, Mel”." ]
+msg_queue = [ "Alguém cravou algumas coisas na árvore: “Maria, Papai, Biscoito”." ]
 msg_queue1 = [  ]

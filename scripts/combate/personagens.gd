@@ -29,13 +29,13 @@ func chamar_personagens(tipo_alvo, perso):
 			get_node("inimigo/botao").focus_mode = 2
 			get_node("player/botao").focus_mode = 0
 			get_node("maria/botao").focus_mode = 0
-			get_node("mel/botao").focus_mode = 0
+			get_node("biscoito/botao").focus_mode = 0
 			get_node("inimigo/botao").show()
 			$inimigo/botao.grab_focus()
 		"aliados":
 			get_node("player/botao").focus_mode = 2
 			get_node("maria/botao").focus_mode = 2
-			get_node("mel/botao").focus_mode = 2
+			get_node("biscoito/botao").focus_mode = 2
 			
 			get_node("inimigo/botao").focus_mode = 0
 			get_node( perso + "/botao").focus_mode = 0
@@ -48,7 +48,7 @@ func chamar_personagens(tipo_alvo, perso):
 			get_node("inimigo/botao").focus_mode = 0
 			get_node("player/botao").focus_mode = 2
 			get_node("maria/botao").focus_mode = 2
-			get_node("mel/botao").focus_mode = 2
+			get_node("biscoito/botao").focus_mode = 2
 			$player/botao.grab_focus()
 
 func montar_personagens(personagens):
@@ -63,17 +63,17 @@ func montar_personagens(personagens):
 		get_node("maria/barra_vida").texture_over = load("res://assets/combate/barra_escura_vida.png")
 		get_node("maria/barra_energia").texture_over = load("res://assets/combate/barra_escura_energia.png")
 		
-		get_node("mel/botao").focus_mode = 0
-		get_node("mel/botao/personagem").hide()
-		get_node("mel/barra_vida").value = 0
-		get_node("mel/barra_energia").value = 0
+		get_node("biscoito/botao").focus_mode = 0
+		get_node("biscoito/botao/personagem").hide()
+		get_node("biscoito/barra_vida").value = 0
+		get_node("biscoito/barra_energia").value = 0
 		
-		get_node("mel/barra_vida").texture_over = load("res://assets/combate/barra_escura_vida.png")
-		get_node("mel/barra_energia").texture_over = load("res://assets/combate/barra_escura_energia.png")
+		get_node("biscoito/barra_vida").texture_over = load("res://assets/combate/barra_escura_vida.png")
+		get_node("biscoito/barra_energia").texture_over = load("res://assets/combate/barra_escura_energia.png")
 		
 		node_aliados = [get_node("player")]
 	else:
-		node_aliados = [ get_node("maria"), get_node("mel"), get_node("player")]
+		node_aliados = [ get_node("maria"), get_node("biscoito"), get_node("player")]
 	
 	var inimigo = personagens[personagens.size() - 1]
 

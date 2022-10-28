@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = ""
+nome = [ "Biscoito", "Maria", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "Maria", "Maria", "Biscoito", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria" ]
+msg_queue = [ "AU! AU!", "Biscoito! Calma, vamos pra casa, papai vai ficar bravo!", "Ah! Oi! :)", "...", "Você também tá perdido?", "...", "Hm... você é bem quieto. Qual é seu nome?", "...", "A gente acabou vindo parar aqui por engano.", "Eu sou a Maria e ele é o Biscoito.", "Ele é muito legal sempre, mas tá estranho hoje :(", "snif snif…", "Como você chama?", "...", "Você fala?", "...", "func_chamar_input()", "Já sei! Vou te chamar de {nome_player}! É um ótimo nome, não é?", "...", "Vamos, vou nos tirar dessa enrascada!" ]
+imagens = [ "biscoito_normal", "maria_normal", "maria_feliz", "player_normal", "maria_normal", "player_normal", "maria_pensante", "player_normal", "maria_normal", "maria_feliz", "maria_triste", "biscoito_normal", "maria_pensante", "player_normal", "maria_pensante", "player_normal", "maria_normal", "player_normal", "maria_feliz" ]

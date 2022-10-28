@@ -28,11 +28,11 @@
 [ext_resource path="res://data/dialogs/pt_BR/cena_2/interaja_c_moita.tres" type="Resource" id=27]
 [ext_resource path="res://scripts/objects/chamar_dialogo.gd" type="Script" id=28]
 [ext_resource path="res://scenes/personagens/maria.tscn" type="PackedScene" id=29]
-[ext_resource path="res://scenes/personagens/mel.tscn" type="PackedScene" id=30]
+[ext_resource path="res://scenes/personagens/biscoito.tscn" type="PackedScene" id=30]
 [ext_resource path="res://data/dialogs/pt_BR/maria/maria_espinhos.tres" type="Resource" id=31]
 [ext_resource path="res://scripts/objects/cutscene_maria.gd" type="Script" id=32]
 [ext_resource path="res://scenes/personagens/player.tscn" type="PackedScene" id=33]
-[ext_resource path="res://data/dialogs/pt_BR/cena_2/pudim_arbusto_grande.tres" type="Resource" id=34]
+[ext_resource path="res://data/dialogs/pt_BR/cena_2/cutscene_maria.tres" type="Resource" id=34]
 [ext_resource path="res://data/dialogs/pt_BR/cena_3/saida_de_baixo.tres" type="Resource" id=35]
 [ext_resource path="res://scenes/objects/barranco.tscn" type="PackedScene" id=36]
 [ext_resource path="res://scenes/objects/espinhos.tscn" type="PackedScene" id=37]
@@ -122,7 +122,7 @@ tracks/3/keys = {
 "values": [ 7 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("tilemap/mel:position")
+tracks/4/path = NodePath("tilemap/biscoito:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -134,7 +134,7 @@ tracks/4/keys = {
 "values": [ Vector2( 496, -944 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("tilemap/mel/sprite:frame")
+tracks/5/path = NodePath("tilemap/biscoito/sprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -182,7 +182,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("tilemap/mel:visible")
+tracks/9/path = NodePath("tilemap/biscoito:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -283,7 +283,7 @@ tracks/4/keys = {
 "values": [ 7, 6, 7, 8, 7 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("tilemap/mel:position")
+tracks/5/path = NodePath("tilemap/biscoito:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -295,7 +295,7 @@ tracks/5/keys = {
 "values": [ Vector2( 496, -944 ), Vector2( 496, -991 ), Vector2( 496, -991 ), Vector2( 464, -991 ), Vector2( 464, -991 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("tilemap/mel/sprite:frame")
+tracks/6/path = NodePath("tilemap/biscoito/sprite:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -360,7 +360,7 @@ tracks/10/keys = {
 "values": [ false, true ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("tilemap/mel:visible")
+tracks/11/path = NodePath("tilemap/biscoito:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -437,7 +437,7 @@ tracks/4/keys = {
 "values": [ 7, 6, 7, 8, 7 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("tilemap/mel:position")
+tracks/5/path = NodePath("tilemap/biscoito:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -449,7 +449,7 @@ tracks/5/keys = {
 "values": [ Vector2( 496, -944 ), Vector2( 496, -991 ), Vector2( 496, -991 ), Vector2( 496, -991 ), Vector2( 464, -991 ), Vector2( 464, -991 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("tilemap/mel/sprite:frame")
+tracks/6/path = NodePath("tilemap/biscoito/sprite:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -514,7 +514,7 @@ tracks/10/keys = {
 "values": [ false, true ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("tilemap/mel:visible")
+tracks/11/path = NodePath("tilemap/biscoito:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -855,8 +855,6 @@ position = Vector2( 144, -848 )
 
 [node name="arbusto_grande2" parent="tilemap" instance=ExtResource( 23 )]
 position = Vector2( 208, -1008 )
-dg_interacao = false
-func_interacao = true
 
 [node name="animation_player" type="AnimationPlayer" parent="tilemap/arbusto_grande2"]
 playback_speed = 0.7
@@ -877,11 +875,11 @@ interaction = ExtResource( 31 )
 [node name="sprite" parent="tilemap/maria" index="0"]
 frame = 7
 
-[node name="mel" parent="tilemap" instance=ExtResource( 30 )]
+[node name="biscoito" parent="tilemap" instance=ExtResource( 30 )]
 visible = false
 position = Vector2( 496, -944 )
 
-[node name="sprite" parent="tilemap/mel" index="0"]
+[node name="sprite" parent="tilemap/biscoito" index="0"]
 frame = 7
 
 [node name="player" parent="tilemap" instance=ExtResource( 33 )]
@@ -1000,6 +998,6 @@ anims/girar_maria = SubResource( 4 )
 [editable path="tilemap/area/portal10"]
 [editable path="tilemap/arbusto_grande2"]
 [editable path="tilemap/maria"]
-[editable path="tilemap/mel"]
+[editable path="tilemap/biscoito"]
 [editable path="tilemap/player"]
 [editable path="camera"]

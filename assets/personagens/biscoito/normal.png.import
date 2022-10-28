@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/normal.png-b33642755d081e8d8d80046d74ab6c46.stex"
+path="res://.import/normal.png-7f492fa27fae2a99eec2484216bf520f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/personagens/mel/normal.png"
-dest_files=[ "res://.import/normal.png-b33642755d081e8d8d80046d74ab6c46.stex" ]
+source_file="res://assets/personagens/biscoito/normal.png"
+dest_files=[ "res://.import/normal.png-7f492fa27fae2a99eec2484216bf520f.stex" ]
 
 [params]
 

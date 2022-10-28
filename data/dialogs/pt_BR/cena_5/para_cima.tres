@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = "para_cima"
-nome = [ "Maria", "Maria", "Mel" ]
+nome = [ "Maria", "Maria", "Biscoito" ]
 msg_queue = [ "AH! Já sei onde a gente tá!", " É pra cima.", "snif snif…" ]
-imagens = [ "maria_normal", "maria_normal", "mel_normal" ]
+imagens = [ "maria_normal", "maria_normal", "biscoito_normal" ]

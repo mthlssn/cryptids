@@ -202,8 +202,8 @@ func get_path_imagem(imagem):
 			return "res://assets/personagens/maria/pensante.png"
 		"maria_triste":
 			return "res://assets/personagens/maria/triste.png"
-		"mel_normal":
-			return "res://assets/personagens/mel/normal.png"
+		"biscoito_normal":
+			return "res://assets/personagens/biscoito/normal.png"
 
 func chamar_input():
 	_tecla = "nada"

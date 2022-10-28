@@ -137,6 +137,8 @@ func solicitar_movimento(player, direcao):
 				
 			match node_area.function:
 				"mexer_arbusto":
+					get_node("arbusto_grande2").dg_interacao = false
+					get_node("arbusto_grande2").func_interacao = true
 					get_node("arbusto_grande2/animation_player").play("mexer_arbusto")
 				"andar":
 					return map_to_world(proxima_celula) + (cell_size / 2)

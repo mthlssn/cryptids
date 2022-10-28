@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = "barranco"
-msg_queue = [ "Inacessível.", "Alto de mais, para alcançarmos.", "“???????̸̡̖̑͌?̵͍̙̽̉?̶̢̝̄̅?̴͇̟̎͒?̸̨́?̴̞͉̊?̶̗̖͌?̴̛̱̘̿?̸̛̩̈?̶̡̊̾?̴̯̊̇͜?̸͓̅?̵̰̹̅?̴̩͉̓̓?̸̮̃̉?̴̨̀?̵͂͜?̵̮̎”" ]
+msg_queue = [ "Inacessível.", "Alto de mais, para alcançarmos." ]
 msg_queue1 = [ "Alto de mais, para alcançarmos." ]

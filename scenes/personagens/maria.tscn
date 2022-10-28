@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/personagens/maria.gd" type="Script" id=1]
 [ext_resource path="res://assets/personagens/maria/maria_sprite.png" type="Texture" id=2]
-[ext_resource path="res://data/dialogs/pt_BR/cena_2/pudim_arbusto_grande.tres" type="Resource" id=3]
+[ext_resource path="res://data/dialogs/pt_BR/cena_2/cutscene_maria.tres" type="Resource" id=3]
 [ext_resource path="res://assets/outros/exclamacao.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=5]

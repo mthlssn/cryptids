@@ -37,9 +37,9 @@ func func_transicao():
 			
 	nt.apagar_node(nt.get_node("player"))
 	nt.apagar_node(nt.get_node("maria"))
-	nt.apagar_node(nt.get_node("mel"))
+	nt.apagar_node(nt.get_node("biscoito"))
 	
-	Global.set_players(["res://scenes/personagens/mel.tscn", "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn"])
+	Global.set_players(["res://scenes/personagens/biscoito.tscn", "res://scenes/personagens/maria.tscn", "res://scenes/personagens/player.tscn"])
 	Global.set_posicao_players([Vector2(464,-976), Vector2(464,-1008), Vector2(432,-1008)])
 	Global.set_direcao_players([Vector2(-1,0), Vector2(-1,0), Vector2(1,0)])
 	

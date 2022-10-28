@@ -100,9 +100,9 @@ func rodar_combate():
 		elif nome_node == "Maria":
 			node_p.atulizar_personagens("maria")
 			jogador = "maria"
-		elif nome_node == "Mel":
-			node_p.atulizar_personagens("mel")
-			jogador = "mel"
+		elif nome_node == "Biscoito":
+			node_p.atulizar_personagens("biscoito")
+			jogador = "biscoito"
 		else: #inimigo
 			var texto = _node_vez.acao_inimigo(personagens)
 			
@@ -163,7 +163,7 @@ func rodar_combate():
 								alvo = personagens[0]
 							"maria":
 								alvo = personagens[1]
-							"mel":
+							"biscoito":
 								alvo = personagens[2]
 							"inimigo":
 								alvo = personagens[personagens.size()-1]
@@ -209,7 +209,7 @@ func rodar_combate():
 								alvo = personagens[0]
 							"maria":
 								alvo = personagens[1]
-							"mel":
+							"biscoito":
 								alvo = personagens[2]
 							"inimigo":
 								alvo = personagens[personagens.size()-1]
@@ -246,7 +246,7 @@ func rodar_combate():
 						yield(node_d, "dialogo_fechado")
 						_combate_finalizado = true
 					else:
-						node_d.chamar_dialogo(["Ele n vai te deixar escapar!"])
+						node_d.chamar_dialogo(["Ele não vai te deixar escapar!"])
 						yield(node_d, "dialogo_fechado")
 					
 					_node_vez = null

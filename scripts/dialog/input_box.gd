@@ -10,7 +10,7 @@ func _ready():
 func _on_input_text_entered(new_text):
 	var text_uppercase = new_text.to_upper()
 	
-	if new_text.length() >= 3: 
+	if new_text.length() >= 3 and text_uppercase != "BISCOITO" and text_uppercase != "MARIA": 
 		Global.set_nome_player(new_text)
 		
 		get_parent().set_tecla("ui_accept")
