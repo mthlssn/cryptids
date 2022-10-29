@@ -27,6 +27,9 @@ onready var node_p := $personagens
 
 var rng = RandomNumberGenerator.new()
 
+func _ready():
+	chamar_combate(["player", "gamba"])
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		match tela:

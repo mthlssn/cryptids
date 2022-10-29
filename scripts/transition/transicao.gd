@@ -5,15 +5,20 @@ var _scene_to_go = ""
 
 var _node
 
+var _tirar_mover_pause = true
+
 func set_animando_false():
 	self.hide()
-	Global.set_mover(true)
+	
+	if _tirar_mover_pause:
+		Global.set_mover(true)
 
-# animacao = "fade", "fade_2" e "fade_3"
-func fade(node, scene, velocidade, animacao):
+# animacao = "fade" e "fade_2"
+func fade(node, scene, velocidade, animacao, tirar_mover_pause):
 	self.show()
 	_animation.playback_speed = velocidade
 	_node = node
+	_tirar_mover_pause = tirar_mover_pause
 	
 	_scene_to_go = scene
 	_animation.play(animacao)

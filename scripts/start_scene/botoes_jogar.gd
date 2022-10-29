@@ -16,14 +16,14 @@ func selecionar_um_save(save):
 	DataPlayer.set_save(save)
 	
 	if saves[save] == "nd":
-		Eventos.chamar_evento()
+		Transition.fade(self, "res://scenes/cutscene/cutscene.tscn", 1, "fade", true)
 		return null
 	else:
 		return saves[save]
 
 func continuar_save():
 	DataPlayer.carregar()
-	Eventos.chamar_evento()
+	Transition.fade(self, "res://scenes/demo/demo.tscn", 1, "fade", false)
 
 func apagar_save():
 	DataPlayer.apagar()

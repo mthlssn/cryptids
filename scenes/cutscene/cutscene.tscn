@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/cutscene/parte1_gota.png" type="Texture" id=1]
+[ext_resource path="res://assets/cutscene/parte2_olho.png" type="Texture" id=2]
+[ext_resource path="res://assets/cutscene/parte3_braco.png" type="Texture" id=3]
+[ext_resource path="res://scripts/cutscene/cutscene.gd" type="Script" id=4]
+[ext_resource path="res://assets/outros/mira.png" type="Texture" id=5]
+
+[node name="cutscene" type="Node"]
+script = ExtResource( 4 )
+
+[node name="parte1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 240, 144 )
+scale = Vector2( 1.37143, 1.30909 )
+texture = ExtResource( 1 )
+hframes = 45
+
+[node name="parte2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 240, 144 )
+scale = Vector2( 1.37143, 1.30909 )
+texture = ExtResource( 2 )
+hframes = 38
+
+[node name="parte3" type="Sprite" parent="."]
+visible = false
+position = Vector2( 240, 144 )
+scale = Vector2( 1.37143, 1.30909 )
+texture = ExtResource( 3 )
+hframes = 36
+
+[node name="center" type="CenterContainer" parent="."]
+margin_right = 480.0
+margin_bottom = 288.0
+
+[node name="mira" type="TextureRect" parent="center"]
+margin_left = 237.0
+margin_top = 141.0
+margin_right = 243.0
+margin_bottom = 147.0
+texture = ExtResource( 5 )
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

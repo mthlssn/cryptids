@@ -29,7 +29,7 @@ func iniciou():
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"girar_maria":
-			Transition.fade(self, "", 1, "fade")
+			Transition.fade(self, "", 1, "fade", true)
 
 func func_transicao():
 	nt.get_node("players").show()

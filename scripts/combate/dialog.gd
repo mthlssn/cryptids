@@ -39,7 +39,12 @@ func show_message() -> void:
 	animacao_setinha_xis.stop()
 	
 	if not timer.is_stopped():
-		texto.visible_characters = texto.bbcode_text.length()
+		if texto.visible_characters == texto.bbcode_text.length():
+			return
+		
+		if texto.visible_characters > 8:
+			texto.visible_characters = texto.bbcode_text.length()
+		
 		return
 	
 	if "dano" in _msg[cont]:

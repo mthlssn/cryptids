@@ -10,8 +10,8 @@ export(Array, String, FILE, "*.tscn") var players
 export(Array, Vector2) var posi_players
 export(Array, Vector2) var dire_players
 
-# ideal = 1.3
-export var velocidade = 1.3
+# ideal = 1.4
+export var velocidade = 1.4
 
 var nodes_player : Array
  
@@ -73,10 +73,12 @@ func arrumar_fila():
 		update_direcao_sprite(nodes_player[i][SPRITE], dire_players[i])
 		
 	nodes_player[controlar][REMOTE_TRANSFORM].set_remote_node(camera_path)
-	Global.set_mover(true)
+	
+	if get_parent().get_parent().animando:
+		Global.set_mover(true)
 
 func _process(_delta):
-	var direcao
+	var direcao = null
 	if Global.get_mover():
 		direcao = get_direcao()
 		interagir()

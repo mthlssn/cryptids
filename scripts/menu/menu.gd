@@ -46,11 +46,11 @@ func _on_configuracao_botao_pressed():
 func _on_tela_inicial_salvar_botao_pressed():
 	DataPlayer.salvar()
 	pause()
-	Transition.fade(node_pause, "res://scenes/start_scene/start_scene.tscn", 1, "fade_2")
+	Transition.fade(node_pause, "res://scenes/start_scene/start_scene.tscn", 1, "fade_2", true)
 
 func _on_tela_inicial_sem_salvar_botao_pressed():
 	pause()
-	Transition.fade(node_pause, "res://scenes/start_scene/start_scene.tscn", 1, "fade_2")
+	Transition.fade(node_pause, "res://scenes/start_scene/start_scene.tscn", 1, "fade_2", true)
 
 #================ configuração
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/personagens/biscoito/biscoito_sprite.png" type="Texture" id=1]
 [ext_resource path="res://scripts/personagens/personagens.gd" type="Script" id=2]
+[ext_resource path="res://assets/personagens/biscoito/sombra2.png" type="Texture" id=3]
+[ext_resource path="res://assets/personagens/biscoito/sombra1.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=3]
 length = 0.48
@@ -76,7 +78,21 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -1 )
 hframes = 12
-frame = 6
+frame = 9
+
+[node name="sombra1" type="Sprite" parent="sprite"]
+visible = false
+modulate = Color( 1, 1, 1, 0.196078 )
+show_behind_parent = true
+position = Vector2( -1, 9 )
+texture = ExtResource( 4 )
+
+[node name="sombra2" type="Sprite" parent="sprite"]
+visible = false
+modulate = Color( 1, 1, 1, 0.196078 )
+show_behind_parent = true
+position = Vector2( 0, 8 )
+texture = ExtResource( 3 )
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 anims/walk_down = SubResource( 3 )
@@ -85,3 +101,5 @@ anims/walk_right = SubResource( 5 )
 anims/walk_up = SubResource( 2 )
 
 [node name="tween" type="Tween" parent="."]
+
+[connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://scenes/tilemap/tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cenarios/cen1/cena1.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scenes/camera/camera.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/cenarios/cen6/luz.png" type="Texture" id=15]
 [ext_resource path="res://scenes/players/players.tscn" type="PackedScene" id=16]
+[ext_resource path="res://data/dialogs/pt_BR/maria/maria_tio_jorge.tres" type="Resource" id=17]
 [ext_resource path="res://scenes/tilemap/area.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scripts/objects/area_portal.gd" type="Script" id=19]
 [ext_resource path="res://scripts/objects/chamar_exclamacao.gd" type="Script" id=20]
@@ -38,6 +39,9 @@
 [ext_resource path="res://scenes/objects/espinhos.tscn" type="PackedScene" id=37]
 [ext_resource path="res://data/dialogs/pt_BR/cena_5/para_cima.tres" type="Resource" id=38]
 [ext_resource path="res://scenes/personagens/gamba.tscn" type="PackedScene" id=39]
+[ext_resource path="res://data/dialogs/pt_BR/maria/maria_olhos.tres" type="Resource" id=40]
+[ext_resource path="res://data/dialogs/pt_BR/maria/maria_papai.tres" type="Resource" id=41]
+[ext_resource path="res://scenes/objects/tronco_vivo.tscn" type="PackedScene" id=42]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -217,6 +221,54 @@ tracks/11/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("tilemap/gamba/sombra:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("tilemap/gamba/sombra:offset")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("tilemap/gamba/sombra:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 6 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("tilemap/player/sprite/sombra:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "empurrar_para_tras"
@@ -229,7 +281,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.01, 0.2, 0.7, 0.76, 0.9, 1.5 ),
+"times": PoolRealArray( 0, 0.01, 0.2, 0.7, 0.78, 0.9, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 528, -937 ), Vector2( 432, -1008 ), Vector2( 432, -1008 ), Vector2( 457, -1009 ), Vector2( 456, -1017 ), Vector2( 447, -1009 ), Vector2( 432, -1009 ) ]
@@ -370,6 +422,18 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("tilemap/player/sprite/sombra:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.61, 0.7, 0.78, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ), Vector2( 0, 8 ), Vector2( 0, 16 ), Vector2( 0, 8 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -554,6 +618,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("tilemap/gamba/sombra:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tilemap/gamba/sombra:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.06, 0.22, 0.31, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 31 ), Vector2( 1.471, 27 ), Vector2( 1.735, 13 ), Vector2( 2, 6 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "girar_maria"
@@ -642,6 +730,43 @@ tracks/1/keys = {
 "values": [ 1, 7, 1, 7 ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "iniciar"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.98 ),
+"transitions": PoolRealArray( 3.13834, 1 ),
+"update": 0,
+"values": [ Vector2( 0.3, 0.3 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.98, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_animando"
+}, {
+"args": [  ],
+"method": "set_animando"
+}, {
+"args": [  ],
+"method": "set_tirar_mover_false"
+} ]
+}
+
 [node name="demo" type="Node2D"]
 script = ExtResource( 21 )
 __meta__ = {
@@ -688,19 +813,9 @@ tile_data = PoolIntArray( -5111806, 0, 0, -5111796, 0, 0, -5046270, 0, 0, -50462
 players = [ "res://scenes/personagens/player.tscn" ]
 posi_players = [ Vector2( 240, -144 ) ]
 dire_players = [ Vector2( 0, -1 ) ]
-velocidade = 1.4
 
 [node name="area" type="Node2D" parent="tilemap"]
 visible = false
-
-[node name="exclamacao" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
-position = Vector2( 176, -240 )
-script = ExtResource( 20 )
-apagar = true
-
-[node name="cor" parent="tilemap/area/exclamacao" index="0"]
-margin_right = 144.0
 
 [node name="portal1" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 208, -304 )
@@ -760,6 +875,26 @@ proxima_camera = 2
 [node name="cor" parent="tilemap/area/portal4" index="0"]
 margin_bottom = 48.0
 
+[node name="gd_maria_olhos" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 688, -1040 )
+script = ExtResource( 20 )
+dg_interacao = false
+dialogo_resource = ExtResource( 40 )
+apagar = true
+
+[node name="cor" parent="tilemap/area/gd_maria_olhos" index="0"]
+margin_bottom = 80.0
+
+[node name="gd_maria_papai" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 592, -752 )
+script = ExtResource( 20 )
+dg_interacao = false
+dialogo_resource = ExtResource( 41 )
+apagar = true
+
+[node name="cor" parent="tilemap/area/gd_maria_papai" index="0"]
+margin_right = 80.0
+
 [node name="dg_saida_de_baixo" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 592, -656 )
 script = ExtResource( 28 )
@@ -784,6 +919,16 @@ proxima_camera = 3
 
 [node name="cor" parent="tilemap/area/portal6" index="0"]
 margin_right = 80.0
+
+[node name="gd_maria_tio_jorge" parent="tilemap/area" instance=ExtResource( 18 )]
+position = Vector2( 592, -1488 )
+script = ExtResource( 20 )
+dg_interacao = false
+dialogo_resource = ExtResource( 17 )
+apagar = true
+
+[node name="cor" parent="tilemap/area/gd_maria_tio_jorge" index="0"]
+margin_right = 112.0
 
 [node name="dg_maria_espinhos" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 944, -1328 )
@@ -813,7 +958,7 @@ proxima_camera = 4
 margin_bottom = 80.0
 
 [node name="dg_para_cima" parent="tilemap/area" instance=ExtResource( 18 )]
-position = Vector2( 80, -1680 )
+position = Vector2( 16, -1680 )
 script = ExtResource( 28 )
 dialogo_resource = ExtResource( 38 )
 personagem = true
@@ -839,6 +984,9 @@ margin_right = 144.0
 
 [node name="arvore_seca" parent="tilemap" instance=ExtResource( 24 )]
 position = Vector2( 80, -145 )
+
+[node name="tronco_vivo" parent="tilemap" instance=ExtResource( 42 )]
+position = Vector2( 368, -208 )
 
 [node name="arbusto_grande1" parent="tilemap" instance=ExtResource( 23 )]
 position = Vector2( 336, -81 )
@@ -891,7 +1039,12 @@ frame = 10
 visible = false
 position = Vector2( 240, -1136 )
 
+[node name="sombra" parent="tilemap/gamba" index="0"]
+visible = false
+
 [node name="camera" parent="." instance=ExtResource( 14 )]
+visible = true
+position = Vector2( 240, -144 )
 
 [node name="top_left" parent="camera/limites1" index="0"]
 position = Vector2( 0, -288 )
@@ -973,11 +1126,11 @@ anims/empurrar_para_tras = SubResource( 5 )
 anims/empurrar_para_tras2 = SubResource( 6 )
 anims/gamba = SubResource( 7 )
 anims/girar_maria = SubResource( 4 )
+anims/iniciar = SubResource( 8 )
 
 [connection signal="animation_finished" from="animation_player" to="tilemap" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="animation_player" to="tilemap/area/cutscene_maria" method="_on_animation_player_animation_finished"]
 
-[editable path="tilemap/area/exclamacao"]
 [editable path="tilemap/area/portal1"]
 [editable path="tilemap/area/portal2"]
 [editable path="tilemap/area/mexer_arbusto"]
@@ -985,9 +1138,12 @@ anims/girar_maria = SubResource( 4 )
 [editable path="tilemap/area/cutscene_maria"]
 [editable path="tilemap/area/portal3"]
 [editable path="tilemap/area/portal4"]
+[editable path="tilemap/area/gd_maria_olhos"]
+[editable path="tilemap/area/gd_maria_papai"]
 [editable path="tilemap/area/dg_saida_de_baixo"]
 [editable path="tilemap/area/portal5"]
 [editable path="tilemap/area/portal6"]
+[editable path="tilemap/area/gd_maria_tio_jorge"]
 [editable path="tilemap/area/dg_maria_espinhos"]
 [editable path="tilemap/area/portal7"]
 [editable path="tilemap/area/portal8"]
@@ -998,4 +1154,5 @@ anims/girar_maria = SubResource( 4 )
 [editable path="tilemap/maria"]
 [editable path="tilemap/biscoito"]
 [editable path="tilemap/player"]
+[editable path="tilemap/gamba"]
 [editable path="camera"]

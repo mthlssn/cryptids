@@ -15,7 +15,7 @@ var ordem_acoes = ["arranhar", "arranhar", "arranhar", "fugir"]
 
 func abrir_ficha(combate):
 	node_combate = combate
-	_ficha = Ficha.new("Gambá", 2, 4, 3, 8, 3)
+	_ficha = Ficha.new("Gambá", 2, 4, 4, 8, 2)
 	_ficha.gerar_aplicacoes()
 
 func get_ficha():

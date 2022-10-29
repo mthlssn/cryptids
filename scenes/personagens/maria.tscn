@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/personagens/maria.gd" type="Script" id=1]
 [ext_resource path="res://assets/personagens/maria/maria_sprite.png" type="Texture" id=2]
-[ext_resource path="res://data/dialogs/pt_BR/cena_2/cutscene_maria.tres" type="Resource" id=3]
+[ext_resource path="res://data/dialogs/pt_BR/maria/maria_normal.tres" type="Resource" id=3]
 [ext_resource path="res://assets/outros/exclamacao.png" type="Texture" id=4]
+[ext_resource path="res://assets/personagens/maria/sombra.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -106,13 +107,13 @@ tracks/0/keys = {
 
 [node name="maria" type="Node2D"]
 script = ExtResource( 1 )
-interaction = [ ExtResource( 3 ) ]
+interaction = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 offset = Vector2( 0, -7 )
 hframes = 12
-frame = 6
+frame = 10
 
 [node name="exclamacao" type="Sprite" parent="sprite"]
 visible = false
@@ -122,6 +123,12 @@ offset = Vector2( 0, -35 )
 [node name="animation_player" type="AnimationPlayer" parent="sprite"]
 anims/RESET = SubResource( 5 )
 anims/exclamacao = SubResource( 6 )
+
+[node name="sombra" type="Sprite" parent="sprite"]
+modulate = Color( 1, 1, 1, 0.196078 )
+show_behind_parent = true
+position = Vector2( 0, 9 )
+texture = ExtResource( 5 )
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 playback_speed = 1.3

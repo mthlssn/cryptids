@@ -6,7 +6,7 @@ var nt # node_tilemap
 func colisao(tilemap):
 	nt = tilemap
 	Global.set_cena_atual(proxima_camera)
-	Transition.fade(self, "", nt.get_node("players").velocidade, "fade")
+	Transition.fade(self, "", nt.get_node("players").velocidade, "fade", true)
 	
 func func_transicao():
 	nt.get_parent().get_node("camera").mudar_camera()

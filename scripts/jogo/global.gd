@@ -93,7 +93,7 @@ func set_pausar(pausar):
 	_pausar = pausar
 	
 func get_pausar():
-	return _pausar	
+	return _pausar
 
 #------- players:
 func set_players(players):

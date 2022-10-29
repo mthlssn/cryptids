@@ -231,7 +231,7 @@ tracks/0/keys = {
 [sub_resource type="DynamicFont" id=18]
 size = 34
 outline_size = 1
-outline_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=16]
@@ -881,10 +881,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.51 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.941176, 0.941176, 0.941176, 0 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("inimigo:modulate")
@@ -1304,12 +1304,12 @@ texture = ExtResource( 20 )
 [node name="opcoes" type="NinePatchRect" parent="."]
 pause_mode = 2
 visible = false
-margin_left = 224.0
+margin_left = 221.0
 margin_top = 204.0
-margin_right = 474.0
+margin_right = 476.0
 margin_bottom = 284.0
 texture = ExtResource( 25 )
-region_rect = Rect2( 0, 0, 250, 80 )
+region_rect = Rect2( 0, 0, 255, 80 )
 script = ExtResource( 28 )
 
 [node name="container_texto" type="VBoxContainer" parent="opcoes"]
@@ -1330,16 +1330,16 @@ scroll_active = false
 deselect_on_focus_loss_enabled = false
 
 [node name="container_opcoes" type="VBoxContainer" parent="opcoes"]
-margin_left = 9.0
+margin_left = 11.0
 margin_top = 10.0
-margin_right = 78.0
+margin_right = 81.0
 margin_bottom = 70.0
 custom_constants/separation = 7
 alignment = 1
 
 [node name="opcao1" type="Button" parent="opcoes/container_opcoes"]
 margin_top = 1.0
-margin_right = 69.0
+margin_right = 70.0
 margin_bottom = 10.0
 focus_neighbour_top = NodePath("../opcao4")
 focus_mode = 0
@@ -1359,7 +1359,7 @@ texture = ExtResource( 33 )
 
 [node name="opcao2" type="Button" parent="opcoes/container_opcoes"]
 margin_top = 17.0
-margin_right = 69.0
+margin_right = 70.0
 margin_bottom = 26.0
 focus_mode = 0
 mouse_filter = 2
@@ -1378,7 +1378,7 @@ texture = ExtResource( 33 )
 
 [node name="opcao3" type="Button" parent="opcoes/container_opcoes"]
 margin_top = 33.0
-margin_right = 69.0
+margin_right = 70.0
 margin_bottom = 42.0
 focus_mode = 0
 mouse_filter = 2
@@ -1397,7 +1397,7 @@ texture = ExtResource( 33 )
 
 [node name="opcao4" type="Button" parent="opcoes/container_opcoes"]
 margin_top = 49.0
-margin_right = 69.0
+margin_right = 70.0
 margin_bottom = 58.0
 focus_neighbour_bottom = NodePath("../opcao1")
 focus_mode = 0
@@ -1458,7 +1458,7 @@ margin_top = 65.0
 margin_right = 58.0
 margin_bottom = 71.0
 max_value = 15.0
-value = 4.0
+value = 1.0
 texture_under = ExtResource( 36 )
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
@@ -1704,7 +1704,6 @@ margin_top = 40.0
 margin_right = 480.0
 margin_bottom = 97.0
 rect_scale = Vector2( 1, 0.7 )
-custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 18 )
 text = "O Gambá"
 align = 1
