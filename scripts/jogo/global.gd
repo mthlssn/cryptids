@@ -16,6 +16,8 @@ var _nodes_apagados : Array
 
 var _nome_player : String # {nome_player}
 
+var _novo_jogo : bool
+
 var _pausar : bool
 
 var _players : Array
@@ -35,6 +37,7 @@ func set_valores_iniciais():
 	_node_demo = null
 	_nodes_apagados = []
 	_nome_player = "???"
+	_novo_jogo = true
 	_pausar = true
 	_players = []
 	_posicao_players = []
@@ -87,6 +90,13 @@ func get_nome_player():
 	
 func set_nome_player(nome_player):
 	_nome_player = nome_player
+
+#------- nome_player:
+func get_novo_jogo():
+	return _novo_jogo
+	
+func set_novo_jogo(novo_jogo):
+	_novo_jogo = novo_jogo
 
 #------- pausar:
 func set_pausar(pausar):

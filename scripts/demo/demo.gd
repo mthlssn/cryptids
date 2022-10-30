@@ -7,7 +7,10 @@ var animando = false
 func _ready():
 	Global.set_node_demo(self)
 	
-	animation.play("iniciar")
+	if Global.get_novo_jogo():
+		animation.play("iniciar")
+	else:
+		set_tirar_mover_false()
 
 func set_animando():
 	if animando:

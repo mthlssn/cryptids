@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=1]
+[ext_resource path="res://assets/cenarios/cen2/arbusto_triplo_inv.png" type="Texture" id=2]
+[ext_resource path="res://data/dialogs/pt_BR/objects/arbusto_triplo.tres" type="Resource" id=3]
+
+[node name="arbusto_triplo_inv" type="Node2D"]
+script = ExtResource( 1 )
+type = 3
+dialogo_resource = ExtResource( 3 )
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( -48, -48 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="cor" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 48.0
+margin_bottom = 16.0
+color = Color( 0, 0, 0, 0.537255 )

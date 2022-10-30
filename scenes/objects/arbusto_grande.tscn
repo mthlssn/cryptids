@@ -2,7 +2,7 @@
 
 [ext_resource path="res://data/dialogs/pt_BR/objects/arbusto_grande.tres" type="Resource" id=1]
 [ext_resource path="res://scripts/objects/objects.gd" type="Script" id=2]
-[ext_resource path="res://assets/cenarios/cen1/moitaGrande.png" type="Texture" id=3]
+[ext_resource path="res://assets/cenarios/cen1/arbusto_grande.png" type="Texture" id=3]
 
 [node name="arbusto_grande" type="Node2D"]
 script = ExtResource( 2 )

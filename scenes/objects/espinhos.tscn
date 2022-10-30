@@ -9,7 +9,6 @@ type = 3
 dialogo_resource = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( -48, -48 )
 centered = false
 
 [node name="cor" type="ColorRect" parent="."]
