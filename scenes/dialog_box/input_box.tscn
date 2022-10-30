@@ -33,10 +33,10 @@ layer = 2
 script = ExtResource( 2 )
 
 [node name="background" type="ColorRect" parent="."]
-modulate = Color( 0, 0, 0, 0.533333 )
+modulate = Color( 0, 0, 0, 1 )
 margin_right = 480.0
 margin_bottom = 288.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0.784314 )
 
 [node name="input" type="LineEdit" parent="."]
 modulate = Color( 0.870588, 0.870588, 0.870588, 1 )

@@ -33,6 +33,8 @@ var _node_cutscene
 
 var _node_input_box
 
+signal dialogo_acabou
+
 func _ready():
 	if _msg_queue.size() == 0:
 		hide()
@@ -103,9 +105,6 @@ func show_message() -> void:
 	animacao_set_ou_xis.stop()
 	
 	if not timer.is_stopped():
-		#text.visible_characters = text.bbcode_text.length()
-		#return
-			
 		if text.visible_characters == text.bbcode_text.length():
 			return
 		
@@ -138,7 +137,9 @@ func show_message() -> void:
 		else:
 			animacao.play("close")
 			yield(animacao, "animation_finished")
-	
+			
+			emit_signal("dialogo_acabou")
+		
 		return
 	
 	text.visible_characters = 0
@@ -159,9 +160,7 @@ func _on_timer_timeout():
 		else:
 			sprite_set_ou_xis.texture = sprite_setinha
 			animacao_set_ou_xis.play("setinha")
-			
-		#set_ou_xis.show()
-		
+	
 	text.visible_characters += 1
 
 func _on_timer_2_timeout():
@@ -191,6 +190,24 @@ func mudar_texto():
 				"func_chamar_input()":
 					Global.set_pausar(false)
 					chamar_input()
+				"func_chamar_aprendi_ler()":
+					_msg = "Aprendeu LEITURA."
+					
+					dialog.texture = dialog_box_s_per
+					
+					text.margin_bottom = 74
+					text.margin_left = 22
+					text.margin_right = 459
+					text.margin_top = 19
+					
+					_nomes = null
+					_imagens = null
+					
+					label_name.text = ""
+					personagem_foto.texture = null
+					
+					return false
+					
 			_cont_msg_queue += 1
 			return true
 		

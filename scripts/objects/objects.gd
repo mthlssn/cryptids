@@ -10,6 +10,7 @@ export(bool) var dg_interacao = true
 export(bool) var func_interacao = false
 
 export(Resource) var dialogo_resource
+export(bool) var dr_personagem = false
 
 var interagido = false
 
@@ -35,22 +36,34 @@ func interacao():
 	
 	if dg_interacao:
 		if interagido:
-			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue1, null, null)
+			if not dr_personagem:
+				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue1, null, null)
 		else:
-			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
-			interagido = true
-			
+			if dr_personagem:
+				DialogBox.call_dialog_box(true, dialogo_resource.msg_queue, dialogo_resource.nome, dialogo_resource.imagens)
+			else:
+				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
+				
 			var temp = Global.get_interagidos()
 			temp.resize(temp.size() + 1)
 			temp[temp.size() - 1] = dialogo_resource.nome_dr
 			Global.set_interagidos(temp)
 	
 	if func_interacao:
+		if not interagido:
+			yield(DialogBox, "dialogo_acabou")
+			
 		match self.name:
 			"arbusto_grande2":
 				var combate = load("res://scenes/combate/combate.tscn").instance()
 				Global.get_node_demo().add_child(combate)
 				combate.chamar_combate(["player", "gamba"])
+			"fogueira1":
+				var foto = load("res://scenes/outros/foto.tscn").instance()
+				Global.get_node_demo().add_child(foto)
+	
+	if not interagido:
+		interagido = true
 
 func verificar_status():
 	var interagidos = Global.get_interagidos()
