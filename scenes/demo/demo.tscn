@@ -1501,7 +1501,6 @@ proxima_camera = 1
 margin_right = 80.0
 
 [node name="mexer_arbusto" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 144, -945 )
 dg_interacao = false
 function = "mexer_arbusto"
@@ -1512,7 +1511,6 @@ apagar = true
 margin_right = 240.0
 
 [node name="dg_interaja_c_arbusto" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 432, -1009 )
 script = ExtResource( 28 )
 dg_interacao = false
@@ -1549,7 +1547,6 @@ proxima_camera = 2
 margin_bottom = 48.0
 
 [node name="gd_maria_olhos" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 688, -1040 )
 script = ExtResource( 20 )
 dg_interacao = false
@@ -1561,7 +1558,6 @@ apagar = true
 margin_bottom = 80.0
 
 [node name="gd_maria_papai" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 592, -752 )
 script = ExtResource( 20 )
 dg_interacao = false
@@ -1601,7 +1597,6 @@ proxima_camera = 3
 margin_right = 80.0
 
 [node name="gd_maria_tio_jorge" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 592, -1488 )
 script = ExtResource( 20 )
 dg_interacao = false
@@ -1935,7 +1930,7 @@ position = Vector2( 304, -1936 )
 position = Vector2( 144, -1968 )
 
 [node name="arbusto_pequeno12" parent="tilemap" instance=ExtResource( 48 )]
-position = Vector2( 16, -2416 )
+position = Vector2( 40, -2408 )
 
 [node name="arbusto_pequeno13" parent="tilemap" instance=ExtResource( 48 )]
 position = Vector2( 368, -2312 )
@@ -1944,10 +1939,13 @@ position = Vector2( 368, -2312 )
 position = Vector2( 432, -2288 )
 
 [node name="pedra_grande7" parent="tilemap" instance=ExtResource( 22 )]
-position = Vector2( 88, -2488 )
+position = Vector2( 128, -2488 )
 
 [node name="arbusto_pequeno15" parent="tilemap" instance=ExtResource( 48 )]
-position = Vector2( 352, -2488 )
+position = Vector2( 320, -2488 )
+
+[node name="arbusto_pequeno16" parent="tilemap" instance=ExtResource( 48 )]
+position = Vector2( 8, -2488 )
 
 [node name="arbusto_duplo_inv2" parent="tilemap" instance=ExtResource( 54 )]
 position = Vector2( 416, -2496 )

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "lenha"
+nome = [ "Maria", "Biscoito", "Maria" ]
+msg_queue = [ "Alguém bloqueou a passagem.", "au!", "Nem queria vir pra cá mesmo…" ]
+imagens = [ "maria_triste", "biscoito_normal", "maria_normal" ]

@@ -35,7 +35,7 @@ func get_sprite_height_tile():
 	return _sprite_height_tile
 
 func interacao():
-	if not interagido:
+	if not interagido and dialogo_resource:
 		verificar_status()
 	
 	match self.name:

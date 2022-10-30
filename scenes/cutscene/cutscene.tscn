@@ -35,6 +35,7 @@ margin_right = 480.0
 margin_bottom = 288.0
 
 [node name="mira" type="TextureRect" parent="center"]
+visible = false
 margin_left = 237.0
 margin_top = 141.0
 margin_right = 243.0
