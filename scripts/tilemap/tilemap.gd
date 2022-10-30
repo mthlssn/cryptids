@@ -20,7 +20,7 @@ func _ready():
 				var posicao_player = global_posicao_player[cont]
 				
 				node_players.position = posicao_player
-
+				
 				set_cellv(world_to_map(node_players.position), PLAYERS)
 				cont += 1
 		elif node.name == "area":
@@ -92,6 +92,21 @@ func get_node_celula(alvo, area):
 					hei_and_wid_v += Vector2(1,0)
 				hei_and_wid_v.x = 0
 				hei_and_wid_v += Vector2(0,1)
+
+func reposicionar_node(node, posicao, tipo):
+	node.show()
+	var width = node.get_sprite_width_tile()
+	var height = node.get_sprite_height_tile()
+	var posicao_inicial = posicao
+	
+	node.position = posicao
+	
+	for i in height:
+		for j in width:
+			set_cellv(world_to_map(posicao), tipo)
+			posicao.x += 32
+		posicao.x = posicao_inicial.x
+		posicao.y += 32
 
 func apagar_node(node):
 	var width = node.get_sprite_width_tile()

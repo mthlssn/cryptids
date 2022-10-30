@@ -51,6 +51,10 @@ func arrumar_fila():
 			add_child(instance)
 			instance.position =  posi_players[i]
 	
+	if path_scenes.size() < get_children().size():
+		remove_child(get_node("maria"))
+		remove_child(get_node("biscoito"))
+	
 	move_child(get_node("player"), get_children().size()-1)
 	
 	players = get_children()
@@ -98,8 +102,8 @@ func interagir():
 	if Input.is_action_just_pressed("interagir"):
 		var alvo = tilemap.world_to_map(players[controlar].position) + dire_players[controlar]
 		var node = tilemap.get_node_celula(alvo, false)
-
-		if node and node.type != 1:
+		
+		if node:
 			node.interacao()
 
 # função que solicita movimento e e move o personagem

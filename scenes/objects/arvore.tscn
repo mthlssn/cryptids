@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/cenarios/cen6/arvore.png" type="Texture" id=1]
 [ext_resource path="res://scripts/objects/objects.gd" type="Script" id=2]
+[ext_resource path="res://data/dialogs/pt_BR/objects/arvore.tres" type="Resource" id=3]
 
 [node name="arvore" type="Node2D"]
 script = ExtResource( 2 )
 type = 3
+dialogo_resource = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( 0, -64 )

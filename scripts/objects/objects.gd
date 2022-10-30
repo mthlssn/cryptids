@@ -15,15 +15,18 @@ export(bool) var dr_personagem = false
 var interagido = false
 
 func _ready():
-	if self.visible:
-		_sprite_width_tile = ($cor.margin_right + 16) / 32
-		_sprite_height_tile = ($cor.margin_bottom + 16) / 32
-	else:
+	_sprite_width_tile = ($cor.margin_right + 16) / 32
+	_sprite_height_tile = ($cor.margin_bottom + 16) / 32
+	
+	if not self.visible:
 		position = Vector2(-480, -288)
 	
 	if self.get_parent().name != "area":
 		if not get_node("../area").visible:
 			$cor.hide()
+	
+	if dialogo_resource:
+		verificar_status()
 
 func get_sprite_width_tile():
 	return _sprite_width_tile
@@ -32,7 +35,19 @@ func get_sprite_height_tile():
 	return _sprite_height_tile
 
 func interacao():
-	verificar_status()
+	if not interagido:
+		verificar_status()
+	
+	match self.name:
+		"arvore2":
+			var direcoes = Global.get_direcao_players()
+			
+			if direcoes[direcoes.size()-1] == Vector2(0, 1) and Global.get_players().size() > 1:
+				dialogo_resource = load("res://data/dialogs/pt_BR/maria/maria_esconde_esconde.tres")
+				DialogBox.call_dialog_box(true, dialogo_resource.msg_queue, dialogo_resource.nome, dialogo_resource.imagens)
+				return
+			else:
+				dialogo_resource = load("res://data/dialogs/pt_BR/objects/arvore.tres")
 	
 	if dg_interacao:
 		if interagido:
@@ -70,7 +85,6 @@ func verificar_status():
 		
 	if interagidos.size() > 0:
 		for i in interagidos.size():
-				
 			if interagidos[i] == dialogo_resource.nome_dr:
 				interagido = true
 				break

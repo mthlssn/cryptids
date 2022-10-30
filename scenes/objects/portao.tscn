@@ -12,7 +12,6 @@ dg_interacao = false
 position = Vector2( 32, -14 )
 texture = ExtResource( 2 )
 hframes = 4
-frame = 3
 
 [node name="cor" type="ColorRect" parent="."]
 margin_left = -16.0
