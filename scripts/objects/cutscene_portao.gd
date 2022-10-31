@@ -43,7 +43,7 @@ func func_transicao():
 	nt.get_node("biscoito").position = Vector2(272, -1328)
 	
 	nt.set_cellv(Vector2(7, -77), -1)
-	nt.reposicionar_node(nt.get_node("area/dg_noite"), Vector2(176, -1872) ,1)
+	nt.reposicionar_node(nt.get_node("area/dg_noite1"), Vector2(176, -1872) ,1)
 	
 	Global.set_players(["res://scenes/personagens/player.tscn"])
 	Global.set_posicao_players([Vector2(240,-2384)])
@@ -53,7 +53,7 @@ func func_transicao():
 	player.position = Vector2(240,-2384)
 	
 	nt.get_node("players").arrumar_fila()
-	nt.get_node("../camera").mudar_camera()
+	nt.get_node("../camera").mudar_camera(false)
 	
 	Global.set_pausar(true)
 	

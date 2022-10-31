@@ -103,8 +103,10 @@ func interagir():
 		var alvo = tilemap.world_to_map(players[controlar].position) + dire_players[controlar]
 		var node = tilemap.get_node_celula(alvo, false)
 		
-		if node:
+		if node and node.type != 1:
 			node.interacao()
+		elif node and node.type == 1:
+			node.interacao_area()
 
 # função que solicita movimento e e move o personagem
 func movimentacao(direcao):

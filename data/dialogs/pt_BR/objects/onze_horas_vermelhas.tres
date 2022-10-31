@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-nome_dr = "onze_horas_amarelas"
-msg_queue = [ "Onze-horas amarelas." ]
-msg_queue1 = [  ]
+nome_dr = "onze_horas_vermelhas"
+msg_queue = [ "Onze-horas vermelhas." ]
+msg_queue1 = [ "Onze-horas vermelhas." ]

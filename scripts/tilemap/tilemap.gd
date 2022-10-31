@@ -1,6 +1,6 @@
 extends TileMap
 
-enum {EMPTY = -1,  OBSTACLE, AREA, PLAYERS, OBJECT}
+enum {EMPTY = -1,  OBSTACLE, AREA, PLAYERS, OBJECT, PERSONAGEM}
 
 onready var players_node := $players
 
@@ -157,6 +157,8 @@ func solicitar_movimento(player, direcao):
 					get_node("arbusto_grande2/animation_player").play("mexer_arbusto")
 				"andar":
 					return map_to_world(proxima_celula) + (cell_size / 2)
+				"salvar":
+					DataPlayer.salvar()
 
 func atualizar_posicao(posicao_comeco, posicao_alvo):
 	posicao_comeco = world_to_map(posicao_comeco)

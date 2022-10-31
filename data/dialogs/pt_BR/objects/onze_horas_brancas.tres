@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 nome_dr = "onze_horas_brancas"
 msg_queue = [ "Onze-horas brancas." ]
-msg_queue1 = [  ]
+msg_queue1 = [ "Onze-horas brancas." ]

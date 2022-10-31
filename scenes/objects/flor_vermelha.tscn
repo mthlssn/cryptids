@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=1]
+[ext_resource path="res://assets/cenarios/cen1/flor_vermelha.png" type="Texture" id=2]
+[ext_resource path="res://data/dialogs/pt_BR/objects/flores_vermelhas.tres" type="Resource" id=3]
+
+[node name="flor_vermelha" type="Node2D"]
+show_behind_parent = true
+script = ExtResource( 1 )
+type = -1
+func_interacao = true
+dialogo_resource = ExtResource( 3 )
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+
+[node name="cor" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+color = Color( 0, 0, 0, 0.537255 )

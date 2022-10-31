@@ -35,19 +35,10 @@ func get_sprite_height_tile():
 	return _sprite_height_tile
 
 func interacao():
+	print("Tem isso ae: ", Global.get_interacoes_maria())
+	
 	if not interagido and dialogo_resource:
 		verificar_status()
-	
-	match self.name:
-		"arvore2":
-			var direcoes = Global.get_direcao_players()
-			
-			if direcoes[direcoes.size()-1] == Vector2(0, 1) and Global.get_players().size() > 1:
-				dialogo_resource = load("res://data/dialogs/pt_BR/maria/maria_esconde_esconde.tres")
-				DialogBox.call_dialog_box(true, dialogo_resource.msg_queue, dialogo_resource.nome, dialogo_resource.imagens)
-				return
-			else:
-				dialogo_resource = load("res://data/dialogs/pt_BR/objects/arvore.tres")
 	
 	if dg_interacao:
 		if interagido:
@@ -65,17 +56,69 @@ func interacao():
 			Global.set_interagidos(temp)
 	
 	if func_interacao:
-		if not interagido:
-			yield(DialogBox, "dialogo_acabou")
+		if "flor" in self.name:
+			if not Global.get_onze_horas() and Global.get_players().size() > 1:
+				Global.set_onze_horas(true)
+				
+				var maria_flores = load("res://data/dialogs/pt_BR/maria/maria_flores.tres")
+				yield(DialogBox, "dialogo_acabou")
+				DialogBox.call_dialog_box(true, maria_flores.msg_queue, maria_flores.nome, maria_flores.imagens)
+				
+				for node in get_parent().get_children():
+					if "flor_branca" in node.name:
+						node.dialogo_resource = load("res://data/dialogs/pt_BR/objects/onze_horas_brancas.tres")
+					elif "flor_vermelha" in node.name:
+						node.dialogo_resource = load("res://data/dialogs/pt_BR/objects/onze_horas_vermelhas.tres")
+					elif "flor_amarela" in node.name:
+							node.dialogo_resource = load("res://data/dialogs/pt_BR/objects/onze_horas_amarelas.tres")
+		elif "girassol" in self.name:
+			if Global.get_players().size() > 1 and not Global.get_girassol():
+				Global.set_girassol(true)
+				var maria_girassol = load("res://data/dialogs/pt_BR/maria/maria_girassol.tres")
+				DialogBox.call_dialog_box(true, maria_girassol.msg_queue, maria_girassol.nome, maria_girassol.imagens)
+			else:
+				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
+		elif self.name == "arvore2":
+			var direcoes = Global.get_direcao_players()
 			
-		match self.name:
-			"arbusto_grande2":
-				var combate = load("res://scenes/combate/combate.tscn").instance()
-				Global.get_node_demo().add_child(combate)
-				combate.chamar_combate(["player", "gamba"])
-			"fogueira1":
-				var foto = load("res://scenes/outros/foto.tscn").instance()
-				Global.get_node_demo().add_child(foto)
+			if direcoes[direcoes.size()-1] == Vector2(0, 1) and Global.get_players().size() > 1 and not Global.get_interacao_arvore():
+				var maria_esconde_esconde = load("res://data/dialogs/pt_BR/maria/maria_esconde_esconde.tres")
+				DialogBox.call_dialog_box(true, maria_esconde_esconde.msg_queue, maria_esconde_esconde.nome, maria_esconde_esconde.imagens)
+				Global.set_interacoes_maria(Global.get_interacoes_maria() + 1)
+				Global.set_interacao_arvore(true)
+			else:
+				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
+		elif self.name == "arbusto_grande2":
+			var combate = load("res://scenes/combate/combate.tscn").instance()
+			Global.get_node_demo().add_child(combate)
+			combate.chamar_combate(["player", "gamba"])
+		elif name == "fogueira":
+			if not interagido:
+				yield(DialogBox, "dialogo_acabou")
+				
+			var foto = load("res://scenes/outros/foto.tscn").instance()
+			Global.get_node_demo().add_child(foto)
+		elif name == "mesa_desenho1":
+			var desenho = load("res://scenes/outros/desenho.tscn").instance()
+			Global.get_node_demo().add_child(desenho)
+			
+			desenho.chamar_desenho(1)
+			
+			get_node("sprite/desenho").hide()
+			func_interacao = false
+			
+		elif name == "cama1":
+			var pergunta = load("res://scenes/outros/pergunta.tscn").instance()
+			Global.get_node_demo().add_child(pergunta)
+			
+			pergunta.chamar_pergunta("Deseja dormir?")
+			yield(pergunta, "respondido")
+			var res = pergunta.resposta
+			
+			pergunta.queue_free()
+			
+			if res:
+				func_interacao = false
 	
 	if not interagido:
 		interagido = true

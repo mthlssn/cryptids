@@ -5,13 +5,25 @@ export(Resource) var interaction
 var _sprite_width_tile = 1 
 var _sprite_height_tile = 1 
 
-var type = 2
+export var type = 2
 
 func interacao():
 	if interaction:
 		DialogBox.call_dialog_box(true, interaction.msg_queue, interaction.nome, interaction.imagens)
 		
 	if self.name == "maria": 
+		var contar = false
+		match interaction.nome_dr:
+			"maria_olhos":
+				contar = true
+			"maria_papai":
+				contar = true
+			"maria_tio_jorge":
+				contar = true
+		
+		if contar:
+			Global.set_interacoes_maria(Global.get_interacoes_maria() + 1)
+		
 		if get_node("sprite/animation_player").is_playing():
 			get_parent().get_node("maria").ocultar_exclamacao()
 			interaction = load("res://data/dialogs/pt_BR/maria/maria_normal.tres")

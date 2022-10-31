@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/temas/botao_start_scene.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/outros/pergunta.gd" type="Script" id=2]
+
+[node name="pergunta" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="backgorund" type="ColorRect" parent="."]
+margin_right = 480.0
+margin_bottom = 288.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="center" type="CenterContainer" parent="."]
+margin_right = 480.0
+margin_bottom = 288.0
+
+[node name="v_container" type="VBoxContainer" parent="center"]
+margin_left = 206.0
+margin_top = 130.0
+margin_right = 274.0
+margin_bottom = 157.0
+custom_constants/separation = 9
+
+[node name="label" type="Label" parent="center/v_container"]
+margin_right = 68.0
+margin_bottom = 9.0
+theme = ExtResource( 1 )
+align = 1
+valign = 1
+
+[node name="h_container" type="HBoxContainer" parent="center/v_container"]
+margin_top = 18.0
+margin_right = 68.0
+margin_bottom = 27.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="sim" type="Button" parent="center/v_container/h_container"]
+margin_right = 24.0
+margin_bottom = 9.0
+theme = ExtResource( 1 )
+text = "sim"
+
+[node name="nao" type="Button" parent="center/v_container/h_container"]
+margin_left = 44.0
+margin_right = 68.0
+margin_bottom = 9.0
+theme = ExtResource( 1 )
+text = "não"
+
+[connection signal="pressed" from="center/v_container/h_container/sim" to="." method="_on_sim_pressed"]
+[connection signal="pressed" from="center/v_container/h_container/nao" to="." method="_on_nao_pressed"]
