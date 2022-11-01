@@ -75,10 +75,10 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	if imagens_perso != null:
 		mudar_imagem()
 		
-	if "func" in _msg_queue[0]:
-		pass
-	else:
-		animacao.play("open")
+	#if "func" in _msg_queue[0]:
+	#	pass
+	#else:
+	animacao.play("open")
 
 func _input(event):
 	if event.is_action_pressed(_tecla):
@@ -207,7 +207,6 @@ func mudar_texto():
 					personagem_foto.texture = null
 					
 					return false
-					
 			_cont_msg_queue += 1
 			return true
 		

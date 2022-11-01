@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/luz_janela_baixo.png-83cf387e7411bcb46a83ec3bed08de19.stex"
+path="res://.import/hack_prato.png-fc0d9182f3e91b12015aec33c7a52f80.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenarios/cen7/luz_janela_baixo.png"
-dest_files=[ "res://.import/luz_janela_baixo.png-83cf387e7411bcb46a83ec3bed08de19.stex" ]
+source_file="res://assets/cenarios/cen8/hack_prato.png"
+dest_files=[ "res://.import/hack_prato.png-fc0d9182f3e91b12015aec33c7a52f80.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

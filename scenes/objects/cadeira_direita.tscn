@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/objects/objects.gd" type="Script" id=1]
 [ext_resource path="res://assets/cenarios/cen7/cadeira_direita.png" type="Texture" id=2]
+[ext_resource path="res://data/dialogs/pt_BR/objects/cadeira.tres" type="Resource" id=3]
 
 [node name="cadeira_direita" type="Node2D"]
 script = ExtResource( 1 )
 type = 3
-dg_interacao = false
+dialogo_resource = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( 0, -15 )

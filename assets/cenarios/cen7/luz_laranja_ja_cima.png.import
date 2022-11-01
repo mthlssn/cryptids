@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tijela.png-39322e22ca18bfed1b29b0d825f23522.stex"
+path="res://.import/luz_laranja_ja_cima.png-e8befb6f55df5d1d3181d4f17faae3bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenarios/cen7/tijela.png"
-dest_files=[ "res://.import/tijela.png-39322e22ca18bfed1b29b0d825f23522.stex" ]
+source_file="res://assets/cenarios/cen7/luz_laranja_ja_cima.png"
+dest_files=[ "res://.import/luz_laranja_ja_cima.png-e8befb6f55df5d1d3181d4f17faae3bf.stex" ]
 
 [params]
 

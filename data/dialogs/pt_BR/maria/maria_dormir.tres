@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "maria_dormir"
+nome = [ "Maria", "Maria" ]
+msg_queue = [ "Mmmm que soninho! Já até escureceu.", "Vem, vou te mostrar seu quarto, hora de dormir." ]
+imagens = [ "maria_normal", "maria_feliz" ]

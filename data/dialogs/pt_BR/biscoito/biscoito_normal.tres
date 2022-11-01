@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "biscoito_normal"
+nome = [ "Biscoito" ]
+msg_queue = [ "au?" ]
+imagens = [ "biscoito_normal" ]

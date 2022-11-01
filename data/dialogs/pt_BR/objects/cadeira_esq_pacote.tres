@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_s_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "cadeira_esq_pacote"
+msg_queue = [ "“Jornal do Brasil, 30 de abril de 1854, inauguração da Estrada de Ferro Mauá...”", "”Correio Mercantil, 1 de Abril de 1850, febre amarela…”" ]
+msg_queue1 = [ "“Jornal do Brasil, 30 de abril de 1854, inauguração da Estrada de Ferro Mauá...”", "”Correio Mercantil, 1 de Abril de 1850, febre amarela…”" ]

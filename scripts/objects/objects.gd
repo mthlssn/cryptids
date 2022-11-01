@@ -35,8 +35,6 @@ func get_sprite_height_tile():
 	return _sprite_height_tile
 
 func interacao():
-	print("Tem isso ae: ", Global.get_interacoes_maria())
-	
 	if not interagido and dialogo_resource:
 		verificar_status()
 	
@@ -106,8 +104,11 @@ func interacao():
 			
 			get_node("sprite/desenho").hide()
 			func_interacao = false
+			dg_interacao = true
 			
 		elif name == "cama1":
+			yield(DialogBox, "dialogo_acabou")
+			
 			var pergunta = load("res://scenes/outros/pergunta.tscn").instance()
 			Global.get_node_demo().add_child(pergunta)
 			
@@ -119,7 +120,28 @@ func interacao():
 			
 			if res:
 				func_interacao = false
-	
+				Global.get_node_demo().arrumar_casa2()
+				
+		elif name == "hack_pratos1":
+			if get_parent().get_parent().pegar_pratos:
+				get_parent().get_parent().pegar_pratos = false
+				$sprite.texture = load("res://assets/cenarios/cen8/hack_sem_prato.png")
+				get_node("../maria").interaction = load("res://data/dialogs/pt_BR/maria/maria_biscoitos.tres")
+				get_node("../maria").dr_personagem = true
+				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
+			else:
+				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue1, null, null)
+		elif name == "desenho1":
+			var desenho = load("res://scenes/outros/desenho.tscn").instance()
+			Global.get_node_demo().add_child(desenho)
+			
+			desenho.chamar_desenho(2)
+			hide()
+			Inventario.add_item_inventario(["Desenho", "- Desenho da Maria.\n\n- Um desenho.\n\n- só q da Maria.", "todos_aliados"])
+			
+			yield(desenho, "desenho_fechado")
+			get_parent().apagar_node(self)
+			
 	if not interagido:
 		interagido = true
 

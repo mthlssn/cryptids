@@ -23,6 +23,7 @@ func func_transicao():
 		"floresta":
 			distancia = 64
 		"casa_entrar":
+			nt.get_node("maria").interaction = load("res://data/dialogs/pt_BR/maria/maria_pegar_pratos.tres")
 			nt.reposicionar_node(nt.get_node("maria"), Vector2(528, -2832), 4)
 			nt.get_node("maria/sprite").frame = 10
 			
@@ -33,6 +34,11 @@ func func_transicao():
 		"casa_sair":
 			distancia = 160
 		"porta":
+			if name == "portal13" and Global.get_node_demo().canvas == "normal":
+				Global.get_node_demo().mudar_luz("escuro")
+			elif name == "portal14" and Global.get_node_demo().canvas == "escuro":
+				Global.get_node_demo().mudar_luz("normal")
+			
 			distancia = 192
 			
 	for node in players :

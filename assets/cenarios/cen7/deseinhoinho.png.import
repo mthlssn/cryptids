@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/luz_janela_cima.png-b69078aa060035efe43545664f13a6e0.stex"
+path="res://.import/deseinhoinho.png-f932b0d5d8719c9e097cabf66499c6d6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cenarios/cen7/luz_janela_cima.png"
-dest_files=[ "res://.import/luz_janela_cima.png-b69078aa060035efe43545664f13a6e0.stex" ]
+source_file="res://assets/cenarios/cen7/deseinhoinho.png"
+dest_files=[ "res://.import/deseinhoinho.png-f932b0d5d8719c9e097cabf66499c6d6.stex" ]
 
 [params]
 
