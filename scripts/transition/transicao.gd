@@ -7,7 +7,10 @@ var _node
 
 var _tirar_mover_pause = true
 
+signal transicao_acabou
+
 func set_animando_false():
+	emit_signal("transicao_acabou")
 	self.hide()
 	
 	if _tirar_mover_pause:

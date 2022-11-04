@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "maria_quarto_player1"
+nome = [ "Maria", "Maria", "Maria", "Maria", "Maria", "Maria", "Maria" ]
+msg_queue = [ "Você vai dormir aqui hoje!", "Não tem quarto pra você ainda…", "Tá um pouco empoeirado mas não tem problema.", "Meu papai dormia aqui antes dele ir pro porão.", "Eu deixei tudo do jeito que tava pra ele se sentir em casa quando ele voltar.", "Bem… na verdade ele está mesmo em casa.", "Vem deixa eu de acomodar direitinho." ]
+imagens = [ "maria_feliz", "maria_normal", "maria_triste", "maria_feliz", "maria_normal", "maria_pensante", "maria_feliz" ]

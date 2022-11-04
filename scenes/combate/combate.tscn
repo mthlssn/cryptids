@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/combate/base_combate.png" type="Texture" id=1]
 [ext_resource path="res://scripts/combate/combate.gd" type="Script" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://assets/combate/fundo_vida_inimigo.png" type="Texture" id=35]
 [ext_resource path="res://assets/combate/fundo_vida.png" type="Texture" id=36]
 [ext_resource path="res://assets/combate/fundo_energia.png" type="Texture" id=37]
+[ext_resource path="res://assets/combate/background.png" type="Texture" id=38]
 
 [sub_resource type="DynamicFont" id=8]
 size = 7
@@ -1111,9 +1112,9 @@ script = ExtResource( 2 )
 
 [node name="background" type="TextureRect" parent="."]
 visible = false
-margin_right = 1400.0
-margin_bottom = 1050.0
-rect_scale = Vector2( 0.342, 0.274 )
+margin_right = 700.0
+margin_bottom = 427.0
+texture = ExtResource( 38 )
 
 [node name="base_combate" type="NinePatchRect" parent="."]
 visible = false

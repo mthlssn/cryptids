@@ -90,7 +90,7 @@ func interacao():
 			var combate = load("res://scenes/combate/combate.tscn").instance()
 			Global.get_node_demo().add_child(combate)
 			combate.chamar_combate(["player", "gamba"])
-		elif name == "fogueira":
+		elif name == "fogueira1":
 			if not interagido:
 				yield(DialogBox, "dialogo_acabou")
 				
@@ -106,8 +106,12 @@ func interacao():
 			func_interacao = false
 			dg_interacao = true
 			
+			Global.get_node_demo().pegou_desenho = true
+			
 		elif name == "cama1":
 			yield(DialogBox, "dialogo_acabou")
+			Global.set_pausar(false)
+			Global.set_mover(false)
 			
 			var pergunta = load("res://scenes/outros/pergunta.tscn").instance()
 			Global.get_node_demo().add_child(pergunta)
@@ -120,7 +124,16 @@ func interacao():
 			
 			if res:
 				func_interacao = false
-				Global.get_node_demo().arrumar_casa2()
+				Global.set_pausar(false)
+				Global.set_mover(false)
+				
+				Global.get_node_demo().get_node("animation_player").play("cutscene_acordando")
+				Global.get_node_demo().arrumar_casa3()
+				
+				yield(Global.get_node_demo().get_node("animation_player"), "animation_finished")
+				
+				Global.set_pausar(true)
+				Global.set_mover(true)
 				
 		elif name == "hack_pratos1":
 			if get_parent().get_parent().pegar_pratos:
@@ -140,8 +153,22 @@ func interacao():
 			Inventario.add_item_inventario(["Desenho", "- Desenho da Maria.\n\n- Um desenho.\n\n- só q da Maria.", "todos_aliados"])
 			
 			yield(desenho, "desenho_fechado")
+			get_parent().reposicionar_node(self, Vector2(-48, -2576),3)
 			get_parent().apagar_node(self)
+		elif name == "cutscene_quarto1":
+			Global.get_node_demo().get_node("tilemap/cutscene_quarto1").chamar_animacao(Global.get_node_demo().get_node("tilemap"))
+		elif name == "porta_quarto_maria1":
+			DialogBox.call_dialog_box(true, dialogo_resource.msg_queue, dialogo_resource.nome, dialogo_resource.imagens)
+		elif name == "pacote1":
+			var jornal = load("res://scenes/outros/jornal.tscn").instance()
+			Global.get_node_demo().add_child(jornal)
 			
+			jornal.chamar_jornal()
+			yield(jornal, "jornal_fechado")
+			
+			get_parent().reposicionar_node(self, Vector2(-48, -2576),3)
+			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
+			get_parent().apagar_node(self)
 	if not interagido:
 		interagido = true
 

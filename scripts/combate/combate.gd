@@ -301,7 +301,8 @@ func gerar_ordem(perso):
 func set_background():
 	match inimigo:
 		"gamba":
-			$background.texture = load("res://assets/combate/background.jpeg")
+			$background.texture = load("res://assets/combate/background.png")
+			$background.rect_scale = Vector2(0.686, 0.675)
 
 func set_null():
 	personagem_apertado = null

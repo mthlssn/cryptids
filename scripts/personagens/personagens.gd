@@ -28,6 +28,10 @@ func interacao():
 				
 				yield(DialogBox,"dialogo_acabou")
 				$sprite.frame = 1
+			"biscoito_bravo":
+				yield(DialogBox,"dialogo_acabou")
+				var temp = load("res://data/dialogs/pt_BR/biscoito/biscoito_bravo2.tres")
+				DialogBox.call_dialog_box(false, temp.msg_queue, null, null)
 	
 	if self.name == "maria": 
 		var contar = false
@@ -62,10 +66,48 @@ func interacao():
 						$sprite.frame = 7
 				
 				yield(DialogBox,"dialogo_acabou")
-				$sprite.frame = 10
+				Global.set_mover(false)
+				Global.set_pausar(false)
+				
+				var animation = Global.get_node_demo().get_node("animation_player")
+				animation.play("cutscene_mesa_jantar_iniciar")
+				yield(animation,  "animation_finished")
+				
+				interaction = load("res://data/dialogs/pt_BR/cena_7/cutscene_mesa.tres")
+				DialogBox.call_dialog_box(true, interaction.msg_queue, interaction.nome, interaction.imagens)
+				yield(DialogBox,"dialogo_acabou")
+				Global.set_mover(false)
+				Global.set_pausar(false)
+				
+				animation.play("cutscene_mesa_jantar_acabar")
+				yield(animation,  "animation_finished")
+				
+				interaction = load("res://data/dialogs/pt_BR/maria/maria_soninho.tres")
+				DialogBox.call_dialog_box(true, interaction.msg_queue, interaction.nome, interaction.imagens)
+				yield(DialogBox,"dialogo_acabou")
+				
+				Global.set_mover(true)
+				Global.set_pausar(true)
+			"nada_desenho":
+				if Global.get_node_demo().pegou_desenho:
+					var pergunta = load("res://scenes/outros/pergunta.tscn").instance()
+					Global.get_node_demo().add_child(pergunta)
+					
+					pergunta.chamar_pergunta("Deseja mostrar o desenho para Maria?")
+					yield(pergunta, "respondido")
+					var res = pergunta.resposta
+					
+					pergunta.queue_free()
+					
+					if res:
+						contar = true
+						interaction = load("res://data/dialogs/pt_BR/maria/maria_interacao_secreta.tres")
+						DialogBox.call_dialog_box(true, interaction.msg_queue, interaction.nome, interaction.imagens)
+						interaction = load("res://data/dialogs/pt_BR/maria/maria_soninho.tres")
 		
 		if contar:
 			Global.set_interacoes_maria(Global.get_interacoes_maria() + 1)
+			contar = false
 		
 		if get_node("sprite/animation_player").is_playing():
 			get_parent().get_node("maria").ocultar_exclamacao()

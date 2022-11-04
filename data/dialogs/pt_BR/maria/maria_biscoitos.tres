@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nome_dr = "maria_biscoitos"
 nome = [ "Maria", "{nome_player}", "Biscoito", "Maria", "Maria", "Maria", "Maria" ]
-msg_queue = [ "Ta bom, entao eu ah eu eh… EU PEGUEI OS BISCOITOS NO LUGAR SECRETO!", "...", "!", "Ufa, falei.", "Não era pra comer biscoito sem permissão, papai e o tio Jorge não sabem que eu sei onde eles escondem o potinho.", "Por favor, não conta pra eles, é uma emergência.", "Não vou fazer mais isso, agora é a última vez mesmo, prometo.", "func_cutscene_mesa()" ]
+msg_queue = [ "Ta bom, entao eu ah eu eh… EU PEGUEI OS BISCOITOS NO LUGAR SECRETO!", "...", "!", "Ufa, falei.", "Não era pra comer biscoito sem permissão, papai e o tio Jorge não sabem que eu sei onde eles escondem o potinho.", "Por favor, não conta pra eles, é uma emergência.", "Não vou fazer mais isso, agora é a última vez mesmo, prometo." ]
 imagens = [ "maria_normal", "player_normal", "biscoito_normal", "maria_feliz", "maria_normal", "maria_triste", "maria_feliz" ]

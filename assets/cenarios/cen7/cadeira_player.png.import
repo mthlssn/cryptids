@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.jpeg-79a592173ba4e7caa9b97aae07989c72.stex"
+path="res://.import/cadeira_player.png-136a4b5b06ad827a2b58929d054942d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/combate/background.jpeg"
-dest_files=[ "res://.import/background.jpeg-79a592173ba4e7caa9b97aae07989c72.stex" ]
+source_file="res://assets/cenarios/cen7/cadeira_player.png"
+dest_files=[ "res://.import/cadeira_player.png-136a4b5b06ad827a2b58929d054942d4.stex" ]
 
 [params]
 
@@ -20,8 +20,8 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
-flags/mipmaps=true
+flags/filter=false
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

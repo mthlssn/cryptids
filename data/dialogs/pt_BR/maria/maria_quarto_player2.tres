@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "maria_quarto_player2"
+nome = [ "Maria", "{nome_player}", "Maria", "Maria", "Maria", "Maria", "Maria", "Biscoito" ]
+msg_queue = [ "Ta quentinho?", "…!", "Fica bem frio de noite tem que ficar quentinho se não você vai ficar doente.", "Parece que tá tudo certo.", "Agora eu e o biscoito vamos pro nosso quarto tá bem?", "Boa noite!", "Amanhã vai ser muito legal.", "au!" ]
+imagens = [ "maria_pensante", "player_normal", "maria_triste", "maria_feliz", "maria_normal", "maria_feliz", "maria_feliz", "biscoito_normal" ]

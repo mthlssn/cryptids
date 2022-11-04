@@ -40,6 +40,11 @@ func func_transicao():
 				Global.get_node_demo().mudar_luz("normal")
 			
 			distancia = 192
+		"porta_monstro":
+			distancia = 192
+			yield(Transition, "transicao_acabou")
+			Global.get_node_demo().get_node("animation_player").play("vulto_cena7")
+			tipo_portal = "porta"
 			
 	for node in players :
 		node.position = players[players.size()-1].position + (nt.direcao_soli_mov * distancia)
