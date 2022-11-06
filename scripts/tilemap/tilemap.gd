@@ -151,7 +151,7 @@ func solicitar_movimento(player, direcao):
 			var node_area = get_node_celula(proxima_celula, true)
 			if node_area.apagar:
 				apagar_node(node_area)
-				
+			
 			if node_area.colisao:
 				node_area.colisao(self)
 				
@@ -160,6 +160,9 @@ func solicitar_movimento(player, direcao):
 					get_node("arbusto_grande2").dg_interacao = false
 					get_node("arbusto_grande2").func_interacao = true
 					get_node("arbusto_grande2/animation_player").play("mexer_arbusto")
+				"atualizar_porta_frente":
+					$porta_fundos1.func_interacao = true
+					$porta_fundos1.dg_interacao = false
 				"andar":
 					return map_to_world(proxima_celula) + (cell_size / 2)
 				"salvar":

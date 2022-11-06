@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 nome_dr = "porta_porao"
 msg_queue = [ "Parece misteriosamente silencioso lá dentro.", "A porta está trancada." ]
-msg_queue1 = [ "A porta está trancada." ]
+msg_queue1 = [ "Parece misteriosamente silencioso lá dentro.", "A porta está trancada." ]

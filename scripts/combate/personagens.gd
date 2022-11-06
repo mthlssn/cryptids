@@ -12,6 +12,9 @@ var personagem_chamado = false
 
 var primeira_vez = true
 
+# player - maria - biscoito
+var personagens_mortos = [false , false , false]
+
 signal pers_apertado
 signal status_atualizados
 
@@ -33,9 +36,14 @@ func chamar_personagens(tipo_alvo, perso):
 			get_node("inimigo/botao").show()
 			$inimigo/botao.grab_focus()
 		"aliados":
-			get_node("player/botao").focus_mode = 2
-			get_node("maria/botao").focus_mode = 2
-			get_node("biscoito/botao").focus_mode = 2
+			if not personagens_mortos[0]:
+				get_node("player/botao").focus_mode = 2
+			
+			if not personagens_mortos[1]:
+				get_node("maria/botao").focus_mode = 2
+			
+			if not personagens_mortos[2]:
+				get_node("biscoito/botao").focus_mode = 2
 			
 			get_node("inimigo/botao").focus_mode = 0
 			get_node( perso + "/botao").focus_mode = 0
@@ -44,12 +52,6 @@ func chamar_personagens(tipo_alvo, perso):
 				$maria/botao.grab_focus()
 			else:
 				$player/botao.grab_focus()
-		"todos_aliados":
-			get_node("inimigo/botao").focus_mode = 0
-			get_node("player/botao").focus_mode = 2
-			get_node("maria/botao").focus_mode = 2
-			get_node("biscoito/botao").focus_mode = 2
-			$player/botao.grab_focus()
 
 func montar_personagens(personagens):
 	persos = personagens.duplicate()
@@ -73,16 +75,27 @@ func montar_personagens(personagens):
 		
 		node_aliados = [get_node("player")]
 	else:
+		get_node("maria/botao").focus_mode = 2
+		get_node("maria/botao/personagem").show()
+		get_node("maria/barra_vida").value = 0
+		get_node("maria/barra_energia").value = 0
+		
+		get_node("maria/barra_vida").texture_over = load("res://assets/combate/barra_vida.png")
+		get_node("maria/barra_energia").texture_over = load("res://assets/combate/barra_energia.png")
+		
+		get_node("biscoito/botao").focus_mode = 2
+		get_node("biscoito/botao/personagem").show()
+		get_node("biscoito/barra_vida").value = 0
+		get_node("biscoito/barra_energia").value = 0
+		
+		get_node("biscoito/barra_vida").texture_over = load("res://assets/combate/barra_vida.png")
+		get_node("biscoito/barra_energia").texture_over = load("res://assets/combate/barra_energia.png")
+		
 		node_aliados = [ get_node("maria"), get_node("biscoito"), get_node("player")]
-	
-	var inimigo = personagens[personagens.size() - 1]
-
-	$inimigo/personagem.texture = load(inimigo.imagem_path)
-	$inimigo/personagem.rect_position = inimigo.posicao
-	
+		
 	get_node("inimigo/botao").hide()
 
-func atulizar_personagens(personagem_selecionado):
+func atualizar_personagens(personagem_selecionado):
 	for personagens in node_aliados:
 		if personagens.name == personagem_selecionado:
 			personagens.get_node("botao").texture_normal = frame_claro
@@ -108,6 +121,8 @@ func atualizar_label_vida_energia():
 func atualizar_bar_vida_energia():
 	node_persos = get_children()
 	
+	$inimigo/botao.hide()
+	
 	for i in node_aliados.size():
 		var vida = persos[i].get_ficha().get_atri_apli("hp")
 		var bar_v = node_persos[i].get_node("barra_vida")
@@ -127,14 +142,80 @@ func atualizar_bar_vida_energia():
 	
 	if primeira_vez:
 		bar_v.max_value = vida
-			
+	
 	bar_v.value = vida
 	
 	primeira_vez = false
 	atualizar_label_vida_energia()
 
+func atualizar_buff_debuff(medos, debuff):
+	node_persos = get_children()
+	
+	adicionar_buff_debuff("player", "medo", medos[0])
+	
+	if persos.size() >= 4:
+		adicionar_buff_debuff("maria", "medo", medos[1])
+		adicionar_buff_debuff("biscoito", "medo", medos[2])
+	
+	if debuff:
+		adicionar_buff_debuff("inimigo", "debuff", -1)
+	else:
+		remover_buff_debuff("inimigo", "debuff")
+
+func adicionar_buff_debuff(alvo, tipo, quantidade):
+	match quantidade:
+		1:
+			get_node(alvo + "/buffs_debuffs/medo").texture = load("res://assets/combate/medo1.png")
+		2:
+			get_node(alvo + "/buffs_debuffs/medo").texture = load("res://assets/combate/medo2.png")
+		3:
+			get_node(alvo + "/buffs_debuffs/medo").texture = load("res://assets/combate/medo3.png")
+	
+	if alvo == "inimigo":
+		get_node(alvo + "/botao/buffs_debuffs").show()
+		get_node(alvo + "/botao/buffs_debuffs/" + tipo).show()
+	else:
+		get_node(alvo + "/buffs_debuffs").show()
+		get_node(alvo + "/buffs_debuffs/" + tipo).show()
+	
+	if quantidade == 0:
+		remover_buff_debuff(alvo, tipo)
+
+func remover_buff_debuff(alvo, tipo):
+	if alvo == "inimigo":
+		get_node(alvo + "/botao/buffs_debuffs/" + tipo).hide()
+	else:
+		get_node(alvo + "/buffs_debuffs/" + tipo).hide()
+
+func set_morto(node):
+	match node:
+		"player":
+			personagens_mortos[0] = true
+		"maria":
+			personagens_mortos[1] = true
+		"biscoito":
+			personagens_mortos[2] = true
+	
+	get_node(node + "/botao/personagem").modulate = Color(000000)
+	get_node(node + "/buffs_debuffs").hide()
+	
+	get_node(node + "/barra_vida").texture_over = load("res://assets/combate/barra_escura_vida.png")
+	get_node(node + "/barra_energia").texture_over = load("res://assets/combate/barra_escura_energia.png")
+	
+	get_node(node + "/barra_vida/valor").text = " "
+	get_node(node + "/barra_energia/valor").text = " "
+
 func emitir_sinal_per():
+	get_node("inimigo/botao").hide()
 	emit_signal("pers_apertado")
+
+func set_textures():
+	var nodes = get_children()
+	
+	nodes.pop_back()
+	
+	for node in nodes:
+		node.get_node("botao").texture_normal = frame_escuro
 
 func _on_botao_pressed(extra_arg_0):
 	if extra_arg_0 != "inimigo":
@@ -145,7 +226,7 @@ func _on_botao_pressed(extra_arg_0):
 		node.get_node("botao/personagem/animation_player").stop()
 	
 	combate.set_personagem_apertado(extra_arg_0)
-	emitir_sinal_per()
+	emit_signal("pers_apertado")
 
 func _on_botao_focus_entered(extra_arg_0):
 	var node = get_node(extra_arg_0)

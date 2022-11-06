@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://assets/combate/base_combate.png" type="Texture" id=1]
 [ext_resource path="res://scripts/combate/combate.gd" type="Script" id=2]
@@ -37,7 +37,11 @@
 [ext_resource path="res://assets/combate/fundo_vida_inimigo.png" type="Texture" id=35]
 [ext_resource path="res://assets/combate/fundo_vida.png" type="Texture" id=36]
 [ext_resource path="res://assets/combate/fundo_energia.png" type="Texture" id=37]
-[ext_resource path="res://assets/combate/background.png" type="Texture" id=38]
+[ext_resource path="res://assets/personagens/boss/background.png" type="Texture" id=38]
+[ext_resource path="res://assets/personagens/boss/normal.png" type="Texture" id=39]
+[ext_resource path="res://assets/personagens/gamba/background.png" type="Texture" id=40]
+[ext_resource path="res://assets/combate/medo1.png" type="Texture" id=41]
+[ext_resource path="res://assets/combate/debuff.png" type="Texture" id=42]
 
 [sub_resource type="DynamicFont" id=8]
 size = 7
@@ -537,6 +541,90 @@ tracks/24/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/25/type = "value"
+tracks/25/path = NodePath("personagens/inimigo/personagem:texture")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 39 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("background:texture")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 38 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("background:rect_scale")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("personagens/inimigo/personagem:rect_size")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 142, 105 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("personagens/inimigo/personagem:rect_scale")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("personagens/inimigo/personagem:rect_position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 145, 60 ) ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("personagens/inimigo/botao:rect_position")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 159, 47 ) ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "close_combate"
@@ -735,31 +823,68 @@ tracks/15/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=20]
-resource_name = "dano_inimigo"
+[sub_resource type="Animation" id=30]
+resource_name = "cura_biscoito"
 length = 0.5
 step = 0.025
-tracks/0/type = "method"
-tracks/0/path = NodePath("personagens")
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/biscoito/botao/personagem:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "atualizar_bar_vida_energia"
-} ]
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.278431, 1, 0.215686, 1 ), Color( 1, 1, 1, 1 ), Color( 0.278431, 1, 0.215686, 1 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("personagens/inimigo/personagem:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
+
+[sub_resource type="Animation" id=29]
+resource_name = "cura_player"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/player/botao/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.278431, 1, 0.215686, 1 ), Color( 1, 1, 1, 1 ), Color( 0.278431, 1, 0.215686, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "dano_biscoito"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/biscoito/botao/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "dano_inimigo"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/inimigo/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
@@ -782,62 +907,17 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath("personagens")
+tracks/1/type = "value"
+tracks/1/path = NodePath("personagens/maria/botao/personagem:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "atualizar_bar_vida_energia"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("personagens/maria/botao/personagem:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.025, 0.475, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 13 ) ]
-}
-
-[sub_resource type="Animation" id=22]
-resource_name = "dano_mel"
-length = 0.5
-step = 0.025
-tracks/0/type = "method"
-tracks/0/path = NodePath("personagens")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.25 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "atualizar_bar_vida_energia"
-} ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("personagens/biscoito/botao/personagem:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -856,19 +936,458 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath("personagens")
+
+[sub_resource type="Animation" id=31]
+resource_name = "dano_todos_aliados"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/maria/botao/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("personagens/player/botao/personagem:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.25 ),
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("personagens/biscoito/botao/personagem:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.756863, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "debuff_biscoito"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/biscoito/botao/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "debuff_inimigo"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/inimigo/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "debuff_maria"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/maria/botao/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("personagens/maria/botao/personagem:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.025, 0.475, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 13 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "debuff_player"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/player/botao/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "debuff_todos_aliados"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("personagens/maria/botao/personagem:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("personagens/player/botao/personagem:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("personagens/biscoito/botao/personagem:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ), Color( 0.0588235, 0, 0.756863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "start_combate_boss"
+length = 3.7
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("cor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("inimigo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 0.88, 2.1, 2.2, 2.3, 3.5, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 4.28709, 0.203063, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("nome_inimigo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 0.88, 2.1, 2.2, 2.3, 3.5, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("inimigo:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 2.1, 2.3, 2.9, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ), Vector2( 1, 0.83 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("inimigo:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 2.3, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9, 87 ), Vector2( 9, 87 ), Vector2( 86, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("nome_inimigo:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5, 2.3, 2.9, 3.5, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 40 ), Vector2( 0, 40 ), Vector2( 0, 30 ), Vector2( 0, 30 ), Vector2( 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("cor:rect_rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "atualizar_bar_vida_energia"
-} ]
+"update": 0,
+"values": [ 35.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("cor:rect_size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5, 2.79, 3.5 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 648, 686 ), Vector2( 648, 686 ), Vector2( 0, 686 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("cor:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5, 2.79, 3.5 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 168, -344 ), Vector2( 168, -344 ), Vector2( 428, -162 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("background:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("base_combate:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("dialog:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("personagens:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("cor:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("nome_inimigo:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("inimigo:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.5, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("nome_inimigo:text")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "O bosta" ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("inimigo:texture")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 39 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("personagens/inimigo/personagem:texture")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 39 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("background:texture")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 38 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("background:rect_scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("personagens/inimigo/personagem:rect_size")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 308, 237 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("personagens/inimigo/personagem:rect_scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0.5, 2.91, 3.51 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.83 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("personagens/inimigo/personagem:rect_position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 86, 1 ) ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -933,7 +1452,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.5, 2.3, 2.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 97, 87 ), Vector2( 97, 87 ), Vector2( 145, 60 ) ]
+"values": [ Vector2( 97, 87 ), Vector2( 97, 87 ), Vector2( 145, 77 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("nome_inimigo:rect_position")
@@ -1091,19 +1610,89 @@ tracks/17/keys = {
 "update": 1,
 "values": [ ExtResource( 10 ) ]
 }
-tracks/18/type = "method"
-tracks/18/path = NodePath(".")
+tracks/18/type = "value"
+tracks/18/path = NodePath("personagens/inimigo/personagem:texture")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"times": PoolRealArray( 0.51 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "set_background"
-} ]
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("background:texture")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 40 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("background:rect_scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.686, 0.686 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("personagens/inimigo/personagem:rect_size")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 142, 105 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("personagens/inimigo/personagem:rect_scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("personagens/inimigo/personagem:rect_position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 145, 77 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("personagens/inimigo/botao:rect_position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 159, 47 ) ]
 }
 
 [node name="combate" type="CanvasLayer"]
@@ -1453,6 +2042,29 @@ autoplay = "setinha"
 anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
 
+[node name="buffs_debuffs" type="HBoxContainer" parent="personagens/player"]
+visible = false
+margin_left = 4.0
+margin_top = -3.0
+margin_right = 59.0
+margin_bottom = 10.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="debuff" type="TextureRect" parent="personagens/player/buffs_debuffs"]
+visible = false
+margin_left = 29.0
+margin_right = 42.0
+margin_bottom = 13.0
+texture = ExtResource( 42 )
+
+[node name="medo" type="TextureRect" parent="personagens/player/buffs_debuffs"]
+visible = false
+margin_left = 42.0
+margin_right = 55.0
+margin_bottom = 13.0
+texture = ExtResource( 41 )
+
 [node name="barra_vida" type="TextureProgress" parent="personagens/player"]
 margin_left = 3.0
 margin_top = 65.0
@@ -1531,6 +2143,29 @@ autoplay = "setinha"
 anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
 
+[node name="buffs_debuffs" type="HBoxContainer" parent="personagens/maria"]
+visible = false
+margin_left = 4.0
+margin_top = -3.0
+margin_right = 59.0
+margin_bottom = 10.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="debuff" type="TextureRect" parent="personagens/maria/buffs_debuffs"]
+visible = false
+margin_left = 29.0
+margin_right = 42.0
+margin_bottom = 13.0
+texture = ExtResource( 42 )
+
+[node name="medo" type="TextureRect" parent="personagens/maria/buffs_debuffs"]
+visible = false
+margin_left = 42.0
+margin_right = 55.0
+margin_bottom = 13.0
+texture = ExtResource( 41 )
+
 [node name="barra_vida" type="TextureProgress" parent="personagens/maria"]
 margin_left = 3.0
 margin_top = 65.0
@@ -1607,6 +2242,29 @@ centered = false
 anims/RESET = SubResource( 2 )
 anims/setinha = SubResource( 3 )
 
+[node name="buffs_debuffs" type="HBoxContainer" parent="personagens/biscoito"]
+visible = false
+margin_left = 4.0
+margin_top = -3.0
+margin_right = 59.0
+margin_bottom = 10.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="debuff" type="TextureRect" parent="personagens/biscoito/buffs_debuffs"]
+visible = false
+margin_left = 29.0
+margin_right = 42.0
+margin_bottom = 13.0
+texture = ExtResource( 42 )
+
+[node name="medo" type="TextureRect" parent="personagens/biscoito/buffs_debuffs"]
+visible = false
+margin_left = 42.0
+margin_right = 55.0
+margin_bottom = 13.0
+texture = ExtResource( 41 )
+
 [node name="barra_vida" type="TextureProgress" parent="personagens/biscoito"]
 margin_left = 3.0
 margin_top = 65.0
@@ -1655,13 +2313,24 @@ custom_fonts/font = SubResource( 5 )
 margin_right = 480.0
 margin_bottom = 198.0
 
+[node name="personagem" type="TextureRect" parent="personagens/inimigo"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -95.0
+margin_top = -39.0
+margin_right = 213.0
+margin_bottom = 198.0
+texture = ExtResource( 39 )
+
 [node name="botao" type="TextureButton" parent="personagens/inimigo"]
 visible = false
-show_behind_parent = true
 margin_left = 159.0
-margin_top = 30.0
+margin_top = 47.0
 margin_right = 374.0
-margin_bottom = 64.0001
+margin_bottom = 81.0001
 rect_scale = Vector2( 0.75, 0.75 )
 texture_normal = ExtResource( 32 )
 
@@ -1671,20 +2340,25 @@ margin_top = 7.0
 margin_right = 209.0
 margin_bottom = 17.0
 max_value = 10.0
-value = 8.0
+value = 10.0
 texture_under = ExtResource( 35 )
 texture_progress = ExtResource( 34 )
 
-[node name="personagem" type="TextureRect" parent="personagens/inimigo"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -95.0
-margin_top = -39.0
-margin_right = 47.0
-margin_bottom = 66.0
-texture = ExtResource( 10 )
+[node name="buffs_debuffs" type="HBoxContainer" parent="personagens/inimigo/botao"]
+visible = false
+margin_left = 133.333
+margin_top = 16.0
+margin_right = 208.333
+margin_bottom = 29.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="debuff" type="TextureRect" parent="personagens/inimigo/botao/buffs_debuffs"]
+visible = false
+margin_left = 62.0
+margin_right = 75.0
+margin_bottom = 13.0
+texture = ExtResource( 42 )
 
 [node name="animation_player" type="AnimationPlayer" parent="personagens/inimigo"]
 anims/RESET = SubResource( 13 )
@@ -1703,7 +2377,7 @@ color = Color( 0, 0, 0, 0 )
 visible = false
 margin_top = 40.0
 margin_right = 480.0
-margin_bottom = 97.0
+margin_bottom = 96.9999
 rect_scale = Vector2( 1, 0.7 )
 custom_fonts/font = SubResource( 18 )
 text = "O Gambá"
@@ -1714,8 +2388,8 @@ valign = 1
 visible = false
 margin_left = 97.0
 margin_top = 87.0
-margin_right = 239.0
-margin_bottom = 192.0
+margin_right = 405.0
+margin_bottom = 324.001
 rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 10 )
 
@@ -1733,10 +2407,19 @@ one_shot = true
 [node name="animation_player" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 16 )
 anims/close_combate = SubResource( 19 )
+anims/cura_biscoito = SubResource( 30 )
+anims/cura_player = SubResource( 29 )
+anims/dano_biscoito = SubResource( 22 )
 anims/dano_inimigo = SubResource( 20 )
 anims/dano_maria = SubResource( 21 )
-anims/dano_mel = SubResource( 22 )
 anims/dano_player = SubResource( 23 )
+anims/dano_todos_aliados = SubResource( 31 )
+anims/debuff_biscoito = SubResource( 28 )
+anims/debuff_inimigo = SubResource( 26 )
+anims/debuff_maria = SubResource( 27 )
+anims/debuff_player = SubResource( 25 )
+anims/debuff_todos_aliados = SubResource( 32 )
+anims/start_combate_boss = SubResource( 24 )
 anims/start_combate_gamba = SubResource( 17 )
 
 [connection signal="pressed" from="dialog/setinha_xis" to="dialog" method="_on_setinha_xis_pressed"]
@@ -1768,9 +2451,9 @@ anims/start_combate_gamba = SubResource( 17 )
 [connection signal="focus_entered" from="personagens/maria/botao" to="personagens" method="_on_botao_focus_entered" binds= [ "maria" ]]
 [connection signal="focus_exited" from="personagens/maria/botao" to="personagens" method="_on_botao_focus_exited" binds= [ "maria" ]]
 [connection signal="pressed" from="personagens/maria/botao" to="personagens" method="_on_botao_pressed" binds= [ "maria" ]]
-[connection signal="focus_entered" from="personagens/biscoito/botao" to="personagens" method="_on_botao_focus_entered" binds= [ "mel" ]]
-[connection signal="focus_exited" from="personagens/biscoito/botao" to="personagens" method="_on_botao_focus_exited" binds= [ "mel" ]]
-[connection signal="pressed" from="personagens/biscoito/botao" to="personagens" method="_on_botao_pressed" binds= [ "mel" ]]
+[connection signal="focus_entered" from="personagens/biscoito/botao" to="personagens" method="_on_botao_focus_entered" binds= [ "biscoito" ]]
+[connection signal="focus_exited" from="personagens/biscoito/botao" to="personagens" method="_on_botao_focus_exited" binds= [ "biscoito" ]]
+[connection signal="pressed" from="personagens/biscoito/botao" to="personagens" method="_on_botao_pressed" binds= [ "biscoito" ]]
 [connection signal="focus_entered" from="personagens/inimigo/botao" to="personagens" method="_on_botao_inimigo_focus_entered"]
 [connection signal="focus_exited" from="personagens/inimigo/botao" to="personagens" method="_on_botao_inimigo_focus_exited"]
 [connection signal="pressed" from="personagens/inimigo/botao" to="personagens" method="_on_botao_pressed" binds= [ "inimigo" ]]

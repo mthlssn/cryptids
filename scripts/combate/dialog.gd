@@ -7,7 +7,8 @@ var cont = 0
 
 var voltar = false
 
-var chamar_animacao_dano = false
+var chamar_animacao_acertado = false
+var animacao = ""
 
 signal dialogo_fechado
 
@@ -47,8 +48,10 @@ func show_message() -> void:
 		
 		return
 	
-	if "dano" in _msg[cont]:
-		chamar_animacao_dano = true
+	if "###" in _msg[cont]:
+		chamar_animacao_acertado = true
+		animacao = _msg[cont]
+		cont += 1
 	
 	texto.visible_characters = 0
 	texto.bbcode_text = _msg[cont]
@@ -65,10 +68,31 @@ func _on_setinha_xis_pressed():
 		show_message()
 
 func _on_timer_timeout():
-	if chamar_animacao_dano:
+	if chamar_animacao_acertado:
+		var personagem
+		var tipo_animacao
+		
+		if "player" in animacao:
+			personagem = "player"
+		elif "maria" in animacao:
+			personagem = "maria"
+		elif "biscoito" in animacao:
+			personagem = "biscoito"
+		elif "inimigo" in animacao:
+			personagem = "inimigo"
+		elif "todos_aliados" in animacao:
+			personagem = "todos_aliados"
+		
+		if "dano" in animacao:
+			tipo_animacao = "dano"
+		elif "debuff" in animacao:
+			tipo_animacao = "debuff"
+		elif "cura" in animacao:
+			tipo_animacao = "cura"
+		
 		var animation = combate.get_node("animation_player")
-		animation.play("dano_" + combate.personagem_apertado)
-		chamar_animacao_dano = false
+		animation.play(tipo_animacao + "_" + personagem)
+		chamar_animacao_acertado = false
 		
 	if texto.visible_characters == texto.bbcode_text.length():
 		timer.stop()

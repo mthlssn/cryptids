@@ -24,6 +24,9 @@ func _ready():
 		#arrumar_casa2()
 		#Global.set_pausar(true)
 		#Global.set_mover(true)
+	
+	if Global.get_cena_atual() == 9:
+		arrumar_casa3()
 
 func set_animando():
 	if animando:
@@ -73,6 +76,8 @@ func arrumar_casa2():
 	nt.get_node("mesa_desenho1").func_interacao = false
 	nt.get_node("mesa_desenho1").dg_interacao = true
 	
+	nt.get_node("bancada_baixo1").interagido = true
+	
 	mudar_luz("noite")
 
 func arrumar_casa3():
@@ -101,6 +106,9 @@ func arrumar_casa3():
 	nt.get_node("porta_quarto_maria1").func_interacao = false
 	
 	nt.get_node("area/portal16").tipo_portal = "porta_monstro"
+	nt.reposicionar_node(nt.get_node("area/barulho"), Vector2(464, -2960), 1)
+	
+	nt.get_node("bancada_baixo1").interagido = true
 	
 	if Global.get_interacoes_maria() == 2:
 		nt.reposicionar_node(nt.get_node("desenho1"), Vector2(-16, -2904), 3)

@@ -132,6 +132,8 @@ func interacao():
 				
 				yield(Global.get_node_demo().get_node("animation_player"), "animation_finished")
 				
+				DataPlayer.salvar()
+				
 				Global.set_pausar(true)
 				Global.set_mover(true)
 				
@@ -169,6 +171,27 @@ func interacao():
 			get_parent().reposicionar_node(self, Vector2(-48, -2576),3)
 			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
 			get_parent().apagar_node(self)
+		elif name == "porta_fundos1":
+			Global.set_pausar(false)
+			Global.set_mover(false)
+			
+			var pergunta = load("res://scenes/outros/pergunta.tscn").instance()
+			Global.get_node_demo().add_child(pergunta)
+			
+			pergunta.chamar_pergunta("Deseja abrir a porta?")
+			yield(pergunta, "respondido")
+			var res = pergunta.resposta
+			
+			pergunta.queue_free()
+			
+			if res:
+				var combate = load("res://scenes/combate/combate.tscn").instance()
+				Global.get_node_demo().add_child(combate)
+				combate.chamar_combate(["player", "maria", "biscoito", "boss"])
+			else:
+				Global.set_pausar(true)
+				Global.set_mover(true)
+
 	if not interagido:
 		interagido = true
 

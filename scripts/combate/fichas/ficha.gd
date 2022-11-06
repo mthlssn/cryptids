@@ -21,6 +21,8 @@ var _crt : int
 var _dge : int
 var _res : int
 
+var _morto : bool = false
+
 #construtor
 func _init(nome, atk, def, con, spd, des):
 	_nome = nome
@@ -40,6 +42,11 @@ func gerar_aplicacoes():
 	_valores_iniciais = get_all()
 	
 	rng.randomize()
+
+func atualizar_aplicacoes():
+	_crt = 3 * _des
+	_dge = 2 * _spd + _def
+	_res = 3 * _def
 
 func gastar_energia(valor):
 	if (_eng - valor) < 0:
@@ -64,7 +71,7 @@ func verificar_desvio():
 	else:
 		return false
 
-func receber_dano(dano):
+func calcular_resistencia(dano):
 	dano = dano - ( dano * (_res / 100.0))
 	
 	var temp = dano - floor(dano)
@@ -72,13 +79,78 @@ func receber_dano(dano):
 		dano = floor(dano)
 	else:
 		dano = floor(dano) + 1
-		
+	
+	return dano #dano_recebido
+
+func receber_dano(dano):
 	_hp = _hp - dano
 	
-	return dano #dano recebido
+	if _hp < 0:
+		_hp = 0
+
+func receber_aume_hp(hp):
+	_hp = _hp + hp
+	
+	if _valores_iniciais[5] < _hp:
+		_hp = _valores_iniciais[5]
+
+func receber_aume_def(def):
+	_def = _def + def
+	
+	if _valores_iniciais[1] < _def:
+		_def = _valores_iniciais[1]
+
+func receber_aume_eng(eng):
+	_eng = _eng + eng
+	
+	if _valores_iniciais[6] < _eng:
+		_eng = _valores_iniciais[6]
+
+func receber_aume_spd(spd):
+	_spd = _spd + spd
+	
+	if _valores_iniciais[3] < _spd:
+		_spd = _valores_iniciais[3]
+
+func receber_redu_eng(eng):
+	_eng = _eng - eng
+	
+	if _eng < 0:
+		_eng = 0
+
+func receber_redu_spd(spd):
+	_spd = _spd - spd
+	
+	if _spd < 1:
+		_spd = 1
+
+func receber_redu_res(res):
+	_res = _res - res
+	
+	if _res < 0:
+		_res = 0
+
+func receber_roubo_eng(eng):
+	var temp = _eng
+	receber_redu_eng(eng)
+	return temp - _eng #energia roubada
+
+func receber_roubo_spd(spd):
+	var temp = _spd
+	receber_redu_spd(spd)
+	return temp - _spd #speed roubada
+
+func set_morto(morto):
+	_morto = morto
 
 func get_all():
 	return[_atk, _def, _con, _spd, _des, _hp, _eng, _crt, _dge, _res]
+
+func get_valores_iniciais():
+	return _valores_iniciais
+
+func get_morto():
+	return _morto
 
 func get_nome():
 	return _nome

@@ -35,6 +35,8 @@ func chamar_cutscene_acordando():
 	
 	yield(Global.get_node_demo().get_node("animation_player"), "animation_finished")
 	
+	DataPlayer.salvar()
+	
 	Global.set_pausar(true)
 	Global.set_mover(true)
 

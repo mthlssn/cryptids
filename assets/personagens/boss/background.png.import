@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-7ed18b5e36219be39053df221af6d19f.stex"
+path="res://.import/background.png-84aa08f7ec5703e36dc75a2a2029f312.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/combate/background.png"
-dest_files=[ "res://.import/background.png-7ed18b5e36219be39053df221af6d19f.stex" ]
+source_file="res://assets/personagens/boss/background.png"
+dest_files=[ "res://.import/background.png-84aa08f7ec5703e36dc75a2a2029f312.stex" ]
 
 [params]
 
