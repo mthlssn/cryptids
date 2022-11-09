@@ -110,6 +110,8 @@ func arrumar_casa3():
 	
 	nt.get_node("bancada_baixo1").interagido = true
 	
+	#nt.get_node("cama1").func_interacao = false
+	
 	if Global.get_interacoes_maria() >= 5:
 		nt.reposicionar_node(nt.get_node("desenho1"), Vector2(-16, -2904), 3)
 		

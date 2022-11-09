@@ -2107,11 +2107,11 @@ margin_left = 3.0
 margin_top = 65.0
 margin_right = 58.0
 margin_bottom = 71.0
-max_value = 15.0
-value = 1.0
+value = 100.0
 texture_under = ExtResource( 36 )
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
+texture_progress_offset = Vector2( 10, 1 )
 
 [node name="valor" type="Label" parent="personagens/player/barra_vida"]
 visible = false
@@ -2130,10 +2130,11 @@ margin_left = 3.0
 margin_top = 74.0
 margin_right = 58.0
 margin_bottom = 82.0
-value = 90.0
+value = 100.0
 texture_under = ExtResource( 37 )
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( 10, 2 )
 
 [node name="valor" type="Label" parent="personagens/player/barra_energia"]
 visible = false
@@ -2212,6 +2213,7 @@ value = 100.0
 texture_under = ExtResource( 36 )
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
+texture_progress_offset = Vector2( 10, 1 )
 
 [node name="valor" type="Label" parent="personagens/maria/barra_vida"]
 visible = false
@@ -2234,6 +2236,7 @@ value = 100.0
 texture_under = ExtResource( 37 )
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( 10, 2 )
 
 [node name="valor" type="Label" parent="personagens/maria/barra_energia"]
 visible = false
@@ -2311,6 +2314,7 @@ value = 100.0
 texture_under = ExtResource( 36 )
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 7 )
+texture_progress_offset = Vector2( 10, 1 )
 
 [node name="valor" type="Label" parent="personagens/biscoito/barra_vida"]
 visible = false
@@ -2333,6 +2337,7 @@ value = 100.0
 texture_under = ExtResource( 37 )
 texture_over = ExtResource( 12 )
 texture_progress = ExtResource( 8 )
+texture_progress_offset = Vector2( 10, 2 )
 
 [node name="valor" type="Label" parent="personagens/biscoito/barra_energia"]
 visible = false

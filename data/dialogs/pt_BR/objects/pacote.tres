@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = "pacote"
-msg_queue = [ "\"9/8 MG… P. A. Vieira…\"", "Pegou pacote." ]
-msg_queue1 = [ "Palha e artesanatos." ]
+msg_queue = [ "\"Jornal do Brasil, dia 8 de Maio de 1888, Rio de Janeiro”.", "Tem anotações em toda parte relacionando algumas coisas como “Telegramas”, “Ferrovia”, “Universidade do Rio”, “Senado” e “Sebastião Pinho”.", "Tem uma nota assinada por “P. A. Vieira”.", "Pegou pacote." ]
+msg_queue1 = [  ]

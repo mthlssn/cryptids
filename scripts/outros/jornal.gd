@@ -12,6 +12,11 @@ func chamar_jornal():
 	$animation_player.play("abri_jornal")
 	
 	yield($animation_player, "animation_finished")
+	
+	var temp = load("res://data/dialogs/pt_BR/objects/pacote.tres")
+	DialogBox.call_dialog_box(false, temp.msg_queue, null, null)
+	
+	yield(DialogBox, "dialogo_acabou")
 	$fechar.grab_focus()
 
 func _on_fechar_pressed():

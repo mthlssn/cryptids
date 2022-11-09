@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = "livros"
-msg_queue = [ "\"Portugal… Ciência… Fantasia… Imperador… Brasil?\"", "Livros e documentos variados." ]
-msg_queue1 = [ "Livros e documentos variados." ]
+msg_queue = [ "Livros e documentos variados.", "Há um pedaço de um mapa.", "Há um pino verde em cima de “São Paulo”.", "Um pino vermelho em cima de “Benedito Sales”.", "E um pino Amarelo em cima de “Rio de Janeiro”." ]
+msg_queue1 = [  ]

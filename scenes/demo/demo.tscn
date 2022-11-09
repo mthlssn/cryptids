@@ -135,7 +135,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -44, -48 ) ]
+"values": [ Vector2( -24, -36 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -2274,6 +2274,7 @@ posi_players = [ Vector2( 240, -144 ) ]
 dire_players = [ Vector2( 0, -1 ) ]
 
 [node name="area" type="Node2D" parent="tilemap"]
+visible = false
 
 [node name="portal1" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 208, -304 )
@@ -2306,7 +2307,6 @@ apagar = true
 margin_right = 240.0
 
 [node name="dg_interaja_c_arbusto" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 432, -1009 )
 script = ExtResource( 28 )
 dg_interacao = false
@@ -2316,7 +2316,6 @@ dialogo_resource = ExtResource( 27 )
 margin_bottom = 48.0
 
 [node name="cutscene_maria" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 464, -1009 )
 script = ExtResource( 32 )
 dg_interacao = false
@@ -2481,7 +2480,6 @@ tipo_portal = "floresta"
 margin_right = 144.0
 
 [node name="cutscene_portao" parent="tilemap/area" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 208, -2352 )
 script = ExtResource( 57 )
 dg_interacao = false
@@ -2614,9 +2612,6 @@ position = Vector2( -8, 8 )
 
 [node name="arbusto_grande2" parent="tilemap" instance=ExtResource( 23 )]
 position = Vector2( 208, -1008 )
-
-[node name="sprite" parent="tilemap/arbusto_grande2" index="0"]
-position = Vector2( -44, -48 )
 
 [node name="animation_player" type="AnimationPlayer" parent="tilemap/arbusto_grande2"]
 playback_speed = 0.7
@@ -3167,6 +3162,8 @@ position = Vector2( 464, -3280 )
 
 [node name="livros1" parent="tilemap" instance=ExtResource( 79 )]
 position = Vector2( 336, -3280 )
+dg_interacao = false
+func_interacao = true
 
 [node name="cama1" parent="tilemap" instance=ExtResource( 67 )]
 position = Vector2( -48, -3248 )
@@ -3222,7 +3219,6 @@ type = 1
 
 [node name="camera" parent="." instance=ExtResource( 14 )]
 position = Vector2( 240, -144 )
-zoom = Vector2( 0.8, 0.8 )
 
 [node name="top_left" parent="camera/limites1" index="0"]
 position = Vector2( 0, -288 )

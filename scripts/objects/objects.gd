@@ -119,24 +119,32 @@ func interacao():
 			pergunta.chamar_pergunta("Deseja dormir?")
 			yield(pergunta, "respondido")
 			var res = pergunta.resposta
-			
 			pergunta.queue_free()
 			
 			if res:
-				func_interacao = false
-				Global.set_pausar(false)
-				Global.set_mover(false)
+				var pergunta2 = load("res://scenes/outros/pergunta.tscn").instance()
+				Global.get_node_demo().add_child(pergunta2)
 				
-				Global.get_node_demo().get_node("animation_player").play("cutscene_acordando")
-				Global.get_node_demo().arrumar_casa3()
+				pergunta2.chamar_pergunta("Você tem certeza?")
+				yield(pergunta2, "respondido")
+				res = pergunta2.resposta
+				pergunta2.queue_free()
 				
-				yield(Global.get_node_demo().get_node("animation_player"), "animation_finished")
-				
-				DataPlayer.salvar()
-				
-				Global.set_pausar(true)
-				Global.set_mover(true)
-				
+				if res:
+					func_interacao = false
+					Global.set_pausar(false)
+					Global.set_mover(false)
+					
+					Global.get_node_demo().get_node("animation_player").play("cutscene_acordando")
+					Global.get_node_demo().arrumar_casa3()
+					
+					yield(Global.get_node_demo().get_node("animation_player"), "animation_finished")
+					
+					DataPlayer.salvar()
+					
+					Global.set_pausar(true)
+					Global.set_mover(true)
+		
 		elif name == "hack_pratos1":
 			if get_parent().get_parent().pegar_pratos:
 				get_parent().get_parent().pegar_pratos = false
@@ -166,10 +174,9 @@ func interacao():
 			Global.get_node_demo().add_child(jornal)
 			
 			jornal.chamar_jornal()
-			yield(jornal, "jornal_fechado")
 			
+			yield(DialogBox, "dialogo_acabou")
 			get_parent().reposicionar_node(self, Vector2(-48, -2576),3)
-			DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
 			get_parent().apagar_node(self)
 		elif name == "porta_fundos1":
 			Global.set_pausar(false)
@@ -191,6 +198,15 @@ func interacao():
 			else:
 				Global.set_pausar(true)
 				Global.set_mover(true)
+		elif name == "livros1":
+			if not interagido:
+				var temp = load("res://data/dialogs/pt_BR/objects/livros.tres")
+				DialogBox.call_dialog_box(false, temp.msg_queue, null, null)
+				
+			var mapa = load("res://scenes/outros/mapa.tscn").instance()
+			Global.get_node_demo().add_child(mapa)
+			
+			mapa.chamar_mapa()
 
 	if not interagido:
 		interagido = true

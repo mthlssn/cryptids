@@ -5,6 +5,7 @@ var resposta : bool
 signal respondido
 
 func chamar_pergunta(label):
+	show()
 	Global.set_mover(false)
 	Global.set_pausar(false)
 	
@@ -12,6 +13,7 @@ func chamar_pergunta(label):
 	$center/v_container/h_container/nao.grab_focus()
 	
 	yield(self, "respondido")
+		
 	hide()
 	Global.set_mover(true)
 	Global.set_pausar(true)
