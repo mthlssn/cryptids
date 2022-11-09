@@ -25,7 +25,12 @@ func selecionar_um_save(save):
 func continuar_save():
 	DataPlayer.carregar()
 	Global.set_novo_jogo(false)
-	Transition.fade(self, "res://scenes/demo/demo.tscn", 1, "fade", false)
+	
+	if Global.get_zerou():
+		Global.set_resultado_combate(true)
+		Transition.fade(self, "res://scenes/game_over/game_over.tscn", 1, "fade", false)
+	else:
+		Transition.fade(self, "res://scenes/demo/demo.tscn", 1, "fade", false)
 
 func apagar_save():
 	DataPlayer.apagar()

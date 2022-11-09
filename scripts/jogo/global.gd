@@ -30,6 +30,10 @@ var _pausar : bool
 var _players : Array
 
 var _posicao_players : Array
+
+var _resultado_combate : bool
+
+var _zerou : bool
 # ------------- funcs ----------------
 
 func _ready():
@@ -52,6 +56,8 @@ func set_valores_iniciais():
 	_pausar = true
 	_players = []
 	_posicao_players = []
+	_resultado_combate = false
+	_zerou = false
 
 #------- interacao_arvore:
 func set_interacao_arvore(interacao_arvore):
@@ -157,3 +163,17 @@ func set_posicao_players(posicao_players):
 
 func get_posicao_players():
 	return _posicao_players
+
+#------- resultado_combate:
+func set_resultado_combate(resultado_combate):
+	_resultado_combate = resultado_combate
+
+func get_resultado_combate():
+	return _resultado_combate
+
+#------- zerou:
+func set_zerou(zerou):
+	_zerou = zerou
+
+func get_zerou():
+	return _zerou

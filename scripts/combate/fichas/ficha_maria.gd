@@ -31,7 +31,6 @@ func skill1(alvo):
 	if node_combate.medos[get_per_int(alvo)] < 0:
 		node_combate.medos[get_per_int(alvo)] = 0 
 	
-	alvo.get_ficha().receber_aume_hp(4)
 	alvo.get_ficha().receber_aume_def(4)
 	alvo.get_ficha().receber_aume_spd(4)
 	

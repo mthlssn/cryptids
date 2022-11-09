@@ -50,8 +50,12 @@ func chamar_personagens(tipo_alvo, perso):
 			
 			if perso == "player": 
 				$maria/botao.grab_focus()
+				if personagens_mortos[1]:
+					 $biscoito/botao.grab_focus()
 			else:
 				$player/botao.grab_focus()
+				if personagens_mortos[0]:
+					 $biscoito/botao.grab_focus()
 
 func montar_personagens(personagens):
 	persos = personagens.duplicate()

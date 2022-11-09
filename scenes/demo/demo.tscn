@@ -117,7 +117,7 @@
 [ext_resource path="res://assets/cenarios/cen7/vulto/3.png" type="Texture" id=115]
 [ext_resource path="res://assets/cenarios/cen7/vulto/4.png" type="Texture" id=116]
 [ext_resource path="res://assets/cenarios/cen7/vulto/2.png" type="Texture" id=117]
-[ext_resource path="res://assets/personagens/gamba/normal.png" type="Texture" id=118]
+[ext_resource path="res://assets/cenarios/cen9/mostro_janela.png" type="Texture" id=118]
 [ext_resource path="res://assets/cenarios/cen7/porta_quato.png" type="Texture" id=119]
 [ext_resource path="res://scenes/objects/porta_quarto.tscn" type="PackedScene" id=120]
 [ext_resource path="res://scenes/objects/porta_sala.tscn" type="PackedScene" id=121]
@@ -152,7 +152,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -44, -48 ), Vector2( -41, -48 ), Vector2( -45, -48 ), Vector2( -48, -49 ), Vector2( -45, -48 ), Vector2( -48, -48 ), Vector2( -45, -48 ), Vector2( -42, -48 ), Vector2( -44, -48 ) ]
+"values": [ Vector2( -24, -36 ), Vector2( -24, -40 ), Vector2( -28, -40 ), Vector2( -28, -36 ), Vector2( -32, -36 ), Vector2( -28, -36 ), Vector2( -24, -36 ), Vector2( -24, -40 ), Vector2( -24, -36 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -1110,10 +1110,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.7, 4.5, 5.5 ),
+"times": PoolRealArray( 0, 0.1, 0.7, 4.7, 5.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 280, 80 ), Vector2( 254, 68 ), Vector2( 241, 63 ), Vector2( 241, 63 ), Vector2( 272, 94 ) ]
+"values": [ Vector2( 280, 80 ), Vector2( 254, 68 ), Vector2( 257, 63 ), Vector2( 241, 63 ), Vector2( 202, 73 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("tilemap/players:visible")
@@ -2198,18 +2198,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 86 ), ExtResource( 114 ), ExtResource( 117 ), ExtResource( 115 ), ExtResource( 116 ), ExtResource( 86 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("camera:zoom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ) ]
-}
 
 [node name="demo" type="Node2D"]
 script = ExtResource( 21 )
@@ -2273,7 +2261,7 @@ texture = ExtResource( 102 )
 modulate = Color( 0, 0, 0, 1 )
 show_behind_parent = true
 position = Vector2( 280, 80 )
-scale = Vector2( 0.366197, 0.385715 )
+scale = Vector2( 1.5, 1 )
 texture = ExtResource( 118 )
 
 [node name="tilemap" parent="." instance=ExtResource( 1 )]
@@ -2286,7 +2274,6 @@ posi_players = [ Vector2( 240, -144 ) ]
 dire_players = [ Vector2( 0, -1 ) ]
 
 [node name="area" type="Node2D" parent="tilemap"]
-visible = false
 
 [node name="portal1" parent="tilemap/area" instance=ExtResource( 18 )]
 position = Vector2( 208, -304 )
@@ -2319,6 +2306,7 @@ apagar = true
 margin_right = 240.0
 
 [node name="dg_interaja_c_arbusto" parent="tilemap/area" instance=ExtResource( 18 )]
+visible = false
 position = Vector2( 432, -1009 )
 script = ExtResource( 28 )
 dg_interacao = false
@@ -2328,6 +2316,7 @@ dialogo_resource = ExtResource( 27 )
 margin_bottom = 48.0
 
 [node name="cutscene_maria" parent="tilemap/area" instance=ExtResource( 18 )]
+visible = false
 position = Vector2( 464, -1009 )
 script = ExtResource( 32 )
 dg_interacao = false
@@ -2492,6 +2481,7 @@ tipo_portal = "floresta"
 margin_right = 144.0
 
 [node name="cutscene_portao" parent="tilemap/area" instance=ExtResource( 18 )]
+visible = false
 position = Vector2( 208, -2352 )
 script = ExtResource( 57 )
 dg_interacao = false
@@ -2624,6 +2614,9 @@ position = Vector2( -8, 8 )
 
 [node name="arbusto_grande2" parent="tilemap" instance=ExtResource( 23 )]
 position = Vector2( 208, -1008 )
+
+[node name="sprite" parent="tilemap/arbusto_grande2" index="0"]
+position = Vector2( -44, -48 )
 
 [node name="animation_player" type="AnimationPlayer" parent="tilemap/arbusto_grande2"]
 playback_speed = 0.7
@@ -3229,6 +3222,7 @@ type = 1
 
 [node name="camera" parent="." instance=ExtResource( 14 )]
 position = Vector2( 240, -144 )
+zoom = Vector2( 0.8, 0.8 )
 
 [node name="top_left" parent="camera/limites1" index="0"]
 position = Vector2( 0, -288 )

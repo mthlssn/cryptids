@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://assets/combate/base_combate.png" type="Texture" id=1]
 [ext_resource path="res://scripts/combate/combate.gd" type="Script" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://assets/personagens/gamba/background.png" type="Texture" id=40]
 [ext_resource path="res://assets/combate/medo1.png" type="Texture" id=41]
 [ext_resource path="res://assets/combate/debuff.png" type="Texture" id=42]
+[ext_resource path="res://assets/combate/barra_vida_inimigo_escura.png" type="Texture" id=43]
 
 [sub_resource type="DynamicFont" id=8]
 size = 7
@@ -624,6 +625,18 @@ tracks/31/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 159, 47 ) ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("personagens/inimigo/botao/barra_vida:texture_over")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -1389,6 +1402,18 @@ tracks/23/keys = {
 "update": 0,
 "values": [ Vector2( 86, 1 ) ]
 }
+tracks/24/type = "value"
+tracks/24/path = NodePath("personagens/inimigo/botao/barra_vida:texture_over")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 43 ) ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "start_combate_gamba"
@@ -1644,7 +1669,7 @@ tracks/20/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.686, 0.686 ) ]
+"values": [ Vector2( 1, 0.83 ) ]
 }
 tracks/21/type = "value"
 tracks/21/path = NodePath("personagens/inimigo/personagem:rect_size")
@@ -1694,6 +1719,18 @@ tracks/24/keys = {
 "update": 0,
 "values": [ Vector2( 159, 47 ) ]
 }
+tracks/25/type = "value"
+tracks/25/path = NodePath("personagens/inimigo/botao/barra_vida:texture_over")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
 
 [node name="combate" type="CanvasLayer"]
 pause_mode = 2
@@ -1701,8 +1738,8 @@ script = ExtResource( 2 )
 
 [node name="background" type="TextureRect" parent="."]
 visible = false
-margin_right = 700.0
-margin_bottom = 427.0
+margin_right = 480.0
+margin_bottom = 288.0
 texture = ExtResource( 38 )
 
 [node name="base_combate" type="NinePatchRect" parent="."]
@@ -2319,14 +2356,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -95.0
-margin_top = -39.0
-margin_right = 213.0
-margin_bottom = 198.0
+margin_left = 145.0
+margin_top = 60.0
+margin_right = 625.0
+margin_bottom = 348.0
 texture = ExtResource( 39 )
 
 [node name="botao" type="TextureButton" parent="personagens/inimigo"]
-visible = false
 margin_left = 159.0
 margin_top = 47.0
 margin_right = 374.0
@@ -2388,8 +2424,8 @@ valign = 1
 visible = false
 margin_left = 97.0
 margin_top = 87.0
-margin_right = 405.0
-margin_bottom = 324.001
+margin_right = 577.001
+margin_bottom = 375.0
 rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 10 )
 

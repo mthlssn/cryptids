@@ -5,7 +5,6 @@ var _inventario : Array
 #item = nome, descrição, alvo
 
 func _ready():
-	add_item_inventario(["Desenho", "- Desenho da Maria.\n\n- Um desenho.\n\n- só q da Maria.", "todos_aliados"])
 	pass
 
 func get_inventario():

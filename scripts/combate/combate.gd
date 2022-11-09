@@ -20,7 +20,7 @@ var _ordem : Array
 
 var inimigo
 
-var medos = [3, 0, 0]
+var medos = [0, 0, 0]
 var debuff = false
 
 onready var node_a := $acoes
@@ -31,7 +31,7 @@ onready var node_p := $personagens
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	chamar_combate(["player", "boss"])
+	#chamar_combate(["player", "boss"])
 	#chamar_combate(["player", "gamba"])
 	#chamar_combate(["player", "maria", "biscoito", "boss"])
 	pass
@@ -50,7 +50,7 @@ func _input(event):
 				node_p.emitir_sinal_per()
 
 func chamar_combate(perso):
-	#Global.get_node_demo().get_tree().paused = true
+	Global.get_node_demo().get_tree().paused = true
 	Global.set_pausar(false)
 	
 	rng.randomize()
@@ -63,6 +63,7 @@ func chamar_combate(perso):
 			$animation_player.play("start_combate_gamba")
 		"boss":
 			$animation_player.play("start_combate_boss")
+			medos = [1,1,1]
 	
 	personagens.pop_back()
 	var aliados = personagens.duplicate()
@@ -95,13 +96,6 @@ func chamar_combate(perso):
 	$timer.start()
 
 func rodar_combate():
-	print("ANTES DO TURNO")
-	for i in personagens.size():
-		print("[", personagens[i].get_ficha().get_nome(), "]")
-		print(personagens[i].get_ficha().get_all())
-		print(personagens[i].get_ficha().get_valores_iniciais())
-		print()
-		
 	var jogador = null
 	
 	_vez += 1
@@ -246,19 +240,20 @@ func rodar_combate():
 				"fugir":
 					var cont = 0
 					
-					for i in personagens.size():
-						cont = cont + personagens[i].get_ficha().get_atri_apli("spd")
+					for i in _ordem.size():
+						cont = cont + _ordem[i].get_ficha().get_atri_apli("spd")
 					
-					var spd_ini = personagens[personagens.size() - 1].get_ficha().get_atri_apli("spd")
+					var spd_ini = _ordem[0].get_ficha().get_atri_apli("spd")
 					cont = cont - spd_ini
 					
-					var media = cont / (personagens.size() - 1)
+					var media = cont / (_ordem.size() - 1)
 					
 					tela = "dialogo"
 					if media >= spd_ini:
 						node_d.chamar_dialogo(["Corra, não é necessário enfrentar seus >!)@#_!"])
 						yield(node_d, "dialogo_fechado")
 						_combate_finalizado = true
+						Global.set_resultado_combate(true)
 					else:
 						node_d.chamar_dialogo(["Ele não vai te deixar escapar!"])
 						yield(node_d, "dialogo_fechado")
@@ -266,40 +261,62 @@ func rodar_combate():
 					_node_vez = null
 					set_null()
 	
-	print("DEPOIS DO TURNO")
-	for i in personagens.size():
-		print("[", personagens[i].get_ficha().get_nome(), "]")
-		print(personagens[i].get_ficha().get_all())
-		print(personagens[i].get_ficha().get_valores_iniciais())
-		print()
-	
 	node_p.atualizar_bar_vida_energia()
 	node_p.atualizar_buff_debuff(medos, debuff)
 	
-	resolver_mortes()
+	for i in personagens.size() - 1:
+		if personagens[i].get_ficha().get_atri_apli("hp") <= 0:
+			var nome
+			match i:
+				0:
+					nome = "player"
+				1:
+					nome = "maria"
+				2:
+					nome = "biscoito"
+			
+			node_p.set_morto(nome)
+			
+			for j in _ordem.size():
+				if _ordem[j].get_ficha().get_nome() == personagens[i].get_ficha().get_nome():
+					_ordem.pop_at(j)
+					
+					node_d.chamar_dialogo([personagens[i].get_ficha().get_nome() + " perdeu a consciência."])
+					yield(node_d, "dialogo_fechado")
+					break
+			
+			personagens[i].get_ficha().set_morto(true)
 	
 	if _ordem.size() == 1:
 		_combate_finalizado = true
+		Global.set_resultado_combate(false)
 	
 	$timer.start()
 
 func finalizar_combate():
-	$animation_player.play("close_combate")
-	yield($animation_player, "animation_finished")
-	
-	Global.get_node_demo().get_tree().paused = false
-	Global.set_pausar(true)
-	
 	if personagens[personagens.size()-1].get_ficha().get_nome() == "Gambá":
+		$animation_player.play("close_combate")
+		yield($animation_player, "animation_finished")
+		
+		Global.get_node_demo().get_tree().paused = false
+		Global.set_pausar(true)
+		
 		var nd = Global.get_node_demo() #node_demo
 		
 		nd.get_node("animation_player").play("gamba")
 		nd.get_node("tilemap/arbusto_grande2").dg_interacao = true
 		nd.get_node("tilemap/arbusto_grande2").func_interacao = false
+		
+		queue_free()
+		
 	if personagens[personagens.size()-1].get_ficha().get_nome() == "EU ODEIO O DINIZ":
-		print("vc ganhou NADAAAAA")
-	
-	queue_free()
+		Global.get_node_demo().get_tree().paused = false
+		if Global.get_resultado_combate():
+			#Global.set_zerou(true)
+			#DataPlayer.salvar()
+			pass
+			
+		Transition.fade(self, "res://scenes/game_over/game_over.tscn", 1, "fade", false)
 
 func gerar_ordem(perso):
 	var _array_spd : Array
@@ -325,30 +342,6 @@ func gerar_ordem(perso):
 				perso[i] = perso[j]
 				perso[j] = temp
 	return perso
-
-func resolver_mortes():
-	for i in personagens.size() - 1:
-		if personagens[i].get_ficha().get_atri_apli("hp") <= 0:
-			var nome
-			match i:
-				0:
-					nome = "player"
-				1:
-					nome = "maria"
-				2:
-					nome = "biscoito"
-			
-			node_p.set_morto(nome)
-			
-			for j in _ordem.size():
-				if _ordem[j].get_ficha().get_nome() == personagens[i].get_ficha().get_nome():
-					_ordem.pop_at(j)
-					
-					node_d.chamar_dialogo([personagens[i].get_ficha().get_nome() + " perdeu a consciência."])
-					yield(node_d, "dialogo_fechado")
-					break
-			
-			personagens[i].get_ficha().set_morto(true)
 
 func set_null():
 	personagem_apertado = null

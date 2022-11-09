@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="cryptids"
-run/main_scene="res://scenes/combate/combate.tscn"
+run/main_scene="res://scenes/start_scene/start_scene.tscn"
 config/use_custom_user_dir=true
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )

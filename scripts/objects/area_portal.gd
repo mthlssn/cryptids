@@ -42,6 +42,7 @@ func func_transicao():
 			distancia = 192
 		"porta_monstro":
 			distancia = 192
+			Global.get_node_demo().get_node("camera").zoom = Vector2(0.8, 0.8)
 			yield(Transition, "transicao_acabou")
 			Global.get_node_demo().get_node("animation_player").play("vulto_cena7")
 			tipo_portal = "porta"

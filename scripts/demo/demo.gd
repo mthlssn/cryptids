@@ -110,7 +110,7 @@ func arrumar_casa3():
 	
 	nt.get_node("bancada_baixo1").interagido = true
 	
-	if Global.get_interacoes_maria() == 2:
+	if Global.get_interacoes_maria() >= 5:
 		nt.reposicionar_node(nt.get_node("desenho1"), Vector2(-16, -2904), 3)
 		
 		nt.reposicionar_node(nt.get_node("biscoito"), Vector2(-16, -2800), 4)
@@ -118,7 +118,6 @@ func arrumar_casa3():
 		
 		nt.get_node("porta_quarto_maria1").dialogo_resource = load("res://data/dialogs/pt_BR/cena_7/porta_quarto_maria.tres")
 		nt.get_node("porta_quarto_maria1").dr_personagem = false
-		
 	else:
 		nt.get_node("biscoito").interaction = load("res://data/dialogs/pt_BR/biscoito/biscoito_bravo.tres")
 		nt.reposicionar_node(nt.get_node("biscoito"), Vector2(-16, -2904), 4)

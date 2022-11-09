@@ -9,7 +9,7 @@ type = 0
 dg_interacao = false
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 19, -15 )
+position = Vector2( 1, -8 )
 texture = ExtResource( 2 )
 
 [node name="cor" type="ColorRect" parent="."]

@@ -187,7 +187,7 @@ func interacao():
 			if res:
 				var combate = load("res://scenes/combate/combate.tscn").instance()
 				Global.get_node_demo().add_child(combate)
-				combate.chamar_combate(["player", "maria", "biscoito", "boss"])
+				combate.chamar_combate(["player", "boss"])
 			else:
 				Global.set_pausar(true)
 				Global.set_mover(true)

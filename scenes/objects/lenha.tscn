@@ -11,7 +11,7 @@ dialogo_resource = ExtResource( 3 )
 dr_personagem = true
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( -16, -32 )
+position = Vector2( -8, -16 )
 texture = ExtResource( 1 )
 centered = false
 

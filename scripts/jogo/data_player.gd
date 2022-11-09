@@ -181,7 +181,8 @@ func _save_data_dictionary():
 		"nodes_apagados" : Global.get_nodes_apagados(),
 		"nome_player" : Global.get_nome_player(),
 		"players" : Global.get_players(),
-		"posicao_players" : Global.get_posicao_players(), 
+		"posicao_players" : Global.get_posicao_players(),
+		"zerou" : Global.get_zerou()
 	}
 
 func _load_data_dictionary():
@@ -194,6 +195,7 @@ func _load_data_dictionary():
 	Global.set_nome_player(data_dictionary["nome_player"])
 	Global.set_players(data_dictionary["players"])
 	Global.set_posicao_players(data_dictionary["posicao_players"])
+	Global.set_zerou(data_dictionary["zerou"])
 
 func set_game_binds(): 
 	for key in _keybinds.keys():

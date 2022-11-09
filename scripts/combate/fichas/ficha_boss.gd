@@ -90,13 +90,19 @@ func skill3():
 	var spd_roubada = 0
 	
 	for i in personagens.size() - 1:
+		medos[i] += 1
+	
+		if medos[i] > 3:
+			medos[i] = 3
+		
 		eng_roubada = eng_roubada + personagens[i].get_ficha().receber_roubo_eng(2 * medos[i])
 		spd_roubada = spd_roubada + personagens[i].get_ficha().receber_roubo_spd(1 * medos[i])
+	
+	node_combate.medos = medos.duplicate()
 	
 	_ficha.receber_aume_eng(eng_roubada)
 	_ficha.receber_aume_spd(spd_roubada)
 	
-	node_combate.set_personagem_apertado("player")
 	node_combate.set_node_vez(null)
 	return texto
 
@@ -118,7 +124,7 @@ func skill4():
 		danos[i] = personagens[i].get_ficha().calcular_resistencia(dano)
 		personagens[i].get_ficha().receber_dano(danos[i])
 	
-	if personagens.size() > 1:
+	if personagens.size() > 2:
 		texto = [
 			"????? ???????? revela ???????? impronunciáveis.",
 			"Todos sentem sua mente borbulhar.",

@@ -19,9 +19,6 @@ var skills_alvo : Array = ["inimigo", "inimigo", "aliados"]
 func abrir_ficha(combate):
 	node_combate = combate
 	
-	Global.set_nome_player("EU ODEIO A LAVÍNIA")
-	#Global.set_nome_player("dano")
-	
 	_ficha = Ficha.new(Global.get_nome_player(), 4, 5, 6, 7, 3)
 	_ficha.gerar_aplicacoes()
 
