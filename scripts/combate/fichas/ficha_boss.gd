@@ -5,13 +5,13 @@ var primeira_vez = true
 
 var node_combate
 
-var _fala = ["O bosta avança da porta"]
+var _fala = [">!)@#-!& avança da porta"]
 
 var acoes = ["chamado_do_vazio", "observar", "exaurir", "pronunciar"]
 
 func abrir_ficha(combate):
 	node_combate = combate
-	_ficha = Ficha.new("EU ODEIO O DINIZ", 6, 10, 13, 16, 5)
+	_ficha = Ficha.new(">!)@#-!&", 6, 10, 13, 16, 5)
 	_ficha.gerar_aplicacoes()
 
 func get_ficha():
@@ -122,7 +122,10 @@ func skill4():
 		var dano = (_ficha.get_atri_apli("atk") / 2) * medos[i]
 		
 		danos[i] = personagens[i].get_ficha().calcular_resistencia(dano)
+		
+		danos[i] = personagens[i].get_ficha().get_atri_apli("hp")
 		personagens[i].get_ficha().receber_dano(danos[i])
+		danos[i] = danos[i] - personagens[i].get_ficha().get_atri_apli("hp")
 	
 	if personagens.size() > 2:
 		texto = [

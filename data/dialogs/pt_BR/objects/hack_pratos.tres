@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = "hack_pratos"
-msg_queue = [ "Pegou pratos.", "Pratos e papéis.", "Um hack." ]
+msg_queue = [ "Pratos e papéis.", "Um hack.", "Pegou PRATOS." ]
 msg_queue1 = [ "Um hack." ]

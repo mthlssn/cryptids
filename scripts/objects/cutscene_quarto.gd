@@ -23,13 +23,17 @@ func dialogo():
 func pausar():
 	na.stop(false)
 
+func pausar_2():
+	Global.set_pausar(false)
+	Global.set_mover(false)
+
 func iniciou():
 	na.play("cutscene_quarto")
 	
 func chamar_cutscene_acordando():
 	Global.set_pausar(false)
 	Global.set_mover(false)
-				
+	
 	Global.get_node_demo().get_node("animation_player").play("cutscene_acordando")
 	Global.get_node_demo().arrumar_casa3()
 	

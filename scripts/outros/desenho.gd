@@ -32,4 +32,3 @@ func _on_fechar_pressed():
 	Global.set_pausar(true)
 	
 	emit_signal("desenho_fechado")
-	queue_free()

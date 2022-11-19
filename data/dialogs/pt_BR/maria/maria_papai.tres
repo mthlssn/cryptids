@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nome_dr = "maria_papai"
 nome = [ "Maria", "Maria" ]
-msg_queue = [ " Meu papai também disse pra ficar longe da floresta.", "Quando ele sair do porão ele vai ficar muito bravo!" ]
+msg_queue = [ "Meu papai também disse pra ficar longe da floresta.", "Quando ele sair do porão ele vai ficar muito bravo!" ]
 imagens = [ "maria_normal", "maria_triste" ]

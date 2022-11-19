@@ -181,4 +181,3 @@ func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"gamba":
 			apagar_node(get_node("gamba"))
-			apagar_node(get_node("area/dg_interaja_c_arbusto"))

@@ -74,6 +74,7 @@ func interacao():
 				Global.set_girassol(true)
 				var maria_girassol = load("res://data/dialogs/pt_BR/maria/maria_girassol.tres")
 				DialogBox.call_dialog_box(true, maria_girassol.msg_queue, maria_girassol.nome, maria_girassol.imagens)
+				Global.set_interacoes_maria(Global.get_interacoes_maria() + 1)
 			else:
 				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
 		elif self.name == "arvore2":
@@ -82,7 +83,6 @@ func interacao():
 			if direcoes[direcoes.size()-1] == Vector2(0, 1) and Global.get_players().size() > 1 and not Global.get_interacao_arvore():
 				var maria_esconde_esconde = load("res://data/dialogs/pt_BR/maria/maria_esconde_esconde.tres")
 				DialogBox.call_dialog_box(true, maria_esconde_esconde.msg_queue, maria_esconde_esconde.nome, maria_esconde_esconde.imagens)
-				Global.set_interacoes_maria(Global.get_interacoes_maria() + 1)
 				Global.set_interacao_arvore(true)
 			else:
 				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
@@ -107,6 +107,11 @@ func interacao():
 			dg_interacao = true
 			
 			Global.get_node_demo().pegou_desenho = true
+			
+			yield(desenho, "desenho_fechado")
+			DialogBox.call_dialog_box(false, ["Pegou DESENHO."], null, null)
+			
+			desenho.queue_free()
 			
 		elif name == "cama1":
 			yield(DialogBox, "dialogo_acabou")
@@ -163,6 +168,11 @@ func interacao():
 			Inventario.add_item_inventario(["Desenho", "- Desenho da Maria.\n\n- Um desenho.\n\n- só q da Maria.", "todos_aliados"])
 			
 			yield(desenho, "desenho_fechado")
+			
+			DialogBox.call_dialog_box(false, ["Pegou DESENHO."], null, null)
+			
+			desenho.queue_free()
+			
 			get_parent().reposicionar_node(self, Vector2(-48, -2576),3)
 			get_parent().apagar_node(self)
 		elif name == "cutscene_quarto1":
@@ -207,6 +217,12 @@ func interacao():
 			Global.get_node_demo().add_child(mapa)
 			
 			mapa.chamar_mapa()
+		elif name == "espinhos1":
+			if not interagido:
+				var maria_espinhos = load("res://data/dialogs/pt_BR/maria/maria_espinhos.tres")
+				DialogBox.call_dialog_box(true, maria_espinhos.msg_queue, maria_espinhos.nome, maria_espinhos.imagens)
+			else:
+				DialogBox.call_dialog_box(false, dialogo_resource.msg_queue, null, null)
 
 	if not interagido:
 		interagido = true

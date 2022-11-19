@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://assets/combate/base_combate.png" type="Texture" id=1]
 [ext_resource path="res://scripts/combate/combate.gd" type="Script" id=2]
@@ -42,7 +42,6 @@
 [ext_resource path="res://assets/personagens/gamba/background.png" type="Texture" id=40]
 [ext_resource path="res://assets/combate/medo1.png" type="Texture" id=41]
 [ext_resource path="res://assets/combate/debuff.png" type="Texture" id=42]
-[ext_resource path="res://assets/combate/barra_vida_inimigo_escura.png" type="Texture" id=43]
 
 [sub_resource type="DynamicFont" id=8]
 size = 7
@@ -638,6 +637,42 @@ tracks/32/keys = {
 "update": 0,
 "values": [ null ]
 }
+tracks/33/type = "value"
+tracks/33/path = NodePath("personagens/inimigo/botao/barra_vida:texture_progress")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("personagens/inimigo/botao/barra_vida:texture_under")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("personagens/inimigo/botao:texture_normal")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 32 ) ]
+}
 
 [sub_resource type="Animation" id=19]
 resource_name = "close_combate"
@@ -1133,7 +1168,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5, 0.88, 2.1, 2.2, 2.3, 3.5, 3.6 ),
+"times": PoolRealArray( 0.5, 1.42, 2.1, 2.2, 2.3, 3.5, 3.6 ),
 "transitions": PoolRealArray( 1, 1, 4.28709, 0.203063, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -1157,10 +1192,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.5, 2.1, 2.3, 2.9, 3.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.5, 2.19, 3.19 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ), Vector2( 1, 0.83 ) ]
+"values": [ Vector2( 2, 1.5 ), Vector2( 2, 1.5 ), Vector2( 1, 0.75 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("inimigo:rect_position")
@@ -1169,10 +1204,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.5, 2.3, 2.9 ),
+"times": PoolRealArray( 0.5, 2.19, 3.19 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 9, 87 ), Vector2( 9, 87 ), Vector2( 86, 1 ) ]
+"values": [ Vector2( -241, 13 ), Vector2( -241, 13 ), Vector2( 0, -2 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("nome_inimigo:rect_position")
@@ -1181,10 +1216,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.5, 2.3, 2.9, 3.5, 3.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.5, 2.2, 3.18 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 40 ), Vector2( 0, 40 ), Vector2( 0, 30 ), Vector2( 0, 30 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 40 ), Vector2( 0, 40 ), Vector2( 0, 0 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("cor:rect_rotation")
@@ -1301,10 +1336,10 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.5, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true, true ]
+"values": [ false, true ]
 }
 tracks/16/type = "value"
 tracks/16/path = NodePath("nome_inimigo:text")
@@ -1316,7 +1351,7 @@ tracks/16/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "O bosta" ]
+"values": [ ">!)@#-!&" ]
 }
 tracks/17/type = "value"
 tracks/17/path = NodePath("inimigo:texture")
@@ -1385,10 +1420,10 @@ tracks/22/loop_wrap = true
 tracks/22/imported = false
 tracks/22/enabled = true
 tracks/22/keys = {
-"times": PoolRealArray( 0.5, 2.91, 3.51 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.83 ) ]
+"values": [ Vector2( 1, 0.75 ) ]
 }
 tracks/23/type = "value"
 tracks/23/path = NodePath("personagens/inimigo/personagem:rect_position")
@@ -1400,10 +1435,10 @@ tracks/23/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 86, 1 ) ]
+"values": [ Vector2( 0, -2 ) ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("personagens/inimigo/botao/barra_vida:texture_over")
+tracks/24/path = NodePath("personagens/inimigo/botao:rect_position")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -1411,8 +1446,32 @@ tracks/24/enabled = true
 tracks/24/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 159, 13 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("personagens/inimigo/botao/barra_vida:texture_progress")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 43 ) ]
+"values": [ null ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("personagens/inimigo/botao/barra_vida:texture_under")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -1720,7 +1779,7 @@ tracks/24/keys = {
 "values": [ Vector2( 159, 47 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("personagens/inimigo/botao/barra_vida:texture_over")
+tracks/25/path = NodePath("personagens/inimigo/botao/barra_vida:texture_under")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -1729,7 +1788,31 @@ tracks/25/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ null ]
+"values": [ ExtResource( 35 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("personagens/inimigo/botao/barra_vida:texture_progress")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 34 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("personagens/inimigo/botao:texture_normal")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 32 ) ]
 }
 
 [node name="combate" type="CanvasLayer"]
@@ -2053,8 +2136,9 @@ margin_right = 13.0
 margin_bottom = 203.0
 
 [node name="botao" type="TextureButton" parent="personagens/player"]
+margin_top = 1.0
 margin_right = 64.0
-margin_bottom = 60.0
+margin_bottom = 61.0
 mouse_filter = 2
 button_mask = 0
 texture_normal = ExtResource( 9 )
@@ -2155,8 +2239,9 @@ margin_right = 82.0
 margin_bottom = 203.0
 
 [node name="botao" type="TextureButton" parent="personagens/maria"]
+margin_top = 1.0
 margin_right = 64.0
-margin_bottom = 60.0
+margin_bottom = 61.0
 mouse_filter = 2
 button_mask = 0
 texture_normal = ExtResource( 9 )
@@ -2257,8 +2342,9 @@ margin_right = 151.0
 margin_bottom = 203.0
 
 [node name="botao" type="TextureButton" parent="personagens/biscoito"]
+margin_top = 1.0
 margin_right = 64.0
-margin_bottom = 60.0
+margin_bottom = 61.0
 mouse_filter = 2
 button_mask = 0
 texture_normal = ExtResource( 9 )
@@ -2371,7 +2457,7 @@ texture = ExtResource( 39 )
 margin_left = 159.0
 margin_top = 47.0
 margin_right = 374.0
-margin_bottom = 81.0001
+margin_bottom = 81.0
 rect_scale = Vector2( 0.75, 0.75 )
 texture_normal = ExtResource( 32 )
 
@@ -2382,8 +2468,6 @@ margin_right = 209.0
 margin_bottom = 17.0
 max_value = 10.0
 value = 10.0
-texture_under = ExtResource( 35 )
-texture_progress = ExtResource( 34 )
 
 [node name="buffs_debuffs" type="HBoxContainer" parent="personagens/inimigo/botao"]
 visible = false
@@ -2418,7 +2502,7 @@ color = Color( 0, 0, 0, 0 )
 visible = false
 margin_top = 40.0
 margin_right = 480.0
-margin_bottom = 96.9999
+margin_bottom = 97.0002
 rect_scale = Vector2( 1, 0.7 )
 custom_fonts/font = SubResource( 18 )
 text = "O Gambá"
@@ -2429,7 +2513,7 @@ valign = 1
 visible = false
 margin_left = 97.0
 margin_top = 87.0
-margin_right = 577.001
+margin_right = 577.0
 margin_bottom = 375.0
 rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 10 )

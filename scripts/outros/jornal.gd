@@ -17,6 +17,8 @@ func chamar_jornal():
 	DialogBox.call_dialog_box(false, temp.msg_queue, null, null)
 	
 	yield(DialogBox, "dialogo_acabou")
+	Global.set_mover(false)
+	Global.set_pausar(false)
 	$fechar.grab_focus()
 
 func _on_fechar_pressed():

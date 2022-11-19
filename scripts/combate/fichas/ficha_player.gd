@@ -37,8 +37,8 @@ func skill1(alvo):
 
 	match alvo.get_ficha().get_nome():
 		"Gambá":
-			texto = [_ficha.get_nome() + " observa o inimigo...", "Uma criatura frágil mas nem tão indefesa, está tentando se proteger de nós."]
-		"EU ODEIO O DINIZ":
+			texto = [_ficha.get_nome() + " observa o inimigo...","Uma criatura frágil mas nem tão indefesa","Está tentando se proteger de nós."]
+		">!)@#-!&":
 			texto = [_ficha.get_nome() + " observa o inimigo...", "broxa"]
 	
 	node_combate.set_node_vez(null)
@@ -55,7 +55,7 @@ func skill2(alvo):
 		node_combate.set_node_vez(self)
 		return ["Você está muito cansado(a)."]
 	
-	if alvo.get_ficha().get_nome() == "EU ODEIO O DINIZ":
+	if alvo.get_ficha().get_nome() == ">!)@#-!&":
 		texto = ["O ataque se perde na escuridão.", " "," "," "]
 		cont = 0
 		mudar_alvo = true
@@ -120,7 +120,7 @@ func get_per(alvo):
 	
 	if temp == Global.get_nome_player():
 		return "player"
-	elif temp == "EU ODEIO O DINIZ":
+	elif temp == ">!)@#-!&":
 		return "inimigo"
 	elif temp == "Gambá":
 		return "inimigo"

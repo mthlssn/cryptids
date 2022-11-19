@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-nome_dr = ""
-nome = [ "Biscoito", "Maria", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "Maria", "Maria", "Biscoito", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria" ]
-msg_queue = [ "AU! AU!", "Biscoito! Calma, vamos pra casa, papai vai ficar bravo!", "Ah! Oi! :)", "...", "Você também tá perdido?", "...", "Hm... você é bem quieto. Qual é seu nome?", "...", "A gente acabou vindo parar aqui por engano.", "Eu sou a Maria e ele é o Biscoito.", "Ele é muito legal sempre, mas tá estranho hoje :(", "snif snif…", "Como você chama?", "...", "Você fala?", "...", "func_chamar_input()", "Já sei! Vou te chamar de {nome_player}! É um ótimo nome, não é?", "...", "Vamos, vou nos tirar dessa enrascada!" ]
-imagens = [ "biscoito_normal", "maria_normal", "maria_feliz", "player_normal", "maria_normal", "player_normal", "maria_pensante", "player_normal", "maria_normal", "maria_feliz", "maria_triste", "biscoito_normal", "maria_pensante", "player_normal", "maria_pensante", "player_normal", "maria_normal", "player_normal", "maria_feliz" ]
+nome_dr = "cutscene_maria"
+nome = [ "Maria", "Maria", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "Maria", "Maria", "Maria", "Maria", "Biscoito", "Maria", "{nome_player}", "Maria", "{nome_player}", "Maria", "Maria", "{nome_player}", "Maria" ]
+msg_queue = [ "Biscoito calma!", "Vamos pra casa, papai vai ficar bravo!", "Ah! Oi!", "...", "Você também está perdido?", "...", "Hm... Você é bem quieto.", "Qual é seu nome?", "A gente acabou vindo parar aqui por engano.", "Eu sou a Maria e ele é o Biscoito.", "Ele é muito legal sempre, mas tá estranho hoje...", "sniff sniff...", "Como você chama?", "...", "Você fala?", "...", "func_chamar_input()", "Já sei, vou te chamar de {nome_player}!", "É um ótimo nome, não é?", "...", "Vamos, vou nos tirar dessa enrascada!" ]
+imagens = [ "maria_triste", "maria_normal", "maria_feliz", "player_normal", "maria_normal", "player_normal", "maria_pensante", "maria_normal", "maria_normal", "maria_feliz", "maria_triste", "biscoito_normal", "maria_pensante", "player_normal", "maria_pensante", "player_normal", "maria_normal", "maria_feliz", "player_normal", "maria_feliz" ]

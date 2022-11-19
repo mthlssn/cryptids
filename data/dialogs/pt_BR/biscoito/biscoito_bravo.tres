@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nome_dr = "biscoito_bravo"
 nome = [ "Biscoito" ]
-msg_queue = [ "\"Grrr...\"" ]
+msg_queue = [ "Grrr..." ]
 imagens = [ "biscoito_normal" ]

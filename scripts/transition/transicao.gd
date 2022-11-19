@@ -15,6 +15,7 @@ func set_animando_false():
 	
 	if _tirar_mover_pause:
 		Global.set_mover(true)
+		Global.set_pausar(true)
 
 # animacao = "fade" e "fade_2"
 func fade(node, scene, velocidade, animacao, tirar_mover_pause):

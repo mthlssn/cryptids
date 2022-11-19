@@ -83,7 +83,7 @@ func calcular_resistencia(dano):
 	return dano #dano_recebido
 
 func receber_dano(dano):
-	_hp = _hp - dano
+	_hp = _hp - dano 
 	
 	if _hp < 0:
 		_hp = 0

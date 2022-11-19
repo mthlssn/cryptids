@@ -28,7 +28,7 @@ func _on_sair_pressed():
 func _on_nao_pressed():
 	DataPlayer.carregar()
 	Global.set_novo_jogo(false)
-	Transition.fade(self, "res://scenes/demo/demo.tscn", 1, "fade", false)
+	Transition.fade(self, "res://scenes/demo/demo.tscn", 1, "fade", true)
 
 func _on_sim_pressed():
 	Transition.fade(self, "res://scenes/start_scene/start_scene.tscn", 1, "fade", false)

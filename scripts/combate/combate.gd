@@ -31,7 +31,7 @@ onready var node_p := $personagens
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	#chamar_combate(["player", "boss"])
+	chamar_combate(["player", "boss"])
 	#chamar_combate(["player", "gamba"])
 	#chamar_combate(["player", "maria", "biscoito", "boss"])
 	pass
@@ -50,7 +50,7 @@ func _input(event):
 				node_p.emitir_sinal_per()
 
 func chamar_combate(perso):
-	Global.get_node_demo().get_tree().paused = true
+	#Global.get_node_demo().get_tree().paused = true
 	Global.set_pausar(false)
 	
 	rng.randomize()
@@ -196,6 +196,7 @@ func rodar_combate():
 							
 							tela = "dialogo"
 							node_d.chamar_dialogo(_node_vez.usar_skill(num, alvo))
+							node_p.atualizar_vida_inimigo()
 							yield(node_d, "dialogo_fechado")
 							
 							if alvo == personagens[personagens.size()-1]:
@@ -228,13 +229,17 @@ func rodar_combate():
 						
 						set_null()
 				"pular":
+					var energia = _node_vez.get_ficha().get_atri_apli("eng")
+					
 					_node_vez.get_ficha().regenerar_energia("con")
-					_node_vez = null
+					energia = _node_vez.get_ficha().get_atri_apli("eng") - energia
+		
 					tela = "dialogo"
-					node_d.chamar_dialogo(["Se desesperou, hm, é apenas um iniciante"])
+					node_d.chamar_dialogo([_node_vez.get_ficha().get_nome() + " recuperou " + String(energia) + " de energia."])
 					
 					yield(node_d, "dialogo_fechado")
 					
+					_node_vez = null
 					acao_apertada = null
 					acao_selecionada = null
 				"fugir":
@@ -250,12 +255,12 @@ func rodar_combate():
 					
 					tela = "dialogo"
 					if media >= spd_ini:
-						node_d.chamar_dialogo(["Corra, não é necessário enfrentar seus >!)@#_!"])
+						node_d.chamar_dialogo(["... Escapou."])
 						yield(node_d, "dialogo_fechado")
 						_combate_finalizado = true
 						Global.set_resultado_combate(true)
 					else:
-						node_d.chamar_dialogo(["Ele não vai te deixar escapar!"])
+						node_d.chamar_dialogo(["...", inimigo.get_ficha().get_nome() + " impede a fuga."])
 						yield(node_d, "dialogo_fechado")
 					
 					_node_vez = null
@@ -304,16 +309,17 @@ func finalizar_combate():
 		var nd = Global.get_node_demo() #node_demo
 		
 		nd.get_node("animation_player").play("gamba")
+		nd.get_node("tilemap").apagar_node(nd.get_node("tilemap/area/dg_interaja_c_arbusto"))
 		nd.get_node("tilemap/arbusto_grande2").dg_interacao = true
 		nd.get_node("tilemap/arbusto_grande2").func_interacao = false
 		
 		queue_free()
 		
-	if personagens[personagens.size()-1].get_ficha().get_nome() == "EU ODEIO O DINIZ":
+	if personagens[personagens.size()-1].get_ficha().get_nome() == ">!)@#-!&":
 		Global.get_node_demo().get_tree().paused = false
 		if Global.get_resultado_combate():
-			#Global.set_zerou(true)
-			#DataPlayer.salvar()
+			Global.set_zerou(true)
+			DataPlayer.salvar()
 			pass
 			
 		Transition.fade(self, "res://scenes/game_over/game_over.tscn", 1, "fade", false)

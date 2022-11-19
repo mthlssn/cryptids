@@ -140,16 +140,10 @@ func atualizar_bar_vida_energia():
 			
 		bar_v.value = vida
 		bar_e.value = energia
-		
-	var vida = persos[persos.size()-1].get_ficha().get_atri_apli("hp")
-	var bar_v = node_persos[node_persos.size() - 1].get_node("botao/barra_vida")
-	
-	if primeira_vez:
-		bar_v.max_value = vida
-	
-	bar_v.value = vida
 	
 	primeira_vez = false
+	
+	atualizar_vida_inimigo()
 	atualizar_label_vida_energia()
 
 func atualizar_buff_debuff(medos, debuff):
@@ -165,6 +159,15 @@ func atualizar_buff_debuff(medos, debuff):
 		adicionar_buff_debuff("inimigo", "debuff", -1)
 	else:
 		remover_buff_debuff("inimigo", "debuff")
+
+func atualizar_vida_inimigo():
+	var vida = persos[persos .size()-1].get_ficha().get_atri_apli("hp")
+	var bar_v = node_persos[node_persos.size() - 1].get_node("botao/barra_vida")
+	
+	if primeira_vez:
+		bar_v.max_value = vida
+	
+	bar_v.value = vida
 
 func adicionar_buff_debuff(alvo, tipo, quantidade):
 	match quantidade:
@@ -200,7 +203,7 @@ func set_morto(node):
 		"biscoito":
 			personagens_mortos[2] = true
 	
-	get_node(node + "/botao/personagem").modulate = Color(000000)
+	get_node(node + "/botao/personagem").hide()
 	get_node(node + "/buffs_debuffs").hide()
 	
 	get_node(node + "/barra_vida").texture_over = load("res://assets/combate/barra_escura_vida.png")

@@ -14,6 +14,9 @@ func chamar_mapa():
 	if DialogBox.visible:
 		yield(DialogBox, "dialogo_acabou")
 		
+		Global.set_mover(false)
+		Global.set_pausar(false)
+		
 	$fechar.grab_focus()
 
 func _on_fechar_pressed():

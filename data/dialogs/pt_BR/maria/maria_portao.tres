@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 nome_dr = "maria_portao]"
-nome = [ "Maria", "Maria", "Biscoito", "Maria" ]
-msg_queue = [ "É aqui que eu morro, é bem legal.", "Você tem sorte! Poucas pessoas vêm pra floresta e podem ver a Casa da Maria… esse é o nome da minha casa", "Au Au!", "Vem!" ]
-imagens = [ "maria_normal", "maria_feliz", "biscoito_normal", "maria_feliz" ]
+nome = [ "Maria", "Maria", "Maria", "Biscoito", "Maria" ]
+msg_queue = [ "Você tem sorte! ", "Poucas pessoas vêm pra floresta e podem ver a Casa da Maria…", "Esse é o nome da minha casa.", "Au! Au!", "Vem!" ]
+imagens = [ "maria_feliz", "maria_normal", "maria_feliz", "biscoito_normal", "maria_feliz" ]

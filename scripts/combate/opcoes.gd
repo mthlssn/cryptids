@@ -16,7 +16,7 @@ var _descricoes : Array
 func chamar_opcoes_agir(opcoes, descricoes):
 	combate = get_parent()
 	_opcoes = opcoes.duplicate()
-	_descricoes = descricoes
+	_descricoes = descricoes.duplicate()
 	
 	atualizar_botoes()
 	show()
@@ -66,5 +66,6 @@ func _on_opcao_focus_entered(extra_arg_0):
 	texto.text = ""
 	combate.set_opcao_selecionada(extra_arg_0)
 	get_node("container_opcoes/opcao" + String(extra_arg_0 + 1) + "/borda").hide()
+	
 	if extra_arg_0 <= _descricoes.size() -1 and _opcoes[extra_arg_0] != "nada":
 		texto.text = _descricoes[extra_arg_0]
