@@ -117,15 +117,16 @@ func skill4():
 	
 	# player, maria, biscoito
 	var danos = [-1, -1, -1]
+	var vida = [0, 0, 0]
 	
 	for i in personagens.size() - 1:
 		var dano = (_ficha.get_atri_apli("atk") / 2) * medos[i]
 		
 		danos[i] = personagens[i].get_ficha().calcular_resistencia(dano)
 		
-		danos[i] = personagens[i].get_ficha().get_atri_apli("hp")
+		vida[i] = personagens[i].get_ficha().get_atri_apli("hp")
 		personagens[i].get_ficha().receber_dano(danos[i])
-		danos[i] = danos[i] - personagens[i].get_ficha().get_atri_apli("hp")
+		danos[i] = vida[i] - personagens[i].get_ficha().get_atri_apli("hp")
 	
 	if personagens.size() > 2:
 		texto = [

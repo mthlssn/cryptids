@@ -5,7 +5,7 @@ var _inventario : Array
 #item = nome, descrição, alvo
 
 func _ready():
-	#add_item_inventario(["Desenho", "- Desenho da Maria.\n\n- Um presente.", "todos_aliados"])
+	add_item_inventario(["Desenho", "- Desenho da Maria.\n\n- Um presente.", "todos_aliados"])
 	pass
 
 func get_inventario():
@@ -57,6 +57,9 @@ func usar_item1(alvo, node_combate):
 			node_combate.personagens = temp2.duplicate()
 			
 			node_combate.set_vez(-1)
+			
+			node_combate.medos[1] = 1
+			node_combate.medos[2] = 1
 		
 		alvo.set_skills_player(temp)
 	else:

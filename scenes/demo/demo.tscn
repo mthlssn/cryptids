@@ -2074,12 +2074,9 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.01, 0.11, 0.21, 0.25, 0.28, 0.32, 0.36, 0.4, 0.5, 0.54, 0.58, 0.62, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1, 1.04 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.01, 0.11, 0.21, 0.25, 0.28, 0.32, 0.36, 0.4, 0.5, 0.54, 0.58, 0.62, 0.72, 0.76, 0.8, 0.84, 0.88, 0.92, 0.96, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "pausar"
-}, {
 "args": [  ],
 "method": "pausar"
 }, {

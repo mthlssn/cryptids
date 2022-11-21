@@ -31,7 +31,7 @@ onready var node_p := $personagens
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	chamar_combate(["player", "boss"])
+	#chamar_combate(["player", "boss"])
 	#chamar_combate(["player", "gamba"])
 	#chamar_combate(["player", "maria", "biscoito", "boss"])
 	pass
@@ -50,7 +50,7 @@ func _input(event):
 				node_p.emitir_sinal_per()
 
 func chamar_combate(perso):
-	#Global.get_node_demo().get_tree().paused = true
+	Global.get_node_demo().get_tree().paused = true
 	Global.set_pausar(false)
 	
 	rng.randomize()
@@ -63,7 +63,7 @@ func chamar_combate(perso):
 			$animation_player.play("start_combate_gamba")
 		"boss":
 			$animation_player.play("start_combate_boss")
-			medos = [1,1,1]
+			medos = [1,0,0]
 	
 	personagens.pop_back()
 	var aliados = personagens.duplicate()
@@ -77,6 +77,8 @@ func chamar_combate(perso):
 	
 	personagens.resize(personagens.size() + 1)
 	personagens[personagens.size() - 1] = load("res://scripts/combate/fichas/ficha_"+ inimigo +".gd").new()
+	
+	#inimigo = personagens[personagens.size() - 1].duplicate()
 	
 	node_p.montar_personagens(personagens.duplicate())
 	
@@ -253,6 +255,13 @@ func rodar_combate():
 					
 					var media = cont / (_ordem.size() - 1)
 					
+					var nome_inimigo
+					match inimigo:
+						"gamba":
+							nome_inimigo = "Gambá"
+						"boss":
+							nome_inimigo = ">!)@#-!&"
+					
 					tela = "dialogo"
 					if media >= spd_ini:
 						node_d.chamar_dialogo(["... Escapou."])
@@ -260,7 +269,7 @@ func rodar_combate():
 						_combate_finalizado = true
 						Global.set_resultado_combate(true)
 					else:
-						node_d.chamar_dialogo(["...", inimigo.get_ficha().get_nome() + " impede a fuga."])
+						node_d.chamar_dialogo(["...", nome_inimigo + " impede a fuga."])
 						yield(node_d, "dialogo_fechado")
 					
 					_node_vez = null
