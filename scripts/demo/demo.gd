@@ -136,9 +136,9 @@ func mudar_luz(tipo_luz):
 			$acima_dos_cenarios/fog1/luz_1.color = Color("ff7800")
 			$acima_dos_cenarios/fog1/luz_2.color = Color("8f3d19")
 		"escuro":
-			$canvas.color = Color("8d8d8d")
+			$canvas.color = Color("b4b4b4")
 		"noite":
 			$cenarios/cenario9/janela_fundo.texture = load("res://assets/cenarios/cen9/janela_fundo2.png")
-			$canvas.color = Color("48425a")
+			$canvas.color = Color("746a92")
 			$acima_dos_cenarios/fog1/luz_1.color = Color("001cff")
 			$acima_dos_cenarios/fog1/luz_2.color = Color("001cff")

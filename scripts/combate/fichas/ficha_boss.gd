@@ -38,7 +38,7 @@ func acao_inimigo(personagens):
 #chamado_do_vazio
 func skill1(alvo):
 	var texto = [
-		"A ????????? irá ???????? a todos.",
+		">!)@#-!& irá ???????? a todos.",
 		alvo.get_ficha().get_nome() + " está com medo.",
 		"###debuff_" + get_per(alvo),
 		alvo.get_ficha().get_nome() + " está com dificuldades para se mexer."]
@@ -58,7 +58,7 @@ func skill1(alvo):
 
 #observar
 func skill2(alvo):
-	var texto = ["????? ???????? encara o âmago de " + alvo.get_ficha().get_nome() + ".", 
+	var texto = [">!)@#-!& ???????? encara o âmago de " + alvo.get_ficha().get_nome() + ".", 
 	"###debuff_" + get_per(alvo),
 	alvo.get_ficha().get_nome() + " está vulnerável."]
 	
@@ -76,7 +76,7 @@ func skill2(alvo):
 
 #exaurir
 func skill3():
-	var texto = ["????? ???????? ?????? o ambiente.", 
+	var texto = [">!)@#-!& ???????? ?????? o ambiente.", 
 	"Todos se sentem pesados.",
 	"###debuff_todos_aliados",
 	"Todos se sentem cansados."]
@@ -130,13 +130,13 @@ func skill4():
 	
 	if personagens.size() > 2:
 		texto = [
-			"????? ???????? revela ???????? impronunciáveis.",
+			">!)@#-!& ???????? revela ???????? impronunciáveis.",
 			"Todos sentem sua mente borbulhar.",
 			"###dano_todos_aliados",
 			Global.get_nome_player() + " " + String(danos[0]) + " de dano, Maria " + String(danos[1]) + " de dano, Biscoito " + String(danos[2]) + " de dano."]
 	else:
 		texto = [
-			"????? ???????? revela ???????? impronunciáveis.",
+			">!)@#-!& ???????? revela ???????? impronunciáveis.",
 			"Todos sentem sua mente borbulhar.",
 			"###dano_todos_aliados",
 			Global.get_nome_player() + " " + String(danos[0]) + " de dano."]

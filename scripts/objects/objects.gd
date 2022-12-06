@@ -165,7 +165,7 @@ func interacao():
 			
 			desenho.chamar_desenho(2)
 			hide()
-			Inventario.add_item_inventario(["Desenho", "- Desenho da Maria.\n\n- Um desenho.\n\n- só q da Maria.", "todos_aliados"])
+			Inventario.add_item_inventario(["Desenho", "- Desenho da Maria.\n\n- Um presente.", "todos_aliados"])
 			
 			yield(desenho, "desenho_fechado")
 			

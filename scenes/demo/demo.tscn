@@ -3338,6 +3338,7 @@ centered = false
 
 [node name="canvas" type="CanvasModulate" parent="."]
 position = Vector2( -160, -3104 )
+color = Color( 0.454902, 0.415686, 0.572549, 1 )
 
 [node name="cor" type="ColorRect" parent="."]
 visible = false

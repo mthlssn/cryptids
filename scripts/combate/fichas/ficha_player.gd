@@ -39,7 +39,7 @@ func skill1(alvo):
 		"Gambá":
 			texto = [_ficha.get_nome() + " observa o inimigo...","Uma criatura frágil mas nem tão indefesa","Está tentando se proteger de nós."]
 		">!)@#-!&":
-			texto = [_ficha.get_nome() + " observa o inimigo...", "broxa"]
+			texto = [_ficha.get_nome() + " observa o inimigo...", "???????̸̡̖̑͌?̵͍̙̽̉?̶̢̝̄̅?̴͇̟̎͒?̸̨́?̴̞͉̊?̶̗̖͌?̴̛̱̘̿?̸̛̩̈?̶̡̊̾?̴̯̊̇͜?̸͓̅?̵̰̹̅?̴̩͉̓̓?̸̮̃̉?̴̨̀?̵͂͜?̵̮̎"]
 	
 	node_combate.set_node_vez(null)
 	return texto
