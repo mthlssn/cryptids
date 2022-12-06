@@ -175,23 +175,27 @@ func _save_data_dictionary():
 	data_dictionary = {
 		"cena_atual" : Global.get_cena_atual(),
 		"direcao_player" : Global.get_direcao_players(),
+		"interacoes_maria" : Global.get_interacoes_maria(),
 		"interagidos" : Global.get_interagidos(),
 		"mover" : Global.get_mover(),
 		"nodes_apagados" : Global.get_nodes_apagados(),
 		"nome_player" : Global.get_nome_player(),
 		"players" : Global.get_players(),
-		"posicao_players" : Global.get_posicao_players(), 
+		"posicao_players" : Global.get_posicao_players(),
+		"zerou" : Global.get_zerou()
 	}
 
 func _load_data_dictionary():
 	Global.set_cena_atual(data_dictionary["cena_atual"])
 	Global.set_direcao_players(data_dictionary["direcao_player"])
+	Global.set_interacoes_maria(data_dictionary["interacoes_maria"])
 	Global.set_interagidos(data_dictionary["interagidos"])
 	Global.set_mover(data_dictionary["mover"])
 	Global.set_nodes_apagados(data_dictionary["nodes_apagados"])
 	Global.set_nome_player(data_dictionary["nome_player"])
 	Global.set_players(data_dictionary["players"])
 	Global.set_posicao_players(data_dictionary["posicao_players"])
+	Global.set_zerou(data_dictionary["zerou"])
 
 func set_game_binds(): 
 	for key in _keybinds.keys():

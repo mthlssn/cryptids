@@ -1,10 +1,15 @@
 extends Node
 
 # ------------- vars ----------------
+var _interacao_arvore : bool
 
 var _cena_atual : int
 
 var _direcao_players : Array
+
+var _girassol : bool
+
+var _interacoes_maria : int
 
 var _interagidos : Array
 
@@ -18,11 +23,17 @@ var _nome_player : String # {nome_player}
 
 var _novo_jogo : bool
 
+var _onze_horas : bool
+
 var _pausar : bool
 
 var _players : Array
 
 var _posicao_players : Array
+
+var _resultado_combate : bool
+
+var _zerou : bool
 # ------------- funcs ----------------
 
 func _ready():
@@ -30,17 +41,30 @@ func _ready():
 	set_valores_iniciais()
 
 func set_valores_iniciais():
+	_interacao_arvore = false
 	_cena_atual = 1
 	_direcao_players = []
+	_girassol = false
+	_interacoes_maria = 0
 	_interagidos = []
 	_mover = false
 	_node_demo = null
 	_nodes_apagados = []
 	_nome_player = "???"
 	_novo_jogo = true
+	_onze_horas = false
 	_pausar = true
 	_players = []
 	_posicao_players = []
+	_resultado_combate = false
+	_zerou = false
+
+#------- interacao_arvore:
+func set_interacao_arvore(interacao_arvore):
+	_interacao_arvore = interacao_arvore
+
+func get_interacao_arvore():
+	return _interacao_arvore
 
 #------- cena_atual:
 func set_cena_atual(cena):
@@ -55,6 +79,20 @@ func get_direcao_players():
 
 func set_direcao_players(direcao_players):
 	_direcao_players = direcao_players
+
+#------- girassol:
+func get_girassol():
+	return _girassol
+
+func set_girassol(girassol):
+	_girassol = girassol
+
+#------- interacoes_maria:
+func get_interacoes_maria():
+	return _interacoes_maria
+
+func set_interacoes_maria(interacoes_maria):
+	_interacoes_maria = interacoes_maria
 
 #------- interagidos:
 func get_interagidos():
@@ -91,12 +129,19 @@ func get_nome_player():
 func set_nome_player(nome_player):
 	_nome_player = nome_player
 
-#------- nome_player:
+#------- novo_jogo:
 func get_novo_jogo():
 	return _novo_jogo
 	
 func set_novo_jogo(novo_jogo):
 	_novo_jogo = novo_jogo
+
+#------- onze_horas:
+func get_onze_horas():
+	return _onze_horas
+
+func set_onze_horas(onze_horas):
+	_onze_horas = onze_horas
 
 #------- pausar:
 func set_pausar(pausar):
@@ -118,3 +163,17 @@ func set_posicao_players(posicao_players):
 
 func get_posicao_players():
 	return _posicao_players
+
+#------- resultado_combate:
+func set_resultado_combate(resultado_combate):
+	_resultado_combate = resultado_combate
+
+func get_resultado_combate():
+	return _resultado_combate
+
+#------- zerou:
+func set_zerou(zerou):
+	_zerou = zerou
+
+func get_zerou():
+	return _zerou

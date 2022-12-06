@@ -70,7 +70,7 @@ tracks/1/keys = {
 }
 
 [node name="transiiton" type="CanvasLayer"]
-layer = 2
+layer = 3
 visible = false
 script = ExtResource( 1 )
 __meta__ = {
@@ -81,9 +81,10 @@ __meta__ = {
 margin_right = 480.0
 margin_bottom = 288.0
 mouse_filter = 2
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
 anims/RESET = SubResource( 1 )
 anims/fade = SubResource( 2 )
 anims/fade_2 = SubResource( 3 )

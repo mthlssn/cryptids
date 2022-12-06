@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=1]
+[ext_resource path="res://assets/cenarios/cen7/porta_quato.png" type="Texture" id=2]
+
+[node name="porta_quarto" type="Node2D"]
+script = ExtResource( 1 )
+type = 0
+dg_interacao = false
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 12, -5 )
+texture = ExtResource( 2 )
+
+[node name="cor" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+color = Color( 0, 0, 0, 0.537255 )

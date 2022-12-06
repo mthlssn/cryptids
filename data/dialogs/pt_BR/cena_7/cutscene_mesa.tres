@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "cutscene_mesa"
+nome = [ "Biscoito", "Maria", "Maria", "Maria", "Maria", "Maria", "Biscoito", "Maria", "Maria" ]
+msg_queue = [ "au!", "Aah! Nunca vou enjoar disso. ", "Afinal de contas é minha comida favorita desde que eu era pequenininha.", "O biscoito chama assim por causa disso. ", "Foi o melhor que eu pude pensar. ", "Mas toda vez que eu vou comer biscoito ele acha que eu to falando com ele.", "Au! Au!", "Parece que todo mundo acabou, né?", "Tá bem, vamos arrumar a bagunça.", "func_fim_cutscene_mesa()" ]
+imagens = [ "biscoito_normal", "maria_feliz", "maria_normal", "maria_normal", "maria_normal", "maria_triste", "biscoito_normal", "maria_feliz", "maria_normal" ]

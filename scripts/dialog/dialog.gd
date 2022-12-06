@@ -33,6 +33,8 @@ var _node_cutscene
 
 var _node_input_box
 
+var pular = false
+
 signal dialogo_acabou
 
 func _ready():
@@ -75,10 +77,11 @@ func call_dialog_box(personagem, mensagem, nomes_perso, imagens_perso):
 	if imagens_perso != null:
 		mudar_imagem()
 		
-	if "func" in _msg_queue[0]:
-		pass
-	else:
+	if _msg_queue.size() != 0:
 		animacao.play("open")
+	else:
+		Global.set_mover(true)
+		Global.set_pausar(true)
 
 func _input(event):
 	if event.is_action_pressed(_tecla):
@@ -93,7 +96,7 @@ func _input(event):
 		
 		show_message()
 	
-	if event.is_action_pressed("ui_cancel") && visible == true:
+	if event.is_action_pressed("ui_cancel") and visible and pular:
 		if not _node_input_box:
 			timer.stop()
 			_cont_msg_queue = _msg_queue.size()
@@ -117,8 +120,11 @@ func show_message() -> void:
 		match _node_cutscene.name:
 			"cutscene_maria":
 				_node_cutscene.iniciou()
+			"cutscene_quarto1":
+				_node_cutscene.iniciou()
 	
 	if _msg_queue.size() <= _cont_msg_queue:
+		pular = false
 		_tecla = "nada"
 		_msg_queue = []
 		text.bbcode_text = ""
@@ -146,6 +152,7 @@ func show_message() -> void:
 	text.bbcode_text = _msg
 	
 	timer.start()
+	pular = true
 
 func _on_timer_timeout():
 	if text.visible_characters == text.bbcode_text.length():
@@ -207,7 +214,6 @@ func mudar_texto():
 					personagem_foto.texture = null
 					
 					return false
-					
 			_cont_msg_queue += 1
 			return true
 		

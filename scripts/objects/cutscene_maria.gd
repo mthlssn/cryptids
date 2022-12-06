@@ -44,11 +44,11 @@ func func_transicao():
 	Global.set_direcao_players([Vector2(-1,0), Vector2(-1,0), Vector2(1,0)])
 	
 	nt.get_node("players").arrumar_fila()
-	nt.get_node("../camera").mudar_camera()
+	nt.get_node("../camera").mudar_camera(false)
 	
 	Global.set_pausar(true)
-	
 	nt.apagar_node(self)
+	DataPlayer.salvar()
 
 func esconder_players():
 	nt.get_node("players").hide()

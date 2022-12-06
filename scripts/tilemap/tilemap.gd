@@ -1,6 +1,6 @@
 extends TileMap
 
-enum {EMPTY = -1,  OBSTACLE, AREA, PLAYERS, OBJECT}
+enum {EMPTY = -1,  OBSTACLE, AREA, PLAYERS, OBJECT, PERSONAGEM}
 
 onready var players_node := $players
 
@@ -94,19 +94,25 @@ func get_node_celula(alvo, area):
 				hei_and_wid_v += Vector2(0,1)
 
 func reposicionar_node(node, posicao, tipo):
+	var primeira_posicao = node.position
 	node.show()
 	var width = node.get_sprite_width_tile()
 	var height = node.get_sprite_height_tile()
 	var posicao_inicial = posicao
+	var posicao_inicial2 = primeira_posicao
 	
 	node.position = posicao
 	
 	for i in height:
 		for j in width:
+			set_cellv(world_to_map(primeira_posicao), -1)
 			set_cellv(world_to_map(posicao), tipo)
 			posicao.x += 32
+			primeira_posicao.x += 32
 		posicao.x = posicao_inicial.x
+		primeira_posicao.x = posicao_inicial2.x
 		posicao.y += 32
+		primeira_posicao.y += 32
 
 func apagar_node(node):
 	var width = node.get_sprite_width_tile()
@@ -143,10 +149,9 @@ func solicitar_movimento(player, direcao):
 			return map_to_world(proxima_celula) + (cell_size / 2)
 		AREA:
 			var node_area = get_node_celula(proxima_celula, true)
-			
 			if node_area.apagar:
 				apagar_node(node_area)
-				
+			
 			if node_area.colisao:
 				node_area.colisao(self)
 				
@@ -155,8 +160,13 @@ func solicitar_movimento(player, direcao):
 					get_node("arbusto_grande2").dg_interacao = false
 					get_node("arbusto_grande2").func_interacao = true
 					get_node("arbusto_grande2/animation_player").play("mexer_arbusto")
+				"atualizar_porta_frente":
+					$porta_fundos1.func_interacao = true
+					$porta_fundos1.dg_interacao = false
 				"andar":
 					return map_to_world(proxima_celula) + (cell_size / 2)
+				"salvar":
+					DataPlayer.salvar()
 
 func atualizar_posicao(posicao_comeco, posicao_alvo):
 	posicao_comeco = world_to_map(posicao_comeco)
@@ -171,4 +181,3 @@ func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"gamba":
 			apagar_node(get_node("gamba"))
-			apagar_node(get_node("area/dg_interaja_c_arbusto"))

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/personagens/biscoito/biscoito_sprite.png" type="Texture" id=1]
 [ext_resource path="res://scripts/personagens/personagens.gd" type="Script" id=2]
 [ext_resource path="res://assets/personagens/biscoito/sombra2.png" type="Texture" id=3]
 [ext_resource path="res://assets/personagens/biscoito/sombra1.png" type="Texture" id=4]
+[ext_resource path="res://data/dialogs/pt_BR/biscoito/biscoito_normal.tres" type="Resource" id=5]
 
 [sub_resource type="Animation" id=3]
 length = 0.48
@@ -73,6 +74,7 @@ tracks/0/keys = {
 
 [node name="biscoito" type="Node2D"]
 script = ExtResource( 2 )
+interaction = ExtResource( 5 )
 
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

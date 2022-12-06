@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/objects/objects.gd" type="Script" id=1]
+[ext_resource path="res://assets/cenarios/cen8/mesa_desenho.png" type="Texture" id=2]
+[ext_resource path="res://assets/cenarios/cen7/deseinhoinho.png" type="Texture" id=3]
+[ext_resource path="res://data/dialogs/pt_BR/objects/mesa_desenho.tres" type="Resource" id=4]
+
+[node name="mesa_desenho" type="Node2D"]
+script = ExtResource( 1 )
+type = 3
+dg_interacao = false
+func_interacao = true
+dialogo_resource = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 0, 32 )
+texture = ExtResource( 2 )
+
+[node name="desenho" type="Sprite" parent="sprite"]
+position = Vector2( 8, -40 )
+texture = ExtResource( 3 )
+
+[node name="cor" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 80.0
+color = Color( 0, 0, 0, 0.537255 )

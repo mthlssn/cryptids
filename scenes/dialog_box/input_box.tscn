@@ -54,7 +54,7 @@ custom_fonts/font = SubResource( 1 )
 custom_styles/focus = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 align = 1
-max_length = 9
+max_length = 6
 caret_blink = true
 __meta__ = {
 "_edit_group_": true

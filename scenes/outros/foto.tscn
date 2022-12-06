@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/outros/foto_frente.png" type="Texture" id=1]
 [ext_resource path="res://scripts/outros/foto.gd" type="Script" id=2]
 [ext_resource path="res://assets/temas/botao_start_scene.tres" type="Theme" id=3]
-[ext_resource path="res://assets/outros/seta_direita.png" type="Texture" id=4]
-[ext_resource path="res://assets/outros/mira.png" type="Texture" id=5]
-[ext_resource path="res://assets/outros/seta_esquerda.png" type="Texture" id=6]
-[ext_resource path="res://assets/outros/exclamacao.png" type="Texture" id=7]
+[ext_resource path="res://assets/outros/seta_direita_n_selecionada.png" type="Texture" id=4]
+[ext_resource path="res://assets/outros/seta_esquerda_n_selecionada.png" type="Texture" id=5]
+[ext_resource path="res://assets/outros/seta_esquerda_selecionada.png" type="Texture" id=6]
+[ext_resource path="res://assets/outros/seta_esquerda_selecionavel.png" type="Texture" id=7]
+[ext_resource path="res://assets/outros/seta_direita_selecionavel.png" type="Texture" id=8]
+[ext_resource path="res://assets/outros/seta_direita_selecionada.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -275,17 +277,17 @@ margin_bottom = 248.0
 margin_left = 260.0
 margin_right = 269.0
 margin_bottom = 8.0
-texture_normal = ExtResource( 4 )
-texture_disabled = ExtResource( 7 )
-texture_focused = ExtResource( 5 )
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 4 )
+texture_focused = ExtResource( 9 )
 
 [node name="sete_esquerda" type="TextureButton" parent="botoes"]
-margin_left = 243.0
-margin_right = 252.0
-margin_bottom = 8.0
-texture_normal = ExtResource( 6 )
-texture_disabled = ExtResource( 7 )
-texture_focused = ExtResource( 5 )
+margin_left = 232.0
+margin_right = 250.0
+margin_bottom = 14.0
+texture_normal = ExtResource( 7 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 6 )
 
 [node name="fechar" type="Button" parent="botoes"]
 margin_left = 232.0

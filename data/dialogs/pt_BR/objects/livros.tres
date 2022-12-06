@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_s_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "livros"
+msg_queue = [ "Livros e documentos variados.", "Há um pedaço de um mapa.", "Há um pino verde em cima de “São Paulo”.", "Um pino vermelho em cima de “Benedito Sales”.", "E um pino Amarelo em cima de “Rio de Janeiro”." ]
+msg_queue1 = [  ]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_s_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "mesa_pequena"
+msg_queue = [ "Tem uma carta aberta na escrivaninha.", "“15 de maio de 1888, Não estender-me-ei longamente desta vez, meu filho.", "Vosso pai se apresenta a cada dia mais impaciente com as novas.", "A princesa Isabel está levando o império à ruína na ausência do Imperador.", "Não apresentamos recursos suficientes para substituir nossa mão de obra tão brevemente.", "Possivelmente esta será vossa última chance de reatar laços.", "Peço encarecidamente que  me remeta ao menos uma única carta desta vez.", "Atenciosamente, sua Mãe”." ]
+msg_queue1 = [ "Uma escrivaninha." ]

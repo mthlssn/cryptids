@@ -46,14 +46,16 @@ func skill1(alvo):
 	if int(_ficha.rng.randf_range(1, 100)) <= _ficha.get_atri_apli("crt"):
 		dano = _ficha.get_atri_apli("atk") * 2 + 2
 		
-		dano_recebido = alvo.get_ficha().receber_dano(dano)
-		texto = ["O gambá avança.", alvo.get_ficha().get_nome() + " é RETALHADO(A) recebendo " + String(dano_recebido) + " de dano."]
+		dano_recebido = alvo.get_ficha().calcular_resistencia(dano)
+		alvo.get_ficha().receber_dano(dano_recebido)
+		texto = ["O gambá avança.", "###dano_player" ,alvo.get_ficha().get_nome() + " é RETALHADO(A) recebendo " + String(dano_recebido) + " de dano."]
 	else:
 		dano = _ficha.get_atri_apli("atk") + 2
 		
 		if not alvo.get_ficha().verificar_desvio():
-			dano_recebido =  alvo.get_ficha().receber_dano(dano)
-			texto = ["O gambá avança. ", alvo.get_ficha().get_nome() + " é arranhado(a) e recebe " + String(dano_recebido) + " de dano."]
+			dano_recebido = alvo.get_ficha().calcular_resistencia(dano)
+			alvo.get_ficha().receber_dano(dano_recebido)
+			texto = ["O gambá avança. ", "###dano_player", alvo.get_ficha().get_nome() + " é arranhado(a) e recebe " + String(dano_recebido) + " de dano."]
 		else:
 			texto = ["O gambá avança", "É inútil."]
 	
@@ -66,8 +68,7 @@ func skill1(alvo):
 		alvo.set_skills_player(temp) 
 		
 		primeira_vez = false
-	
-	node_combate.set_personagem_apertado("player")
+		
 	node_combate.set_node_vez(null)
 	return texto
 
@@ -75,6 +76,4 @@ func get_fala():
 	return _fala
 
 func get_alvo(personagens):
-	var alvo
-	alvo = personagens[int(_ficha.rng.randf_range(0, personagens.size() - 1))]
-	return alvo
+	return personagens[int(_ficha.rng.randf_range(0, personagens.size() -1))]

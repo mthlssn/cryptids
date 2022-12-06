@@ -54,3 +54,24 @@ position = Vector2( 273, 175 )
 
 [node name="bottom_right" type="Position2D" parent="limites6"]
 position = Vector2( 273, 175 )
+
+[node name="limites7" type="Node" parent="."]
+
+[node name="top_left" type="Position2D" parent="limites7"]
+
+[node name="bottom_right" type="Position2D" parent="limites7"]
+position = Vector2( 273, 175 )
+
+[node name="limites8" type="Node" parent="."]
+
+[node name="top_left" type="Position2D" parent="limites8"]
+
+[node name="bottom_right" type="Position2D" parent="limites8"]
+position = Vector2( 273, 175 )
+
+[node name="limites9" type="Node" parent="."]
+
+[node name="top_left" type="Position2D" parent="limites9"]
+
+[node name="bottom_right" type="Position2D" parent="limites9"]
+position = Vector2( 273, 175 )

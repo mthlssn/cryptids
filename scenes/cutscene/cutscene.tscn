@@ -22,6 +22,7 @@ position = Vector2( 240, 144 )
 scale = Vector2( 1.37143, 1.30909 )
 texture = ExtResource( 2 )
 hframes = 38
+frame = 37
 
 [node name="parte3" type="Sprite" parent="."]
 visible = false
@@ -29,6 +30,7 @@ position = Vector2( 240, 144 )
 scale = Vector2( 1.37143, 1.30909 )
 texture = ExtResource( 3 )
 hframes = 36
+frame = 1
 
 [node name="center" type="CenterContainer" parent="."]
 margin_right = 480.0

@@ -10,7 +10,7 @@ type = 3
 dialogo_resource = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( -48, -48 )
+position = Vector2( -27, -22 )
 texture = ExtResource( 1 )
 centered = false
 

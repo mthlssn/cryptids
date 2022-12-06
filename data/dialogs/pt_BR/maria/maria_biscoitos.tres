@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/dialog/dialog_metadata_c_perso.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome_dr = "maria_biscoitos"
+nome = [ "Maria", "Maria", "{nome_player}", "Biscoito", "Maria", "Maria", "Maria", "Maria" ]
+msg_queue = [ "Ta bom, entao eu ah eu eh…", "EU PEGUEI OS BISCOITOS NO LUGAR SECRETO!", "...", "!", "Ufa, falei.", "Não era pra comer biscoito sem permissão, papai e o tio Jorge não sabem que eu sei onde eles escondem o potinho.", "Por favor, não conta pra eles, é uma emergência!", "Não vou fazer mais isso, agora é a última vez mesmo, prometo!" ]
+imagens = [ "maria_normal", "maria_pensante", "player_normal", "biscoito_normal", "maria_feliz", "maria_normal", "maria_triste", "maria_feliz" ]
